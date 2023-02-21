@@ -17,3 +17,9 @@ target/classes/com/startoup/biz/product/ProductVO.class
 target/classes/com/startoup/biz/sms/SMSDAO.class
 target/classes/com/startoup/biz/sms/SMSVO.class
 target/classes/applicationContext.xml
+*.classpath
+*.git
+*.project
+*.setting
+*/.git/*
+*/target/*
