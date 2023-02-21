@@ -23,6 +23,149 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    
+    <style>
+    h3 {
+     display: inline;
+     font-size: 44px;
+    }
+    
+     @import url(https://fonts.googleapis.com/css?family=Expletus+Sans);
+    
+               progress:not(value) {
+            	/* Add your styles here. As part of this walkthrough we will focus only on determinate progress bars. */
+            }
+
+            /* Styling the determinate progress element */
+
+            progress[value] {
+            	/* Get rid of the default appearance */
+            	appearance: none;
+
+            	/* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
+            	border: none;
+
+            	/* Add dimensions */
+            	width: 90%; height: 20px;
+
+            	/* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
+            	  background-color: whiteSmoke;
+            	  border-radius: 3px;
+            	  box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+
+            	/* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
+            	color: royalblue;
+
+            	position: relative;
+            }
+
+            /*
+            Webkit browsers provide two pseudo classes that can be use to style HTML5 progress element.
+            -webkit-progress-bar -> To style the progress element container
+            -webkit-progress-value -> To style the progress element value.
+            */
+
+            progress[value]::-webkit-progress-bar {
+            	background-color: whiteSmoke;
+            	border-radius: 3px;
+            	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+            }
+
+            progress[value]::-webkit-progress-value {
+            	position: relative;
+
+            	background-size: 35px 20px, 100% 100%, 100% 100%;
+            	border-radius:3px;
+
+            	/* Let's animate this */
+            	animation: animate-stripes 5s linear infinite;
+            }
+
+            @keyframes animate-stripes { 100% { background-position: -100px 0; } }
+
+            /* Let's spice up things little bit by using pseudo elements. */
+
+            progress[value]::-webkit-progress-value:after {
+            	/* Only webkit/blink browsers understand pseudo elements on pseudo classes. A rare phenomenon! */
+            	content: '';
+            	position: absolute;
+
+            	width:5px; height:5px;
+            	top:7px; right:7px;
+
+            	background-color: white;
+            	border-radius: 100%;
+            }
+
+            /* Firefox provides a single pseudo class to style the progress element value and not for container. -moz-progress-bar */
+
+            progress[value]::-moz-progress-bar {
+            	/* Gradient background with Stripes */
+            	background-image:
+            	-moz-linear-gradient( 135deg,
+            													 transparent,
+            													 transparent 33%,
+            													 rgba(0,0,0,.1) 33%,
+            													 rgba(0,0,0,.1) 66%,
+            													 transparent 66%),
+                -moz-linear-gradient( top,
+            														rgba(255, 255, 255, .25),
+            														rgba(0,0,0,.2)),
+                 -moz-linear-gradient( left, #09c, #f44);
+
+            	background-size: 35px 20px, 100% 100%, 100% 100%;
+            	border-radius:3px;
+
+            	/* Firefox doesn't support CSS3 keyframe animations on progress element. Hence, we did not include animate-stripes in this code block */
+            }
+
+            /* Fallback technique styles */
+            .progress-bar {
+            	background-color: whiteSmoke;
+            	border-radius: 3px;
+            	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+
+            	/* Dimensions should be similar to the parent progress element. */
+            	width: 100%; height:20px;
+            }
+
+            .progress-bar span {
+            	background-color: royalblue;
+            	border-radius: 3px;
+
+            	display: block;
+            	text-indent: -9999px;
+            }
+
+            p[data-value] {
+
+              position: relative;
+            }
+
+            /* The percentage will automatically fall in place as soon as we make the width fluid. Now making widths fluid. */
+
+            p[data-value]:after {
+            	content: attr(data-value) '%';
+            	position: absolute; right:0;
+            }
+	
+			           .funding::-webkit-progress-value {
+            	/* Gradient background with Stripes */
+            	background-image:
+            	-webkit-linear-gradient( 135deg,
+            													 transparent,
+            													 transparent 33%,
+            													 rgba(0,0,0,.1) 33%,
+            													 rgba(0,0,0,.1) 66%,
+            													 transparent 66%),
+                -webkit-linear-gradient( top,
+            														rgba(255, 255, 255, .25),
+            														rgba(0,0,0,.2)),
+                 -webkit-linear-gradient( left, #09c, #f44);
+            }
+    	
+    </style>
+    
 </head>
 
 <body>
@@ -115,9 +258,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="#">Women’s </a>
-                        <span>Essential structured blazer</span>
+                        <span style="font-weight: bold;
+    			font-size: 50px; color: black;">JUPITER</span>
                     </div>
                 </div>
             </div>
@@ -147,7 +289,7 @@
                         </div>
                         <div class="product__details__slider__content">
                             <div class="product__details__pic__slider owl-carousel">
-                                <img data-hash="product-1" class="product__big__img" src="img/product/details/product-1.jpg" alt="">
+                                <img data-hash="product-1" class="product__big__img" src="img/product/details/sample-1.png" alt="">
                                 <img data-hash="product-2" class="product__big__img" src="img/product/details/product-3.jpg" alt="">
                                 <img data-hash="product-3" class="product__big__img" src="img/product/details/product-2.jpg" alt="">
                                 <img data-hash="product-4" class="product__big__img" src="img/product/details/product-4.jpg" alt="">
@@ -156,86 +298,23 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="product__details__text">
-                        <h3>Essential structured blazer <span>Brand: SKMEIMore Men Watches from SKMEI</span></h3>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span>( 138 reviews )</span>
-                        </div>
-                        <div class="product__details__price">$ 75.0 <span>$ 83.0</span></div>
-                        <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
-                        magni lores eos qui ratione voluptatem sequi nesciunt.</p>
+                    <div class="product__details__text" style="margin-left: 5%">
+                        <h3><span style="font-size: 24px">펀딩 가격</span>205,252</h3> 원
+                        <br><br>
+                        <h3><span style="font-size: 24px">모인 금액</span>205,252,519</h3> <span style="font-size: 24px">원</span> &nbsp <div style="display: inline; font-weight: bold; font-size: 36px">85%</div>
+                        <br><br>
+                <progress max="100" value="85" class="funding">
+                    <div class="progress-bar">
+                        <span style="width: 80%">85%</span>
+                    </div>
+                </progress>
+                        <br><br>
+                        <h3><span style="font-size: 24px">후원자</span>1,519</h3> 명
+                        <br><br><br>
                         <div class="product__details__button">
-                            <div class="quantity">
-                                <span>Quantity:</span>
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
-                            </div>
-                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+                            <a href="#" class="cart-btn" style="background-color: black; width: 40%; text-align: center"> 펀딩하기</a>
                             <ul>
                                 <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__details__widget">
-                            <ul>
-                                <li>
-                                    <span>Availability:</span>
-                                    <div class="stock__checkbox">
-                                        <label for="stockin">
-                                            In Stock
-                                            <input type="checkbox" id="stockin">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span>Available color:</span>
-                                    <div class="color__checkbox">
-                                        <label for="red">
-                                            <input type="radio" name="color__radio" id="red" checked>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label for="black">
-                                            <input type="radio" name="color__radio" id="black">
-                                            <span class="checkmark black-bg"></span>
-                                        </label>
-                                        <label for="grey">
-                                            <input type="radio" name="color__radio" id="grey">
-                                            <span class="checkmark grey-bg"></span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span>Available size:</span>
-                                    <div class="size__btn">
-                                        <label for="xs-btn" class="active">
-                                            <input type="radio" id="xs-btn">
-                                            xs
-                                        </label>
-                                        <label for="s-btn">
-                                            <input type="radio" id="s-btn">
-                                            s
-                                        </label>
-                                        <label for="m-btn">
-                                            <input type="radio" id="m-btn">
-                                            m
-                                        </label>
-                                        <label for="l-btn">
-                                            <input type="radio" id="l-btn">
-                                            l
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span>Promotions:</span>
-                                    <p>Free shipping</p>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -244,18 +323,12 @@
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Specification</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Reviews ( 2 )</a>
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Detail</a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <h6>Description</h6>
+                                <h6>Detail</h6>
                                 <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
                                     quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
                                     Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
@@ -269,19 +342,6 @@
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <h6>Specification</h6>
-                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
-                                    quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
-                                    Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                                    voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
-                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
-                                consequat massa quis enim.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                quis, sem.</p>
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <h6>Reviews ( 2 )</h6>
                                 <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
                                     quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
                                     Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
@@ -398,122 +458,10 @@
     </section>
     <!-- Product Details Section End -->
 
-    <!-- Instagram Begin -->
-    <div class="instagram">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-1.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-2.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-3.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-4.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-5.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-6.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Instagram End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-7">
-                    <div class="footer__about">
-                        <div class="footer__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                        cilisis.</p>
-                        <div class="footer__payment">
-                            <a href="#"><img src="img/payment/payment-1.png" alt=""></a>
-                            <a href="#"><img src="img/payment/payment-2.png" alt=""></a>
-                            <a href="#"><img src="img/payment/payment-3.png" alt=""></a>
-                            <a href="#"><img src="img/payment/payment-4.png" alt=""></a>
-                            <a href="#"><img src="img/payment/payment-5.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-5">
-                    <div class="footer__widget">
-                        <h6>Quick links</h6>
-                        <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Blogs</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">FAQ</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-4">
-                    <div class="footer__widget">
-                        <h6>Account</h6>
-                        <ul>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Orders Tracking</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-8 col-sm-8">
-                    <div class="footer__newslatter">
-                        <h6>NEWSLETTER</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Email">
-                            <button type="submit" class="site-btn">Subscribe</button>
-                        </form>
-                        <div class="footer__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
