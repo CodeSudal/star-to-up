@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --primary: #EB1616;
+    --primary: #fff;
     --secondary: #191C24;
     --light: #6C7293;
     --dark: #000000;
@@ -130,9 +130,9 @@
 
 .sidebar .navbar .navbar-nav .nav-link:hover,
 .sidebar .navbar .navbar-nav .nav-link.active {
-    color: var(--primary);
+    color: var(--light);
     background: var(--dark);
-    border-color: var(--primary);
+    border-color: var(--light);
 }
 
 .sidebar .navbar .navbar-nav .nav-link i {
