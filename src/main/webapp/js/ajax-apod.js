@@ -2,9 +2,11 @@ $.ajax({
     url: 'https://api.nasa.gov/planetary/apod?api_key=QKHzmbr4OB67EpTJPsb4nCfrK0gYhhDY7OIZIg8f',
     success: function (whatYouGot) {
         document.getElementById('img').innerHTML = "<img src='" + whatYouGot.url + "'style='width:100%;'/>";
-        document.getElementById('copyright').innerHTML = 'By ' + whatYouGot.copyright;
+        // document.getElementById('copyright').innerHTML = "By " + whatYouGot.copyright;
         document.getElementById('title').innerHTML = whatYouGot.title;
         document.getElementById('explanation').innerHTML = whatYouGot.explanation;
+        document.getElementById('date').innerHTML = whatYouGot.date;
+        console.log(whatYouGot.date);
     },
 });
 
