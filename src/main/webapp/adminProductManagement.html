@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>DarkPan - Bootstrap 5 Admin Template</title>
+<title>Product Management</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="keywords" />
 <meta content="" name="description" />
@@ -12,7 +13,7 @@
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com"/>
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
 	rel="stylesheet" />
@@ -51,24 +52,19 @@
 		<!-- Spinner End -->
 
 		<!-- Sidebar Start -->
-		<div class="sidebar pe-4 pb-3" style>
+		<div class="sidebar pe-4 pb-3">
 			<nav class="navbar bg-secondary navbar-dark">
-				<img class="rounded-circle" src="img/logo.png" alt="로고이미지"
-					style="height: 70px; margin-left: 8px" />
+				<a href="#"><img class="rounded-circle" src="img/logo.png" alt="로고이미지"
+					style="height: 70px; margin-left: 8px" /></a>
 
-				<!--  여기 눌리는거 신경써서 작업하기!!!! -->
 				<div class="navbar-nav w-100">
-					<a href="chart.html" class="nav-item nav-link"><i
+					<a href="adminFundingManagement.html"
+						class="nav-item nav-link"><i
 						class="fa fa-chart-bar me-2"></i>Funding Chart</a> <a
-						href="index.html" class="nav-item nav-link"><i
+						href="adminProductManagement.html" class="nav-item nav-link active"><i
 						class="fa fa-tachometer-alt me-2"></i>Add Product</a> <a
-						href="table.html" class="nav-item nav-link active"><i
+						href="adminMemberManagement.html" class="nav-item nav-link"><i
 						class="fa fa-table me-2"></i>Member</a>
-					<!-- <a href="index.html" class="nav-item nav-link"><i
-						class="fa fa-tachometer-alt me-2"></i>Member</a> <a href="index.html"
-						class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Funding List</a>
-					<a href="index.html" class="nav-item nav-link"><i
-						class="fa fa-tachometer-alt me-2"></i>Add Product</a> -->
 				</div>
 				
 			</nav>
@@ -100,7 +96,7 @@
 									style="width: 40px; height: 40px;" />
 							</div>
 							<div style="float: right; margin:8px">
-								<h5 class="mb-0">&nbsp;LOGOUT</h5>
+								<h5><a href="#">&nbsp;LOGOUT</a></h5>
 								<!-- <span
 								class="d-none d-lg-inline-flex" style="color: white">LOGOUT</span> -->
 							</div>
@@ -115,62 +111,55 @@
 			<!-- Table Start -->
 			<div class="container-fluid pt-4 px-4">
 				<div class="row g-4">
+					<div class="col-sm-12 col-xl-6" style="width: 100% !important">
+						<div class="bg-secondary rounded h-100 p-4">
+						
+						<h3 class="mb-4">Add Product</h3>
+							<form>
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">상품
+										이름</label> <input type="email" class="form-control"
+										id="exampleInputEmail1" aria-describedby="emailHelp" /> <br>
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">펀딩
+										목표 금액</label> <input type='text' name='sell1' id='TargetAmount'
+										onkeyup='call()' class="form-control"
+										id="exampleInputPassword1">
+								</div>
+								<div class="mb-3">
+									<div style="display: inline-block">
+										<label for="exampleInputPassword1" class="form-label">펀딩인원 / 1인당 금액</label> <input type='text' name='sell2' id='personnel'
+											onkeyup='call()' class="form-control"
+											id="exampleInputPassword1" style="width: 660px">
+											</div>
+											<div style="display: inline-block">
+											&nbsp;&nbsp;/&nbsp;&nbsp;</div>
+											<div style="display: inline-block"><input
+											type='text' name='sell3' id='result' class="form-control"
+											id="exampleInputPassword1" style="width: 660px">
+									</div>
+									<div id="emailHelp" class="form-text">펀딩 목표금액과 인원을 입력하시면
+										1인당 금액이 자동 계산 됩니다.</div>
+									<br>
+								</div>
 
-					<div class="col-sm-12 col-xl-6" style="width: 100%">
 
-						<div class="bg-secondary rounded h-100 p-4" style="width: max">
-							<h3 class="mb-4">Member Management</h3>
-							<table class="table table-hover"
-								style="vertical-align: middle !important">
-								<thead>
-									<tr>
-										<th scope="col">#</th>
-										<th scope="col">아이디</th>
-										<th scope="col">이름</th>
-										<th scope="col">이메일</th>
-										<th scope="col">전화번호</th>
-										<th scope="col">가입일자</th>
-										<th scope="col"></th>
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">상품
+										이미지 등록</label> <input class="form-control bg-dark" type="file"
+										id="formFileMultiple" name="uploadFile"
+										onchange="readURL(this);" multiple />
 
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>John</td>
-										<td>Doe</td>
-										<td>jhon@email.com</td>
-										<td>jhon@email.com</td>
-										<td>jhon@email.com</td>
-										<td><button type="button"
-												class="btn btn-primary rounded-pill m-2">Delete</button></td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Mark</td>
-										<td>Otto</td>
-										<td>mark@email.com</td>
-										<td>jhon@email.com</td>
-										<td>jhon@email.com</td>
-										<td><button type="button"
-												class="btn btn-primary rounded-pill m-2">Delete</button></td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>jacob@email.com</td>
-										<td>jhon@email.com</td>
-										<td>jhon@email.com</td>
-										<td><button type="button"
-												class="btn btn-primary rounded-pill m-2">Delete</button></td>
-									</tr>
-								</tbody>
-								
-							</table>
+								</div>
+								<br> <br>
+								<button type="submit" class="btn btn-primary"
+									style="float: right; border-radius: 80px">상품 등록</button>
+									<br>
+									<br>
+							</form>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<!-- Table End -->
@@ -179,9 +168,6 @@
 		</div>
 		<!-- Content End -->
 
-		<!-- Back to Top -->
-		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
-			class="bi bi-arrow-up"></i></a>
 	</div>
 
 	<!-- JavaScript Libraries -->
@@ -198,5 +184,17 @@
 
 	<!-- Template Javascript -->
 	<script src="js/mainAdmin.js"></script>
+
+	<!-- 계산기 java -->
+	<script>
+		function call() {
+			if (document.getElementById("TargetAmount").value
+					&& document.getElementById("personnel").value) {
+				document.getElementById('result').value = parseInt(document
+						.getElementById('TargetAmount').value)
+						/ parseInt(document.getElementById('personnel').value);
+			}
+		}
+	</script>
 </body>
 </html>
