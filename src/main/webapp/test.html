@@ -54,14 +54,40 @@
     to {opacity: 1;}
 }
 
+    #menu-ul{
+        position : absolute;
+        list-style-type: none; 
+        z-index: 999; 
+        text-align: right;
+        padding: 10%;
+        padding-left: 80%;
+        font-size: 38px;
+        font-weight: bold;
+    }
+
+    #menu-ul li{
+        margin: 25px 0px;
+    }
+
+    #menu-ul li a{
+        text-decoration: none;
+        color: white;
+    }
 
         </style>
 
-    </head>
-    <body>
+</head>
+<body>
+        <ul id="menu-ul">
+            <li><a href="www.naver.com">STORE</a></li>
+            <li><a href="#">INFO</a></li>
+            <li><a href="#">ABOUT</a></li>
+        </ul>
+        
+        <div id="wrapDiv">
         <div id="dateChanger"></div>
                 <!-- Section: Media -->
-                <section id="wrapper-media" class=""></section>
+                <section id="wrapper-media" class="" style="position: relative; z-index: 1;"></section>
                 <!-- Section: Media -->
             <div class="col-md-4 mb-4 mb-md-0" style="display: none;">
                 <!-- Section: Description -->
@@ -165,5 +191,6 @@
             }
             // ]]>
         </script>
+        </div>
     </body>
 </html>
