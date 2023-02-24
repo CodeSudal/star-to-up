@@ -80,10 +80,17 @@ dateChanger.addEventListener('click', click);
 function changeDate() {
     $('wrapper-date').load(window.location.href + '#wrapper-date');
 
-    $('body').animate({
-        opacity: 1,
-    }),
-        2000;
+    // $('body').on('click', function () {
+    //     $('body').fadeOut(1500);
+    // });
+    // $('body').on('click', function () {
+    //     $('body').fadeIn();
+    // });
+
+    // $('body').animate({
+    //     opacity: 1,
+    // }),
+    //     2000;
 }
 // 월별 날짜 계산
 function click(e) {
@@ -106,6 +113,7 @@ function click(e) {
             a = d;
         }
     }
+    // 날짜 값 변경 후 비동기 새로고침
     document.getElementById('wrapper-date').value = y + '-' + m + '-' + d;
     changeDate();
     console.log(y + '-' + m + '-' + d);
