@@ -1,5 +1,13 @@
 package com.startoup.biz.myfunding;
 
-public class MyFundingServiceImpl {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class MyFundingServiceImpl implements MyFundingService {
+	
+	@Autowired
+	private FundingDAO myfundingDAO;
 
 }

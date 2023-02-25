@@ -1,5 +1,8 @@
 package com.startoup.biz.sms;
 
-public class SMSServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service
+public class SMSServiceImpl implements SMSService{
 
 }

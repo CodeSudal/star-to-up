@@ -1,13 +1,14 @@
-package com.startoup.biz.member;
+package com.startoup.biz.crawling;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
-public class MemberServiceImpl implements MemberService {
+public class CrawlingServiceImpl implements CrawlingService {
 	
 	@Autowired
-	private MemberDAO memberDAO;
+	private CrawlingDAO crawlingDAO;
+	
+	
 
 }
