@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+
+@font-face{
+	font-family:'NotoSans';
+	font-style:'normal';
+	src:url('fonts/NotoSans-Medium.ttf');
+	
+}
+
+body{
+	font-family:'NotoSans';
+}
