@@ -3,11 +3,15 @@ body {
    padding: 0;
 }
 
+
+
  input[type="checkbox"]{
    display:none;
    
    
 }
+
+
 .circle1{
    width: 15px;
    height: 15px;
