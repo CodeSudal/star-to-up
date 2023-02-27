@@ -1,274 +1,312 @@
 body {
-	margin: 0;
-	padding: 0;
+   margin: 0;
+   padding: 0;
 }
+
+
 
  input[type="checkbox"]{
-	display:none;
-	
-	
+   display:none;
+   
+   
 }
 
 
+.circle1{
+   width: 15px;
+   height: 15px;
+   border-radius:50%;
+   justify-content: center;
+   align-items: center;
+   border: 2px solid black;
+   
+   margin-bottom: 50px;
+}
+.header__right1 {
+    text-align: right;
+    padding: 35px 5px 27px 1px;
+}
 .header_box {
-	width: 100%;
-	height: 100px;
-	display: flex;
-	justify-content: space-between;
-	border-bottom: 2px solid rgba(173, 173, 173, 0.8);
+   width: 100%;
+   height: 60px;
+   display: flex;
+   justify-content: space-between;
+   border-bottom: 1.5px solid rgba(173, 173, 173, 0.9);
 }
 
 .top_left_box {
-	width: 50%;
-	height: 100%;
-	display: flex;
-	align-items: center;
+   width: 50%;
+   height: 100%;
+   display: flex;
+   align-items: center;
 }
 
 .top_right_box {
-	width: 300px;
-	height: 100%;
-	display: flex;
-	justify-content: end;
-	align-items: center;
+   width: 300px;
+   height: 100%;
+   display: flex;
+   justify-content: end;
+   align-items: center;
+   padding-right: 40px;
 }
 
 .logo_box {
-	width: 150px;
-	height: 60px;
-	background-color: rgb(202, 202, 202);
-	margin-left: 20px;
-	border-radius: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   width: 150px;
+   height: 60px;
+   background-color: rgb(202, 202, 202);
+   margin-left: 20px;
+   border-radius: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .menu_item {
-	width: 120px;
-	height: 60px;
-	/* background-color: red; */
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-left: 10px;
+   width: 120px;
+   height: 60px;
+   /* background-color: red; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-left: 10px;
+}
+
+.menu_item1 {
+   width: 80px;
+   height: 60px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-left: 10px;
+   /* font-weight: 550; */
 }
 
 .icon_box {
-	width: 50px;
-	height: 50px;
-	margin-right: 10px;
-	/* background-color: red; */
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   width: 50px;
+   height: 50px;
+   margin-right: 10px;
+   /* background-color: red; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.icon_box1 {
+   width: 30px;
+   height: 50px;
+   margin-right: 20px;
+   margin-left: 20px;
+   /* background-color: red; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 /* topNavbar 영역 */
 
 /* contentBox 영역 */
 .content_box {
-	width: 100%;
-	height: 100%;
-	background-color: rgba(237, 237, 237, 0.698);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(237, 237, 237, 0.698);
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .container {
-	width: 70%;
-	margin-top: 60px;
-	margin-bottom: 60px;
+   width: 70%;
+   margin-top: 60px;
+   margin-bottom: 60px;
 }
 
 .top {
-	height: 60px;
-	display: flex;
+   height: 60px;
+   display: flex;
 }
 
 .mid {
-	height: 100%;
+   height: 100%;
 }
 
 .bot {
-/* 	background-color: rgb(226, 226, 226); */
-	height: 80px;
+/*    background-color: rgb(226, 226, 226); */
+   height: 80px;
 }
 
 /* .lay {
-	outline: 1px dashed red;
+   outline: 1px dashed red;
 }
  */
 .pro_box {
-	width: 40%;
-	height: 100%;
-	display: flex;
-	align-items: center;
+   width: 40%;
+   height: 100%;
+   display: flex;
+   align-items: center;
 }
 
 .total_box {
-	width: 26%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   width: 26%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .amount_box {
-	width: 24%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   width: 24%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .check_box {
-	width: 10%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+   width: 10%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 .top div {
-	font-size: larger;
+   font-size: larger;
 }
 
 .item_box {
-	width: 100%;
-	height: 150px;
-	display: flex;
-	border-bottom: 1px solid rgb(120, 120, 120);
+   width: 100%;
+   height: 150px;
+   display: flex;
+   border-bottom: 1px solid rgb(120, 120, 120);
 }
 
 .product_item {
-	width: 40%;
-	height: 100%;
-	display: flex;
-	align-items: center;
+   width: 40%;
+   height: 100%;
+   display: flex;
+   align-items: center;
 }
 
 .total_item {
-	width: 26%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+   width: 26%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 .amount_item {
-	width: 24%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+   width: 24%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 .check_item {
-	width: 10%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   width: 10%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .img_box {
-	width: 100px;
-	height: 100px;
-	/* background-color: red; */
+   width: 100px;
+   height: 100px;
+   /* background-color: red; */
 }
 
 .title_box {
-	width: 200px;
-	height: 40px;
-	/* background-color: green; */
-	display: flex;
-	align-items: center;
-	margin-left: 20px;
+   width: 200px;
+   height: 40px;
+   /* background-color: green; */
+   display: flex;
+   align-items: center;
+   margin-left: 20px;
 }
 
 .text_box {
-	width: 200px;
-	height: 40px;
-	/* background-color: green; */
-	display: flex;
-	align-items: center;
-	justify-content: center;
+   width: 200px;
+   height: 40px;
+   /* background-color: green; */
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 .check_icon_box {
-	width: 50px;
-	height: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   width: 50px;
+   height: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .check_icon_box span {
-	font-size: 20px;
-	color: white;
+   font-size: 20px;
+   color: white;
 }
 .circle{
-	width: 30px;
-	height: 30px;
-	border-radius:50%;
-	background-color: rgb(215,215,215);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   width: 30px;
+   height: 30px;
+   border-radius:50%;
+   background-color: rgb(215,215,215);
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 .check_icon_box :hover{
-	background-color: #000000;
-	cursor: pointer;
+   background-color: #000000;
+   cursor: pointer;
 }
 .checked{
-	background-color:#000000;
+   background-color:#000000;
 }
 
 /* bottom 영역 */
 .bot {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
 .bot_left {
-	width: 150px;
-	height: 50px;
-	background-color: #BABABA;
-	border-radius: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   width: 150px;
+   height: 50px;
+   background-color: #BABABA;
+   border-radius: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 .bot_left:hover{
-	background-color: #000000;
-	cursor: pointer;
+   background-color: #000000;
+   cursor: pointer;
 }
 
 
 .bot_right {
-	width: 400px;
-	height: 50px;
-	display: flex;
-	justify-content: start;
-	align-items: center;
+   width: 400px;
+   height: 50px;
+   display: flex;
+   justify-content: start;
+   align-items: center;
 }
 
 /* .bc {
-	outline: 1px dashed red;
-	background-color: rgba(127, 255, 212, 0.396);
+   outline: 1px dashed red;
+   background-color: rgba(127, 255, 212, 0.396);
 } */
 
 .delete {
-	color: #FFFFFF;
+   color: #FFFFFF;
 }
 
 .right {
-	font-size: 30px;
+   font-size: 30px;
 }
 
 .text_box2 {
-	margin-left: 10px;
+   margin-left: 10px;
 }
