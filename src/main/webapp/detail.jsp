@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
     pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
-<html lang="zxx">
+
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>      
+
+<!DOCTYPE html>
+<html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta name="description" content="Ashion Template" />
@@ -195,7 +200,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb__links">
-                            <span style="font-weight: bold; font-size: 50px; color: black">JUPITER</span>
+                            <span style="font-weight: bold; font-size: 50px; color: black">Jupiter${data.pName}</span>
                         </div>
                     </div>
                 </div>
@@ -208,7 +213,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
+                    
                         <div class="product__details__pic">
+                            <!-- 
                             <div class="product__details__pic__left product__thumb nice-scroll">
                                 <a class="pt active" href="#product-1">
                                     <img src="img/product/details/thumb-1.jpg" alt="" />
@@ -223,53 +230,45 @@
                                     <img src="img/product/details/thumb-4.jpg" alt="" />
                                 </a>
                             </div>
+                             -->
+                             
                             <div class="product__details__slider__content">
-                                <div class="product__details__pic__slider owl-carousel">
+                               
                                     <img
                                         data-hash="product-1"
                                         class="product__big__img"
-                                        src="img/product/details/sample-1.png"
+                                        src="img/product/details/${data.pImage}"
                                         alt=""
+                                        style="margin-left:10%; width: 100vw; height: 70vh;"
                                     />
-                                    <img
-                                        data-hash="product-2"
-                                        class="product__big__img"
-                                        src="img/product/details/product-3.jpg"
-                                        alt=""
-                                    />
-                                    <img
-                                        data-hash="product-3"
-                                        class="product__big__img"
-                                        src="img/product/details/product-2.jpg"
-                                        alt=""
-                                    />
-                                    <img
-                                        data-hash="product-4"
-                                        class="product__big__img"
-                                        src="img/product/details/product-4.jpg"
-                                        alt=""
-                                    />
-                                </div>
+                                   
+                               
                             </div>
+                            
+                            
                         </div>
+                        
                     </div>
+                  <!--  <div class="product__details__pic__slider owl-carousel"></div> --> 
+                    
+                    <!-- 
                     <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
-                            <h3><span style="font-size: 24px">펀딩 가격</span>205,252</h3>
+                            <h3><span style="font-size: 24px">펀딩 가격</span>${data.fAmount}</h3>
                             원 <br /><br />
-                            <h3><span style="font-size: 24px">모인 금액</span>205,252,519</h3>
+                            <h3><span style="font-size: 24px">모인 금액</span>${data.fCrnAmount}</h3>
                             <span style="font-size: 24px">원</span> &nbsp
-                            <div style="display: inline; font-weight: bold; font-size: 36px">55%</div>
+                            <div style="display: inline; font-weight: bold; font-size: 36px">${data.percent}</div>
                             <br /><br />
                             <div class="progress2 progress-moved" style="width: 80%">
-                                <div class="progress-bar2" style="width: 50%"></div>
+                                <div class="progress-bar2" style="width:${data.percent}%"></div>
                             </div>
                             <br /><br />
-                            <h3><span style="font-size: 24px">후원자</span>1,519</h3>
+                            <h3><span style="font-size: 24px">후원자</span>${data.cnt}</h3>
                             명 <br /><br /><br />
                             <div class="product__details__button">
                                 <a
-                                    href="#"
+                                    href="payment.do?fNum=${data.fNum}"
                                     class="cart-btn"
                                     style="background-color: black; width: 40%; text-align: center; font-size: 30px"
                                 >
@@ -283,6 +282,42 @@
                             </div>
                         </div>
                     </div>
+                     -->
+                     
+                      <div class="col-lg-6">
+                        <div class="product__details__text" style="margin-left: 5%">
+                            <h3><span style="font-size: 24px">펀딩 가격</span>200,000</h3>
+                            원 <br /><br />
+                            <h3><span style="font-size: 24px">모인 금액</span>50,000</h3>
+                            <span style="font-size: 24px">원</span> &nbsp
+                            <div style="display: inline; font-weight: bold; font-size: 36px">50%</div>
+                            <br /><br />
+                            <div class="progress2 progress-moved" style="width: 80%">
+                                <div class="progress-bar2" style="width:50%"></div>
+                            </div>
+                            <br /><br />
+                            <h3><span style="font-size: 24px">후원자</span>1,000</h3>
+                            명 <br /><br /><br />
+                            <div class="product__details__button">
+                                <a
+                                    href="payment.do?fNum=${data.fNum}"
+                                    class="cart-btn"
+                                    style="background-color: black; width: 40%; text-align: center; font-size: 30px"
+                                >
+                                    펀딩하기</a
+                                >
+                                <ul>
+                                    <li style="margin-top: 25%">
+                                        <a href="#"><span class="icon_heart_alt"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                     
+                     
+                     
+                    
                     <div class="col-lg-12">
                         <div class="product__details__tab">
                             <ul class="nav nav-tabs" role="tablist">
@@ -294,20 +329,11 @@
                                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                     <h6>Detail</h6>
                                     <p>
-                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret
-                                        fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt loret. Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si.
-                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret
-                                        fugit, sed quia ipsu consequuntur magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt. Nulla consequat massa quis enim.
+                                        ${data.cInfo}
                                     </p>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
-                                        eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-                                        montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                                        eu, pretium quis, sem.
-                                    </p>
+                                    
                                 </div>
+                                <!-- 
                                 <div class="tab-pane" id="tabs-2" role="tabpanel">
                                     <h6>Specification</h6>
                                     <p>
@@ -325,10 +351,12 @@
                                         eu, pretium quis, sem.
                                     </p>
                                 </div>
+                                 -->
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- 
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="related__title">
@@ -430,16 +458,20 @@
                         </div>
                     </div>
                 </div>
+                --> 
             </div>
         </section>
         <!-- Product Details Section End -->
 
         <!-- Footer Section Begin -->
+        <!-- 
         <footer class="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
+                      -->
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <!-- 
                         <div class="footer__copyright__text">
                             <p>
                                 Copyright &copy;
@@ -451,14 +483,18 @@
                                 <a href="https://colorlib.com" target="_blank">Colorlib</a>
                             </p>
                         </div>
+                        -->
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <!--  
                     </div>
                 </div>
             </div>
         </footer>
+       -->
         <!-- Footer Section End -->
 
         <!-- Search Begin -->
+        <!--
         <div class="search-model">
             <div class="h-100 d-flex align-items-center justify-content-center">
                 <div class="search-close-switch">+</div>
@@ -467,6 +503,7 @@
                 </form>
             </div>
         </div>
+          -->
         <!-- Search End -->
 
         <!-- Js Plugins -->
@@ -482,4 +519,4 @@
         <script src="js/main.js"></script>
     </body>
 </html>
-    
+
