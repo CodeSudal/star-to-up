@@ -29,7 +29,7 @@ public class ProductDAO {
 	// 제품 펀딩 확인 기능(펀딩 진행중 0, 끝났으면 1), checkEnd
 	final String SELECT_ONE_FINISH = "SELECT P_FINISH FROM PRODUCT WHERE P_NUM=?";
 	
-// 사용 예) if(!checkEnd){updateFinish}
+// FINISH 두개 수정필요
 
 	public boolean insertProduct(ProductVO vo) {
 		try {
