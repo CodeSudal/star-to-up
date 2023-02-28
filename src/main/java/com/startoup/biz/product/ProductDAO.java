@@ -1,5 +1,11 @@
 package com.startoup.biz.product;
 
-public class ProductDAO {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
+@Repository("productDAO")
+public class ProductDAO {
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 }

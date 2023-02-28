@@ -1,5 +1,5 @@
 package com.startoup.biz.myfunding;
 
-public interface MyFundingService {
+public interface FundingService {
 
 }

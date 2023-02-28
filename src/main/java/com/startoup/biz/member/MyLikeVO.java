@@ -1,4 +1,4 @@
-package com.startoup.biz.mylike;
+package com.startoup.biz.member;
 
 public class MyLikeVO {
 	private int mlNum;	// 내 찜 정보 번호

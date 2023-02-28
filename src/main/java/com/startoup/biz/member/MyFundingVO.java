@@ -1,4 +1,4 @@
-package com.startoup.biz.myfunding;
+package com.startoup.biz.member;
 
 public class MyFundingVO {
 	private int mfNum;	// 내 펀딩 정보 번호

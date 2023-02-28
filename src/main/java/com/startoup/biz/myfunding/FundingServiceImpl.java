@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class MyFundingServiceImpl implements MyFundingService {
+public class FundingServiceImpl implements FundingService {
 	
 	@Autowired
 	private FundingDAO myfundingDAO;

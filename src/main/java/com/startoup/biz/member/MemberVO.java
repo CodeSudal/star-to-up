@@ -3,9 +3,6 @@ package com.startoup.biz.member;
 import java.util.Date;
 import java.util.List;
 
-import com.startoup.biz.myfunding.MyFundingVO;
-import com.startoup.biz.mylike.MyLikeVO;
-
 public class MemberVO {
 	private String mId;	// 아이디
 	private String mPw;	// 비밀번호
