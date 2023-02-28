@@ -8,9 +8,14 @@ public class ViewController {
 	
 	@RequestMapping(value="/main.do")
 	public String mainView() {
-		System.out.println("ddss");
 		
 		return "main.jsp";
+	}
+	
+	@RequestMapping(value="/info.do")
+	public String infoView() {
+		
+		return "info.jsp";
 	}
 
 }
