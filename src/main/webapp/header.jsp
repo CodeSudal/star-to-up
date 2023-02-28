@@ -25,7 +25,7 @@
 </head>
 <body>
 
-   <div class="header_box">
+   <div class="header_box" style="background: #FFFFFF; border-bottom: 2px solid #D8D8D8;">
       <div class="top_left_box">
          <div class="logo_box">LOGO</div>
          <div class="menu_item1">STORE</div>
