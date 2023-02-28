@@ -26,11 +26,12 @@ public class MemberDAO {
 	final String LOGIN_MEMBERS = "SELECT * FROM MEMBERS WHERE M_ID=? AND M_PW=?";
 	// 로그아웃
 	// 내 펀딩 목록 추가
+	final String INSERT_MYFUNDING= "INSERT INTO MYFUNDING(MF_NUM, MF_MID, MF_PID) VALUES(?,?,?)";
 	// 내 펀딩 목록 보기
 	final String SELECT_ALL_FUNDING = "SELECT a.M_ID, b.MF_NUM, b.MF_PID"
 			+ " FROM MEMBERS a INNER JOIN MYFUNDING b ON a.M_ID = b.MF_MID";
 	// 내 찜 목록 추가
-	final String INSERT_MYLIKE = "INSERT INTO MYLIKE VALUES(?,?,?)";
+	final String INSERT_MYLIKE = "INSERT INTO MYLIKE(ML_NUM, ML_PID, ML_PID) VALUES(?,?,?)";
 	// 내 찜 목록 삭제
 	final String DELETE_MYLIKE = "DELETE FROM MYLIKE WHERE ML_NUM=?";
 	// 내 찜 목록 보기
