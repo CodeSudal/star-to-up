@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       
@@ -210,7 +211,15 @@ p[data-value]:after {
 			<!-- Table Start -->
 			<div class="container-fluid pt-4 px-4">
 				<div class="row g-4">
+				
+				<div class="col-sm-12 col-xl-6" style="width: 100%">
 
+						<div class="bg-secondary rounded h-100 p-4"
+							style="width: 100%; float: left">
+							<h3 class="mb-4">Funding Management</h3>
+				
+				
+				
 					<c:forEach var="v" items="${fundingList}">
 						<div class="col-sm-12 col-xl-6 "
 							style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
@@ -302,7 +311,7 @@ p[data-value]:after {
 					-->
 			
 				</div>
-
+			</div>
 			</div>
 			<!-- Table End -->
 		</div>
@@ -387,3 +396,4 @@ p[data-value]:after {
 </html>
 
     
+
