@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +8,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>test중</title>
+        <title>STU MAIN</title>
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet" />
         <link
@@ -66,7 +65,7 @@
         text-align: right;
         padding: 10%;
         padding-left: 80%;
-        font-size: 38px;
+        font-size: 34px;
         font-weight: bold;
     }
 
@@ -79,14 +78,18 @@
         color: white;
     }
 
+    #menu-ul li a:hover{
+        opacity: 0.7;
+    }
         </style>
 
 </head>
 <body>
+        <a href="./index.html"><img src="img/logo.png" alt="" style="position : absolute; z-index: 3; width: 20%;"/></a>
         <ul id="menu-ul">
-            <li><a href="https://www.naver.com/">STORE</a></li>
-            <li><a href="#">INFO</a></li>
-            <li><a href="#">ABOUT</a></li>
+            <li><a href="./aSample5.html">STORE</a></li>
+            <li><a href="./aSample6.html">INFO</a></li>
+            <li><a href="./aSample3.html">ABOUT</a></li>
         </ul>
         
         <div id="wrapDiv">
@@ -199,3 +202,4 @@
         </div>
     </body>
 </html>
+    
