@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 public class ProductDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+
 	// 제품추가
 	final String INSERT_PRODUCT = "INSERT INTO PRODUCT( P_NUM, P_NAME, P_PRICE, P_INFO, P_IMAGE) VALUES( (SELECT NVL(MAX(P_NUM), 0) + 1 FROM PRODUCT), ?, ?, ?, ?)";
 	// 제품정보변경
@@ -21,6 +21,16 @@ public class ProductDAO {
 	final String SELECT_ONE_PRODUCT = "SELECT P_NUM, P_NAME, P_PRICE, P_INFO, P_FINISH, P_IMAGE FROM PRODUCT WHERE P_NUM=?";
 	// 제품 펀딩 확인 기능(펀딩 진행중 0, 끝났으면 1), checkEnd
 	final String SELECT_ONE_FINISH = "SELECT P_FINISH FROM PRODUCT WHERE P_NUM=?";
-	
-	
+
+
+	public boolean insertProduct(ProductVO vo) {
+		try {
+			int res=jdbcTemplate.update(INSERT_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpInfo(), vo.getpImage());
+			System.out.println(res);
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
+	}
+
 }
