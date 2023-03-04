@@ -24,7 +24,6 @@ public class MemberDAO {
 			+ " FROM MEMBERS WHERE M_ID=?";
 	// 로그인
 	final String LOGIN_MEMBERS = "SELECT * FROM MEMBERS WHERE M_ID=? AND M_PW=?";
-	// 로그아웃
 	// 내 펀딩 목록 추가
 	final String INSERT_MYFUNDING= "INSERT INTO MYFUNDING(MF_NUM, MF_MID, MF_PID) VALUES(?,?,?)";
 	// 내 펀딩 목록 보기
