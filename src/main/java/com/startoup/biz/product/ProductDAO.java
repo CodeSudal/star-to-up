@@ -23,11 +23,15 @@ public class ProductDAO {
 	// 제품삭제
 	final String DELETE_PRODUCT = "DELETE FROM PRODUCT WHERE P_NUM=?";
 	// 전체 제품 출력(SELECT ALL)
-	final String SELECT_ALL_PRODUCT = "SELECT * FROM PRODUCT";
+	final String SELECT_ALL_PRODUCT = "SELECT P_NUM, P_NAME, P_PRICE, P_INFO, P_FINISH, P_IMAGE FROM PRODUCT";
 	// 제품 하나 출력(SELECT ONE)
 	final String SELECT_ONE_PRODUCT = "SELECT P_NUM, P_NAME, P_PRICE, P_INFO, P_FINISH, P_IMAGE FROM PRODUCT WHERE P_NUM=?";
 	// 제품 펀딩 확인 기능(펀딩 진행중 0, 끝났으면 1), checkEnd
 	final String SELECT_ONE_FINISH = "SELECT P_FINISH FROM PRODUCT WHERE P_NUM=?";
+	
+	// 사용법)
+	// insertProduct 메서드 쓸 때 바로 insertFunding 메서드 실행해주면 됨
+	// 그러면 자동으로 product에 해당하는 funding 정보 생성
 	
 // FINISH 두개 수정필요
 
