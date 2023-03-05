@@ -7,7 +7,15 @@ import org.json.simple.JSONObject;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository("smsDAO")
 public class SMSDAO {
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	public int SMS(SMSVO svo) {
 
 		int randNum = (int)(Math.random()*(9000))+1000; // 4자리 인증번호
