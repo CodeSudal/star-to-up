@@ -2,7 +2,7 @@ package com.startoup.biz.product;
 
 import java.util.List;
 
-import com.startoup.biz.funding.ListVO;
+import com.startoup.biz.list.ListVO;
 
 public class ProductVO {
 	private int pNum; // 제품번호

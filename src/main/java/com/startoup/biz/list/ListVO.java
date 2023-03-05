@@ -1,4 +1,4 @@
-package com.startoup.biz.funding;
+package com.startoup.biz.list;
 
 public class ListVO {
 	private int lNum;	// 펀딩리스트 번호
