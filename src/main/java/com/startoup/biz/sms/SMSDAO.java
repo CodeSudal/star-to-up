@@ -8,7 +8,7 @@ import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public class SMSDAO {
-	public int sns(SMSVO svo) {
+	public int SMS(SMSVO svo) {
 
 		int randNum = (int)(Math.random()*(9000))+1000; // 4자리 인증번호
 
@@ -21,7 +21,7 @@ public class SMSDAO {
 		params.put("from","01012345678"); // 발신번호
 		params.put("type","sms"); // SMS의 문자
 		params.put("text","Coolsms Testing Message! "+randNum); // 문자내용
-		params.put("app_version", "test app 1.2"); 
+		params.put("app_version", "test app 1.2"); // 쿨SMS버전인듯
 
 		try {
 			JSONObject obj = (JSONObject) coolsms.send(params);
