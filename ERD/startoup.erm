@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2023-02-21 09:37:51</creation_date>
-			<updated_date>2023-03-06 11:30:36</updated_date>
+			<updated_date>2023-03-06 11:34:45</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -661,7 +661,7 @@
 			<connections>
 				<relation>
 					<id>1</id>
-					<source>5</source>
+					<source>4</source>
 					<target>1</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -683,7 +683,7 @@
 				</relation>
 				<relation>
 					<id>2</id>
-					<source>4</source>
+					<source>5</source>
 					<target>1</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -747,7 +747,7 @@
 				<normal_column>
 					<id>4</id>
 					<referenced_column>12</referenced_column>
-					<relation>2</relation>
+					<relation>1</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -781,7 +781,7 @@
 				<normal_column>
 					<id>5</id>
 					<referenced_column>19</referenced_column>
-					<relation>1</relation>
+					<relation>2</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
