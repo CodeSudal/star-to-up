@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/header.css" type="text/css">
 </head>
 <body>
 
@@ -60,13 +61,13 @@
                            <li><a href=".v/shop-cart.html">회원 탈퇴</a></li>
                            -->
 
-                           <!-- <!— 관리자 로그인 했을 때 —> -->
-                          
+                           <!-- 관리자 로그인 했을 때 -->
+                           <!-- 
                            <li><a href="./product-details.html">펀딩 내역</a></li>
                            <li><a href="./shop-cart.html">찜내역</a></li>
                            <li><a href="./shop-cart.html">회원 탈퇴</a></li>
                            <li><a href="./shop-cart.html">관리자 페이지</a></li>
-                          
+                           -->
 
                         </ul></li>
                   </ul>
@@ -76,5 +77,6 @@
          </div>
       </div>
    </div>
+   <div class="header_box_space"></div>
 </body>
 </html>
