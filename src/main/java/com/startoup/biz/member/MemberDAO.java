@@ -1,7 +1,12 @@
 package com.startoup.biz.member;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository("memberDAO")
@@ -37,4 +42,92 @@ public class MemberDAO {
 	final String SELECT_ALL_MYLIKE = "SELECT a.M_ID, b.ML_NUM, b.ML_PID"
 			+ " FROM MEMBERS a INNER JOIN MYLIKE b ON a.M_ID = b.ML_MID";
 	
+	
+	public boolean insertProduct(MemberVO vo) {
+		try {
+			int res=jdbcTemplate.update(INSERT_MEMBERS, vo.getmId(), vo.getmPw(), vo.getmName(), vo.getmEmail1(), vo.getmEmail2(), vo.getmNum(), vo.getmNum());
+			System.out.println(res);
+			if(res<1) { return false; }
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
+	}
+	
+	public boolean updateProduct(ProductVO vo) {
+		try {
+			int res=jdbcTemplate.update(UPDATE_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpInfo(), vo.getpImage(), vo.getpNum());
+			if(res<1) { return false; }
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
+	}
+	
+	public boolean updateFinish(ProductVO vo) {
+		try {
+			int res=jdbcTemplate.update(UPDATE_FINISH, vo.getpNum());
+			if(res<1) { return false; }
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
+	}
+	public boolean deleteProduct(ProductVO vo) {
+		try {
+			int res=jdbcTemplate.update(DELETE_PRODUCT, vo.getpNum());
+			if(res<1) { return false; }
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
+	}
+
+	public List<ProductVO> selectAll(ProductVO vo){
+		try {
+			return jdbcTemplate.query(SELECT_ALL_PRODUCT, new ProductRowMapper());
+		} catch(Exception e) {
+			return null;
+		}
+	}
+
+	public ProductVO selectOne(ProductVO vo) {
+		Object[] args= { vo.getpNum() };
+		try {
+			return jdbcTemplate.queryForObject(SELECT_ONE_PRODUCT, args, new ProductRowMapper());
+		} catch(Exception e) {
+			return null;
+		}
+	}
+	
+	// true == 펀딩 진행중, false == 펀딩 종료(목표 금액 달성)
+	public boolean checkEnd(ProductVO vo) {
+		Object[] args= { vo.getpNum() };
+		try {
+			jdbcTemplate.queryForObject(SELECT_ONE_FINISH, args, new ProductRowMapper());
+			int res=vo.getpFinish();
+			if(res==0) { return true; }
+		} catch(Exception e) {
+			return false;
+		}
+		return false;
+	}
+
+
+}
+
+class MemberRowMapper implements RowMapper<MemberVO> {
+
+	@Override
+	public MemberVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		MemberVO data=new MemberVO();
+		data.setmId(rs.getString("M_ID"));
+		data.setmPw(rs.getString("M_PW"));
+		data.setmName(rs.getString("M_NAME"));
+		data.setmEmail1(rs.getString("M_EMAIL1"));
+		data.setmEmail2(rs.getString("M_EMAIL2"));
+		data.setmNum(rs.getString("M_NUM"));
+		data.setmRegdate(rs.getString("M_REGDATE"));
+		return data;
+	}
 }
