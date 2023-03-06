@@ -1,21 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%><!-- core 태그 임포트 -->
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%><!-- formatting 태그 임포트 -->
-=======
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>shopcart</title>
-<<<<<<< HEAD
 
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.1.js"></script>
-=======
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 <link rel="stylesheet" href="css/font.css" type="text/css">
 <link rel="stylesheet" href="css/shopcart.css" type="text/css">
 
@@ -32,17 +26,12 @@
 		<div class="container">
 			<div class="top">
 				<div class="pro_box lay">
-<<<<<<< HEAD
 					<div>Product</div>
-=======
-					<div>PRODUCT</div>
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 				</div>
 				<div class="total_box lay">
 					<div>Total Amount</div>
 				</div>
 				<div class="amount_box lay">
-<<<<<<< HEAD
 					<div>One Amount</div>
 				</div>
 				<div class="check_box lay">
@@ -57,15 +46,6 @@
 			<c:forEach var="i" items="{{ arr }}">
 				<div>{{ i }}</div>
 			</c:forEach>
-=======
-					<div>one Amount</div>
-				</div>
-				<div class="check_box lay">
-					<div>CHECK</div>
-				</div>
-			</div>
-
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 
 			<div class="mid">
 				<div class="item_box">
@@ -80,20 +60,11 @@
 						<div class="text_box">{{ datas.price }}</div>
 					</div>
 					<div class="amount_item bc">
-<<<<<<< HEAD
 						<div class="text_box">3000</div>
 					</div>
 					<div class="check_item bc">
 						<label class="check_icon_box"> <input type="checkbox"
 							value="jupiter" name="selectedList">
-=======
-						<div class="text_box">{{ 3000 }}</div>
-					</div>
-					<div class="check_item bc">
-						<label class="check_icon_box"> <input type="checkbox"
-							value="jupiter" name="selectedList"
-							onclick="selectItem(value,3000)">
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 							<div class="circle">
 								<span class="material-symbols-outlined">&#xe876</span>
 							</div>
@@ -116,19 +87,11 @@
 						<div class="text_box">{{ datas.price }}</div>
 					</div>
 					<div class="amount_item bc">
-<<<<<<< HEAD
 						<div class="text_box">1000</div>
 					</div>
 					<div class="check_item bc">
 						<label class="check_icon_box"> <input type="checkbox"
 							value="moon" name="selectedList">
-=======
-						<div class="text_box">{{ 1000 }}</div>
-					</div>
-					<div class="check_item bc">
-						<label class="check_icon_box"> <input type="checkbox"
-							value="moon" name="selectedList" onclick="selectItem(value,1000)">
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 							<div class="circle">
 								<span class="material-symbols-outlined">&#xe876</span>
 							</div>
@@ -147,20 +110,11 @@
 						<div class="text_box">{{ datas.price }}</div>
 					</div>
 					<div class="amount_item bc">
-<<<<<<< HEAD
 						<div class="text_box">1500</div>
 					</div>
 					<div class="check_item bc">
 						<label class="check_icon_box"> <input type="checkbox"
 							value="earth" name="selectedList">
-=======
-						<div class="text_box">{{ 1500 }}</div>
-					</div>
-					<div class="check_item bc">
-						<label class="check_icon_box"> <input type="checkbox"
-							value="earth" name="selectedList"
-							onclick="selectItem(value,1500)">
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 							<div class="circle">
 								<span class="material-symbols-outlined">&#xe876</span>
 							</div>
@@ -179,19 +133,11 @@
 						<div class="text_box">{{ datas.price }}</div>
 					</div>
 					<div class="amount_item bc">
-<<<<<<< HEAD
 						<div class="text_box">2000</div>
 					</div>
 					<div class="check_item bc">
 						<label class="check_icon_box"> <input type="checkbox"
 							value="sun" name="selectedList">
-=======
-						<div class="text_box">{{ 2000 }}</div>
-					</div>
-					<div class="check_item bc">
-						<label class="check_icon_box"> <input type="checkbox"
-							value="sun" name="selectedList" onclick="selectItem(value,2000)">
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 							<div class="circle">
 								<span class="material-symbols-outlined">&#xe876</span>
 							</div>
@@ -210,19 +156,11 @@
 						<div class="text_box">{{ datas.price }}</div>
 					</div>
 					<div class="amount_item bc">
-<<<<<<< HEAD
 						<div class="text_box">4000</div>
 					</div>
 					<div class="check_item bc">
 						<label class="check_icon_box"> <input type="checkbox"
 							value="mars" name="selectedList">
-=======
-						<div class="text_box">{{ 4000 }}</div>
-					</div>
-					<div class="check_item bc">
-						<label class="check_icon_box"> <input type="checkbox"
-							value="mars" name="selectedList" onclick="selectItem(value,4000)">
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 							<div class="circle">
 								<span class="material-symbols-outlined">&#xe876</span>
 							</div>
@@ -241,19 +179,11 @@
 						<div class="text_box">{{ datas.price }}</div>
 					</div>
 					<div class="amount_item bc">
-<<<<<<< HEAD
 						<div class="text_box">5000</div>
 					</div>
 					<div class="check_item bc">
 						<label class="check_icon_box"> <input type="checkbox"
 							value="zeus" name="selectedList">
-=======
-						<div class="text_box">{{ 5000 }}</div>
-					</div>
-					<div class="check_item bc">
-						<label class="check_icon_box"> <input type="checkbox"
-							value="zeus" name="selectedList" onclick="selectItem(value,5000)">
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 							<div class="circle">
 								<span class="material-symbols-outlined">&#xe876</span>
 							</div>
@@ -266,21 +196,11 @@
 
 
 			<div class="bot">
-<<<<<<< HEAD
 				<input type="button" class="bot_left" disabled="disabled"
 					value="삭제하기">
 				<div class="bot_right">
 					<div class="right">Total:</div>
 					<div class="text_box2">0 ₩</div>
-=======
-				<div class="bot_left" onclick="checkValue()">
-					<div class="delete">삭제하기</div>
-
-				</div>
-				<div class="bot_right">
-					<div class="right">Total:</div>
-					<div class="text_box2">{{ datas.price }}</div>
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 				</div>
 			</div>
 		</div>
@@ -289,7 +209,6 @@
 </body>
 
 <script>
-<<<<<<< HEAD
 
 
 	
@@ -377,45 +296,8 @@ $(document).ready(function() {
 });
 
 
-=======
-	let priceAmount = 0;
-	let selectedList = [];
-
-	console.log('선택된 영역');
-
-	function checkValue() {
-		console.log(priceAmount);
-		console.log(selectedList);
-
-	}
-
-	function selectItem(value, price) {
-
-		console.log(value);
-		console.log(price);
-
-		priceAmount += price;
-		selectedList.push(value);
-		
-		const target = document.querySelector('.text_box2');
-		console.log('이벤트타겟');
-		/* console.log(target); */
-
-		target.innerText = priceAmount;
-		
-		
-		
-		 
-		 console.log(event.target.parentElement.lastElementChild.classList);
-		 event.target.parentElement.lastElementChild.classList.toggle('checked');
-	}
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 </script>
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 </html>

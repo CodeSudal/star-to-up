@@ -11,7 +11,6 @@ body {
    
    
 }
-<<<<<<< HEAD
   input[type="button"]{
    outline:none;
    border:none;
@@ -20,8 +19,6 @@ body {
    
    
 }
-=======
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 
 
 
@@ -201,17 +198,17 @@ body {
    justify-content: center;
    align-items: center;
 }
-.bot_left:hover{
+/* .bot_left:hover{
    background-color: #000000;
    cursor: pointer;
-}
+} */
 
 
 .bot_right {
    width: 400px;
    height: 50px;
    display: flex;
-   justify-content: start;
+   justify-content: space-between;
    align-items: center;
 }
 
@@ -229,5 +226,10 @@ body {
 }
 
 .text_box2 {
+   display: flex;
+   justify-content: end;
    margin-left: 10px;
+   font-size: 30px;
 }
+
+ 

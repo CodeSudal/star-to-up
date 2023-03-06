@@ -5,7 +5,7 @@
 <meta name="keywords" content="Ashion, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Ashion | Template</title>
+<title>이용약관</title>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -19,14 +19,6 @@
 
 
 
-<<<<<<< HEAD
-=======
-<style type="text/css">
-.btn_submit:hover {
-	background-color: black !important;
-}
-</style>
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 
 <!-- Google Font -->
 <link
@@ -131,69 +123,45 @@ input:checked+.osSlider:before {
 
 
 			<h5
-<<<<<<< HEAD
 				style="font-weight: 700; font-size: 25px; font-family: 'Noto Sans'; margin-top: 50px; margin-left: 5%; margin-bottom: 0px; border-bottom: white; contain: size;">이용약관</h5>
-=======
-				style="font-weight: 700; font-size: 32px; font-family: 'Noto Sans'; margin-top: 50px; margin-left: 5%; border-bottom: white;">회원가입</h5>
-			<h5
-				style="font-weight: 700; font-size: 25px; font-family: 'Noto Sans'; margin-top: 50px; margin-left: 5%; margin-bottom: 0px; border-bottom: white; contain: size;">약관동의</h5>
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 			<div id="fregister_chkall" style="float: right; margin-right: 5%;">
 				<label for="chk_all"
 					style="font-weight: 400; margin-bottom: 0px; margin-top: 10px;">
 					위 항목에 모두 동의합니다.</label> <input type="checkbox" id="cbx_chkAll" value="1"
-<<<<<<< HEAD
 					id="chk_all" class="input_chks" style="width: 16px; height: 16px;">
-=======
-					style="width: 16px; height: 16px;">
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 			</div>
 
 			<section id="fregister_term">
 
 				<textarea readonly
-<<<<<<< HEAD
 					style="width: 90%; display: inline-block; margin-left: 5%; border-radius: 15px; border: 1px solid rgb(217, 217, 217); height: 199px; margin-top: 30px; resize: none;">제 1 장 총칙
-=======
-					style="width: 90%; display: inline-block; margin-left: 5%; border-radius: 15px; border: 1px solid rgb(217, 217, 217); overflow-y: scroll; height: 199px; margin-top: 30px; resize: none;">제 1 장 총칙
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 제1조(목적)
-1. 이 약관은 한국생산성본부가 제공하는 한국생산성본부 사업 관련 서비스(이하 서비스라 합니다)를 이용함에 있어 이용조건 및 절차와 기타 필요한 사항을 규정하는 것을 목적으로 합니다.
+1. 이 약관은 (주)StarToUp가 제공하는 (주)StarToUp 사업 관련 서비스(이하 서비스라 합니다)를 이용함에 있어 이용조건 및 절차와 기타 필요한 사항을 규정하는 것을 목적으로 합니다.
 제2조(약관의 효력과 변경)
 1. 본 약관은 그 내용을 서비스 화면에 게시하고 이용자가 서비스화면에서 동의 의사표시를 함으로써 효력을 발생합니다.
-2. 한국생산성본부는 사정상 혹은 영업상 중요한 사유가 발생될 경우에는 약관의 규제 등에 관한 법률, 전자거래기본법, 전자서명법, 정보통신망이용촉진 등에 관한 법률, 방문판매 등에 관한 법률, 소비자보호법 등 관련법을 위배 하지 않은 범위에서 이 약관을 개정할 수 있습니다.
+2. (주)StarToUp는 사정상 혹은 영업상 중요한 사유가 발생될 경우에는 약관의 규제 등에 관한 법률, 전자거래기본법, 전자서명법, 정보통신망이용촉진 등에 관한 법률, 방문판매 등에 관한 법률, 소비자보호법 등 관련법을 위배 하지 않은 범위에서 이 약관을 개정할 수 있습니다.
 </textarea>
 				<fieldset class="fregister_agree"
 					style="float: right; margin-right: 5%; margin-top: 10px;">
 					<label for="agree11" style="margin-top: 10px; font-weight: 400;">
-<<<<<<< HEAD
 						위 항목에 동의합니다. </label> <input type="checkbox" class="input_chks" name="chk"
 						value="1" id="agree11" style="width: 16px; height: 16px;">
-=======
-						위 항목에 동의합니다. </label> <input type="checkbox" name="chk" value="1"
-						id="agree11" style="width: 16px; height: 16px;">
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 				</fieldset>
 			</section>
 			<section id="fregister_private">
 
 				<textarea readonly
-<<<<<<< HEAD
 					style="width: 90%; display: inline-block; margin-left: 5%; border-radius: 15px; border: 1px solid #D9D9D9;  height: 220px; margin-top: 20px; resize: none;">제 1 장 총칙
-=======
-					style="width: 90%; display: inline-block; margin-left: 5%; border-radius: 15px; border: 1px solid #D9D9D9; overflow-y: scroll; height: 220px; margin-top: 20px; resize: none;">제 1 장 총칙
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 제1조(목적)
-1. 이 약관은 한국생산성본부가 제공하는 한국생산성본부 사업 관련 서비스(이하 서비스라 합니다)를 이용함에 있어 이용조건 및 절차와 기타 필요한 사항을 규정하는 것을 목적으로 합니다.
+1. 이 약관은 (주)StarToUp가 제공하는 (주)StarToUp 사업 관련 서비스(이하 서비스라 합니다)를 이용함에 있어 이용조건 및 절차와 기타 필요한 사항을 규정하는 것을 목적으로 합니다.
 제2조(약관의 효력과 변경)
 1. 본 약관은 그 내용을 서비스 화면에 게시하고 이용자가 서비스화면에서 동의 의사표시를 함으로써 효력을 발생합니다.
-2. 한국생산성본부는 사정상 혹은 영업상 중요한 사유가 발생될 경우에는 약관의 규제 등에 관한 법률, 전자거래기본법, 전자서명법, 정보통신망이용촉진 등에 관한 법률, 방문판매 등에 관한 법률, 소비자보호법 등 관련법을 위배 하지 않은 범위에서 이 약관을 개정할 수 있습니다.
+2. (주)StarToUp는 사정상 혹은 영업상 중요한 사유가 발생될 경우에는 약관의 규제 등에 관한 법률, 전자거래기본법, 전자서명법, 정보통신망이용촉진 등에 관한 법률, 방문판매 등에 관한 법률, 소비자보호법 등 관련법을 위배 하지 않은 범위에서 이 약관을 개정할 수 있습니다.
 </textarea>
 
 				<fieldset class="fregister_agree"
 					style="float: right; margin-right: 5%;">
 					<label for="agree21" style="margin-top: 20px; font-weight: 400;">위
-<<<<<<< HEAD
 						항목에 동의합니다.</label> <input type="checkbox" class="input_chks" name="chk"
 						value="1" id="agree21" style="width: 16px; height: 16px;">
 				</fieldset>
@@ -208,51 +176,6 @@ input:checked+.osSlider:before {
 
 		<!-- 회원가입 약관 동의 끝 -->
 
-=======
-						항목에 동의합니다.</label> <input type="checkbox" name="chk" value="1"
-						id="agree21" style="width: 16px; height: 16px;">
-				</fieldset>
-			</section>
-			<div class="btn_submitdd">
-				<input type="submit" class="btn_submit" value="다음으로"
-					style="font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 24px; line-height: 33px; color: #FFFFFF; background: #D9D9D9; width: 200px; height: 60px; border-radius: 30.5px; border: none; margin-top: 60px; margin-left: 83%; margin-bottom: 60px;">
-			</div>
-		</form>
-		<!--
-        <button type="submit" class="btn_submit facebook_btn write_btn" value="페이스북 회원가입">
-            <i class="fab fa-facebook"></i>
-            페이스북 회원가입
-        </button>
-        -->
-
-		<!-- 회원가입 약관 동의 끝 -->
-
-		<script>
-                  function fregister_submit(f) {
-                    if (!f.agree11.checked) {
-                      alert(
-                        '회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.',
-                      );
-                      f.agree11.focus();
-                      event.preventDefault();
-                      return false;
-                      
-                    }
-
-                    if (!f.agree21.checked) {
-                      alert(
-                        '개인정보처리방침안내의 내용에 동의하셔야 회원가입 하실 수 있습니다.',
-                      );
-                      f.agree21.focus();
-                      event.preventDefault();
-                      return false;
-                    }
-
-                    return true;
-                  }
-
-                </script>
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 
 	</div>
 
@@ -276,7 +199,6 @@ input:checked+.osSlider:before {
 
 
 	<script type="text/javascript">
-<<<<<<< HEAD
     $(document).ready(function() {
         $("#cbx_chkAll").click(function() {
            if($("#cbx_chkAll").is(":checked")) {
@@ -313,20 +235,6 @@ input:checked+.osSlider:before {
     
     
     
-=======
-		$(document).ready(function() {
-         $("#cbx_chkAll").click(function() {
-            if($("#cbx_chkAll").is(":checked")) $("input[name=chk]").prop("checked", true);
-            else $("input[name=chk]").prop("checked", false);
-         });
-         
-         $("input[name=chk]").click(function() {
-            var total = $("input[name=chk]").length;
-            var checked = $("input[name=chk]:checked").length;
-            
-            if(total != checked) $("#cbx_chkAll").prop("checked", false);
-            else $("#cbx_chkAll").prop("checked", true); 
->>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 	</script>
 
 
