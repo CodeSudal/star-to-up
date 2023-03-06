@@ -41,6 +41,8 @@ public class MemberDAO {
 	// 내 찜 목록 보기
 	final String SELECT_ALL_MYLIKE = "SELECT a.M_ID, b.ML_NUM, b.ML_PID"
 			+ " FROM MEMBERS a INNER JOIN MYLIKE b ON a.M_ID = b.ML_MID";
+	// 내 찜 여부 확인
+	final String SELECT_ONE_MYLIKE = "SELECT * FROM MYLIKE WHERE ML_PID=? AND ML_MID=?";
 
 	// 회원가입
 	public boolean insertMember(MemberVO vo) {
@@ -156,6 +158,16 @@ public class MemberDAO {
 	public List<MyLikeVO> selectAllList(MyLikeVO vo){
 		try {
 			return jdbcTemplate.query(SELECT_ALL_MYLIKE, new MyLikeRowMapper());
+		} catch(Exception e) {
+			return null;
+		}
+	}
+	
+	// 내 찜 여부 확인
+	public MyLikeVO checkList(MyLikeVO vo) {
+		Object[] args= { vo.getMlPid(), vo.getMlMid() };
+		try {
+			return jdbcTemplate.queryForObject(SELECT_ONE_MYLIKE, args, new MyLikeRowMapper());
 		} catch(Exception e) {
 			return null;
 		}
