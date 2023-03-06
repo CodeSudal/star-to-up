@@ -46,7 +46,6 @@ public class MemberDAO {
 	public boolean insertMember(MemberVO vo) {
 		try {
 			int res=jdbcTemplate.update(INSERT_MEMBERS, vo.getmId(), vo.getmPw(), vo.getmName(), vo.getmEmail1(), vo.getmEmail2(), vo.getmNum(), vo.getmRegdate());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -121,7 +120,6 @@ public class MemberDAO {
 	public boolean insertFund(MyFundingVO vo) {
 		try {
 			int res=jdbcTemplate.update(INSERT_MYFUNDING, vo.getMfNum(), vo.getMfMid(), vo.getMfPid());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -142,7 +140,6 @@ public class MemberDAO {
 	public boolean insertList(MyLikeVO vo) {
 		try {
 			int res=jdbcTemplate.update(INSERT_MYLIKE, vo.getMlNum(), vo.getMlMid(), vo.getMlPid());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
