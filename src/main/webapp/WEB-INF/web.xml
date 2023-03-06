@@ -4,10 +4,10 @@
     <servlet-name>DispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   </servlet>
-<!--   <servlet-mapping>
+   <servlet-mapping>
     <servlet-name>DispatcherServlet</servlet-name>
     <url-pattern>*.do</url-pattern>
-  </servlet-mapping> -->
+  </servlet-mapping> 
   
   <filter>
 	<filter-name>encFilter</filter-name>

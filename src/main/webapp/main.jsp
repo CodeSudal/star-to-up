@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+
+
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -58,8 +60,8 @@
 
     #menu-ul{
         position : absolute;
-        list-style-type: none; 
-        z-index: 999; 
+        list-style-type: none;
+        z-index: 999;
         text-align: right;
         padding: 10%;
         padding-left: 80%;
@@ -85,11 +87,11 @@
 <body>
         <a href="./index.html"><img src="img/logo.png" alt="" style="position : absolute; z-index: 3; width: 20%;"/></a>
         <ul id="menu-ul">
-            <li><a href="./aSample5.html">STORE</a></li>
-            <li><a href="./aSample6.html">INFO</a></li>
-            <li><a href="./aSample3.html">ABOUT</a></li>
+            <li><a href="store.do">STORE</a></li>
+            <li><a href="info.do">INFO</a></li>
+            <li><a href="about.do">ABOUT</a></li>
         </ul>
-        
+       
         <div id="wrapDiv">
         <div id="dateChanger"></div>
                 <!-- Section: Media -->
@@ -136,8 +138,8 @@
                 </div>
                 </section>
                 <!-- Section: Date -->
-            </section> 
-        
+            </section>
+       
 
         <!-- Js Plugins -->
         <script src="js/jquery-3.3.1.min.js"></script>
@@ -200,4 +202,3 @@
         </div>
     </body>
 </html>
-    

@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
     pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
-<html lang="zxx">
+
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>      
+
+<!DOCTYPE html>
+<html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta name="description" content="Ashion Template" />
         <meta name="keywords" content="Ashion, unica, creative, html" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Ashion | Template</title>
+        <title>STU DETAILS</title>
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet" />
@@ -92,101 +97,11 @@
 
     <body>
         <!-- Page Preloder -->
-        <div id="preloder">
-            <div class="loader"></div>
-        </div>
-
-        <!-- Offcanvas Menu Begin -->
-        <div class="offcanvas-menu-overlay"></div>
-        <div class="offcanvas-menu-wrapper">
-            <div class="offcanvas__close">+</div>
-            <ul class="offcanvas__widget">
-                <li><span class="icon_search search-switch"></span></li>
-                <li>
-                    <a href="#"
-                        ><span class="icon_heart_alt"></span>
-                        <div class="tip">2</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        ><span class="icon_bag_alt"></span>
-                        <div class="tip">2</div>
-                    </a>
-                </li>
-            </ul>
-            <div class="offcanvas__logo">
-                <a href="./index.html"><img src="img/logo.png" alt="" /></a>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-            <div class="offcanvas__auth">
-                <a href="#">Login</a>
-                <a href="#">Register</a>
-            </div>
-        </div>
+       <%@ include file="header.jsp" %>
         <!-- Offcanvas Menu End -->
 
         <!-- Header Section Begin -->
-        <header class="header">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-2">
-                        <div class="header__logo">
-                            <a href="./index.html"
-                                ><img src="img/logo.png" alt="" style="height: 55px; margin: 0; padding: 0"
-                            /></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-7">
-                        <nav class="header__menu">
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a href="#">Women’s</a></li>
-                                <li><a href="#">Men’s</a></li>
-                                <li class="active"><a href="./shop.html">Shop</a></li>
-                                <li>
-                                    <a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./product-details.html">Product Details</a></li>
-                                        <li><a href="./shop-cart.html">Shop Cart</a></li>
-                                        <li><a href="./checkout.html">Checkout</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="./blog.html">Blog</a></li>
-                                <li><a href="./contact.html">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="header__right">
-                            <div class="header__right__auth">
-                                <a href="#">Login</a>
-                                <a href="#">Register</a>
-                            </div>
-                            <ul class="header__right__widget">
-                                <li><span class="icon_search search-switch"></span></li>
-                                <li>
-                                    <a href="#"
-                                        ><span class="icon_heart_alt"></span>
-                                        <div class="tip">2</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        ><span class="icon_bag_alt"></span>
-                                        <div class="tip">2</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="canvas__open">
-                    <i class="fa fa-bars"></i>
-                </div>
-            </div>
-        </header>
+      
         <!-- Header Section End -->
 
         <!-- Breadcrumb Begin -->
@@ -195,7 +110,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb__links">
-                            <span style="font-weight: bold; font-size: 50px; color: black">JUPITER</span>
+                            <span style="font-weight: bold; font-size: 50px; color: black">Jupiter${data.pName}</span>
                         </div>
                     </div>
                 </div>
@@ -208,7 +123,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
+                    
                         <div class="product__details__pic">
+                            <!-- 
                             <div class="product__details__pic__left product__thumb nice-scroll">
                                 <a class="pt active" href="#product-1">
                                     <img src="img/product/details/thumb-1.jpg" alt="" />
@@ -223,59 +140,100 @@
                                     <img src="img/product/details/thumb-4.jpg" alt="" />
                                 </a>
                             </div>
+                             -->
+                             
                             <div class="product__details__slider__content">
-                                <div class="product__details__pic__slider owl-carousel">
+                               
                                     <img
                                         data-hash="product-1"
                                         class="product__big__img"
-                                        src="img/product/details/sample-1.png"
+                                        src="img/product/details/${data.pImage}"
                                         alt=""
+                                        style="margin-left:10%; width: 100vw; height: 70vh;"
                                     />
-                                    <img
-                                        data-hash="product-2"
-                                        class="product__big__img"
-                                        src="img/product/details/product-3.jpg"
-                                        alt=""
-                                    />
-                                    <img
-                                        data-hash="product-3"
-                                        class="product__big__img"
-                                        src="img/product/details/product-2.jpg"
-                                        alt=""
-                                    />
-                                    <img
-                                        data-hash="product-4"
-                                        class="product__big__img"
-                                        src="img/product/details/product-4.jpg"
-                                        alt=""
-                                    />
-                                </div>
+                                   
+                               
+                            </div>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                  <!--  <div class="product__details__pic__slider owl-carousel"></div> -->
+
+				  
+                    <div class="col-lg-6">
+                        <div class="product__details__text" style="margin-left: 5%">
+                            <h3><span style="font-size: 24px">펀딩 가격</span>${data.pPrice}</h3>
+                            원 <br /><br />
+                            <h3><span style="font-size: 24px">모인 금액</span>${data.fCrnAmount}</h3>
+                            <span style="font-size: 24px">원</span> &nbsp
+                            <div style="display: inline; font-weight: bold; font-size: 36px">${data.percent}%</div>
+                            <br /><br />
+                            <div class="progress2 progress-moved" style="width: 80%">
+                                <div class="progress-bar2" style="width:${data.percent}%"></div>
+                            </div>
+                            <br /><br />
+                            <h3><span style="font-size: 24px">참여자</span>${data.people}</h3>
+                            명 <br /><br /><br />
+                            <div class="product__details__button">
+                              <c:choose>
+                              	<c:when test="${pFinish ==0}">
+                              	     <a
+                                        href="payment.do?pNum=${data.pNum}"
+                                        class="cart-btn"
+                                        style="background-color: black; width: 40%; text-align: center; font-size: 28px"
+                               		  >
+                                      펀딩하기</a>
+                                      <c:choose>
+							      		  <c:when test="${not empty isMylike }">
+										  	<img id="heartIng" alt="좋아요상태"
+												src="img/icon-heart2.png"
+												style="width: 50px; height: 50px; cursor: pointer; margin-left:2%;margin-top:2%;">
+										  </c:when>
+										  <c:otherwise>
+										     <img id="heartNot" alt="좋아요안한상태"
+									             src="img/icon-heart1.png"
+									             style="width: 50px; height: 50px; cursor: pointer; margin-left:2%;margin-top:2%;">
+										  </c:otherwise>
+									 </c:choose>
+                              	</c:when>
+                                <c:otherwise>
+                                	  <button
+                                    id="finish"
+                                    class="cart-btn"
+                                    style="background-color: rgb(202, 202, 202); border:none; width: 40%; text-align: center; font-size: 28px"
+                                >
+                                    펀딩완료</button>
+                                </c:otherwise>
+                              </c:choose>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                  
+				    <!-- 
+                      <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
-                            <h3><span style="font-size: 24px">펀딩 가격</span>205,252</h3>
+                            <h3><span style="font-size: 24px">펀딩 가격</span>200,000</h3>
                             원 <br /><br />
-                            <h3><span style="font-size: 24px">모인 금액</span>205,252,519</h3>
+                            <h3><span style="font-size: 24px">모인 금액</span>50,000</h3>
                             <span style="font-size: 24px">원</span> &nbsp
-                            <div style="display: inline; font-weight: bold; font-size: 36px">55%</div>
+                            <div style="display: inline; font-weight: bold; font-size: 36px">50%</div>
                             <br /><br />
                             <div class="progress2 progress-moved" style="width: 80%">
-                                <div class="progress-bar2" style="width: 50%"></div>
+                                <div class="progress-bar2" style="width:50%"></div>
                             </div>
                             <br /><br />
-                            <h3><span style="font-size: 24px">후원자</span>1,519</h3>
+                            <h3><span style="font-size: 24px">후원자</span>1,000</h3>
                             명 <br /><br /><br />
                             <div class="product__details__button">
-                                <a
-                                    href="#"
+                                <button
+                                    id="finish"
                                     class="cart-btn"
-                                    style="background-color: black; width: 40%; text-align: center; font-size: 30px"
+                                    style="background-color: rgb(202, 202, 202); border:none; width: 40%; text-align: center; font-size: 28px"
                                 >
-                                    펀딩하기</a
-                                >
-                                <ul>
+                                    펀딩완료</button>
+                                 <ul>
                                     <li style="margin-top: 25%">
                                         <a href="#"><span class="icon_heart_alt"></span></a>
                                     </li>
@@ -283,6 +241,10 @@
                             </div>
                         </div>
                     </div>
+          			-->
+                     
+                     
+                    
                     <div class="col-lg-12">
                         <div class="product__details__tab">
                             <ul class="nav nav-tabs" role="tablist">
@@ -294,20 +256,11 @@
                                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                     <h6>Detail</h6>
                                     <p>
-                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret
-                                        fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt loret. Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si.
-                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret
-                                        fugit, sed quia ipsu consequuntur magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt. Nulla consequat massa quis enim.
+                                        ${data.cInfo}
                                     </p>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
-                                        eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-                                        montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                                        eu, pretium quis, sem.
-                                    </p>
+                                    
                                 </div>
+                                <!-- 
                                 <div class="tab-pane" id="tabs-2" role="tabpanel">
                                     <h6>Specification</h6>
                                     <p>
@@ -325,10 +278,12 @@
                                         eu, pretium quis, sem.
                                     </p>
                                 </div>
+                                 -->
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- 
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="related__title">
@@ -430,16 +385,20 @@
                         </div>
                     </div>
                 </div>
+                --> 
             </div>
         </section>
         <!-- Product Details Section End -->
 
         <!-- Footer Section Begin -->
+        <!-- 
         <footer class="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
+                      -->
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <!-- 
                         <div class="footer__copyright__text">
                             <p>
                                 Copyright &copy;
@@ -451,23 +410,16 @@
                                 <a href="https://colorlib.com" target="_blank">Colorlib</a>
                             </p>
                         </div>
+                        -->
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <!--  
                     </div>
                 </div>
             </div>
         </footer>
+        
+       -->
         <!-- Footer Section End -->
-
-        <!-- Search Begin -->
-        <div class="search-model">
-            <div class="h-100 d-flex align-items-center justify-content-center">
-                <div class="search-close-switch">+</div>
-                <form class="search-model-form">
-                    <input type="text" id="search-input" placeholder="Search here....." />
-                </form>
-            </div>
-        </div>
-        <!-- Search End -->
 
         <!-- Js Plugins -->
         <script src="js/jquery-3.3.1.min.js"></script>
@@ -480,6 +432,133 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/jquery.nicescroll.min.js"></script>
         <script src="js/main.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+		integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+		crossorigin="anonymous">
+	</script>
+	
+	<!-- 찜 버튼 JS -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+		
+		//찜 추가 JS
+		$("#heartNot").on("click",function(){
+			
+			//로그인을 안 한 상태였을 시
+			if ("${member.mid}" == "") {
+                if (confirm("로그인 한 회원만 이용가능합니다. 로그인 하시겠습니까?")) {
+                    // 승낙하면 로그인 페이지로 이동
+                    location.href = '${pageContext.request.contextPath}/login.do';
+                } else {
+                    // 거부하면 해당 페이지 새로고침
+                    location.reload();
+                }
+            // 로그인 상태시 찜하기 버튼을 누르면    
+            } else {
+			
+			var mlPid = '${data.pNum}';
+			var mlMid = '${member.mid}';
+			console.log('mlPid:'+mlPid+"/mlMid:"+mlMid);
+			
+			var data = {
+				mlPid : mlPid,	
+				mlMid : mlMid	
+			};
+	
+			$.ajax({
+				
+				url: '${pageContext.request.contextPath}/insertMylist.do',
+				type:'POST',
+				contentType : 'application/json; charset=utf-8',
+	        	data :JSON.stringify(data),
+	        	success : function(resp) {
+	                if (resp == 'success') {
+	                    console.log("찜하기 성공!");
+	                    if (confirm("해당 상품을 찜하셨습니다. 찜목록 페이지로 이동하시겠습니까?")) {
+                            // 승낙하면 마이페이지의 찜목록페이지로 이동
+                            location.href = '${pageContext.request.contextPath}/myList.do';
+                        } else {
+                            // 거부하면 해당 페이지 새로고침하여 찜한거 반영되게하기(HTTP의 속성 때문)
+                            location.reload();
+                        }
+	                }
+	                else{
+	                	console.log('찜하기 실패!');
+	                	alert('찜하기를 할 수 없습니다.관리자에게 문의 해주세요.');
+	                	location.reload();
+	                }
+	           
+			 	},
+				 error : function(e) {
+					console.log('오류발생')
+	                console.log(e);
+	                alert('찜하기를 할 수 없습니다.관리자에게 문의 해주세요.');
+	                location.reload(); // 실패시 새로고침하기	
+				 }
+			});
+		  
+            }	
+		});
+		
+		//찜하기 취소 JS
+		$("#heartIng").on("click",function(){
+			console.log('취소할거니');
+		   
+			var mlNum='${isMylike.mlNum}';
+			console.log('isMylike.mlNum:'+mlNum);
+			
+			var data = {
+				mlNum : mlNum
+			};
+	
+			$.ajax({
+				
+				url: '${pageContext.request.contextPath}/myListDelete.do',
+				type:'POST',
+				contentType : 'application/json; charset=utf-8',
+	        	data :JSON.stringify(data),
+	        	success : function(resp) {
+	                if (resp == 'success') {
+	                    console.log("찜취소 성공!");
+	                   // alert('찜하기 취소 하셨습니다.');
+	                    location.reload();
+	                }
+	                else{
+	                	console.log('찜취소 실패!');
+	                	alert('찜 취소를 할 수 없습니다.관리자에게 문의 해주세요.');
+	                	location.reload();
+	                }
+	           
+			 	},
+				 error : function(e) {
+					console.log('오류발생')
+	                console.log(e);
+					alert('찜 취소를 할 수 없습니다.관리자에게 문의 해주세요.');
+	                location.reload(); // 실패시 새로고침하기	
+				 }
+			});
+			
+		});
+
+	});
+	
+	</script>
+	
+	<!-- 펀딩 완료된 상품일 경우 JS -->
+	<script type="text/javascript">
+		$("#finish").on("click",function(){
+			alert('펀딩 완료된 상품입니다.');
+		});	
+	</script>
+	
+	
+	
+	
+	
+	
+
+        
     </body>
 </html>
-    
+

@@ -1,27 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>header</title>
 
 <link rel="stylesheet" href="css/font.css" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
 	rel="stylesheet" />
-<link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap"
-	rel="stylesheet">
 <!-- Css Styles -->
-<link rel="stylesheet" href="css/header.css" type="text/css">
+<link rel="stylesheet" href="css/shopcart.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
 
-	<div class="header_box">
+	<div class="header_box"
+		style="background: rgba(255, 255, 255, 0.2); border-bottom: 2px;">
 		<div class="top_left_box">
 			<div class="logo_box">LOGO</div>
 			<div class="menu_item1">STORE</div>
@@ -72,7 +77,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="header_box_space"></div>
-
 </body>
 </html>
