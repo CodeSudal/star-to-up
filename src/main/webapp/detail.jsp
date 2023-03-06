@@ -13,7 +13,7 @@
         <meta name="keywords" content="Ashion, unica, creative, html" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Ashion | Template</title>
+        <title>STU DETAILS</title>
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet" />
@@ -159,41 +159,59 @@
                         </div>
                         
                     </div>
-                  <!--  <div class="product__details__pic__slider owl-carousel"></div> --> 
-                    
-                    <!-- 
+                  <!--  <div class="product__details__pic__slider owl-carousel"></div> -->
+
+				  
                     <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
-                            <h3><span style="font-size: 24px">펀딩 가격</span>${data.fAmount}</h3>
+                            <h3><span style="font-size: 24px">펀딩 가격</span>${data.pPrice}</h3>
                             원 <br /><br />
                             <h3><span style="font-size: 24px">모인 금액</span>${data.fCrnAmount}</h3>
                             <span style="font-size: 24px">원</span> &nbsp
-                            <div style="display: inline; font-weight: bold; font-size: 36px">${data.percent}</div>
+                            <div style="display: inline; font-weight: bold; font-size: 36px">${data.percent}%</div>
                             <br /><br />
                             <div class="progress2 progress-moved" style="width: 80%">
                                 <div class="progress-bar2" style="width:${data.percent}%"></div>
                             </div>
                             <br /><br />
-                            <h3><span style="font-size: 24px">후원자</span>${data.cnt}</h3>
+                            <h3><span style="font-size: 24px">참여자</span>${data.people}</h3>
                             명 <br /><br /><br />
                             <div class="product__details__button">
-                                <a
-                                    href="payment.do?fNum=${data.fNum}"
+                              <c:choose>
+                              	<c:when test="${pFinish ==0}">
+                              	     <a
+                                        href="payment.do?pNum=${data.pNum}"
+                                        class="cart-btn"
+                                        style="background-color: black; width: 40%; text-align: center; font-size: 28px"
+                               		  >
+                                      펀딩하기</a>
+                                      <c:choose>
+							      		  <c:when test="${not empty isMylike }">
+										  	<img id="heartIng" alt="좋아요상태"
+												src="img/icon-heart2.png"
+												style="width: 50px; height: 50px; cursor: pointer; margin-left:2%;margin-top:2%;">
+										  </c:when>
+										  <c:otherwise>
+										     <img id="heartNot" alt="좋아요안한상태"
+									             src="img/icon-heart1.png"
+									             style="width: 50px; height: 50px; cursor: pointer; margin-left:2%;margin-top:2%;">
+										  </c:otherwise>
+									 </c:choose>
+                              	</c:when>
+                                <c:otherwise>
+                                	  <button
+                                    id="finish"
                                     class="cart-btn"
-                                    style="background-color: black; width: 40%; text-align: center; font-size: 30px"
+                                    style="background-color: rgb(202, 202, 202); border:none; width: 40%; text-align: center; font-size: 28px"
                                 >
-                                    펀딩하기</a
-                                >
-                                <ul>
-                                    <li style="margin-top: 25%">
-                                        <a href="#"><span class="icon_heart_alt"></span></a>
-                                    </li>
-                                </ul>
+                                    펀딩완료</button>
+                                </c:otherwise>
+                              </c:choose>
                             </div>
                         </div>
                     </div>
-                     -->
-                     
+                  
+				    <!-- 
                       <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
                             <h3><span style="font-size: 24px">펀딩 가격</span>200,000</h3>
@@ -209,14 +227,13 @@
                             <h3><span style="font-size: 24px">후원자</span>1,000</h3>
                             명 <br /><br /><br />
                             <div class="product__details__button">
-                                <a
-                                    href="payment.do?fNum=${data.fNum}"
+                                <button
+                                    id="finish"
                                     class="cart-btn"
-                                    style="background-color: black; width: 40%; text-align: center; font-size: 30px"
+                                    style="background-color: rgb(202, 202, 202); border:none; width: 40%; text-align: center; font-size: 28px"
                                 >
-                                    펀딩하기</a
-                                >
-                                <ul>
+                                    펀딩완료</button>
+                                 <ul>
                                     <li style="margin-top: 25%">
                                         <a href="#"><span class="icon_heart_alt"></span></a>
                                     </li>
@@ -224,7 +241,7 @@
                             </div>
                         </div>
                     </div>
-                     
+          			-->
                      
                      
                     
@@ -404,19 +421,6 @@
        -->
         <!-- Footer Section End -->
 
-        <!-- Search Begin -->
-        <!--
-        <div class="search-model">
-            <div class="h-100 d-flex align-items-center justify-content-center">
-                <div class="search-close-switch">+</div>
-                <form class="search-model-form">
-                    <input type="text" id="search-input" placeholder="Search here....." />
-                </form>
-            </div>
-        </div>
-          -->
-        <!-- Search End -->
-
         <!-- Js Plugins -->
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -428,6 +432,133 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/jquery.nicescroll.min.js"></script>
         <script src="js/main.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+		integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+		crossorigin="anonymous">
+	</script>
+	
+	<!-- 찜 버튼 JS -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+		
+		//찜 추가 JS
+		$("#heartNot").on("click",function(){
+			
+			//로그인을 안 한 상태였을 시
+			if ("${member.mid}" == "") {
+                if (confirm("로그인 한 회원만 이용가능합니다. 로그인 하시겠습니까?")) {
+                    // 승낙하면 로그인 페이지로 이동
+                    location.href = '${pageContext.request.contextPath}/login.do';
+                } else {
+                    // 거부하면 해당 페이지 새로고침
+                    location.reload();
+                }
+            // 로그인 상태시 찜하기 버튼을 누르면    
+            } else {
+			
+			var mlPid = '${data.pNum}';
+			var mlMid = '${member.mid}';
+			console.log('mlPid:'+mlPid+"/mlMid:"+mlMid);
+			
+			var data = {
+				mlPid : mlPid,	
+				mlMid : mlMid	
+			};
+	
+			$.ajax({
+				
+				url: '${pageContext.request.contextPath}/insertMylist.do',
+				type:'POST',
+				contentType : 'application/json; charset=utf-8',
+	        	data :JSON.stringify(data),
+	        	success : function(resp) {
+	                if (resp == 'success') {
+	                    console.log("찜하기 성공!");
+	                    if (confirm("해당 상품을 찜하셨습니다. 찜목록 페이지로 이동하시겠습니까?")) {
+                            // 승낙하면 마이페이지의 찜목록페이지로 이동
+                            location.href = '${pageContext.request.contextPath}/myList.do';
+                        } else {
+                            // 거부하면 해당 페이지 새로고침하여 찜한거 반영되게하기(HTTP의 속성 때문)
+                            location.reload();
+                        }
+	                }
+	                else{
+	                	console.log('찜하기 실패!');
+	                	alert('찜하기를 할 수 없습니다.관리자에게 문의 해주세요.');
+	                	location.reload();
+	                }
+	           
+			 	},
+				 error : function(e) {
+					console.log('오류발생')
+	                console.log(e);
+	                alert('찜하기를 할 수 없습니다.관리자에게 문의 해주세요.');
+	                location.reload(); // 실패시 새로고침하기	
+				 }
+			});
+		  
+            }	
+		});
+		
+		//찜하기 취소 JS
+		$("#heartIng").on("click",function(){
+			console.log('취소할거니');
+		   
+			var mlNum='${isMylike.mlNum}';
+			console.log('isMylike.mlNum:'+mlNum);
+			
+			var data = {
+				mlNum : mlNum
+			};
+	
+			$.ajax({
+				
+				url: '${pageContext.request.contextPath}/myListDelete.do',
+				type:'POST',
+				contentType : 'application/json; charset=utf-8',
+	        	data :JSON.stringify(data),
+	        	success : function(resp) {
+	                if (resp == 'success') {
+	                    console.log("찜취소 성공!");
+	                   // alert('찜하기 취소 하셨습니다.');
+	                    location.reload();
+	                }
+	                else{
+	                	console.log('찜취소 실패!');
+	                	alert('찜 취소를 할 수 없습니다.관리자에게 문의 해주세요.');
+	                	location.reload();
+	                }
+	           
+			 	},
+				 error : function(e) {
+					console.log('오류발생')
+	                console.log(e);
+					alert('찜 취소를 할 수 없습니다.관리자에게 문의 해주세요.');
+	                location.reload(); // 실패시 새로고침하기	
+				 }
+			});
+			
+		});
+
+	});
+	
+	</script>
+	
+	<!-- 펀딩 완료된 상품일 경우 JS -->
+	<script type="text/javascript">
+		$("#finish").on("click",function(){
+			alert('펀딩 완료된 상품입니다.');
+		});	
+	</script>
+	
+	
+	
+	
+	
+	
+
+        
     </body>
 </html>
 

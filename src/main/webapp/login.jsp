@@ -59,8 +59,8 @@
 		</button>
 		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 		<script>
-				  // SDK를 초기화 합니다. 사용할 앱 키(javascript) 입력합니다.
-            	  window.Kakao.init('78892b6e583dfe48cb2d2caf38da1114');
+				  // SDK를 초기화 합니다. 사용할 앱 키(javascript 키) 입력합니다.
+            	  window.Kakao.init('3d08dd963da5d6d0d9d5aed059ea3d21');
                   // SDK 초기화 여부를 판단합니다. true가 나온다면 정상 작동
                   console.log(Kakao.isInitialized());
                  
@@ -118,7 +118,7 @@
         <script src="js/jquery.nicescroll.min.js"></script>
         <script src="js/main.js"></script>
         
-        <!-- 로그인 버튼 활성화 -->
+        <!-- 로그인 버튼 활성화 JS -->
         <script type="text/javascript">
      		// 로그인 인풋값에 값이 있을시 색상 변환
         	const idInput = document.getElementById('idInput');
