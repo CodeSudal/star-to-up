@@ -17,5 +17,17 @@ public class ViewController {
 		
 		return "info.jsp";
 	}
+	
+	@RequestMapping(value="/about.do")
+	public String aboutView() {
+		
+		return "about.jsp";
+	}
+	
+	@RequestMapping(value="/store.do")
+	public String storeView() {
+		
+		return "store.jsp";
+	}
 
 }

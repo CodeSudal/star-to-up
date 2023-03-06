@@ -11,6 +11,17 @@ body {
    
    
 }
+<<<<<<< HEAD
+  input[type="button"]{
+   outline:none;
+   border:none;
+   color: white;
+   font-size:16px;
+   
+   
+}
+=======
+>>>>>>> ed2774bd22e7f80babe4c2680f27925d33d52a10
 
 
 
