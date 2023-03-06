@@ -32,15 +32,17 @@
         return false;
     });
 
-
+ 
+   /*
     // Progress Bar
     $('.pg-bar').waypoint(function () {
         $('.progress .progress-bar').each(function () {
             $(this).css("width", $(this).attr("aria-valuenow") + '%');
         });
     }, {offset: '80%'});
+    */
 
-
+   /*
     // Calender
     $('#calender').datetimepicker({
         inline: true,
@@ -57,13 +59,15 @@
         loop: true,
         nav : false
     });
-
-
+    */
+    
+    /*
     // Chart Global Color
     Chart.defaults.color = "#6C7293";
     Chart.defaults.borderColor = "#000000";
-
-
+     */
+   
+   /*
     // Worldwide Sales Chart
     var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
     var myChart1 = new Chart(ctx1, {
@@ -91,8 +95,9 @@
             responsive: true
         }
     });
-
-
+   */
+    
+    /* 
     // Salse & Revenue Chart
     var ctx2 = $("#salse-revenue").get(0).getContext("2d");
     var myChart2 = new Chart(ctx2, {
@@ -117,7 +122,7 @@
             responsive: true
         }
     });
-    
+      
 
 
     // Single Line Chart
@@ -206,7 +211,9 @@
             responsive: true
         }
     });
-
+ */
+ 
+ 
     
 })(jQuery);
 

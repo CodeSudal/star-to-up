@@ -184,18 +184,26 @@ p[data-value]:after {
 									<div class="progress-bar2" style="width: ${v.percent}%"></div>
 								</div>
 								<br> <br>
-								<form method="post" action="email.do"
+								<form method="post" action="sendEmailQR.do?lPid=${v.lPid}"
 									enctype="multipart/form-data">
-									<button type="button" id="my-button"
-										class="btn btn-primary rounded-pill m-2"
-										style="padding: 10px 30px;" onclick="onClickUpload(); ">QR삽입</button>
-
+									<c:choose>
+										<c:when test="${v.percent == 100}">
+											<button type="button" id="my-button"
+												class="btn btn-primary rounded-pill m-2"
+												style="padding: 10px 30px;" onclick="onClickUpload(); ">QR삽입</button>
+										</c:when>
+										<c:otherwise>
+										    <button type="button" id="my-button"
+												class="btn btn-primary rounded-pill m-2"
+												style="padding: 10px 30px;" onclick="onClickUpload(); disabled">QR삽입</button>
+										</c:otherwise>
+									</c:choose>
 									<a href="sendEmailQR.do?lPid=${v.lPid}"><button type="button"
 											class="btn btn-primary rounded-pill m-2"
 											style="padding: 10px 30px; float: right;" id="sendQR"
 											onclick="sendQR()" disabled>QR전송</button></a> <input
 										id="my-input" type="file" type="hidden"
-										onchange="readURL(this);" style="height: 1px; display: none" />
+										onchange="readURL(this);" style="height: 1px; display: none;" />
 
 								</form>
 							</div>
@@ -203,65 +211,39 @@ p[data-value]:after {
 					</c:forEach>
 					
 
-					<!--  
+				    <!-- ▼ 예시로 만들어져 있는 건 무조건 QR삽입 가능할 수 있게 만들어 놨어요
 					<div class="col-sm-12 col-xl-6 "
-						style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
-						<div class="bg-secondary h-100 p-4"
-							style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.2) !important">
-							<h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;Jupiter
-							</h3>
-							<span class="span2"
-								style="text-align: right; margin-left: 90%; color: white">100%</span>
-							<div class="progress2 progress-moved" style="width: 100%">
-								<div class="progress-bar2" style="width: 50%"></div>
-							</div>
-							<br> <br>
-							<form method="post" action="email.do"
-								enctype="multipart/form-data">
-								<button type="button" id="my-button"
-									class="btn btn-primary rounded-pill m-2"
-									style="padding: 10px 30px;" onclick="onClickUpload();">QR삽입</button>
-
-								<a href="email.do?lNum=${v.lNum}"><button type="button"
+							style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
+							<div class="bg-secondary h-100 p-4"
+								style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.2) !important">
+								<h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;Jupiter
+								</h3>
+								<span class="span2"
+									style="text-align: right; margin-left: 90%; color: white">100%</span>
+								<div class="progress2 progress-moved" style="width: 100%">
+									<div class="progress-bar2" style="width: 100%"></div>
+								</div>
+								<br> <br>
+								<form method="post" action="sendEmailQR.do?lPid=${v.lPid}"
+									enctype="multipart/form-data">
+									<button type="button" id="my-button"
 										class="btn btn-primary rounded-pill m-2"
-										style="padding: 10px 30px; float: right;" id="sendQR">QR전송</button></a>
+										style="padding: 10px 30px;" onclick="onClickUpload();">QR삽입</button>
 
-								<input id="my-input" type="file" type="hidden"
-									onchange="readURL(this);" style="height: 1px; display: none" />
+									<a href="sendEmailQR.do?lPid=${v.lPid}"><button type="button"
+											class="btn btn-primary rounded-pill m-2"
+											style="padding: 10px 30px; float: right;" id="sendQR"
+											onclick="sendQR()" disabled>QR전송</button></a> <input
+										id="my-input" type="file" type="hidden"
+										onchange="readURL(this);" style="height: 1px; display: none;" />
 
-							</form>
-						</div>
-					</div>
-
-
-
-					<div class="col-sm-12 col-xl-6 "
-						style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
-						<div class="bg-secondary h-100 p-4"
-							style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.2) !important">
-							<h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;Jupiter
-							</h3>
-							<span style="text-align: right; margin-left: 90%; color: white">85%</span>
-							<div class="progress2 progress-moved" style="width: 100%">
-								<div class="progress-bar2" style="width: 50%"></div>
+								</form>
 							</div>
-							<br> <br>
-							<form>
-
-
-								<button type="submit" id="my-button"
-									class="btn btn-primary rounded-pill m-2"
-									style="padding: 10px 30px;" onclick="onClickUpload();">QR삽입</button>
-
-								<button type="button" class="btn btn-primary rounded-pill m-2"
-									style="padding: 10px 30px; float: right;" id="sendQR">QR전송</button>
-								<input id="my-input" type="file" type="hidden"
-									style="height: 1px; display: none" />
-							</form>
 						</div>
-					</div>
-					-->
-			
+						-->
+						
+						
+						
 				</div>
 			</div>
 			</div>
@@ -294,45 +276,36 @@ p[data-value]:after {
 	<!-- QR삽입 버튼 활성화 JS -->
 	<script type="text/javascript">
 				function onClickUpload() {
-				    
-					var percent = $(".${v.fNum}").text();
-					
-					if(percent == "100%"){
 						let myInput = document.getElementById("my-input");
 						myInput.click();
-					}else{
-						
-						alert('100퍼센트 되어야 QR 추가 가능합니다');
-					}
-					
 				}
-			</script>
+	</script>
 
 
 	<!-- QR추가 + QR전송 버튼 활성화  JS -->
-
 	<script type="text/javascript">
-			
 				function readURL(input) {	
-				 
 				 	 console.log('들어왔음');
 				 	 const qrBtn = document.getElementById('my-button');
-				  	const sendBtn = document.getElementById('sendQR');
-				  
+				  	 const sendBtn = document.getElementById('sendQR');
+				    
+				  	//QR추가 했다면
 				  	if (input.files && input.files[0]) {
 					  	console.log('파일 있음');
+					  	//QR삽입 버튼 스타일 
 						qrBtn.style.backgroundColor = "#6c7293";
 					 	qrBtn.style.color = "#fff";
 						qrBtn.style.borderColor = "#6c7293";
-						qrCheck = 1;
+						//QR전송 버튼 활성화됨
 						 $("#sendQR").prop("disabled",false);	
-						
 					
-				  } else {
+				  } else { //QR추가 안 했다면
 					  console.log('파일 없음');
+				      //QR삽입 버튼 스타일
 					  qrBtn.style.backgroundColor = "#fff";
 					  qrBtn.style.color = "#6c7293";
 					  qrBtn.style.borderColor = "#fff";
+					  //QR전송 버튼은 활성화 안 됨
 					  
 				  }
 			
