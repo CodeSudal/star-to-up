@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="STU" tagdir="/WEB-INF/tags"%>    
  <!-- d -->
 <!DOCTYPE html>
 <html lang="ko">
@@ -42,6 +43,11 @@
 <link href="css/styleAdmin.css" rel="stylesheet" />
 </head>
 
+<style>
+
+
+</style>
+
 <body>
 	<div class="container-fluid position-relative d-flex p-0">
 		<!-- Spinner Start -->
@@ -55,59 +61,13 @@
 		<!-- Spinner End -->
 
 		<!-- Sidebar Start -->
-		<div class="sidebar pe-4 pb-3">
-			<nav class="navbar bg-secondary navbar-dark">
-				<a href="main.do"><img class="rounded-circle" src="img/logo.png" alt="로고이미지"
-					style="height: 70px; margin-left: 8px" /></a>
-
-				<div class="navbar-nav w-100">
-					<a href="adminFundingManagement.do" class="nav-item nav-link"><i
-						class="fa fa-chart-bar me-2"></i>Funding Chart</a> 
-					<a href="adminProductManagement.do" class="nav-item nav-link active"><i
-						class="fa fa-tachometer-alt me-2"></i>Add Product</a> 
-					<a href="adminMemberManagement.do" class="nav-item nav-link"><i
-						class="fa fa-table me-2"></i>Member</a>
-				</div>
-				
-			</nav>
-		</div>
+		<STU:sideBar/>
 		<!-- Sidebar End -->
 
 		<!-- Content Start -->
 		<div class="content">
 			<!-- Navbar Start -->
-			<nav
-				class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0"
-				style="height: 80px">
-				<!-- <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-					<h2 class="text-primary mb-0">
-						<i class="fa fa-user-edit"></i>
-					</h2>
-				</a>  -->
-				<a href="#" class="sidebar-toggler flex-shrink-0"> <i
-					class="fa fa-bars"></i>
-				</a>
-
-
-				<div class="navbar-nav align-items-center ms-auto">
-					<div class="nav-item dropdown">
-						<div class="position-relative">
-							<div style="float: left">
-
-								<img class="rounded-circle" src="img/admin.png" alt="관리자이미지"
-									style="width: 40px; height: 40px;" />
-							</div>
-							<div style="float: right; margin:8px">
-								<h5><a href="logout.do">&nbsp;LOGOUT</a></h5>
-								<!-- <span
-								class="d-none d-lg-inline-flex" style="color: white">LOGOUT</span> -->
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-			</nav>
+			<STU:navBar/>
 			<!-- Navbar End -->
 
 			<!-- Table Start -->
@@ -122,13 +82,13 @@
 								<div class="mb-3">
 									<label for="pName" class="form-label">상품
 										이름</label> <input type="text" class="form-control"
-										id="pName" name="pName" aria-describedby="" /> <br>
+										id="pName" name="pName" aria-describedby=""  required/> <br>
 								</div>
 								<div class="mb-3">
-									<label for="pPrice" class="form-label">펀딩
-										목표 금액</label> <input type='text' name='pPrice' id='TargetAmount'
+									<label for="fAmount" class="form-label">펀딩
+										목표 금액</label> <input type='text' name='fAmount' id='TargetAmount'
 										onkeyup='call()' class="form-control"
-										id="pPrice">
+										id="fAmount" pattern="[0-9]+" required>
 								</div>
 								
 								<div class="mb-3">
@@ -138,14 +98,14 @@
 									<div style="display: inline-block ; width: 48%">	
 										<input type='text' name='sell2' id='personnel'
 											onkeyup='call()' class="form-control"
-											id="funding">
+											id="funding" pattern="[0-9]+" required>
 									</div>
 									<div style="display: inline-block; width:2.5%">
 									&nbsp;&nbsp;/&nbsp;&nbsp;
 									</div>
 									<div style="display: inline-block; width: 48%">
-										<input	type='text' name='sell3' id='result' class="form-control"
-											id="funding">
+										<input	type='text' name='pPrice' id='result' class="form-control"
+											id="funding" >
 									</div>
 									
 									<div class="form-text">
