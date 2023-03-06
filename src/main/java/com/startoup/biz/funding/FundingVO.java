@@ -1,4 +1,4 @@
-package com.startoup.biz.myfunding;
+package com.startoup.biz.funding;
 
 public class FundingVO {
 	private int fNum; // 펀딩제품번호

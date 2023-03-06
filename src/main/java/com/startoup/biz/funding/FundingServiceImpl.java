@@ -1,4 +1,4 @@
-package com.startoup.biz.myfunding;
+package com.startoup.biz.funding;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

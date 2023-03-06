@@ -1,4 +1,4 @@
-package com.startoup.biz.myfunding;
+package com.startoup.biz.funding;
 
 public interface FundingService {
 
