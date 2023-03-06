@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2023-02-21 09:37:51</creation_date>
-			<updated_date>2023-03-06 11:34:45</updated_date>
+			<updated_date>2023-03-06 13:46:23</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -484,6 +484,22 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
+			<logical_name>퍼센트</logical_name>
+			<physical_name>P_PERCENT</physical_name>
+			<type>decimal</type>
+		</word>
+		<word>
+			<id>20</id>
+			<length>null</length>
+			<decimal>null</decimal>
+			<array>false</array>
+			<array_dimension>null</array_dimension>
+			<unsigned>false</unsigned>
+			<zerofill>false</zerofill>
+			<binary>false</binary>
+			<args></args>
+			<char_semantics>false</char_semantics>
+			<description></description>
 			<logical_name>펀딩금액</logical_name>
 			<physical_name>P_PRICE</physical_name>
 			<type>decimal</type>
@@ -494,7 +510,7 @@
 	<contents>
 		<table>
 			<id>0</id>
-			<height>217</height>
+			<height>241</height>
 			<width>241</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
@@ -647,12 +663,12 @@
 		</table>
 		<table>
 			<id>1</id>
-			<height>217</height>
+			<height>233</height>
 			<width>241</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>36</x>
-			<y>276</y>
+			<y>292</y>
 			<color>
 				<r>255</r>
 				<g>255</g>
@@ -823,7 +839,7 @@
 		</table>
 		<table>
 			<id>2</id>
-			<height>217</height>
+			<height>241</height>
 			<width>241</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
@@ -999,12 +1015,12 @@
 		</table>
 		<table>
 			<id>3</id>
-			<height>217</height>
+			<height>233</height>
 			<width>241</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>612</x>
-			<y>276</y>
+			<y>292</y>
 			<color>
 				<r>255</r>
 				<g>255</g>
@@ -1175,7 +1191,7 @@
 		</table>
 		<table>
 			<id>4</id>
-			<height>217</height>
+			<height>241</height>
 			<width>241</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
@@ -1437,12 +1453,12 @@
 		</table>
 		<table>
 			<id>5</id>
-			<height>217</height>
+			<height>233</height>
 			<width>241</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>324</x>
-			<y>276</y>
+			<y>292</y>
 			<color>
 				<r>255</r>
 				<g>255</g>
@@ -1524,7 +1540,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>19</word_id>
+					<word_id>20</word_id>
 					<id>21</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -1691,6 +1707,39 @@
 				<normal_column>
 					<word_id>13</word_id>
 					<id>26</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>decimal</type>
+					<constraint></constraint>
+					<default_value>0</default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>19</word_id>
+					<id>27</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
