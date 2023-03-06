@@ -41,8 +41,6 @@ public class MemberDAO {
 	// 내 찜 목록 보기
 	final String SELECT_ALL_MYLIKE = "SELECT a.M_ID, b.ML_NUM, b.ML_PID"
 			+ " FROM MEMBERS a INNER JOIN MYLIKE b ON a.M_ID = b.ML_MID";
-	// 내 찜 여부 확인
-	final String SELECT_ONE_MYLIKE = "SELECT * FROM MYLIKE WHERE ML_PID=? AND ML_MID=?";
 
 	// 회원가입
 	public boolean insertMember(MemberVO vo) {
@@ -59,8 +57,17 @@ public class MemberDAO {
 	// 카카오회원가입
 	public boolean insertKakao(MemberVO vo) {
 		try {
+			String mEmail=vo.getmEmail1();
+			String mEmail1 = "";
+			String mEmail2 = "";
+			if(mEmail.contains("@")) {
+				String[] arrayE = mEmail.split("@");
+				mEmail1 = arrayE[0];
+				mEmail2 = arrayE[1];
+				}
+			vo.setmEmail1(mEmail1);
+			vo.setmEmail2(mEmail2);
 			int res=jdbcTemplate.update(INSERT_KAKAO_MEMBERS, vo.getmId(), vo.getmPw(), vo.getmName(), vo.getmEmail1(), vo.getmEmail2(),vo.getmRegdate());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -158,16 +165,6 @@ public class MemberDAO {
 	public List<MyLikeVO> selectAllList(MyLikeVO vo){
 		try {
 			return jdbcTemplate.query(SELECT_ALL_MYLIKE, new MyLikeRowMapper());
-		} catch(Exception e) {
-			return null;
-		}
-	}
-	
-	// 내 찜 여부 확인
-	public MyLikeVO checkList(MyLikeVO vo) {
-		Object[] args= { vo.getMlPid(), vo.getMlMid() };
-		try {
-			return jdbcTemplate.queryForObject(SELECT_ONE_MYLIKE, args, new MyLikeRowMapper());
 		} catch(Exception e) {
 			return null;
 		}
