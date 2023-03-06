@@ -14,7 +14,14 @@ public class ProductVO {
 	private List<ListVO> pList; // 해당 제품 펀딩 회원리스트
 	private int pAmount; // 펀딩목표금액
 	private int pCRNAmount; // 현재펀딩금액
+	private int pPercent; // 펀딩목표 퍼센트에이지
 	
+	public int getpPercent() {
+		return pPercent;
+	}
+	public void setpPercent(int pPercent) {
+		this.pPercent = pPercent;
+	}
 	public int getpNum() {
 		return pNum;
 	}
