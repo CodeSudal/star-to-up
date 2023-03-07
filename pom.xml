@@ -22,7 +22,14 @@
       <org.slf4j-version>1.6.6</org.slf4j-version>
    </properties>
    <dependencies>
-   
+   	
+   	<!-- 셀레니움 -->
+   	<dependency>
+    	<groupId>org.seleniumhq.selenium</groupId>
+    	<artifactId>selenium-java</artifactId>
+    	<version>3.3.1</version>
+	</dependency>
+   	
    		<!-- Mybatis -->
       <dependency>
             <groupId>org.mybatis</groupId>
