@@ -34,6 +34,7 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List<ProductVO> selectAll(ProductVO vo) {
+		System.out.println("[log1] "+pdao.selectAll(vo));
 		return pdao.selectAll(vo);
 	}
 

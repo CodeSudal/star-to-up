@@ -11,8 +11,6 @@ import com.startoup.biz.product.ProductVO;
 @Controller
 public class ViewController {
 	
-	@Autowired
-	private ProductServiceImpl ProductSI;
 	
 	@RequestMapping(value="/main.do")
 	public String mainView() {
@@ -30,13 +28,6 @@ public class ViewController {
 	public String aboutView() {
 		
 		return "about.jsp";
-	}
-	
-	@RequestMapping(value="/store.do")
-	public String storeView(ProductVO vo, Model model) {
-		System.out.println("store.do 입장");
-		model.addAttribute("datas", ProductSI.selectAll(vo));
-		return "store.jsp";
 	}
 
 }

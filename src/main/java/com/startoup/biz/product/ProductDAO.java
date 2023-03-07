@@ -95,8 +95,11 @@ public class ProductDAO {
 
 	public List<ProductVO> selectAll(ProductVO vo){
 		try {
+			System.out.println("[log2] "+jdbcTemplate.query(SELECT_ALL, new ProductRowMapper()));
 			return jdbcTemplate.query(SELECT_ALL, new ProductRowMapper());
 		} catch(Exception e) {
+			System.out.println(e);
+			System.out.println("설마 여기들어감?");
 			return null;
 		}
 	}
