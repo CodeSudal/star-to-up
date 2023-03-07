@@ -42,13 +42,12 @@ public class MemberDAO {
 	final String SELECT_ALL_MYLIKE = "SELECT a.M_ID, b.ML_NUM, b.ML_PID"
 			+ " FROM MEMBERS a INNER JOIN MYLIKE b ON a.M_ID = b.ML_MID";
 	// 내 찜 여부 확인
-	final String SELECT_ONE_MYLIKE = "SELECT * FROM MYLIKE WHERE ML_PID=? AND ML_MID=?";
+	final String SELECT_ONE_MYLIKE = "SELECT ML_NUM,ML_MID,ML_PID FROM MYLIKE WHERE ML_PID=? AND ML_MID=?";
 
 	// 회원가입
 	public boolean insertMember(MemberVO vo) {
 		try {
 			int res=jdbcTemplate.update(INSERT_MEMBERS, vo.getmId(), vo.getmPw(), vo.getmName(), vo.getmEmail1(), vo.getmEmail2(), vo.getmNum(), vo.getmRegdate());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -59,8 +58,17 @@ public class MemberDAO {
 	// 카카오회원가입
 	public boolean insertKakao(MemberVO vo) {
 		try {
+			String mEmail=vo.getmEmail1();
+			String mEmail1 = "";
+			String mEmail2 = "";
+			if(mEmail.contains("@")) {
+				String[] arrayE = mEmail.split("@");
+				mEmail1 = arrayE[0];
+				mEmail2 = arrayE[1];
+			}
+			vo.setmEmail1(mEmail1);
+			vo.setmEmail2(mEmail2);
 			int res=jdbcTemplate.update(INSERT_KAKAO_MEMBERS, vo.getmId(), vo.getmPw(), vo.getmName(), vo.getmEmail1(), vo.getmEmail2(),vo.getmRegdate());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -109,12 +117,11 @@ public class MemberDAO {
 	}
 
 	// 로그아웃
-	
+
 	// 내 펀딩 목록 추가
 	public boolean insertFund(MyFundingVO vo) {
 		try {
 			int res=jdbcTemplate.update(INSERT_MYFUNDING, vo.getMfNum(), vo.getMfMid(), vo.getMfPid());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -135,7 +142,6 @@ public class MemberDAO {
 	public boolean insertLike(MyLikeVO vo) {
 		try {
 			int res=jdbcTemplate.update(INSERT_MYLIKE, vo.getMlNum(), vo.getMlMid(), vo.getMlPid());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -162,7 +168,7 @@ public class MemberDAO {
 			return null;
 		}
 	}
-	
+
 	// 내 찜 여부 확인
 	public MyLikeVO checkLike(MyLikeVO vo) {
 		Object[] args= { vo.getMlPid(), vo.getMlMid() };
