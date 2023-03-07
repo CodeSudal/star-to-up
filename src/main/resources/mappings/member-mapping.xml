@@ -5,8 +5,8 @@
 		INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE) VALUES(${mId},${mPw},${mName},${mEmail1},${mEmail2},${mNum},to_char(sysdate,'rr.mm.dd'));
 	</insert>
 
-	<insert id="insertKakaoMember">
-		INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE) VALUES(${mId},'KAKAO',${mName},${mEmail1},${mEmail2},${mNum},to_char(sysdate,'rr.mm.dd'));
+	<insert id="insertKakao">
+		INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE) VALUES(${mId},'KAKAO',${mName},${mEmail1},${mEmail2},'010-0000-0000',to_char(sysdate,'rr.mm.dd'));
 	</insert>
 
 	<delete id="deleteMember">
@@ -21,8 +21,8 @@
 		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=${mId}
 	</select>
 	
-	<select id="loginMember" resultType="member">
-		SELECT * FROM MEMBERS WHERE M_ID=${mId} AND M_PW=${mPw}
+	<select id="login" resultType="member">
+		SELECT M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=${mId} AND M_PW=${mPw}
 	</select>
 	
 	<insert id="insertFund">
@@ -43,6 +43,10 @@
 	
 	<select id="selectAllLike" resultType="mylike">
 		SELECT a.M_ID, b.ML_NUM, b.ML_PID FROM MEMBERS a INNER JOIN MYLIKE b ON a.M_ID = b.ML_MID
+	</select>
+	
+	<select id="checkLike" resultType="mylike">
+		SELECT * FROM MYLIKE WHERE ML_PID=? AND ML_MID=?
 	</select>
 	
 </mapper>
