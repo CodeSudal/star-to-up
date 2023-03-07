@@ -34,6 +34,13 @@ public class MemberController {
 		return "myList.jsp";
 	}
 	
+	@RequestMapping(value="/login.do")
+	public String login() {
+		
+		
+		return "login.jsp";
+	}
+	
 	// 상품디테일 페이지 들어갔을 때 찜 여부 확인하기위함.
 		@RequestMapping(value = "/detail.do")
 		public String selcetOneBoard(ProductVO pvo, HttpSession session, MyLikeVO myvo, Model model) {

@@ -20,5 +20,4 @@ public class AdminController {
 		model.addAttribute("datas", memberSI.selectAllMember(mvo));
 		return "adminMemberManagement.jsp";
 	}
-	//XZ
 }
