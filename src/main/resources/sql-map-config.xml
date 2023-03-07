@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 1. 별칭(Alias) 설정 -->
+	<typeAliases>
+		<typeAlias type="com.startoup.biz.member.MemberVO" alias="member" />
+		<typeAlias type="com.startoup.biz.member.MyFundingVO" alias="myfunding" />
+		<typeAlias type="com.startoup.biz.member.MyLikeVO" alias="mylike" />
+	</typeAliases>
+
+	<!-- 2. SQL Mapper 설정 -->
+	<mappers>
+		<mapper resource="mappings/member-mapping.xml" />
+	</mappers>	
+	
+</configuration>

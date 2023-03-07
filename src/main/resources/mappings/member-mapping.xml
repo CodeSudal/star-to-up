@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberDAO">
+	<insert id="insertMember">
+		INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE) VALUES(${mId},${mPw},${mName},${mEmail1},${mEmail2},${mNum},to_char(sysdate,'rr.mm.dd'));
+	</insert>
+
+	<insert id="insertKakaoMember">
+		INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE) VALUES(${mId},'KAKAO',${mName},${mEmail1},${mEmail2},${mNum},to_char(sysdate,'rr.mm.dd'));
+	</insert>
+
+	<delete id="deleteMember">
+		DELETE FROM MEMBER WHERE MID=#{mid}
+	</delete>
+
+	<select id="selectAllMember" resultType="member">
+		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS
+	</select>
+	
+	<select id="selectOneMember" resultType="member">
+		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=${mId}
+	</select>
+	
+	<select id="loginMember" resultType="member">
+		SELECT * FROM MEMBERS WHERE M_ID=${mId} AND M_PW=${mPw}
+	</select>
+	
+	<insert id="insertFund">
+		INSERT INTO MYFUNDING(MF_NUM, MF_MID, MF_PID) VALUES((SELECT NVL(MAX(MF_NUM), 0) + 1 FROM MYFUNDING),${mfMid},${mfPid})
+	</insert>
+	
+	<select id="selectAllFund" resultType="myfunding">
+		SELECT a.M_ID, b.MF_NUM, b.MF_PID FROM MEMBERS a INNER JOIN MYFUNDING b ON a.M_ID = b.MF_MID
+	</select>
+	
+	<insert id="insertLike">
+		INSERT INTO MYLIKE(ML_NUM, ML_MID, ML_PID) VALUES((SELECT NVL(MAX(ML_NUM), 0) + 1 FROM MYLIKE),${mlMid},${mlPid})
+	</insert>
+	
+	<delete id="deleteLike">
+		DELETE FROM MYLIKE WHERE ML_NUM=${mlNum}
+	</delete>
+	
+	<select id="selectAllLike" resultType="mylike">
+		SELECT a.M_ID, b.ML_NUM, b.ML_PID FROM MEMBERS a INNER JOIN MYLIKE b ON a.M_ID = b.ML_MID
+	</select>
+	
+</mapper>

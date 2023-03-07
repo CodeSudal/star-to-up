@@ -1,44 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
-	<!-- component-scan > model파트의 @읽어들임 -->
-	<context:component-scan base-package="com.startoup.biz" />
-	
-	<!-- JDBCUtil 연결 -->
-	<!-- mysql -->
-	<!--
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName"
-			value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/kimdb" />
-		<property name="username" value="root" />
-		<property name="password" value="1234" />
-	</bean>
-	  -->
-	  
-	<!-- oracle -->
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName"
-			value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="kang" />
-		<property name="password" value="1234" />
-	</bean>
-	
-	<!-- JDBC 템플릿  -->
-	<bean id="jdbcTemplate"
-		class="org.springframework.jdbc.core.JdbcTemplate">
+   <!-- component-scan > model파트의 @읽어들임 -->
+   <context:component-scan base-package="com.startoup.biz" />
+   
+   <!-- JDBCUtil 연결 -->
+   <!-- mysql -->
+   <!--
+   <bean id="dataSource"
+      class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+      <property name="driverClassName"
+         value="com.mysql.cj.jdbc.Driver" />
+      <property name="url" value="jdbc:mysql://localhost/kimdb" />
+      <property name="username" value="root" />
+      <property name="password" value="1234" />
+   </bean>
+     -->
+     
+   <!-- oracle -->
+   <bean id="dataSource"
+      class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+      <property name="driverClassName"
+         value="oracle.jdbc.driver.OracleDriver" />
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+      <property name="username" value="kang" />
+      <property name="password" value="1234" />
+   </bean>
+   
+   <!-- JDBC 템플릿  -->
+   <bean id="jdbcTemplate"
+      class="org.springframework.jdbc.core.JdbcTemplate">
+      <property name="dataSource" ref="dataSource" />
+   </bean>
+   
+   <!-- aop 사용 -->
+   <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+   
+   	<!-- Mybatis -->
+	<!-- Factory 패턴 + dataSource 연결 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:sql-map-config.xml" />
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
-	<!-- aop 사용 -->
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession" />
+	</bean>
+   
 </beans>
