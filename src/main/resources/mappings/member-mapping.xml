@@ -10,7 +10,7 @@
 	</insert>
 
 	<delete id="deleteMember">
-		DELETE FROM MEMBER WHERE MID=#{mid}
+		DELETE FROM MEMBER WHERE MID=${mid}
 	</delete>
 
 	<select id="selectAllMember" resultType="member">
