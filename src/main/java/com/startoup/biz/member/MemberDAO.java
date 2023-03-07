@@ -46,7 +46,6 @@ public class MemberDAO {
 	public boolean insertMember(MemberVO vo) {
 		try {
 			int res=jdbcTemplate.update(INSERT_MEMBERS, vo.getmId(), vo.getmPw(), vo.getmName(), vo.getmEmail1(), vo.getmEmail2(), vo.getmNum(), vo.getmRegdate());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -57,8 +56,17 @@ public class MemberDAO {
 	// 카카오회원가입
 	public boolean insertKakao(MemberVO vo) {
 		try {
+			String mEmail=vo.getmEmail1();
+			String mEmail1 = "";
+			String mEmail2 = "";
+			if(mEmail.contains("@")) {
+				String[] arrayE = mEmail.split("@");
+				mEmail1 = arrayE[0];
+				mEmail2 = arrayE[1];
+				}
+			vo.setmEmail1(mEmail1);
+			vo.setmEmail2(mEmail2);
 			int res=jdbcTemplate.update(INSERT_KAKAO_MEMBERS, vo.getmId(), vo.getmPw(), vo.getmName(), vo.getmEmail1(), vo.getmEmail2(),vo.getmRegdate());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -112,7 +120,6 @@ public class MemberDAO {
 	public boolean insertFund(MyFundingVO vo) {
 		try {
 			int res=jdbcTemplate.update(INSERT_MYFUNDING, vo.getMfNum(), vo.getMfMid(), vo.getMfPid());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -133,7 +140,6 @@ public class MemberDAO {
 	public boolean insertList(MyLikeVO vo) {
 		try {
 			int res=jdbcTemplate.update(INSERT_MYLIKE, vo.getMlNum(), vo.getMlMid(), vo.getMlPid());
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
