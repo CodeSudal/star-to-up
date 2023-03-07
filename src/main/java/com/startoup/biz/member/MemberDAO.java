@@ -58,6 +58,16 @@ public class MemberDAO {
 	// 카카오회원가입
 	public boolean insertKakao(MemberVO vo) {
 		try {
+			String mEmail=vo.getmEmail1();
+			String mEmail1 = "";
+			String mEmail2 = "";
+			if(mEmail.contains("@")) {
+				String[] arrayE = mEmail.split("@");
+				mEmail1 = arrayE[0];
+				mEmail2 = arrayE[1];
+			}
+			vo.setmEmail1(mEmail1);
+			vo.setmEmail2(mEmail2);
 			int res=jdbcTemplate.update(INSERT_KAKAO_MEMBERS, vo.getmId(), vo.getmPw(), vo.getmName(), vo.getmEmail1(), vo.getmEmail2(),vo.getmRegdate());
 			if(res<1) { return false; }
 			return true;
@@ -107,7 +117,7 @@ public class MemberDAO {
 	}
 
 	// 로그아웃
-	
+
 	// 내 펀딩 목록 추가
 	public boolean insertFund(MyFundingVO vo) {
 		try {
@@ -158,7 +168,7 @@ public class MemberDAO {
 			return null;
 		}
 	}
-	
+
 	// 내 찜 여부 확인
 	public MyLikeVO checkLike(MyLikeVO vo) {
 		Object[] args= { vo.getMlPid(), vo.getMlMid() };
