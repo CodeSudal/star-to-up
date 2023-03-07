@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
-	private MemberDAO mdao;
+	private MemberDAO2 mdao;
 
 	@Override
 	public boolean insertMember(MemberVO vo) {
@@ -28,12 +28,12 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<MemberVO> selectAllMember(MemberVO vo) {
-		return mdao.selectAll(vo);
+		return mdao.selectAllMember(vo);
 	}
 
 	@Override
 	public MemberVO selectOneMember(MemberVO vo) {
-		return mdao.selectOne(vo);
+		return mdao.selectOneMember(vo);
 	}
 
 	@Override
@@ -53,17 +53,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean insertList(MyLikeVO vo) {
-		return mdao.insertList(vo);
+		return mdao.insertLike(vo);
 	}
 
 	@Override
 	public boolean deleteList(MyLikeVO vo) {
-		return mdao.deleteList(vo);
+		return mdao.deleteLike(vo);
 	}
 
 	@Override
 	public List<MyLikeVO> selectAllList(MyLikeVO vo) {
-		return mdao.selectAllList(vo);
+		return mdao.selectAllLike(vo);
 	}
 
 }
