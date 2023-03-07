@@ -148,6 +148,7 @@
        
         <!-- Footer Section End -->
 
+<<<<<<< HEAD
         <!-- Search Begin -->
         <div class="search-model">
             <div class="h-100 d-flex align-items-center justify-content-center">
@@ -171,5 +172,9 @@
         <script src="js/jquery.nicescroll.min.js"></script>
         <script src="js/main.js"></script>
     
+=======
+	<!-- Breadcrumb End -->
+ 
+>>>>>>> feature/viewtwo/mingyeong
 
     </body></html>
