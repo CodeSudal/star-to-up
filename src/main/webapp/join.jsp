@@ -195,6 +195,7 @@
 	
 	$(document).ready(function(){
  let index = {
+		 
      init: function () {
          $("#btn-save").on("click", ()=>{ // function(){} 대신 ()=>{} 를 쓴 이유 : this를 바인딩하기 위해서
              this.save();
