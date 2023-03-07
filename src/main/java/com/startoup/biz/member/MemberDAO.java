@@ -18,8 +18,8 @@ public class MemberDAO {
 	final String INSERT_MEMBERS = "INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE)"
 			+ " VALUES(?,?,?,?,?,?,to_char(sysdate,'rr.mm.dd'));";
 	// 카카오 회원 가입
-	final String INSERT_KAKAO_MEMBERS = "INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_REGDATE)"
-			+ " VALUES(?,'KAKAO',?,?,?,to_char(sysdate,'rr.mm.dd')";
+	final String INSERT_KAKAO_MEMBERS = "INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE)"
+			+ " VALUES(?,'KAKAO',?,?,?,'010-0000-0000',to_char(sysdate,'rr.mm.dd')";
 	// 회원 탈퇴 및 삭제
 	final String DELETE_MEMBERS = "DELETE FROM MEMBERS WHERE M_ID=?";
 	// 회원 전체보기
@@ -28,11 +28,11 @@ public class MemberDAO {
 	final String SELECT_ONE_MEMBERS = "SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE"
 			+ " FROM MEMBERS WHERE M_ID=?";
 	// 로그인
-	final String LOGIN_MEMBERS = "SELECT * FROM MEMBERS WHERE M_ID=? AND M_PW=?";
+	final String LOGIN_MEMBERS = "SELECT M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=? AND M_PW=?";
 	// 내 펀딩 목록 추가
 	final String INSERT_MYFUNDING= "INSERT INTO MYFUNDING(MF_NUM, MF_MID, MF_PID) VALUES((SELECT NVL(MAX(MF_NUM), 0) + 1 FROM MYFUNDING),?,?)";
 	// 내 펀딩 목록 보기
-	final String SELECT_ALL_FUNDING = "SELECT a.M_ID, b.MF_NUM, b.MF_PID"
+	final String SELECT_ALL_MYFUNDING = "SELECT a.M_ID, b.MF_NUM, b.MF_PID"
 			+ " FROM MEMBERS a INNER JOIN MYFUNDING b ON a.M_ID = b.MF_MID";
 	// 내 찜 목록 추가
 	final String INSERT_MYLIKE = "INSERT INTO MYLIKE(ML_NUM, ML_MID, ML_PID) VALUES((SELECT NVL(MAX(ML_NUM), 0) + 1 FROM MYLIKE),?,?)";
@@ -80,7 +80,7 @@ public class MemberDAO {
 	}
 
 	// 회원 전체보기
-	public List<MemberVO> selectAll(MemberVO vo){
+	public List<MemberVO> selectAllMember(MemberVO vo){
 		try {
 			return jdbcTemplate.query(SELECT_ALL_MEMBERS, new MemberRowMapper());
 		} catch(Exception e) {
@@ -89,7 +89,7 @@ public class MemberDAO {
 	}
 
 	// 회원 자세히보기
-	public MemberVO selectOne(MemberVO vo) {
+	public MemberVO selectOneMember(MemberVO vo) {
 		Object[] args= { vo.getmId() };
 		try {
 			return jdbcTemplate.queryForObject(SELECT_ONE_MEMBERS, args, new MemberRowMapper());
@@ -125,14 +125,14 @@ public class MemberDAO {
 	// 내 펀딩 목록 보기
 	public List<MyFundingVO> selectAllFund(MyFundingVO vo){
 		try {
-			return jdbcTemplate.query(SELECT_ALL_FUNDING, new MyFundingRowMapper());
+			return jdbcTemplate.query(SELECT_ALL_MYFUNDING, new MyFundingRowMapper());
 		} catch(Exception e) {
 			return null;
 		}
 	}
 
 	// 내 찜 목록 추가
-	public boolean insertList(MyLikeVO vo) {
+	public boolean insertLike(MyLikeVO vo) {
 		try {
 			int res=jdbcTemplate.update(INSERT_MYLIKE, vo.getMlNum(), vo.getMlMid(), vo.getMlPid());
 			System.out.println(res);
@@ -144,7 +144,7 @@ public class MemberDAO {
 	}
 
 	// 내 찜 목록 삭제
-	public boolean deleteList(MyLikeVO vo) {
+	public boolean deleteLike(MyLikeVO vo) {
 		try {
 			int res=jdbcTemplate.update(DELETE_MYLIKE, vo.getMlNum());
 			if(res<1) { return false; }
@@ -155,7 +155,7 @@ public class MemberDAO {
 	}
 
 	// 내 찜 목록 보기
-	public List<MyLikeVO> selectAllList(MyLikeVO vo){
+	public List<MyLikeVO> selectAllLike(MyLikeVO vo){
 		try {
 			return jdbcTemplate.query(SELECT_ALL_MYLIKE, new MyLikeRowMapper());
 		} catch(Exception e) {
@@ -164,7 +164,7 @@ public class MemberDAO {
 	}
 	
 	// 내 찜 여부 확인
-	public MyLikeVO checkList(MyLikeVO vo) {
+	public MyLikeVO checkLike(MyLikeVO vo) {
 		Object[] args= { vo.getMlPid(), vo.getMlMid() };
 		try {
 			return jdbcTemplate.queryForObject(SELECT_ONE_MYLIKE, args, new MyLikeRowMapper());
