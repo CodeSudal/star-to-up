@@ -17,7 +17,6 @@ public class MemberDAO2 {
 	public boolean insertMember(MemberVO vo) {
 		try {
 			int res=mybatis.insert("MemberDAO.insertMember", vo);
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
@@ -28,8 +27,17 @@ public class MemberDAO2 {
 	// 카카오회원가입
 	public boolean insertKakao(MemberVO vo) {
 		try {
+			String mEmail=vo.getmEmail1();
+			String mEmail1 = "";
+			String mEmail2 = "";
+			if(mEmail.contains("@")) {
+				String[] arrayE = mEmail.split("@");
+				mEmail1 = arrayE[0];
+				mEmail2 = arrayE[1];
+			}
+			vo.setmEmail1(mEmail1);
+			vo.setmEmail2(mEmail2);
 			int res=mybatis.insert("MemberDAO.insertKakao", vo);
-			System.out.println(res);
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {

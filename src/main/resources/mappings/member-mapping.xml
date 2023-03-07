@@ -46,7 +46,7 @@
 	</select>
 	
 	<select id="checkLike" resultType="mylike">
-		SELECT * FROM MYLIKE WHERE ML_PID=? AND ML_MID=?
+		SELECT ML_NUM,ML_MID,ML_PID FROM MYLIKE WHERE ML_PID=${mlPid} AND ML_MID=${mlMid}
 	</select>
 	
 </mapper>
