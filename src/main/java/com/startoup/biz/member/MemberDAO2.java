@@ -77,8 +77,10 @@ public class MemberDAO2 {
 	// 로그인
 	public MemberVO login(MemberVO vo) {
 		try {
+			System.out.println("my"+mybatis.selectOne("MemberDAO.login", vo));
 			return mybatis.selectOne("MemberDAO.login", vo);
 		} catch(Exception e) {
+			System.out.println(e);
 			return null;
 		}
 	}
