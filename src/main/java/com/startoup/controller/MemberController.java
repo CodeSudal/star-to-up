@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,12 +35,63 @@ public class MemberController {
 		return "myList.jsp";
 	}
 	
-	@RequestMapping(value="/login.do")
-	public String login() {
+	
+	@RequestMapping(value="/agreement.do")
+	public String agreement() {
 		
 		
+		return "agreement.jsp";
+	}
+	
+	// 로그인 페이지로 처음 이동할 때
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	public String loginView(@ModelAttribute("member") MemberVO vo) {
+
 		return "login.jsp";
 	}
+
+	// 로그인 했을 때
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public String selectOneMember(MemberVO vo, HttpSession session) {
+		System.out.println("selectOneMember() 입장");
+		/*
+		 * vo = memberService.selectOne(vo);
+		 * 
+		 * if (vo == null) { return "redirect:login.do"; } else {
+		 * session.setAttribute("member", vo); return "redirect:main.do"; }
+		 */
+		return "store.jsp";
+	}
+
+	// 로그아웃 했을 때
+	@RequestMapping(value = "/logout.do")
+	public String logoutMember(HttpSession session) {
+		System.out.println("logoutMember() 입장");
+
+		session.removeAttribute("member"); // 세션 특정 정보만 비우기
+
+		return "redirect:login.do";
+	}
+
+	@RequestMapping(value = "/join.do", method = RequestMethod.GET)
+	public String signupView() {
+		System.out.println("signupView() 입장");
+
+		return "signup.jsp";
+	}
+
+	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
+	public String insertMember(MemberVO vo) {
+		System.out.println("insertMember() 입장");
+
+		memberSI.insertMember(vo);
+
+		return "redirect:login.do";
+	}
+	
+	
+	
+	
 	
 	// 상품디테일 페이지 들어갔을 때 찜 여부 확인하기위함.
 		@RequestMapping(value = "/detail.do")
