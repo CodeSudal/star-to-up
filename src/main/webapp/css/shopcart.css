@@ -28,8 +28,8 @@ body {
    height: 100%;
    display: flex;
    justify-content: center;
-   align-items: center;
-   margin-top: 160px;
+   align-items:flex-start;
+   margin-top: 60px;
 }
 
 .container {
@@ -142,6 +142,8 @@ body {
    display: flex;
    align-items: center;
    margin-left: 20px;
+   font-family: NotoSans;
+   font-size: 20px;
 }
 
 .text_box {
