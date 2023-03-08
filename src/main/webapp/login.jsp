@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!-- d -->
+  
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -57,6 +57,10 @@
 				<img src="./img/kakao.png" />카카오로그인
 			</div>
 		</button>
+		<!-- 카카오 연결끊기-->
+      	<a href="javascript:kakaoDelete()" style="text-decoration: none;"> 
+            		<center><span style="color: white;">카카오회원탈퇴</span></center>
+        </a>
 		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 		<script>
 				  // SDK를 초기화 합니다. 사용할 앱 키(javascript 키) 입력합니다.
@@ -75,20 +79,21 @@
                           window.Kakao.API.request({
                             // 사용자 정보 가져오기
                       		url: '/v2/user/me',
-                         	//url: '/v1/user/unlink',
-                           // 연결 끊기(회원탈퇴)
+                         	
                             success: (response) => {
                               
-                         	 var accessToken = Kakao.Auth.getAccessToken(); // 엑세스 토큰 할당
-                         	 Kakao.Auth.setAccessToken(accessToken);	// 엑세스 토큰 사용하게 등록
+                         	// var accessToken = Kakao.Auth.getAccessToken(); // 엑세스 토큰 할당
+                         	// Kakao.Auth.setAccessToken(accessToken);	// 엑세스 토큰 사용하게 등록
 							
                          	 //this.kakaoLogin.setToken(e.data['access_token']);
-                         	 
+                         	 const id = response.id;  // 로그인 성공한 유저 고유 id 발급됨
                          	 const properties = response.properties;
-                              const name = properties.nickname;
-                              const email = response['kakao_account']['email'];
-                              
-                          	location.href="joinKakao.do?name=" + name + "&email=" + email; //리다이렉트 주소
+                             const name = properties.nickname;
+                             const email = response['kakao_account']['email'];
+                             console.log('email:'+email);
+                             console.log('id:'+id);
+                             
+                          	location.href="kakaoLogin.do?mName=" + name + "&mEmail1=" + email+"&mId="+id+"&kakao=kakao"; //리다이렉트 주소
                             },
                           });
                         },
@@ -97,11 +102,32 @@
                         },
                       });
                     }
-                  </script>
+                   
+                    /*카카오 연결끊기*/
+                    function kakaoDelete() { //탈퇴 버튼 클릭시 실행될 함수
+                       if (Kakao.Auth.getAccessToken()) {
+                          console.log(Kakao.Auth.getAccessToken())
+                          Kakao.API.request({
+                             url : '/v1/user/unlink', // --> 탈퇴시 url
+                             success : function(response) {
+                                console.log(response)
+                                alert("카카오 탈퇴 완료");
+                             },
+                             fail : function(error) {
+                                console.log(error)
+                             },
+                          })
+                          Kakao.Auth.setAccessToken(undefined)
+                       }
+                    }
+                    /*  카카오연결끊기 end */
 
-	</section>
+         </script>
+
+	     </section>
         <!-- Login Section End -->
-
+        
+       
         
 
         

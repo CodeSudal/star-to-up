@@ -21,22 +21,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link
-	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
-	rel="stylesheet" />
+   href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+   rel="stylesheet" />
 
 <!-- Icon Font Stylesheet -->
 <link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-	rel="stylesheet" />
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+   rel="stylesheet" />
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-	rel="stylesheet" />
+   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+   rel="stylesheet" />
 
 <!-- Libraries Stylesheet -->
 <link href="lib/owlcarousel/assets/owl.carousel.min.css"
-	rel="stylesheet" />
+   rel="stylesheet" />
 <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
-	rel="stylesheet" />
+   rel="stylesheet" />
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href="css/bootstrapAdmin.min.css" rel="stylesheet" />
@@ -103,30 +103,30 @@
 
 
 p[data-value] {
-	position: relative;
+   position: relative;
 }
 
 /* The percentage will automatically fall in place as soon as we make the width fluid. Now making widths fluid. */
 p[data-value]:after {
-	content: attr(data-value) '%';
-	position: absolute;
-	right: 0;
+   content: attr(data-value) '%';
+   position: absolute;
+   right: 0;
 }
 
 .funding::-webkit-progress-value {
-	/* Gradient background with Stripes */
-	background-image: -webkit-linear-gradient(135deg, transparent, transparent 33%, rgba(0, 0,
-		0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%),
-		-webkit-linear-gradient(top, rgba(255, 255, 255, .25),
-		rgba(0, 0, 0, .2)), -webkit-linear-gradient(left, #09c, #f44);
+   /* Gradient background with Stripes */
+   background-image: -webkit-linear-gradient(135deg, transparent, transparent 33%, rgba(0, 0,
+      0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%),
+      -webkit-linear-gradient(top, rgba(255, 255, 255, .25),
+      rgba(0, 0, 0, .2)), -webkit-linear-gradient(left, #09c, #f44);
 
 .btn-primary:disabled, .btn-primary.disabled {
     color:#6c7293 !important;
     background-color:  #fff !important;
     border-color:  #fff !important;
 }
-}		
-		
+}      
+      
 }
 </style>
 
@@ -137,188 +137,185 @@ p[data-value]:after {
 
 
 <body>
-	<div class="container-fluid position-relative d-flex p-0">
-		<!-- Spinner Start -->
-		<div id="spinner"
-			class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-			<div class="spinner-border text-primary"
-				style="width: 3rem; height: 3rem" role="status">
-				<span class="sr-only">Loading...</span>
-			</div>
-		</div>
-		<!-- Spinner End -->
-		
-		<!-- Sidebar Start -->
-		<STU:sideBar/>
-		<!-- Sidebar End -->
+   <div class="container-fluid position-relative d-flex p-0">
+      <!-- Spinner Start -->
+      <div id="spinner"
+         class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+         <div class="spinner-border text-primary"
+            style="width: 3rem; height: 3rem" role="status">
+            <span class="sr-only">Loading...</span>
+         </div>
+      </div>
+      <!-- Spinner End -->
+      
+      <!-- Sidebar Start -->
+      <STU:sideBar/>
+      <!-- Sidebar End -->
 
-		<!-- Content Start -->
-		<div class="content">
-			<!-- Navbar Start -->
-			<STU:navBar/>
-			<!-- Navbar End -->
-
-
-			<!-- Table Start -->
-			<div class="container-fluid pt-4 px-4">
-				<div class="row g-4">
-				
-				<div class="col-sm-12 col-xl-6" style="width: 100%">
-
-						<div class="bg-secondary rounded h-100 p-4"
-							style="width: 100%; float: left">
-							<h3 class="mb-4">Funding Management</h3>
-				
-				
-				
-					<c:forEach var="v" items="${fundingList}">
-						<div class="col-sm-12 col-xl-6 "
-							style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
-							<div class="bg-secondary h-100 p-4"
-								style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.2) !important">
-								<h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;${v.pName}
-								</h3>
-								<span class="${v.fNum}"
-									style="text-align: right; margin-left: 90%; color: white">${v.percent}%</span>
-								<div class="progress2 progress-moved" style="width: 100%">
-									<div class="progress-bar2" style="width: ${v.percent}%"></div>
-								</div>
-								<br> <br>
-								<form method="post" action="sendEmailQR.do?lPid=${v.lPid}"
-									enctype="multipart/form-data">
-									<c:choose>
-										<c:when test="${v.percent == 100}">
-											<button type="button" id="my-button"
-												class="btn btn-primary rounded-pill m-2"
-												style="padding: 10px 30px;" onclick="onClickUpload(); ">QR삽입</button>
-										</c:when>
-										<c:otherwise>
-										    <button type="button" id="my-button"
-												class="btn btn-primary rounded-pill m-2"
-												style="padding: 10px 30px;" onclick="onClickUpload(); disabled">QR삽입</button>
-										</c:otherwise>
-									</c:choose>
-									<a href="sendEmailQR.do?lPid=${v.lPid}"><button type="button"
-											class="btn btn-primary rounded-pill m-2"
-											style="padding: 10px 30px; float: right;" id="sendQR"
-											onclick="sendQR()" disabled>QR전송</button></a> <input
-										id="my-input" type="file" type="hidden"
-										onchange="readURL(this);" style="height: 1px; display: none;" />
-
-								</form>
-							</div>
-						</div>
-					</c:forEach>
-					
-
-				    <!-- ▼ 예시로 만들어져 있는 건 무조건 QR삽입 가능할 수 있게 만들어 놨어요
-					<div class="col-sm-12 col-xl-6 "
-							style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
-							<div class="bg-secondary h-100 p-4"
-								style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.2) !important">
-								<h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;Jupiter
-								</h3>
-								<span class="span2"
-									style="text-align: right; margin-left: 90%; color: white">100%</span>
-								<div class="progress2 progress-moved" style="width: 100%">
-									<div class="progress-bar2" style="width: 100%"></div>
-								</div>
-								<br> <br>
-								<form method="post" action="sendEmailQR.do?lPid=${v.lPid}"
-									enctype="multipart/form-data">
-									<button type="button" id="my-button"
-										class="btn btn-primary rounded-pill m-2"
-										style="padding: 10px 30px;" onclick="onClickUpload();">QR삽입</button>
-
-									<a href="sendEmailQR.do?lPid=${v.lPid}"><button type="button"
-											class="btn btn-primary rounded-pill m-2"
-											style="padding: 10px 30px; float: right;" id="sendQR"
-											onclick="sendQR()" disabled>QR전송</button></a> <input
-										id="my-input" type="file" type="hidden"
-										onchange="readURL(this);" style="height: 1px; display: none;" />
-
-								</form>
-							</div>
-						</div>
-						-->
-						
-						
-						
-				</div>
-			</div>
-			</div>
-			<!-- Table End -->
-		</div>
-	<!-- Content End -->
-	</div>
-
-	<!-- Back to Top -->
-	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
-		class="bi bi-arrow-up"></i></a>
+      <!-- Content Start -->
+      <div class="content">
+         <!-- Navbar Start -->
+         <STU:navBar/>
+         <!-- Navbar End -->
 
 
-	<!-- JavaScript Libraries -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="lib/chart/chart.min.js"></script>
-	<script src="lib/easing/easing.min.js"></script>
-	<script src="lib/waypoints/waypoints.min.js"></script>
-	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-	<script src="lib/tempusdominus/js/moment.min.js"></script>
-	<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-	<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+         <!-- Table Start -->
+         <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+            
+            <div class="col-sm-12 col-xl-6" style="width: 100%">
 
-	<script src="https://code.jquery.com/jquery-3.6.3.min.js"
-		integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-		crossorigin="anonymous"></script>
+                  <div class="bg-secondary rounded h-100 p-4"
+                     style="width: 100%; float: left">
+                     <h3 class="mb-4">Funding Management</h3>
+            
+            
+            
+               <c:forEach var="v" items="${fundingList}">
+                  <div class="col-sm-12 col-xl-6 "
+                     style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
+                     <div class="bg-secondary h-100 p-4"
+                        style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.2) !important">
+                        <h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;${v.pName}
+                        </h3>
+                        <span 
+                           style="text-align: right; margin-left: 90%; color: white">${v.percent}%</span>
+                        <div class="progress2 progress-moved" style="width: 100%">
+                           <div class="progress-bar2" style="width: ${v.percent}%"></div>
+                        </div>
+                        <br> <br>
+                        <form method="post" action="sendEmailQR.do?lPid=${v.pNum}"
+                           enctype="multipart/form-data">
+                           <c:choose>
+                              <c:when test="${v.percent==100}">
+                                 <button type="button" id="my-button"
+                                    class="btn btn-primary rounded-pill m-2"
+                                    style="padding: 10px 30px;" onclick="onClickUpload(); ">QR삽입</button>
+                              </c:when>
+                              <c:otherwise>
+                                  <button type="button" id="my-button"
+                                    class="btn btn-primary rounded-pill m-2"
+                                    style="padding: 10px 30px;" onclick="onClickUpload(); disabled">QR삽입</button>
+                              </c:otherwise>
+                           </c:choose>
+                           <a href="sendEmailQR.do?lPid=${v.pNum}"><button type="button"
+                                 class="btn btn-primary rounded-pill m-2"
+                                 style="padding: 10px 30px; float: right;" id="sendQR"
+                                 onclick="sendQR()" disabled>QR전송</button></a> <input
+                              id="my-input" type="file" type="hidden"
+                              onchange="readURL(this);" style="height: 1px; display: none;" />
 
-	<!-- QR삽입 버튼 활성화 JS -->
-	<script type="text/javascript">
-				function onClickUpload() {
-						let myInput = document.getElementById("my-input");
-						myInput.click();
-				}
-	</script>
+                        </form>
+                     </div>
+                  </div>
+               </c:forEach>
+               
+
+                <!-- ▼ 예시로 만들어져 있는 건 무조건 QR삽입 가능할 수 있게 만들어 놨어요
+               <div class="col-sm-12 col-xl-6 "
+                     style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
+                     <div class="bg-secondary h-100 p-4"
+                        style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.2) !important">
+                        <h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;Jupiter
+                        </h3>
+                        <span 
+                           style="text-align: right; margin-left: 90%; color: white">100%</span>
+                        <div class="progress2 progress-moved" style="width: 100%">
+                           <div class="progress-bar2" style="width: 100%"></div>
+                        </div>
+                        <br> <br>
+                        <form method="post" action="sendEmailQR.do?lPid=${v.lPid}"
+                           enctype="multipart/form-data">
+                           <button type="button" id="my-button"
+                              class="btn btn-primary rounded-pill m-2"
+                              style="padding: 10px 30px;" onclick="onClickUpload();">QR삽입</button>
+
+                           <a href="sendEmailQR.do?lPid=${v.lPid}"><button type="button"
+                                 class="btn btn-primary rounded-pill m-2"
+                                 style="padding: 10px 30px; float: right;" id="sendQR"
+                                 onclick="sendQR()" disabled>QR전송</button></a> <input
+                              id="my-input" type="file" type="hidden"
+                              onchange="readURL(this);" style="height: 1px; display: none;" />
+
+                        </form>
+                     </div>
+                  </div>
+                  -->
+                  
+                  
+                  
+            </div>
+         </div>
+         </div>
+         <!-- Table End -->
+      </div>
+   <!-- Content End -->
+   </div>
+
+   <!-- Back to Top -->
+   <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+      class="bi bi-arrow-up"></i></a>
 
 
-	<!-- QR추가 + QR전송 버튼 활성화  JS -->
-	<script type="text/javascript">
-				function readURL(input) {	
-				 	 console.log('들어왔음');
-				 	 const qrBtn = document.getElementById('my-button');
-				  	 const sendBtn = document.getElementById('sendQR');
-				    
-				  	//QR추가 했다면
-				  	if (input.files && input.files[0]) {
-					  	console.log('파일 있음');
-					  	//QR삽입 버튼 스타일 
-						qrBtn.style.backgroundColor = "#6c7293";
-					 	qrBtn.style.color = "#fff";
-						qrBtn.style.borderColor = "#6c7293";
-						//QR전송 버튼 활성화됨
-						 $("#sendQR").prop("disabled",false);	
-					
-				  } else { //QR추가 안 했다면
-					  console.log('파일 없음');
-				      //QR삽입 버튼 스타일
-					  qrBtn.style.backgroundColor = "#fff";
-					  qrBtn.style.color = "#6c7293";
-					  qrBtn.style.borderColor = "#fff";
-					  //QR전송 버튼은 활성화 안 됨
-					  
-				  }
-			
-			}
-		
-			</script>
+   <!-- JavaScript Libraries -->
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="lib/chart/chart.min.js"></script>
+   <script src="lib/easing/easing.min.js"></script>
+   <script src="lib/waypoints/waypoints.min.js"></script>
+   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+   <script src="lib/tempusdominus/js/moment.min.js"></script>
+   <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+   <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"></script>
+
+   <!-- QR삽입 버튼 활성화 JS -->
+   <script type="text/javascript">
+            function onClickUpload() {
+                  let myInput = document.getElementById("my-input");
+                  myInput.click();
+            }
+   </script>
 
 
+   <!-- QR추가 + QR전송 버튼 활성화  JS -->
+   <script type="text/javascript">
+            function readURL(input) {   
+                 console.log('들어왔음');
+                 const qrBtn = document.getElementById('my-button');
+                  const sendBtn = document.getElementById('sendQR');
+                
+                 //QR추가 했다면
+                 if (input.files && input.files[0]) {
+                    console.log('파일 있음');
+                    //QR삽입 버튼 스타일 
+                  qrBtn.style.backgroundColor = "#6c7293";
+                   qrBtn.style.color = "#fff";
+                  qrBtn.style.borderColor = "#6c7293";
+                  //QR전송 버튼 활성화됨
+                   $("#sendQR").prop("disabled",false);   
+               
+              } else { //QR추가 안 했다면
+                 console.log('파일 없음');
+                  //QR삽입 버튼 스타일
+                 qrBtn.style.backgroundColor = "#fff";
+                 qrBtn.style.color = "#6c7293";
+                 qrBtn.style.borderColor = "#fff";
+                 //QR전송 버튼은 활성화 안 됨
+                 
+              }
+         
+         }
+      
+   </script>
 
-	<!-- Template Javascript -->
-	<script src="js/mainAdmin.js"></script>
+   <!-- Template Javascript -->
+   <script src="js/mainAdmin.js"></script>
 </body>
 </html>
 
     
-

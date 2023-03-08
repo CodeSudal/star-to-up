@@ -117,7 +117,7 @@ input:checked+.osSlider:before {
 
 	<div class="regi_wrap">
 
-		<form name="fregister" id="fregister" action="#"
+		<form name="fregister" id="fregister" action="join.do"
 			onsubmit="fregister_submit(this);" autocomplete="off"
 			style="font-family: 'Noto Sans';">
 
@@ -167,8 +167,8 @@ input:checked+.osSlider:before {
 				</fieldset>
 			</section>
 			<div class="btn_submitdd">
-				<input type="button" disabled="disabled" class="btn_submit"
-					value="다음으로" onclick="location.href='join.do'"
+				<input type="submit" disabled="disabled" class="btn_submit"
+					value="다음으로" 
 					style="font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 24px; line-height: 33px; color: #FFFFFF; background: #D9D9D9; width: 200px; height: 60px; border-radius: 30.5px; border: none; margin-top: 60px; margin-left: 83%; margin-bottom: 60px;">
 			</div>
 		</form>
