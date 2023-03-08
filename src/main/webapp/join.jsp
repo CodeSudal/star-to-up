@@ -59,7 +59,7 @@ select::-ms-expand {
 		  var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
 		  var getName= RegExp(/^(?:[가-힣]{2,})+$/);
 /* 		  var getName= RegExp(/^[가-힣]+$/); */
-		  var emaCheck = /^[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
+		  var emaCheck = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{5,15}$/;
 		  var phoCheck = /01[016789][^0][0-9]{3,4}[0-9]{4}/;
 		  
 		  var id = $('#id').val();
@@ -83,7 +83,10 @@ select::-ms-expand {
 			          $('#id_result').css('color','red');
 			          
 			        } 
-			        if (id != '' && !idCheck.test(id)) {
+			  	  if (id == '' ) {
+					  $('#id_result').text('');
+
+				  }else if (id != '' && !idCheck.test(id)) {
 			        	$('#id_result').text('아이디는 2-10자의 영문과 숫자와 일부 특수문자(._-)만 사용해야 합니다.');
 					    $('#id_result').css('color','red');
 					  }else {
@@ -97,8 +100,11 @@ select::-ms-expand {
 			    });
 			  });
 		
-		  
-		  if (password != '' && !pwdCheck.test(password)) {
+		 
+		  if (password == '' ) {
+			  $('#pw_result').text('');
+
+		  }else if (password != '' && !pwdCheck.test(password)) {
 			  $('#pw_result').text('비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.');
 			    $('#pw_result').css('color','red');
 
@@ -107,13 +113,34 @@ select::-ms-expand {
 			    $('#pw_result').css('color','green');
 		  }
 		  
-		  if (username != '' && !getName.test(username)) {
+		  if (username == '' ) {
+			  $('#name_result').text('');
+
+		  }else if (username != '' && !getName.test(username)) {
 			  $('#name_result').text('이름은 한글 2글자 이상 입력해야합니다.');
 			  $('#name_result').css('color','red');
 		  }else{
 			  $('#name_result').text('올바른 이름입니다.');
 			  $('#name_result').css('color','green');
 		  }
+		  
+	        if ( email== '' ) {
+				  $('#email_result').text('');
+				  $('#email_result2').text('');
+
+			  }
+	        else if (email != '' && !emaCheck.test(email)) {
+				  $('#email_result').text('5 ~ 15자 영문, 숫자 조합으로 입력해주세요.');
+				  $('#email_result').css('color','red');
+			  }else{
+				  $('#email_result').text('올바른 이메일 형식입니다.');
+				  $('#email_result').css('color','green');
+			  }
+	        if ( emailSel == '' ) {
+				  $('#email_result2').text('');
+
+			  }
+	     
 
 		  
 		  // email input change event handler
@@ -127,23 +154,24 @@ select::-ms-expand {
 		  });
 
 		  function checkEmailDuplicate() {
-		    var email = $('#email').val() + '@' + $('#email_sel').val();
+		    var useremail = $('#email').val() + '@' + $('#email_sel').val();
 		    $.ajax({
 		      url: 'join.do',
 		      type: 'POST',
-		      data: { email: email },
+		      data: { useremail: useremail },
 		      success: function(response) {
 		        if (response == 'duplicate') {
-		        	   $('#email_result').text('중복된 이메일입니다. 다시 입력해주세요.');
-				          $('#email_result').css('color','red');
+		        	   $('#email_result2').text('중복된 이메일입니다. 다시 선택해주세요.');
+				          $('#email_result2').css('color','red');
 		        }
-		        else if (email != '' && !emaCheck.test(email)) {
-					  $('#email_result').text('올바른 이메일 형식이 아닙니다.');
-					  $('#email_result').css('color','red');
-				  }else {
-		        	   $('#email_result').text('사용하실 수 있는 이메일입니다.');
-				          $('#email_result').css('color','green');
-		      };
+		        else if(emailSel != '' &&  email != '' && emaCheck.test(email)){
+		        	   $('#email_result2').text('사용하실 수 있는 이메일입니다.');
+				          $('#email_result2').css('color','green');
+		      }else{
+		    	  $('#email_result2').text('사용하실 수 없는 이메일입니다.');
+		    	  $('#email_result2').css('color','red');
+		      }
+
 		    }
 		  });
 		};
@@ -165,83 +193,81 @@ select::-ms-expand {
       	  }); */
     	    
       	//휴대폰 번호 인증
-      	
+      	  if (phone == '') {
+            			$('#phone_result').text('');
+            			
+            		    }
+            		  else if (phone != '' && !phoCheck.test(phone)) {
+            			$('#phone_result').text('올바른 전화번호를 입력하세요.');
+            			$('#phone_result').css('color','red');
+             	    }
+            		  else{
+            			$('#phone_result').text('올바른 전화번호입니다.');
+            			$('#phone_result').css('color','green');
+            				$("#phoneChk").attr("disabled",false);
+            		  }
+      	  
+      	  
+          if(phone2 == ''){
+        	  $('#phone2_result').text('');
+          }else{
+
+        	  $("#phoneChk2").attr("disabled",false);
+          	 
+          	 	}
+          	 	
       		 var code2 = "";
-      		  if (phone.val() == '') {
-      			$('#phone_result').text('전화번호를 입력하세요.');
-      			$('#phone_result').css('color','red');
-      			
-      		    }
-      		  else if (phone != '' && !phoCheck.test(phone)) {
-      			$('#phone_result').text('올바른 전화번호를 입력하세요.');
-      			$('#phone_result').css('color','red');
-       	    }
-      		  else{
-      			$('#phone_result').text('올바른 전화번호를 입니다.');
-      			$('#phone_result').css('color','green');
-      				$("#phoneChk").attr("disabled",false);
-      			$("#phoneChk").click(function(){
-      	
-      	 	alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
-      	 	var phone = $("#phone").val();
+            				$("#phoneChk").click(function(){
+            					alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오."); 
+            					var phone = $("#phone").val();
       		
       	 	$.ajax({
       	         type:"GET",
       	         url:"phoneCheck.do?phone=" + phone,
       	         cache : false,
       	         success:function(data){
-      	         	if(data == "error"){
-      	         		alert("휴대폰 번호가 올바르지 않습니다.")
-      	 				$("#phone").attr("autofocus",true);
-      	         	}else if(data == null){
-      	         		alert("휴대폰 번호를 입력해주세요!")
-      	 				$("#phone").attr("autofocus",true);
-      	         	}else{	        		
-      	         		
+      
       	         		$("#phone2").attr("disabled",false);
       	         		$("#phoneChk2").css("display","inline-block");
       	         		$("#phoneChk").css("backgroundColor","black");
       	         		$("#phoneChk").text("발송완료");
       	         		$("#phone").attr("readonly",true);
       	         		code2 = data;
+      	    	            	 	       		
       	         	}
-      	         }
+      	         
       	     });
       	 
       		 });
-      		  }
+      		  
       		  
       	 
       	//휴대폰 인증번호 대조
-      if(phone2.val() != ''){
-    	  
-    	  $("#phoneChk2").attr("disabled",false);
-    
-      
-      	 	if($("#phone2").val() != code2){
-      	 		$('#phone2_result').text('인증번호가 일치하지 않습니다.');
-      	 		$('#phone2_result').css('color','red');
-      	 		$("#phoneDoubleChk").val("false");
-      	 		$(this).attr("autofocus",true);
-      	 	}
-      	 		else{
-    
-      	 			$('#phone2_result').text('인증번호가 일치합니다.');
-      	 			$('#phone_result').css('color','green');
-      	 			
-      			 $("#phoneChk2").click(function(){
-      	 		("#phoneChk2").css("backgroundColor","black");
-      	 		("#phoneChk2").text("인증완료");
-      	 		$("#phoneDoubleChk").val("true");
-      	 		$("#phone2").attr("disabled",true);
-      	 		
-      	 		
-      	 	});
-      	 		}
-      	 }
       	
-      	if(id.val() != ''&& password.val() != '' && username.val() != '' && email.val() != '' && 
-      			email_sel.val() != '' && phone.val() != '' && phone2.val() != ''){
+      	
+  	 $("#phoneChk2").click(function(){
+ 		 	if($("#phone2").val() == code2){
+ 		 		$('#phone2_result').text('인증번호가 일치합니다.');
+  	 			$('#phone2_result').css('color','green');
+ 		 		("#phoneChk2").css("backgroundColor","black");
+ 		 		("#phoneChk2").text("인증완료");
+ 		 		$("#phoneDoubleChk").val("true");
+ 		 		$("#phone2").attr("disabled",true);
+ 		 	}else{
+ 		 		alert("인증번호가 일치하지 않습니다.")
+ 		 		$("#phoneDoubleChk").val("false");
+ 		 		$(this).attr("autofocus",true);
+ 		 	}
+ 		 });
+    
+      	 			
+      	 			
+      		
+      	 		
+      	 
+      	
+      	if(id != ''&& password != '' && username != '' && email != '' && 
+      			email_sel != '' && phone != '' && phone2 != ''){
       		$("#btn-save").attr("disabled",false);
       	}
     	    
@@ -250,7 +276,6 @@ select::-ms-expand {
     	    
     	    // 입력 값 전송
     	    $('#btn-save').submit();
-    	    console.log(document);
       		  });
 
   });
@@ -349,7 +374,7 @@ select::-ms-expand {
 					@ </span>
 
 				<div class="checkout__form__input2">
-					<select id="email_sel" name="email_sel" class="email_sel" required
+					<select id="email_sel" name="email_sel"  required
 						style="width: 400px; height: 50px;
 	/* width: 100%; */ border: 1px solid #e1e1e1; border-radius: 2px; margin-bottom: 25px; font-size: 14px; padding-left: 10px; color: #666666; margin-left: 10px; float: left; display: inline;">
 						<option value="">이메일 선택</option>
@@ -368,6 +393,7 @@ select::-ms-expand {
 						<option value="dreamwiz.com">dreamwiz.com</option>
 						<option value="paran.com">paran.com</option>
 					</select>
+				<span id="email_result2"></span>
 
 
 				</div>
@@ -383,15 +409,15 @@ select::-ms-expand {
 						style="float: left; width: 400px;" required>
 						<span id="phone_result"></span>
 				</div>
-				<button id="phoneChk" class="doubleChk" disabled
+				<button id="phoneChk" class="doubleChk" 
 					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;">
 					인증번호 발송</button>
 				<div class="checkout__form__input" style="width: 50%;">
 					<input id="phone2" type="text" name="phone2"
-						style="float: left; width: 400px;" disabled required>
+						style="float: left; width: 400px;" required>
 						<span id="phone2_result"></span>
 				</div>
-				<button id="phoneChk2" class="doubleChk" disabled
+				<button id="phoneChk2" class="doubleChk" 
 					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;">
 					본인인증</button>
 
