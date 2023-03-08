@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Header</title>
 
 <link rel="stylesheet" href="css/font.css" type="text/css">
 <link
@@ -48,7 +48,7 @@
             <div class="icon_box1">
                <nav class="header__menu">
                   <ul>
-                     <li style="position: relative;"><a href="adminFunding.do"><span
+                     <li style="position: relative;"><a href="#"><span
                            class="material-symbols-outlined">&#xF0D3;</span></a>
                         <ul class="dropdown"
                            style="text-align: right; width: 110px; border-radius: 5px; background-color: rgba(0, 0, 0, 0.3); position: absolute; left: -80px; top: 38px">
@@ -68,7 +68,7 @@
                           	 </c:when>
                            	 <c:otherwise>
                            	 	<li><a href="login.do">로그인</a></li>
-                           		<li><a href="join.do">회원가입</a></li>
+                           		<li><a href="agreement.do">회원가입</a></li>
 							</c:otherwise>
 						  </c:choose>		
                         </ul></li>
