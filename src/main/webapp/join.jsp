@@ -164,7 +164,7 @@ select::-ms-expand {
       email.focus();
       return false;
       
-
+    }
 
     	  
     	    var emaCheck = /^[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
@@ -174,7 +174,7 @@ select::-ms-expand {
     	      return false;
     	    }
 
-    }
+    
     if (phone.val() == '') {
       alert('전화번호를 입력하세요.');
       phone.focus();
@@ -201,9 +201,9 @@ select::-ms-expand {
     	    // 입력 값 전송
     	    $('#btn-save').submit();
     	    console.log(document);
-    	  });
+    	  
 
-    	 
+  });
     	  
     	  
 	
@@ -257,10 +257,12 @@ select::-ms-expand {
 		        }else {
 		        	   $('#email_result').text('사용하실 수 있는 이메일입니다.');
 				          $('#email_result').css('color','green');
-		      }
-		    });
-		  }
-		});
+		      };
+		    }
+		  });
+		};
+	});
+	
   </script>
 
 <meta charset="UTF-8">
@@ -332,14 +334,13 @@ select::-ms-expand {
 					</p>
 					<input type="text"
 						style="float: left; width: 400px; margin-right: 10px;" id="email"
-						name="email" required>
-						<span id="email_result"></span>
+						name="email" required> <span id="email_result"></span>
 				</div>
 				<span style="display: inline; float: left; margin-top: 10px;">
 					@ </span>
 
 				<div class="checkout__form__input2">
-					<select id="email_sel" name="email_sel"class="email_sel" required
+					<select id="email_sel" name="email_sel" class="email_sel" required
 						style="width: 400px; height: 50px;
 	/* width: 100%; */ border: 1px solid #e1e1e1; border-radius: 2px; margin-bottom: 25px; font-size: 14px; padding-left: 10px; color: #666666; margin-left: 10px; float: left; display: inline;">
 						<option value="">이메일 선택</option>
