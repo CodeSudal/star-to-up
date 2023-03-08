@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="zxx">
-<head>
+<html lang="zxx"><head>
 <meta charset="UTF-8">
 <meta name="description" content="Ashion Template">
 <meta name="keywords" content="Ashion, unica, creative, html">
@@ -27,15 +26,15 @@
 select::-ms-expand {
 	display: none;
 } */
+
+#star {
+	color: red;
+}
 </style>
 
 <!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Cookie&amp;display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cookie&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -124,22 +123,7 @@ select::-ms-expand {
 			  $('#name_result').css('color','green');
 		  }
 		  
-	        if ( email== '' ) {
-				  $('#email_result').text('');
-				  $('#email_result2').text('');
-
-			  }
-	        else if (email != '' && !emaCheck.test(email)) {
-				  $('#email_result').text('5 ~ 15자 영문, 숫자 조합으로 입력해주세요.');
-				  $('#email_result').css('color','red');
-			  }else{
-				  $('#email_result').text('올바른 이메일 형식입니다.');
-				  $('#email_result').css('color','green');
-			  }
-	        if ( emailSel == '' ) {
-				  $('#email_result2').text('');
-
-			  }
+	  
 	     
 
 		  
@@ -161,15 +145,12 @@ select::-ms-expand {
 		      data: { useremail: useremail },
 		      success: function(response) {
 		        if (response == 'duplicate') {
-		        	   $('#email_result2').text('중복된 이메일입니다. 다시 선택해주세요.');
-				          $('#email_result2').css('color','red');
+		        	   $('#email_result').text('중복된 이메일입니다. 다시 선택해주세요.');
+				          $('#email_result').css('color','red');
 		        }
-		        else if(emailSel != '' &&  email != '' && emaCheck.test(email)){
-		        	   $('#email_result2').text('사용하실 수 있는 이메일입니다.');
-				          $('#email_result2').css('color','green');
-		      }else{
-		    	  $('#email_result2').text('사용하실 수 없는 이메일입니다.');
-		    	  $('#email_result2').css('color','red');
+		        else if(emailSel != '' &&  response != 'duplicate' && email != '' && emaCheck.test(email)){
+		        	   $('#email_result').text('사용하실 수 있는 이메일입니다.');
+				          $('#email_result').css('color','green');
 		      }
 
 		    }
@@ -193,34 +174,26 @@ select::-ms-expand {
       	  }); */
     	    
       	//휴대폰 번호 인증
-      	  if (phone == '') {
-            			$('#phone_result').text('');
-            			
-            		    }
-            		  else if (phone != '' && !phoCheck.test(phone)) {
-            			$('#phone_result').text('올바른 전화번호를 입력하세요.');
-            			$('#phone_result').css('color','red');
-             	    }
-            		  else{
-            			$('#phone_result').text('올바른 전화번호입니다.');
-            			$('#phone_result').css('color','green');
-            				$("#phoneChk").attr("disabled",false);
-            		  }
+      	
       	  
       	  
-          if(phone2 == ''){
-        	  $('#phone2_result').text('');
-          }else{
 
-        	  $("#phoneChk2").attr("disabled",false);
+        	  
           	 
-          	 	}
           	 	
       		 var code2 = "";
             				$("#phoneChk").click(function(){
-            					alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오."); 
-            					var phone = $("#phone").val();
-      		
+            					  if (phone == '') {
+            				      		alert("번호를 입력해주세요.");   			
+            				            		    }
+            				            		  else if (phone != '' && !phoCheck.test(phone)) {
+            				            		alert('올바른 전화번호를 입력하세요.');
+            				             	    }
+            				            		  else{
+            				            			  alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오."); 
+            				      					var phone = $("#phone").val();
+            				      					$("#phoneChk2").attr("disabled",false);
+            				            		  }
       	 	$.ajax({
       	         type:"GET",
       	         url:"phoneCheck.do?phone=" + phone,
@@ -247,8 +220,7 @@ select::-ms-expand {
       	
   	 $("#phoneChk2").click(function(){
  		 	if($("#phone2").val() == code2){
- 		 		$('#phone2_result').text('인증번호가 일치합니다.');
-  	 			$('#phone2_result').css('color','green');
+ 		 		alert("인증번호가 일치합니다.");
  		 		("#phoneChk2").css("backgroundColor","black");
  		 		("#phoneChk2").text("인증완료");
  		 		$("#phoneDoubleChk").val("true");
@@ -302,9 +274,7 @@ select::-ms-expand {
 <title>Document</title>
 
 <link rel="stylesheet" href="css/font.css" type="text/css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/shopcart.css" type="text/css">
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -315,12 +285,30 @@ select::-ms-expand {
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
-</head>
 
 
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+<!-- Css Styles -->
 
 
 <%@ include file="header.jsp"%>
+
+
 <body>
 
 	<!-- Header Section End -->
@@ -333,50 +321,53 @@ select::-ms-expand {
 
 	<form action="#" class="checkout__form">
 		<div class="col-lg-8">
-			<h5
-				style="font-weight: 700; font-size: 32px; font-family: 'Noto Sans'; margin-top: 50px; margin-left: 50px; border-bottom: white;">회원가입</h5>
+			<h5 style="font-weight: 700; font-size: 32px; font-family: 'Noto Sans'; margin-top: 50px; margin-left: 50px; border-bottom: white;">회원가입</h5>
 
-			<div class="col-lg-12"
-				style="font-family: 'Noto Sans'; margin-left: 120px; width: 100%; font-size: 20px;">
+			<div class="col-lg-12" style="font-family: 'Noto Sans'; margin-left: 120px; width: 100%; font-size: 20px;">
 				<div class="checkout__form__input">
 					<p>
-						아이디<span>*</span>
+						아이디 <span id=star> *</span>
 					</p>
-					<input type="text" style="width: 400px;" id="id" name="id" required>
-					<span id="id_result"></span>
+					<input type="text" style="width: 400px;display: block;margin-bottom: 0;" id="id" name="id" required="">
+					<span id="id_result" style="color: rgb(0, 128, 0);font-size: small;"></span>
 				</div>
-				<div class="checkout__form__input" style="width: 50%;">
+				<div class="checkout__form__input" style="/* width: 50%; */margin-top: 10px;">
 					<p>
-						비밀번호<span>*</span>
+						비밀번호 <span id=star> *</span>
 					</p>
-					<input type="password" style="width: 400px;" id="password"
-						name="password" required>
-						<span id="pw_result"></span>
+					<input type="password" style="width: 400px;display: block;margin-bottom: 0;" id="password" name="password" required="">
+						<span id="pw_result" style="color: rgb(255, 0, 0);font-size: small;"></span>
 				</div>
-				<div class="checkout__form__input">
+				<div class="checkout__form__input" style="
+    margin-top: 10px;
+">
 					<p>
-						이름 <span>*</span>
+						이름 <span id=star> *</span>
 					</p>
-					<input type="text" style="width: 400px;" id="username"
-						name="username" required>
-						<span id="name_result"></span>
+					<input type="text" style="width: 400px;display: block;margin-bottom: 0;" id="username" name="username" required="">
+						<span id="name_result" style="color: rgb(255, 0, 0);font-size: small;"></span>
 				</div>
-				<div class="checkout__form__input" style="width: 50%;">
+				<div class="checkout__form__input" style="margin-top: 10px;">
 					<p>
-						이메일 <span>*</span>
+						이메일 <span id=star> *</span>
 					</p>
-					<input type="text"
-						style="float: left; width: 400px; margin-right: 10px;" id="email"
-						name="email" required> <span id="email_result"></span>
-						<span id="email_result"></span>
-				</div>
-				<span style="display: inline; float: left; margin-top: 10px;">
+					<input type="text" style="float: left;width: 400px;margin-right: 10px;display: inline-block;" id="email" name="email" required=""> <span id="email_result" style="color: rgb(255, 0, 0);/* float: left; */font-size: small;"></span>
+				<span style="display: inline-block;float: left;margin-top: 10px;">
 					@ </span>
-
-				<div class="checkout__form__input2">
-					<select id="email_sel" name="email_sel"  required
-						style="width: 400px; height: 50px;
-	/* width: 100%; */ border: 1px solid #e1e1e1; border-radius: 2px; margin-bottom: 25px; font-size: 14px; padding-left: 10px; color: #666666; margin-left: 10px; float: left; display: inline;">
+					<select id="email_sel" name="email_sel" required="" style="
+	width: 400px;
+	height: 50px;
+	/* width: 100%; */
+	border: 1px solid #e1e1e1;
+	border-radius: 2px;
+	margin-bottom: 25px;
+	font-size: 14px;
+	padding-left: 10px;
+	color: #666666;
+	margin-left: 10px;
+	float: left;
+	/* display: block; */
+	">
 						<option value="">이메일 선택</option>
 						<option value="naver.com">naver.com</option>
 						<option value="gmail.com">gmail.com</option>
@@ -393,40 +384,40 @@ select::-ms-expand {
 						<option value="dreamwiz.com">dreamwiz.com</option>
 						<option value="paran.com">paran.com</option>
 					</select>
-				<span id="email_result2"></span>
+
+					<span id="email_result"></span>
+</div>
 
 
-				</div>
 
+					
 				<div class="checkout__form__input" style="width: 50%;">
 
 
 
 					<p id="pho">
-						전화번호 <span>*</span>
+						전화번호 <span id=star> *</span>
 					</p>
 					<input id="phone" name="phone" type="text"
 						style="float: left; width: 400px;" required>
-						<span id="phone_result"></span>
 				</div>
-				<button id="phoneChk" class="doubleChk" 
+				<button id="phoneChk" class="doubleChk"
 					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;">
 					인증번호 발송</button>
+					<span id="phone_result"></span> 
+					
 				<div class="checkout__form__input" style="width: 50%;">
 					<input id="phone2" type="text" name="phone2"
-						style="float: left; width: 400px;" required>
-						<span id="phone2_result"></span>
+						style="float: left; width: 400px;"  required>
 				</div>
-				<button id="phoneChk2" class="doubleChk" 
+				<button id="phoneChk2" class="doubleChk"
 					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;">
 					본인인증</button>
+					<span id="phone2_result"></span>
 
 
-
-				<button id="btn-save" class="site-btn"
-					style="height: 50px; width: 200px; background: #D9D9D9; border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;"disabled>가입하기
+				<button id="btn-save" class="site-btn" style="height: 50px; width: 200px; background: #D9D9D9; border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;" >가입하기
 				</button>
-
 
 			</div>
 		</div>
@@ -459,5 +450,6 @@ select::-ms-expand {
 	<script src="js/main.js"></script>
 
 
-</body>
-</html>
+
+
+</body></html>
