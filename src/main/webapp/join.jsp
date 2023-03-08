@@ -18,9 +18,21 @@
 	background-color: black !important;
 }
 
-#star {
-	color: red;
+/* select {
+	width: 200px;
+	padding: .8em .5em;
+	border: 1px solid #999;
+	font-family: inherit;
+	background: url('img/arrow.png') no-repeat 95% 50%;
+	border-radius: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
+
+select::-ms-expand {
+	display: none;
+} */
 </style>
 
 <!-- Google Font -->
@@ -42,19 +54,14 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
-/* 	$(document).ready(function(){
+	$(document).ready(function(){
 		//휴대폰 번호 인증
-		  var code2 = "";
-		var phone = document.getElementById('phone');
+		var code2 = "";
 		 $("#phoneChk").click(function(){
-			if(!phone){
-		 	alert("인증번호 발송 실패.. 전화번호를 입력해주세요.");
-				
-				
-			}else{
+		
 		 	alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
 		 	var phone = $("#phone").val();
-			}
+			
 		 	$.ajax({
 		         type:"GET",
 		         url:"phoneCheck.do?phone=" + phone,
@@ -92,155 +99,168 @@
 		 		$(this).attr("autofocus",true);
 		 	}
 		 });
-	}); */
+
+ 
+    	
+    	
+  // joinform_check 함수로 유효성 검사
+  $("#btn-save").click(function(){
+	  console.log()
+	  
+  
+    // 변수에 담아주기
+    var id = $('#id');
+    var password = $('#password');
+    var username = $('#username');
+    var email = $('#email');
+    const emailSel = $("#email_sel");
+    var phone = $('#phone');
+    /* var agree = $('#agree'); */
+
+
+		  
+    if (id.val() == '') {
+      alert('아이디를 입력하세요.');
+      id.focus();
+      return false;
+    }
+
+    var idCheck = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
+    if (!idCheck.test(id.val())) {
+      alert('아이디는 2-10자의 영문과 숫자와 일부 특수문자(._-)만 사용해야 합니다.');
+      id.focus();
+      return false;
+    }
+
+    if (password.val() == '') {
+      alert('비밀번호를 입력하세요.');
+      password.focus();
+      return false;
+    }
+
+    // 비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
+    var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    if (!pwdCheck.test(password.val())) {
+      alert('비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.');
+      password.focus();
+      return false;
+    }
+
+    if (username.val() == '') {
+      alert('이름을 입력하세요.');
+      username.focus();
+      return false;
+    }
+    var getName= RegExp(/^[가-힣]+$/);
+    if(!getName.test($("#username").val())){
+        alert("이름형식에 맞게 입력해주세요")
+        $("#username").val("");
+        $("#username").focus();
+        return false;
+      }
+    
+    if (email.val() == '') {
+      alert('이메일 앞자리를 입력하세요.');
+      email.focus();
+      return false;
+      
+
+
+    	  
+    	    var emaCheck = /^[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
+    	    if (!emaCheck.test(email.val())) {
+    	      alert('올바른 이메일 형식이 아닙니다.');
+    	      email.focus();
+    	      return false;
+    	    }
+
+    }
+    if (phone.val() == '') {
+      alert('전화번호를 입력하세요.');
+      phone.focus();
+      return false;
+    }
+    	    var phoCheck = /01[016789][^0][0-9]{3,4}[0-9]{4}/;
+    	    if (!phoCheck.test(phone.val())) {
+    	      alert('올바른 전화번호를 입력해주세요.');
+    	      phone.focus();
+    	      return false;
+    	    }
+
+    	    // 이메일 옵션 선택 후 주소 자동 완성
+    	    var idx = email_sel.prop('selectedIndex');
+    	    var val = email_sel.find('option').eq(idx).val();
+    	    email_add.val(val);
+
+    	    // 이메일 옵션 선택 시 주소 자동 완성
+      	  $('#email_sel').change(function() {
+      	    var val = $(this).val();
+      	    $('#email').val(val);
+      	 
+      	  });
+    	    // 입력 값 전송
+    	    $('#btn-save').submit();
+    	    console.log(document);
+    	  });
+
+    	 
+    	  
+    	  
+	
+		  $('#id').on('input', function() {
+		    var id = $(this).val();
+		    $.ajax({
+		      url: 'join.do',
+		      type: 'POST',
+		      data: {'id': id},
+		      success: function(response) {
+		        if (response == 'duplicate') {
+		          $('#id_result').text('중복된 아이디입니다. 다시 입력해주세요');
+		          $('#id_result').css('color','red');
+		          
+		        } else {
+		        	   $('#id_result').text('사용하실 수 있는 아이디입니다.');
+				          $('#id_result').css('color','green');
+		        	
+		          
+		        }
+		      },
+		      error: function(xhr, status, error) {
+		        alert('Error: ' + error.message);
+		      }
+		    });
+		  });
  
 	
-	$(document).ready(function(){
-		
-/* 	
-	 //joinform_check 함수로 유효성 검사
-    function joinform_check() {
-      //console.log("log");
-      //변수에 담아주기
-      var id = document.getElementById('id');
-      var password = document.getElementById('password');
-      var username = document.getElementById('username');
-      var email = document.getElementById('email');
-      var email_sel = document.getElementById('email_sel');
-      var phone = document.getElementById('phone');
-      
-      if (!id.value) {
-        //해당 입력값이 없을 경우 같은말: if(!id.value)
-        alert('아이디를 입력하세요.');
-        id.focus(); //focus(): 커서가 깜빡이는 현상, blur(): 커서가 사라지는 현상
-        return false; //return: 반환하다 return false:  아무것도 반환하지 말아라 아래 코드부터 아무것도 진행하지 말것
-      }
-      var idCheck = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
-      if (!idCheck.test(id.value)) {
-        alert(
-          '아이디는 2-10자의 영문과 숫자와 일부 특수문자(._-)만 사용해야 합니다.',
-        );
+		  // email input change event handler
+		  $('#email').on('input', function() {
+		    checkEmailDuplicate();
+		  });
 
-        id.focus();
-        return false;
-      }
-      var id=$('#id').val(); // $('id 속성이 id인 요소')의 값을 불러올래!
-		$.ajax({
-			type: 'POST',
-			url: 'check',
-			data: {id:id},
-			success: function(result){
-				
-				if(result==1){
-					$('#checkmsg').html('사용가능한 아이디'); // $('id 속성이 checkmsg인 요소')에 텍스트 추가
-					var checkSave=$('#id').val();
-				}	
-				else{
-					$('#checkmsg').html('중복된 아이디');
-				}
-			}
-		})
-      if (!password.value) {
-        alert('비밀번호를 입력하세요.');
-        password.focus();
-        return false;
-      }
-      //비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
-      var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-      if (!pwdCheck.test(password.value)) {
-        alert(
-          '비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.',
-        );
-        password.focus();
-        return false;
-      }
-     
-      if (!username.value) {
-        alert('이름을 입력하세요.');
-        username.focus();
-        return false;
-      }
-      var reg = /^[0-9]+/g; //숫자만 입력하는 정규식
-      
-      if (!email.value) {
-        alert('이메일 앞자리를 입력하세요.');
-        email.focus();
-        return false;
-      }
-      
-      
-      if (!email_sel.value) {
-          alert('이메일 뒷자리를 선택하세요.');
-          email_sel.focus();
-          return false;
-        }
-     
-	
-	
-      //입력 값 전송
-      document.join_form.submit(); //유효성 검사의 포인트
-    }
-    */
-    //이메일 옵션 선택후 주소 자동 완성
-    function change_email() {
-      var email_sel = document.getElementById('email_sel');
-      //지금 골라진 옵션의 순서와 값 구하기
-      var idx = email_sel.options.selectedIndex;
-      var val = email_sel.options[idx].value;
-      email_sel.value = val;
-    } 
-    
-  
-	});
-	
-	$(document).ready(function(){
- let index = {
-		 
-     init: function () {
-         $("#btn-save").on("click", ()=>{ // function(){} 대신 ()=>{} 를 쓴 이유 : this를 바인딩하기 위해서
-             this.save();
-         });
-     },
+		  // email_sel change event handler
+		  $('#email_sel').on('change', function() {
+		    checkEmailDuplicate();
+		  });
 
-     save: function () {
-         // alert('user의 save함수 호출됨');
-         let data = {
-             id: $("#id").val(),
-             password: $("#password").val(),
-             username: $("#username").val(),
-             email: $("#email").val(),
-             email_sel: $("#email_sel").val(),
-             phone: $("#phone").val(), 
-             
-         };
-
-         console.log(data);
-
-         // ajax 호출시 default가 비동기 호출 -> 순서 상관없음
-         // ajax 통신을 이용해서 3개의 데이터를 json으로 변경하여 insert 요청
-         // ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 자바 오브젝트로 변환
-         $.ajax({
-             // 회원가입 수행 요청
-             type: "POST",
-             url: "Join.do",
-             data: JSON.stringify(data), // http body 데이터
-             contentType: "application/json; charset=utf-8", // body 데이터가 어떤 타입인지 (MIME)
-             dataType: "json" // 요청을 서버로 해서 응답이 왔을 때 기본적으로 모든 것이 String(문자열), 만약 생긴게 json이라면 javascript 오브젝트로 변경
-         }).done(function (resp) {
-             // 결과가 정상이면 done 실행
-             alert("회원가입이 완료되었습니다.");
-             console.log(resp);
-             location.href = "Join.do";
-         }).fail(function (error) {
-             // 실패하면 fail 실행
-             alert("회원가입이 실패하였습니다.");
-         });
-     }
- }
-
-
- index.init();
-	}); 
+		  function checkEmailDuplicate() {
+		    var email = $('#email').val() + '@' + $('#email_sel').val();
+		    $.ajax({
+		      url: 'join.do',
+		      type: 'POST',
+		      data: { email: email },
+		      success: function(response) {
+		        if (response == 'duplicate') {
+		        	   $('#email_result').text('중복된 이메일입니다. 다시 입력해주세요.');
+				          $('#email_result').css('color','red');
+		          $('#email').val('');
+		          $('#email').focus();
+		        }else {
+		        	   $('#email_result').text('사용하실 수 있는 이메일입니다.');
+				          $('#email_result').css('color','green');
+		      }
+		    });
+		  }
+		});
   </script>
 
 <meta charset="UTF-8">
@@ -275,7 +295,7 @@
 	<!-- Breadcrumb Begin -->
 
 	<!-- Breadcrumb End -->
- 
+
 
 
 	<form action="#" class="checkout__form">
@@ -287,38 +307,42 @@
 				style="font-family: 'Noto Sans'; margin-left: 120px; width: 100%; font-size: 20px;">
 				<div class="checkout__form__input">
 					<p>
-						아이디 <span id="star">*</span>
+						아이디<span>*</span>
 					</p>
-					<input type="text" style="width: 400px;" id="id" required>
+					<input type="text" style="width: 400px;" id="id" name="id" required>
+					<span id="id_result"></span>
 				</div>
 				<div class="checkout__form__input" style="width: 50%;">
 					<p>
-						비밀번호 <span id="star">*</span>
+						비밀번호<span>*</span>
 					</p>
-					<input type="password" style="width: 400px;" id="password" required>
+					<input type="password" style="width: 400px;" id="password"
+						name="password" required>
 				</div>
 				<div class="checkout__form__input">
 					<p>
-						이름 <span id="star">*</span>
+						이름 <span>*</span>
 					</p>
-					<input type="text" style="width: 400px;" id="username" required>
+					<input type="text" style="width: 400px;" id="username"
+						name="username" required>
 				</div>
 				<div class="checkout__form__input" style="width: 50%;">
 					<p>
-						이메일 <span id="star">*</span>
+						이메일 <span>*</span>
 					</p>
 					<input type="text"
 						style="float: left; width: 400px; margin-right: 10px;" id="email"
-						required>
+						name="email" required>
+						<span id="email_result"></span>
 				</div>
 				<span style="display: inline; float: left; margin-top: 10px;">
 					@ </span>
 
 				<div class="checkout__form__input2">
-					<select id="email_sel" name="email_sel"
+					<select id="email_sel" name="email_sel"class="email_sel" required
 						style="width: 400px; height: 50px;
 	/* width: 100%; */ border: 1px solid #e1e1e1; border-radius: 2px; margin-bottom: 25px; font-size: 14px; padding-left: 10px; color: #666666; margin-left: 10px; float: left; display: inline;">
-						<option>이메일 선택</option>
+						<option value="">이메일 선택</option>
 						<option value="naver.com">naver.com</option>
 						<option value="gmail.com">gmail.com</option>
 						<option value="daum.net">daum.net</option>
@@ -342,8 +366,8 @@
 
 
 
-					<p id="userphone">
-						전화번호 <span id="star">*</span>
+					<p id="pho">
+						전화번호 <span>*</span>
 					</p>
 					<input id="phone" name="phone" type="text"
 						style="float: left; width: 400px;" required>
@@ -353,7 +377,7 @@
 					인증번호 발송</button>
 				<div class="checkout__form__input" style="width: 50%;">
 					<input id="phone2" type="text" name="phone2"
-						style="float: left; width: 400px;" >
+						style="float: left; width: 400px;" disabled required>
 				</div>
 				<button id="phoneChk2" class="doubleChk"
 					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;">
