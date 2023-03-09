@@ -78,13 +78,21 @@ select::-ms-expand {
 
 											$('#id').on('input',
 															function() {
+												console.log("나야나");
 																var id = $(this).val();
+																var data = {
+																		mId : id
+																};
+																console.log(id);
 																$.ajax({
-																	url : 'doubleCheck.do',
+																	url : 'check.do',
 																	type : 'POST',
-																	data : {'id' : id},
+																	contentType : 'application/json; charset=utf-8',
+														              data :JSON.stringify(data),
 																	success : function(response) {
+																		console.log(response);
 																		if (response == 'duplicate') {
+																			console.log("들어옴");
 																			$('#id_result').text('중복된 아이디입니다. 다시 입력해주세요');
 																					$('#id_result').css('color','red');
 																				}
@@ -137,7 +145,7 @@ select::-ms-expand {
 														+ '@'
 														+ $('#email_sel').val();
 														$.ajax({
-															url : 'doubleCheck.do',
+															url : 'check.do',
 															type : 'POST',
 															data : {
 																useremail : useremail
@@ -252,7 +260,7 @@ select::-ms-expand {
 <body>
 
 
-	<form action="join.do" class="checkout__form" >
+	<form action="join.do" method="POST" class="checkout__form" >
 		<div class="col-lg-8">
 			<h5
 				style="font-weight: 700; font-size: 32px; font-family: 'Noto Sans'; margin-top: 50px; margin-left: 50px; border-bottom: white;">회원가입</h5>
