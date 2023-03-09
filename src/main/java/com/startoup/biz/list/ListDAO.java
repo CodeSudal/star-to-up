@@ -21,9 +21,9 @@ public class ListDAO {
 	// 펀딩 SELECT_ALL (아이디로 검색) == 회원이 구매한 제품 리스트
 	final String SELECT_ALL_PRODUCT = "SELECT L_NUM, L_PID, L_MID FROM LISTS WHERE L_MID=?";
 	// 펀딩한 사람 인원 수
-	final String SELECT_COUNT = "SELECT COUNT(L_NUM) FROM LISTS WHERE L_PID=?";
-	
-	
+	final String SELECT_COUNT = "SELECT COUNT(L_NUM) AS L_NUM FROM LISTS WHERE L_PID=?";
+
+
 	// 사용자가 구매했다면 실행 (구매자 리스트 추가)
 	public boolean insertList(ListVO vo) {
 		try {
@@ -34,7 +34,7 @@ public class ListDAO {
 			return false;
 		}
 	}
-	
+
 	public List<ListVO> selectAllMember(ListVO vo){
 		try {
 			Object[] args= { vo.getlMid() };
@@ -43,7 +43,7 @@ public class ListDAO {
 			return null;
 		}
 	}
-	
+
 	public List<ListVO> selectAllProduct(ListVO vo){
 		try {
 			Object[] args= { vo.getlPid() };
@@ -52,20 +52,19 @@ public class ListDAO {
 			return null;
 		}
 	}
-	
+
 	// 사람 수 세기
 	public ListVO selectCount(ListVO vo) {
 		try {
 			Object[] args= { vo.getlPid() };
-			Object cnt = jdbcTemplate.query(SELECT_COUNT, args, new ListRowMapper());
-			vo.setlCnt((int)cnt);
+			List<ListVO> cnt = jdbcTemplate.query(SELECT_COUNT, args, new ListRowMapper2());
+			vo=cnt.get(0);
 			return vo;
 		} catch(Exception e) {
 			return null;
 		}
 	}
-	
-	
+
 	class ListRowMapper implements RowMapper<ListVO> {
 
 		@Override
@@ -74,10 +73,23 @@ public class ListDAO {
 			data.setlNum(rs.getInt("L_NUM"));
 			data.setlPid(rs.getInt("L_PID"));
 			data.setlMid(rs.getString("L_MID"));
-			data.setlCnt(rs.getInt("COUNT(L_NUM)"));
 			return data;
 		}
 
 	}
 
 }
+
+
+class ListRowMapper2 implements RowMapper<ListVO> {
+
+	@Override
+	public ListVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		ListVO data=new ListVO();
+		data.setlNum(rs.getInt("L_NUM"));
+
+		return data;
+	}
+
+}
+
