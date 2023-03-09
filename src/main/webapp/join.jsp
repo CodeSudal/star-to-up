@@ -80,7 +80,7 @@ select::-ms-expand {
 															function() {
 																var id = $(this).val();
 																$.ajax({
-																	url : 'join.do',
+																	url : 'doubleCheck.do',
 																	type : 'POST',
 																	data : {'id' : id},
 																	success : function(response) {
@@ -137,7 +137,7 @@ select::-ms-expand {
 														+ '@'
 														+ $('#email_sel').val();
 														$.ajax({
-															url : 'join.do',
+															url : 'doubleCheck.do',
 															type : 'POST',
 															data : {
 																useremail : useremail
@@ -252,7 +252,7 @@ select::-ms-expand {
 <body>
 
 
-	<form action="#" class="checkout__form">
+	<form action="join.do" class="checkout__form" >
 		<div class="col-lg-8">
 			<h5
 				style="font-weight: 700; font-size: 32px; font-family: 'Noto Sans'; margin-top: 50px; margin-left: 50px; border-bottom: white;">회원가입</h5>
