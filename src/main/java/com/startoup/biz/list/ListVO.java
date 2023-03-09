@@ -4,7 +4,6 @@ public class ListVO {
 	private int lNum;	// 펀딩리스트 번호
 	private int lPid;	// 제품번호
 	private String lMid;	// 아이디
-	private int lCnt;	// 인원 수
 	
 	public int getlNum() {
 		return lNum;
@@ -25,12 +24,6 @@ public class ListVO {
 		this.lMid = lMid;
 	}
 	
-	public int getlCnt() {
-		return lCnt;
-	}
-	public void setlCnt(int lCnt) {
-		this.lCnt = lCnt;
-	}
 	@Override
 	public String toString() {
 		return "ListVO [lNum=" + lNum + ", lPid=" + lPid + ", lMid=" + lMid + "]";

@@ -62,11 +62,11 @@
 					<drop_tablespace>true</drop_tablespace>
 					<drop_trigger>true</drop_trigger>
 					<drop_view>true</drop_view>
-					<inline_column_comment>true</inline_column_comment>
-					<inline_table_comment>true</inline_table_comment>
-					<comment_value_description>false</comment_value_description>
+					<inline_column_comment>false</inline_column_comment>
+					<inline_table_comment>false</inline_table_comment>
+					<comment_value_description>true</comment_value_description>
 					<comment_value_logical_name>false</comment_value_logical_name>
-					<comment_value_logical_name_description>true</comment_value_logical_name_description>
+					<comment_value_logical_name_description>false</comment_value_logical_name_description>
 					<comment_replace_line_feed>false</comment_replace_line_feed>
 					<comment_replace_string></comment_replace_string>
 				</ddl_target>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2023-02-21 09:37:51</creation_date>
-			<updated_date>2023-03-06 13:46:23</updated_date>
+			<updated_date>2023-03-09 14:43:36</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
