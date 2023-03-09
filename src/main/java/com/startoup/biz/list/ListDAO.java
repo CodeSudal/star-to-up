@@ -54,14 +54,14 @@ public class ListDAO {
 	}
 	
 	// 사람 수 세기
-	public int selectCount(ListVO vo) {
+	public ListVO selectCount(ListVO vo) {
 		try {
 			Object[] args= { vo.getlPid() };
 			Object cnt = jdbcTemplate.query(SELECT_COUNT, args, new ListRowMapper());
-			int count=(int)cnt;
-			return count;
+			vo.setlCnt((int)cnt);
+			return vo;
 		} catch(Exception e) {
-			return 0;
+			return null;
 		}
 	}
 	
@@ -74,6 +74,7 @@ public class ListDAO {
 			data.setlNum(rs.getInt("L_NUM"));
 			data.setlPid(rs.getInt("L_PID"));
 			data.setlMid(rs.getString("L_MID"));
+			data.setlCnt(rs.getInt("COUNT(L_NUM)"));
 			return data;
 		}
 
