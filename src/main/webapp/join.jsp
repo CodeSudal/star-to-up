@@ -8,7 +8,7 @@
 <meta name="keywords" content="Ashion, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Ashion | Template</title>
+<title>회원가입</title>
 <style type="text/css">
 
 /* select {
@@ -50,17 +50,14 @@ select::-ms-expand {
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
-	function alertTest() {
-		alert('alert 무한반복이냐?')
-	}
+
+
+ 	/* 알럿창 테스트 */
+	/* function alertTest() {
+		alert('alert 무한반복?')
+	} */
 	
-	
-
-
-
 	$(document).ready( function() {
-		
-						
 						// input 요소에서 keyup 이벤트 발생 시 실시간으로 유효성 검사 수행
 						$('input').on('keyup',
 										function() {
@@ -161,93 +158,15 @@ select::-ms-expand {
 														});
 											};
 
-											/* 
-											 // 이메일 옵션 선택 후 주소 자동 완성
-											 var idx = email_sel.prop('selectedIndex');
-											 var val = email_sel.find('option').eq(idx).val();
-											 email_add.val(val);
-
-											 // 이메일 옵션 선택 시 주소 자동 완성
-											 $('#email_sel').change(function() {
-											 var val = $(this).val();
-											 $('#email').val(val);
 											
-											 }); */
 
-											//휴대폰 번호 인증
-										
-											
-											
-											 
-											  $("#_phoneChk").click(
-															function() {
-																
-																if (true) {
-																	$(this).blur();
-																	alert("번호를 입력해주세요.");
-																	
-																	
-																} else if (!phoCheck.test(phone)) {
-																	alert('올바른 전화번호를 입력하세요.');
-																	alert('2nd');
-																		
-																} else {
-																	alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
-																	var phone = $("#phone").val();
-																	$("#phoneChk2").attr("disabled",false);
-																}
-																	$.ajax({
-																			type : "GET",
-																			url : "phoneCheck.do?phone="+ phone,
-																			cache : false,
-																			success : function(data) { 
-																				$("#phone2").attr("disabled",false);
-																				$("#phoneChk2").css("display","inline-block");
-																				$("#phoneChk").css("backgroundColor","black");
-																				$("#phoneChk").text("발송완료");
-																				$("#phone").attr("readonly",true);
-																				code2 = data;
-																			}
-																		});
-															});
-
-											//휴대폰 인증번호 대조
-											
-											$("#_phoneChk2").click(
-															function() {
-																if ($("#phone2").val() == code2) {
-																	alert("인증번호가 일치합니다.");
-																	("#phoneChk2").css("backgroundColor","black");
-																	("#phoneChk2").text("인증완료");
-																	$("#phoneDoubleChk").val("true");
-																	$("#phone2").attr("disabled",true);
-																} else {
-																	alert("인증번호가 일치하지 않습니다.")
-																	$("#phoneDoubleChk").val("false");
-																	$(this).attr("autofocus",true);
-																}
-															});
-											
-											///////////////////
-
-											if (id != '' && password != ''
-													&& username != ''
-													&& email != ''
-													&& email_sel != ''
-													&& phone != ''
-													&& phone2 != '') {
-												$("#btn-save").attr("disabled",false);
-											}
-
-											$("#btn-save").click(function() {
-
-												// 입력 값 전송
-												$('#btn-save').submit();
-											});
-
-										});
+										 });
 					});
 	
+	
+	
+	
+	//전화번호 유효성 검사
 	
 	function submitBtn () {
 		// 입력 값 전송
@@ -259,7 +178,9 @@ select::-ms-expand {
 	
 	function phoneCheck1 () {
 		
-		var phoCheck = /01[016789][^0][0-9]{3,4}[0-9]{4}/;
+	/* 	var phoCheck = /01[016789][^0][0-9]{3,4}[0-9]{4}/; */
+	/*  var phoCheck = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/g; */
+		var phoCheck = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/; //하이픈(-)도 사용 가능한 정규식
 		
 		
 		console.log('phoneCheck() 실')
@@ -300,9 +221,9 @@ select::-ms-expand {
 		console.log(code2)
 		if ($("#phone2").val() === code2) {
 		/* 아침에 확인할 것
-		1. 문자 잘 오는 지 확인
-		2. 문자와 인증번호와 일치하는 지/ 정규식 통과하는지
-		3. 서브밋..최종가입 > 민경확인! */
+		1. 문자 잘 오는 지 확인 > 잘됨
+		2. 문자와 인증번호와 일치하는 지/ 정규식 통과하는지 > 잘됨
+		3. 서브밋..최종가입 > 민경확인! /확인완료시 해당 주석 삭제바람*/
 			alert("인증번호가 일치합니다.");
 			$("#phoneChk2").css("backgroundColor","black");
 			$("#phoneChk2").text("인증완료");
@@ -322,56 +243,13 @@ select::-ms-expand {
 		
 	}
 </script>
-<!-- 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-
-<link rel="stylesheet" href="css/font.css" type="text/css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-	rel="stylesheet">
-Css Styles
-<link rel="stylesheet" href="css/shopcart.css" type="text/css">
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css">
-
-
- -->
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Css Styles -->
 
 
 <%@ include file="header.jsp"%>
 <body>
-
-	<!-- Header Section End -->
-
-	<!-- Breadcrumb Begin -->
-
-	<!-- Breadcrumb End -->
-
 
 
 	<form action="#" class="checkout__form">
@@ -470,7 +348,7 @@ Css Styles
 				<button id="btn-save" class="site-btn" onclick="submitBtn()"
 					style="height: 50px; width: 200px; background: #D9D9D9; border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;">가입하기
 				</button>
-				<button onclick="alertTest()">alertTest</button>
+				<!-- <button onclick="alertTest()">alertTest</button> -->
 
 			</div>
 		</div>
