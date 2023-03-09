@@ -20,6 +20,9 @@ public class ListDAO {
 	final String SELECT_ALL_MEMEBER = "SELECT L_NUM, L_PID, L_MID FROM LISTS WHERE L_PID=?";
 	// 펀딩 SELECT_ALL (아이디로 검색) == 회원이 구매한 제품 리스트
 	final String SELECT_ALL_PRODUCT = "SELECT L_NUM, L_PID, L_MID FROM LISTS WHERE L_MID=?";
+	// 펀딩한 사람 인원 수
+	final String SELECT_COUNT = "SELECT COUNT(L_NUM) FROM LISTS WHERE L_PID=?";
+	
 	
 	// 사용자가 구매했다면 실행 (구매자 리스트 추가)
 	public boolean insertList(ListVO vo) {
@@ -47,6 +50,18 @@ public class ListDAO {
 			return jdbcTemplate.query(SELECT_ALL_PRODUCT, args, new ListRowMapper());
 		} catch(Exception e) {
 			return null;
+		}
+	}
+	
+	// 사람 수 세기
+	public int selectCount(ListVO vo) {
+		try {
+			Object[] args= { vo.getlPid() };
+			Object cnt = jdbcTemplate.query(SELECT_COUNT, args, new ListRowMapper());
+			int count=(int)cnt;
+			return count;
+		} catch(Exception e) {
+			return 0;
 		}
 	}
 	
