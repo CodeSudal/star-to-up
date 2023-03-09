@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.startoup.biz.member.MemberServiceImpl;
 import com.startoup.biz.member.MemberVO;
 import com.startoup.biz.member.MyLikeVO;
+import com.startoup.biz.product.ProductServiceImpl;
 import com.startoup.biz.product.ProductVO;
 
 @Controller
@@ -21,6 +22,11 @@ public class MemberController {
 
 	@Autowired
 	private MemberServiceImpl memberSI;
+	
+	@Autowired
+	private ProductServiceImpl productSI;
+	
+	
 
 	@RequestMapping(value = "/myPage.do")
 	public String selectOneMember() {
@@ -91,7 +97,6 @@ public class MemberController {
 	@RequestMapping(value = "/detail.do")
 	public String selcetOneBoard(ProductVO pvo, HttpSession session, MyLikeVO myvo, Model model) {
 
-		// 로그인 되어 있는지 확인한 후에
 		// 로그인 되어 있으면 -> 멤버아이디,제품번호로 찜되어있는지 여부 파악해서
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		if (member != null) {
@@ -101,8 +106,11 @@ public class MemberController {
 		}
 		// isMylike : 찜 여부 파악 용도 -> 찜 안 되어 있으면 null / 찜 되어 있으면 MylikeVO 리턴해줌.
 		// 현재 찜목록 하나 보는거 없어서 추가되면 할 예정!!
-//			model.addAttribute("isMylike", memberSI.selectOneList(myvo);
-		return "blog.jsp";
+		model.addAttribute("isMylike", memberSI.checkList(myvo));
+//		model.addAttribute("isMylike", memberSI.selectOneList(myvo);
+		model.addAttribute("data", productSI.selectOne(pvo));
+		
+		return "detail.jsp";
 	}
 
 	// 찜하기

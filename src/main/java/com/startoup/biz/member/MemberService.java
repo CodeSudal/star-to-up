@@ -14,5 +14,6 @@ public interface MemberService {
 	public boolean insertList(MyLikeVO vo);
 	public boolean deleteList(MyLikeVO vo);
 	public List<MyLikeVO> selectAllList(MyLikeVO vo);
+	public MyLikeVO checkList(MyLikeVO vo);
 
 }
