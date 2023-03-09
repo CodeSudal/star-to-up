@@ -117,6 +117,7 @@ public class MemberController {
 		}
 		// isMylike : 찜 여부 파악 용도 -> 찜 안 되어 있으면 null / 찜 되어 있으면 MylikeVO 리턴해줌.
 		// 현재 찜목록 하나 보는거 없어서 추가되면 할 예정!!
+		
 		model.addAttribute("isMylike", memberSI.checkList(myvo));
 //		model.addAttribute("isMylike", memberSI.selectOneList(myvo);
 		model.addAttribute("data", productSI.selectOne(pvo));
