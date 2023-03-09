@@ -91,11 +91,6 @@ select::-ms-expand {
 														              data :JSON.stringify(data),
 																	success : function(response) {
 																		console.log(response);
-																		if (response == 'duplicate') {
-																			console.log("들어옴");
-																			$('#id_result').text('중복된 아이디입니다. 다시 입력해주세요');
-																					$('#id_result').css('color','red');
-																				}
 																				if (id == '') {
 																					$('#id_result').text('');
 																				} else if (id != ''&& !idCheck.test(id)) {
@@ -105,6 +100,11 @@ select::-ms-expand {
 																					$('#id_result').text('사용하실 수 있는 아이디입니다.');
 																					$('#id_result').css('color','green');
 
+																				}
+																		if (response == 'duplicate') {
+																			console.log("들어옴");
+																			$('#id_result').text('중복된 아이디입니다. 다시 입력해주세요');
+																					$('#id_result').css('color','red');
 																				}
 																			},
 
