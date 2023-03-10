@@ -21,33 +21,16 @@
       <org.aspectj-version>1.6.10</org.aspectj-version>
       <org.slf4j-version>1.6.6</org.slf4j-version>
    </properties>
-   
    <dependencies>
-   
-   <!-- HttpClient -->
-   	<dependency>
-  	 <groupId>org.apache.httpcomponents</groupId>
- 	 <artifactId>httpclient</artifactId>
- 	 <version>4.5.2</version>
- 	 <scope>runtime</scope>
-	</dependency>
-   		
+   	
    	<!-- 셀레니움 -->
    	<dependency>
     	<groupId>org.seleniumhq.selenium</groupId>
     	<artifactId>selenium-java</artifactId>
-    	<version>4.8.1</version>
+    	<version>3.3.1</version>
 	</dependency>
-  
-
-      <!-- 오라클용 추가 시작-->
-      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-jdbc</artifactId>
-         <version>${org.springframework-version}</version>
-      </dependency>
-      
-      <!-- Mybatis -->
+   	
+   		<!-- Mybatis -->
       <dependency>
             <groupId>org.mybatis</groupId>
              <artifactId>mybatis</artifactId>
@@ -58,6 +41,13 @@
              <artifactId>mybatis-spring</artifactId>
              <version>1.2.4</version>
       </dependency>   
+
+      <!-- 오라클용 추가 시작-->
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-jdbc</artifactId>
+         <version>${org.springframework-version}</version>
+      </dependency>
       <!--
   		mybatis
       <dependency>

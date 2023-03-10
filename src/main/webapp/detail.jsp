@@ -53,7 +53,7 @@
             }
 
             .progress-bar2 {
-                height: 25px;
+                height: 18px;
                 border-radius: 30px;
                 background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
                 transition: 0.4s linear;
@@ -110,7 +110,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb__links">
-                            <span style="font-weight: bold; font-size: 50px; color: black">Jupiter${data.pName}</span>
+                            <span style="font-weight: bold; font-size: 50px; color: black">${data.pName}</span>
                         </div>
                     </div>
                 </div>
@@ -119,34 +119,31 @@
         <!-- Breadcrumb End -->
 
         <!-- Product Details Section Begin -->
-        <section class="product-details spad" style="margin-left:5%; padding-top:30px; !important" >
+        <section class="product-details spad">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
                     
                         <div class="product__details__pic">
-                           
-                            <div class="product__details__pic__left product__thumb nice-scroll" >
-                                <a class="pt" href="#">
-                                    <img src="img/shop-cart/Jupiter.png" alt="" />
-                                </a>
-                                <a class="pt" href="#">
-                                    <img src="img/shop-cart/Jupiter.png" alt="" />
-                                </a>
-                                <a class="pt" href="#">
-                                    <img src="img/shop-cart/Jupiter.png" alt="" />
-                                </a>
-                            </div>
-                            <div class="product__details__slider__content">
-                                    <img
-                                        class="product__big__img"
-                                        src="img/shop-cart/Jupiter.png"
-                                        alt=""
-                                        style=" width: 100vw; "
-                                    />
-                            </div>
                             <!-- 
-                             <div class="product__details__slider__content">
+                            <div class="product__details__pic__left product__thumb nice-scroll">
+                                <a class="pt active" href="#product-1">
+                                    <img src="img/product/details/thumb-1.jpg" alt="" />
+                                </a>
+                                <a class="pt" href="#product-2">
+                                    <img src="img/product/details/thumb-2.jpg" alt="" />
+                                </a>
+                                <a class="pt" href="#product-3">
+                                    <img src="img/product/details/thumb-3.jpg" alt="" />
+                                </a>
+                                <a class="pt" href="#product-4">
+                                    <img src="img/product/details/thumb-4.jpg" alt="" />
+                                </a>
+                            </div>
+                             -->
+                             
+                            <div class="product__details__slider__content">
+                               
                                     <img
                                         data-hash="product-1"
                                         class="product__big__img"
@@ -154,35 +151,34 @@
                                         alt=""
                                         style="margin-left:10%; width: 100vw; height: 70vh;"
                                     />
+                                   
+                               
                             </div>
-                            -->
                             
                             
                         </div>
                         
                     </div>
                   <!--  <div class="product__details__pic__slider owl-carousel"></div> -->
-                     
-                     <!-- !!참여자 수 계산해주세요!! -->
-                
-                   <!--  
+
+              
                     <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
-                            <h3><span style="font-size: 24px">개인금액</span>${data.pPrice}</h3>
+                            <h3><span style="font-size: 24px">펀딩 가격</span>${data.pPrice}</h3>
                             원 <br /><br />
-                            <h3><span style="font-size: 24px">모인금액</span>${data.pCRNAmount}</h3>
+                            <h3><span style="font-size: 24px">모인 금액</span>${data.pCRNAmount}</h3>
                             <span style="font-size: 24px">원</span> &nbsp
                             <div style="display: inline; font-weight: bold; font-size: 36px">${data.pPercent}%</div>
                             <br /><br />
                             <div class="progress2 progress-moved" style="width: 80%">
                                 <div class="progress-bar2" style="width:${data.pPercent}%"></div>
                             </div>
-                            <br /><br /> 
-                            <h3><span style="font-size: 24px">참여자</span>${list.lNum}</h3>
+                            <br /><br /> <!-- !!참여자 수 계산해주세요!! -->
+                            <!-- <h3><span style="font-size: 24px">참여자</span>${data.people}</h3> -->
                             명 <br /><br /><br />
                             <div class="product__details__button">
                               <c:choose>
-                                 <c:when test="${data.pFinish ==0}">
+                                 <c:when test="${pFinish ==0}">
                                       <a
                                         href="payment.do?pNum=${data.pNum}"
                                         class="cart-btn"
@@ -214,49 +210,38 @@
                             </div>
                         </div>
                     </div>
-                  -->
                   
-           
+                <!-- 
                       <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">개인금액</span>200,000</h3>
-                            <span style="font-size: 20px">원</span> 
-                            <br /><br />
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">모인금액</span>50,000</h3>
-                            <span style="font-size: 20px">원</span> &nbsp
-                            <div style="display: inline; font-weight: bold; font-size: 32px">50%</div>
+                            <h3><span style="font-size: 24px">펀딩 가격</span>200,000</h3>
+                            원 <br /><br />
+                            <h3><span style="font-size: 24px">모인 금액</span>50,000</h3>
+                            <span style="font-size: 24px">원</span> &nbsp
+                            <div style="display: inline; font-weight: bold; font-size: 36px">50%</div>
                             <br /><br />
                             <div class="progress2 progress-moved" style="width: 80%">
                                 <div class="progress-bar2" style="width:50%"></div>
                             </div>
-                             <br />
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">후원자</span>1,000</h3>
-                            <span style="font-size: 20px">명</span> 
                             <br /><br />
-                            <div class="product__details__button" style="display: flex; flex-direction:row; justify-content: left;">
-                              <div style="width:40%; height:18%; ">
-                                   <button
-                                       id="finish"
-                                       class="cart-btn"
-                                       style=" width:100%;background-color: rgb(215,215,215); border:none; text-align: center; font-size: 28px;"
-                                      >
+                            <h3><span style="font-size: 24px">후원자</span>1,000</h3>
+                            명 <br /><br /><br />
+                            <div class="product__details__button">
+                                <button
+                                    id="finish"
+                                    class="cart-btn"
+                                    style="background-color: rgb(202, 202, 202); border:none; width: 40%; text-align: center; font-size: 28px"
+                                >
                                     펀딩완료</button>
-                                </div>   
-                                <div style="background-color: rgb(215,215,215); margin-left:2%; margin-top:2%; width:50px; height:50px; border-radius:50%; display:flex; justify-content: center; ">
-                                       <img id="heartIng" alt="찜"
-                                    src="img/heart.png"
-                                    style="width: 20px; height: 20px; cursor: pointer; margin-left:2%;margin-top:30%; z-index:1;  ">
-                                 </div>
-                                  <div style="background-color: black; margin-left:2%; margin-top:2%; width:50px; height:50px; border-radius:50%; display: flex; justify-content: center;">
-                                       <img id="sharing" alt="카카오공유"
-                                    src="img/sharing.png"
-                                    style="width: 30px; height: 30px; cursor: pointer;margin-top:20%; z-index:1;  "> 
-                                 </div>
-                                 
+                                 <ul>
+                                    <li style="margin-top: 25%">
+                                        <a href="#"><span class="icon_heart_alt"></span></a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                   
+                   -->
                      
                      
                     
