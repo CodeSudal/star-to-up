@@ -40,7 +40,7 @@ public class DriverUtil {
 
 		//브라우저 이동시 생기는 로드시간을 기다린다.
 		//HTTP응답속도보다 자바의 컴파일 속도가 더 빠르기 때문에 임의적으로 1초를 대기한다.
-		try {Thread.sleep(3000);} catch (InterruptedException e) {}
+		try {Thread.sleep(1000);} catch (InterruptedException e) {}
 
 		String name="";
 		String info="";
@@ -54,9 +54,11 @@ public class DriverUtil {
 			System.out.println(info);
 			System.out.println("------------");
 			craw.put(name, info);
-			try {Thread.sleep(3000);} catch (InterruptedException e) {}
+			try {Thread.sleep(1000);} catch (InterruptedException e) {}
 		}
-
+		
+		// craw.forEach((key, value) -> System.out.println(key + " : " + value));
+		
 		// 현재 보고 있는 탭만 닫기
 		// driver.close();
 		

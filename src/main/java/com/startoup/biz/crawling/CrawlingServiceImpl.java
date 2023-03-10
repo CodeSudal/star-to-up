@@ -10,8 +10,8 @@ public class CrawlingServiceImpl implements CrawlingService {
 	private CrawlingDAO cdao;
 
 	@Override
-	public boolean crawling(SeleniumVO vo) {
-		return cdao.crawling(null);
+	public boolean crawling() {
+		return cdao.crawling();
 	}
 
 }

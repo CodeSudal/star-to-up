@@ -16,7 +16,7 @@ public class CrawlingController {
 	@RequestMapping(value = "/crawling.do")
 	public String selectOneMember() {
 		
-		if (CrawlingSI.crawling(null)) {
+		if (CrawlingSI.crawling()) {
 			return "main.do";
 		} else {
 			System.out.println("실패야 바부야");
