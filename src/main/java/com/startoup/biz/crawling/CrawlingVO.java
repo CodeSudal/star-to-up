@@ -2,7 +2,7 @@ package com.startoup.biz.crawling;
 
 public class CrawlingVO {
 	private int cNum; // 크롤링 정보 번호
-	private int cPid; // 제품번호
+	private String cName; // 제품이름
 	private String cInfo; // 크롤링 대상 정보
 	
 	public int getcNum() {
@@ -11,21 +11,21 @@ public class CrawlingVO {
 	public void setcNum(int cNum) {
 		this.cNum = cNum;
 	}
-	public int getcPid() {
-		return cPid;
-	}
-	public void setcPid(int cPid) {
-		this.cPid = cPid;
-	}
 	public String getcInfo() {
 		return cInfo;
 	}
 	public void setcInfo(String cInfo) {
 		this.cInfo = cInfo;
 	}
+	public String getcName() {
+		return cName;
+	}
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
 	@Override
 	public String toString() {
-		return "CrawlingVO [cNum=" + cNum + ", cPid=" + cPid + ", cInfo=" + cInfo + "]";
+		return "CrawlingVO [cNum=" + cNum + ", cName=" + cName + ", cInfo=" + cInfo + "]";
 	}
 	
 }
