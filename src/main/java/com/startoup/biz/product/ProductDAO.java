@@ -180,37 +180,3 @@ class ProductRowMapper implements RowMapper<ProductVO> {
 
 }
 
-//class FundingRowMapper implements RowMapper<FundingVO> {
-//
-//   @Override
-//   public FundingVO mapRow(ResultSet rs, int rowNum) throws SQLException {
-//      FundingVO data=new FundingVO();
-//      data.setfNum(rs.getInt("F_NUM"));
-//      data.setfPid(rs.getInt("F_PID"));
-//      data.setfCRNAmount(rs.getInt("F_AMOUNT"));
-//      data.setfAmount(rs.getInt("F_CRNAMOUNT"));
-//      return data;
-//   }
-//
-//}
-//
-//class PFundingRowMapper implements RowMapper<PFundingVO> {
-//
-//   @Override
-//   public PFundingVO mapRow(ResultSet rs, int rowNum) throws SQLException {
-//      PFundingVO data=new PFundingVO();
-//      data.setpNum(rs.getInt("P_NUM"));
-//      data.setpName(rs.getString("P_NAME"));
-//      data.setpPrice(rs.getInt("P_PRICE"));
-//      data.setpInfo(rs.getString("P_INFO"));
-//      data.setpFinish(rs.getInt("P_FINISH"));
-//      data.setpImage(rs.getString("P_IMAGE"));
-//      
-//      data.setfNum(rs.getInt("F_NUM"));
-//      data.setfPid(rs.getInt("F_PID"));
-//      data.setfCRNAmount(rs.getInt("F_AMOUNT"));
-//      data.setfAmount(rs.getInt("F_CRNAMOUNT"));
-//      return data;
-//   }
-//    
-//}
