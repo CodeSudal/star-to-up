@@ -30,12 +30,20 @@
          <div class="menu_item1"><a href="about.do">ABOUT</a></div>
       </div>
       <div class="top_right_box">
-         <!-- 찜하기 -->
+        <c:if test="${not empty member &&(member.mId == 'admin' || member.mId == 'ADMIN') }">
+         	<div style="margin-right:10%; margin-top:5%;">
+         		<p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
+         	</div>
+         </c:if>
          <div class="icon_box1">
             <div class="header__right1">
                <ul class="header__right__widget">
                   <li><a href="myList.do"><span class="material-symbols-outlined">&#xE87D;</span>
-                        <div class="tip">2</div> </a> <!-- 로그인 안했을 때 --></li>
+                  		<c:if test="${not empty member}">
+                  			 <div class="tip">${member.cnt}</div> 
+                  		</c:if>
+                      </a>
+                  </li>
 
                </ul>
             </div>
@@ -47,24 +55,17 @@
                         <ul class="dropdown"
                            style="text-align: right; width: 110px; border-radius: 5px; background-color: rgba(0, 0, 0, 0.3); position: absolute; left: -80px; top: 38px">
                            <c:choose>
-                           	 <c:when test="${not empty member &&(member.mId == 'admin' || member.mId == 'ADMIN') }">
-                           	 	<li><a href="adminFunding.do">관리자 페이지</a></li>
-                           	 	<li><a href="myFundingList.do">펀딩 내역</a></li>
-                           		<li><a href="myList.do">찜내역</a></li>
-                           		<li><a href="withdrowal.do">회원 탈퇴</a></li>
-                           		<li><a href="logout.do">로그아웃</a></li>
-                          	 </c:when>
-                          	 <c:when test="${not empty member}">
-                          	 	<li><a href="myFundingList.do">펀딩 내역</a></li>
-                           		<li><a href="myList.do">찜내역</a></li>
-                           		<li><a href="withdrowal.do">회원 탈퇴</a></li>
-                           		<li><a href="logout.do">로그아웃</a></li>
-                          	 </c:when>
-                           	 <c:otherwise>
-                           	 	<li><a href="login.do">로그인</a></li>
-                           		<li><a href="agreement.do">회원가입</a></li>
-							</c:otherwise>
-						  </c:choose>		
+                              <c:when test="${not empty member}">
+                                 <li><a href="myFundingList.do">펀딩 내역</a></li>
+                                 <li><a href="myList.do">찜내역</a></li>
+                                 <li><a href="withdrowal.do">회원 탈퇴</a></li>
+                                 <li><a href="logout.do">로그아웃</a></li>
+                              </c:when>
+                               <c:otherwise>
+                                  <li><a href="login.do">로그인</a></li>
+                                 <li><a href="agreement.do">회원가입</a></li>
+                     </c:otherwise>
+                    </c:choose>      
                         </ul></li>
                   </ul>
                </nav>

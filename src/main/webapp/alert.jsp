@@ -10,7 +10,8 @@
 
 <script type="text/javascript">
 	alert('${msg}');
-	history.back();
+	location.href = document.referrer;
+	//history.back();
 </script>
 
 </body>
