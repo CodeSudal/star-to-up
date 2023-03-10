@@ -23,6 +23,7 @@ public class ListVO {
 	public void setlMid(String lMid) {
 		this.lMid = lMid;
 	}
+	
 	@Override
 	public String toString() {
 		return "ListVO [lNum=" + lNum + ", lPid=" + lPid + ", lMid=" + lMid + "]";
