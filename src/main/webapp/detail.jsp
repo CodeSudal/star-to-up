@@ -167,18 +167,18 @@
                             <h3><span style="font-size: 24px">펀딩 가격</span>${data.pPrice}</h3>
                             원 <br /><br />
                             <h3><span style="font-size: 24px">모인 금액</span>${data.pCRNAmount}</h3>
-                            <span style="font-size: 24px">원</span> &nbsp
+                            <span style="font-size: 24px">원</span> &nbsp;
                             <div style="display: inline; font-weight: bold; font-size: 36px">${data.pPercent}%</div>
                             <br /><br />
                             <div class="progress2 progress-moved" style="width: 80%">
                                 <div class="progress-bar2" style="width:${data.pPercent}%"></div>
                             </div>
                             <br /><br /> <!-- !!참여자 수 계산해주세요!! -->
-                            <!-- <h3><span style="font-size: 24px">참여자</span>${data.people}</h3> -->
+                            <h3><span style="font-size: 24px">참여자</span>${list.lNum}</h3>
                             명 <br /><br /><br />
                             <div class="product__details__button">
                               <c:choose>
-                                 <c:when test="${pFinish ==0}">
+                                 <c:when test="${data.pFinish ==0}">
                                       <a
                                         href="payment.do?pNum=${data.pNum}"
                                         class="cart-btn"
