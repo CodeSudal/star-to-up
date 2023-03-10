@@ -37,14 +37,6 @@ public class CrawlingDAO {
 				jdbcTemplate.update(INSERT_CRAWLING, sel.getcName(), sel.getcInfo());
 			}
 
-
-//			Iterator<String> iter = DriverUtil.craw.keySet().iterator();
-//			while(iter.hasNext()) {
-//				sel.setcName(iter.next());
-//				sel.setcInfo(DriverUtil.craw.get(iter.next()));
-//				jdbcTemplate.update(INSERT_CRAWLING, sel.getcName(), sel.getcInfo());
-//			}
-
 			datas=jdbcTemplate.query(SELECT_ALL_PRODUCT, new PSeleniumRowMapper());
 			for(int i=0; i<datas.size(); i++) {
 				title=datas.get(i).getpName();
