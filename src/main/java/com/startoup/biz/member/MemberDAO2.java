@@ -146,6 +146,16 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
+	
+	// 내 찜 갯수 보기
+	public int countLike(MyLikeVO vo) {
+		int result=0;
+		try {
+			return mybatis.selectOne("MemberDAO.countLike", vo);
+		} catch(Exception e) {
+			return result;
+		}
+	}
 }
 
 //class MemberRowMapper implements RowMapper<MemberVO> {
