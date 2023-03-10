@@ -11,9 +11,9 @@ public interface MemberService {
 	public MemberVO loginMember(MemberVO vo);
 	public boolean insertFunding(MyFundingVO vo);
 	public List<MyFundingVO> selectAllFund(MyFundingVO vo);
-	public boolean insertList(MyLikeVO vo);
-	public boolean deleteList(MyLikeVO vo);
-	public List<MyLikeVO> selectAllList(MyLikeVO vo);
-	public MyLikeVO checkList(MyLikeVO vo);
+	public boolean insertLike(MyLikeVO vo);
+	public boolean deleteLike(MyLikeVO vo);
+	public List<MyLikeVO> selectAllLike(MyLikeVO vo);
+	public MyLikeVO checkLike(MyLikeVO vo);
 
 }
