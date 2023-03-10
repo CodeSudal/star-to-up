@@ -30,3 +30,5 @@ src/main/webapp/img/.DS_Store
 src/main/webapp/img/product/.DS_Store
 target/m2e-wtp/web-resources/META-INF/maven/com.startoup/app/pom.properties
 target/m2e-wtp/web-resources/META-INF/maven/com.startoup/app/pom.xml
+target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+target/classes/com/startoup/biz/crawling/CrawlingDAO.class
