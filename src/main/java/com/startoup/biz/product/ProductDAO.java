@@ -172,6 +172,9 @@ class ProductRowMapper implements RowMapper<ProductVO> {
       data.setpInfo(rs.getString("P_INFO"));
       data.setpFinish(rs.getInt("P_FINISH"));
       data.setpImage(rs.getString("P_IMAGE"));
+      data.setpAmount(rs.getInt("P_AMOUNT"));
+      data.setpCRNAmount(rs.getInt("P_CRNAMOUNT"));
+      data.setpPercent(rs.getInt("P_PERCENT"));
       return data;
    }
 
