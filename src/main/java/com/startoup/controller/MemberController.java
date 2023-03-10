@@ -22,11 +22,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberServiceImpl memberSI;
-	
+
 	@Autowired
 	private ProductServiceImpl productSI;
-	
-	
 
 	@RequestMapping(value = "/myPage.do")
 	public String selectOneMember() {
@@ -47,6 +45,19 @@ public class MemberController {
 	}
 
 	// 로그인 페이지로 처음 이동할 때
+	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
+	public @ResponseBody String check(@RequestBody MemberVO vo) {
+
+		vo = memberSI.selectOneMember(vo);
+		if (vo == null) {
+			return "success";
+		} else {
+			return "duplicate";
+		}
+
+	}
+
+	// 로그인 페이지로 처음 이동할 때
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute("member") MemberVO vo) {
 
@@ -58,7 +69,7 @@ public class MemberController {
 	public String selectOneMember(MemberVO vo, HttpSession session) {
 		System.out.println("selectOneMember() 입장");
 		vo = memberSI.loginMember(vo);
-		System.out.println("vo : "+vo);
+		System.out.println("vo : " + vo);
 
 		if (vo == null) { // 로그인 실패
 			return "redirect:login.do"; // 다시 로그인 페이지
@@ -106,10 +117,11 @@ public class MemberController {
 		}
 		// isMylike : 찜 여부 파악 용도 -> 찜 안 되어 있으면 null / 찜 되어 있으면 MylikeVO 리턴해줌.
 		// 현재 찜목록 하나 보는거 없어서 추가되면 할 예정!!
+		
 		model.addAttribute("isMylike", memberSI.checkList(myvo));
 //		model.addAttribute("isMylike", memberSI.selectOneList(myvo);
 		model.addAttribute("data", productSI.selectOne(pvo));
-		
+
 		return "detail.jsp";
 	}
 
