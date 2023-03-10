@@ -51,7 +51,7 @@
             p2.put("price", "21000");
             p2.put("total", "820000");
             p2.put("img", "img/mars.png");
-            HashMap<String, String> p3 = new HashMap<String, String>();
+         /*    HashMap<String, String> p3 = new HashMap<String, String>();
             p3.put("name", "Mercury");
             p3.put("price", "52000");
             p3.put("total", "1253000");
@@ -71,13 +71,13 @@
             p6.put("price", "22000");
             p6.put("total", "533000");
             p6.put("img", "img/sun.png");
-            
+             */
             productList.add(p1);
             productList.add(p2);
-            productList.add(p3);
+          /*   productList.add(p3);
             productList.add(p4);
             productList.add(p5);
-            productList.add(p6);
+            productList.add(p6); */
 
               request.setAttribute("datas", productList);
          %>
