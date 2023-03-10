@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberDAO">
 	<insert id="insertMember">
-		INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE) VALUES(#{mId},#{mPw},#{mName},#{mEmail1},#{mEmail2},#{mNum},to_char(sysdate,'rr.mm.dd'));
+		INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE) VALUES(#{mId},#{mPw},#{mName},#{mEmail1},#{mEmail2},#{mNum},to_char(sysdate,'rr.mm.dd'))
 	</insert>
 
 	<insert id="insertKakao">
-		INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE) VALUES(#{mId},'KAKAO',#{mName},#{mEmail1},#{mEmail2},'010-0000-0000',to_char(sysdate,'rr.mm.dd'));
+		INSERT INTO MEMBERS(M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE) VALUES(#{mId},'KAKAO',#{mName},#{mEmail1},#{mEmail2},'010-0000-0000',to_char(sysdate,'rr.mm.dd'))
 	</insert>
 
 	<delete id="deleteMember">
@@ -39,7 +39,7 @@
 	
 	<delete id="deleteLike">
 		DELETE FROM MYLIKE WHERE ML_NUM=#{mlNum}
-	</delete>
+	</delete> 
 	
 	<select id="selectAllLike" resultType="mylike">
 		SELECT a.M_ID, b.ML_NUM, b.ML_PID FROM MEMBERS a INNER JOIN MYLIKE b ON a.M_ID = b.ML_MID
