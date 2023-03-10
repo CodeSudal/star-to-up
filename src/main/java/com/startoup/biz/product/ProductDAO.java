@@ -36,6 +36,7 @@ public class ProductDAO {
    // 펀딩 완료 시(제품 펀딩 종료하기)
    final String UPDATE_FINISH = "UPDATE PRODUCT SET P_FINISH=1 WHERE P_NUM=?";
    
+   
    // 사용자가 구매했을 때 checkProduct
    public boolean checkProduct(ProductVO vo) {
       Object[] args= { vo.getpNum() };
