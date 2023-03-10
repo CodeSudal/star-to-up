@@ -22,5 +22,13 @@ public class ProductController {
 		model.addAttribute("productList", ProductSI.selectAll(vo));
 		return "store.jsp";
 	}
+	
+//	@RequestMapping(value="/detail.do")
+//	public String selectAllProductList(@ModelAttribute("product")ProductVO vo, Model model) {
+//		
+//		System.out.println("ㅓㅏㅣㅏㅓㅣㅏㅏㅓㅣㅏㅓㅣㅏㅓ");
+//		model.addAttribute("productList", ProductSI.selectOne(vo));
+//		return "detail.jsp";
+//	}
 
 }

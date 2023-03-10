@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.startoup.biz.list.ListServiceImpl;
+import com.startoup.biz.list.ListVO;
 import com.startoup.biz.member.MemberServiceImpl;
 import com.startoup.biz.member.MemberVO;
 import com.startoup.biz.member.MyLikeVO;
+import com.startoup.biz.product.ProductServiceImpl;
 import com.startoup.biz.product.ProductVO;
 
 @Controller
@@ -21,6 +24,12 @@ public class MemberController {
 
 	@Autowired
 	private MemberServiceImpl memberSI;
+
+	@Autowired
+	private ProductServiceImpl productSI;
+	
+	@Autowired
+	private ListServiceImpl listSI;
 
 	@RequestMapping(value = "/myPage.do")
 	public String selectOneMember() {
@@ -41,6 +50,19 @@ public class MemberController {
 	}
 
 	// 로그인 페이지로 처음 이동할 때
+	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
+	public @ResponseBody String check(@RequestBody MemberVO vo) {
+
+		vo = memberSI.selectOneMember(vo);
+		if (vo == null) {
+			return "success";
+		} else {
+			return "duplicate";
+		}
+
+	}
+
+	// 로그인 페이지로 처음 이동할 때
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute("member") MemberVO vo) {
 
@@ -49,18 +71,43 @@ public class MemberController {
 
 	// 로그인 했을 때
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String selectOneMember(MemberVO vo, HttpSession session) {
+	public String selectOneMember(MemberVO vo,Model model,String msg, HttpSession session) {
 		System.out.println("selectOneMember() 입장");
 		vo = memberSI.loginMember(vo);
-		System.out.println("vo : "+vo);
+		System.out.println("vo : " + vo);
 
 		if (vo == null) { // 로그인 실패
-			return "redirect:login.do"; // 다시 로그인 페이지
+			//로그인 실패
+	         System.out.println("로그: 로그인 실패");
+	         
+	          msg = "아이디 또는 비밀번호를 잘못 입력하셨습니다.";
+	          model.addAttribute("msg",msg );
+	         return "alert.jsp";
+
+//			return "redirect:login.do"; // 다시 로그인 페이지
 		} else { // 로그인 성공 하면
 			session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
 			return "redirect:store.do";
 		}
 	}
+	
+	@RequestMapping(value="/kakaoLogin.do") 
+	   public String kakaoMember(MemberVO vo, HttpSession session) {
+	      
+	      System.out.println("로그 kakao 확인 id:"+vo.getmId()+"/mName:"+vo.getmName()+"/mEmail1:"+vo.getmEmail1());
+	      
+	      
+	      //처음 카카오로그인한 계정이라면, 회원가입
+	      if(memberSI.selectOneMember(vo) == null) {  
+	         System.out.println("카카오 회원가입 시작");
+	         System.out.println("vo"+vo);
+	         memberSI.insertKakaoMember(vo);
+	      }
+	      
+	      session.setAttribute("member", vo);
+	      return "redirect:store.do";   
+	   }
+	   
 
 	// 로그아웃 했을 때
 	@RequestMapping(value = "/logout.do")
@@ -89,9 +136,10 @@ public class MemberController {
 
 	// 상품디테일 페이지 들어갔을 때 찜 여부 확인하기위함.
 	@RequestMapping(value = "/detail.do")
-	public String selcetOneBoard(ProductVO pvo, HttpSession session, MyLikeVO myvo, Model model) {
+	public String selcetOneBoard(ProductVO pvo, HttpSession session, MyLikeVO myvo, ListVO lvo, Model model) {
 
-		// 로그인 되어 있는지 확인한 후에
+		lvo.setlPid(pvo.getpNum()); // Pid 넘겨주기
+		
 		// 로그인 되어 있으면 -> 멤버아이디,제품번호로 찜되어있는지 여부 파악해서
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		if (member != null) {
@@ -101,8 +149,11 @@ public class MemberController {
 		}
 		// isMylike : 찜 여부 파악 용도 -> 찜 안 되어 있으면 null / 찜 되어 있으면 MylikeVO 리턴해줌.
 		// 현재 찜목록 하나 보는거 없어서 추가되면 할 예정!!
-//			model.addAttribute("isMylike", memberSI.selectOneList(myvo);
-		return "blog.jsp";
+		model.addAttribute("list", listSI.selectCount(lvo)); // 찜 인원
+		model.addAttribute("isMylike", memberSI.checkList(myvo));
+		model.addAttribute("data", productSI.selectOne(pvo));
+
+		return "detail.jsp";
 	}
 
 	// 찜하기

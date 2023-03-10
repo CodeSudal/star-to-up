@@ -66,4 +66,9 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.selectAllLike(vo);
 	}
 
+	@Override
+	public MyLikeVO checkList(MyLikeVO vo) {
+		return mdao.checkLike(vo);
+	}
+
 }
