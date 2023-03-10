@@ -22,16 +22,17 @@ public class CrawlingDAO {
 	//		DriverUtil.crawling();
 	//	}
 
-	public boolean crawling() {
+	public boolean crawling(SeleniumVO sel) {
 		List<SeleniumVO> datas;
-		SeleniumVO sel = new SeleniumVO();
-
+		String title;
+		String info;
+		
 		try {
 			DriverUtil.crawling();
 			datas=jdbcTemplate.query(SELECT_ALL_PRODUCT, new PSeleniumRowMapper());
 			for(int i=0; i<datas.size(); i++) {
-				String title=datas.get(i).getpName();
-				String info=DriverUtil.craw.get(title);
+				title=datas.get(i).getpName();
+				info=DriverUtil.craw.get(title);
 
 				sel.setcName(title);
 				sel.setcInfo(info);
