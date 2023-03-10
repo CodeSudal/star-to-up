@@ -67,10 +67,13 @@ public class ProductDAO {
 
    public boolean insertProduct(ProductVO vo) {
       try {
+    	 System.out.println("pdao insert 들어옴");
          int res=jdbcTemplate.update(INSERT_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpInfo(), vo.getpImage(),  vo.getpAmount());
+         System.out.println("update 실행완");
          if(res<1) { return false; }
          return true;
       } catch(Exception e) {
+    	  System.out.println("error"+e);
          return false;
       }
    }

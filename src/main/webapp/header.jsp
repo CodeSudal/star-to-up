@@ -31,17 +31,17 @@
       </div>
       <div class="top_right_box">
         <c:if test="${not empty member &&(member.mId == 'admin' || member.mId == 'ADMIN') }">
-         	<div style="margin-right:10%; margin-top:5%;">
-         		<p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
-         	</div>
+            <div style="margin-right:10%; margin-top:5%;">
+               <p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
+            </div>
          </c:if>
          <div class="icon_box1">
             <div class="header__right1">
                <ul class="header__right__widget">
-                  <li><a href="myList.do"><span class="material-symbols-outlined">&#xE87D;</span>
-                  		<c:if test="${not empty member}">
-                  			 <div class="tip">${member.cnt}</div> 
-                  		</c:if>
+                  <li><a href="shopcart.do"><span class="material-symbols-outlined">&#xE87D;</span>
+                        <c:if test="${not empty member}">
+                            <div class="tip"><%-- ${member.cnt} --%></div> 
+                        </c:if>
                       </a>
                   </li>
 
@@ -55,10 +55,15 @@
                         <ul class="dropdown"
                            style="text-align: right; width: 110px; border-radius: 5px; background-color: rgba(0, 0, 0, 0.3); position: absolute; left: -80px; top: 38px">
                            <c:choose>
+                               <c:when test="${not empty member &&(member.mId == 'admin' || member.mId == 'ADMIN') }">
+                                   <li><a href="myFundingList.do">펀딩 내역</a></li>
+                                    <li><a href="myList.do">찜내역</a></li>
+                                    <li><a href="logout.do">로그아웃</a></li>
+                               </c:when>
                               <c:when test="${not empty member}">
                                  <li><a href="myFundingList.do">펀딩 내역</a></li>
-                                 <li><a href="myList.do">찜내역</a></li>
-                                 <li><a href="withdrowal.do">회원 탈퇴</a></li>
+                                 <li><a href="shopcart.do">찜내역</a></li>
+                                <li><a href="withdrowal.do">회원 탈퇴</a></li>
                                  <li><a href="logout.do">로그아웃</a></li>
                               </c:when>
                                <c:otherwise>

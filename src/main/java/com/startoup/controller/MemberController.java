@@ -37,7 +37,7 @@ public class MemberController {
 		return "myPage.jsp";
 	}
 
-	@RequestMapping(value = "/myList.do") // shopcart.do로 변경
+	@RequestMapping(value = "/shopcart.do")
 	public String selectAllList(Model model, MyLikeVO vo) {
 
 		model.addAttribute("i", memberSI.selectAllList(vo));

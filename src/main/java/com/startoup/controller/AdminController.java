@@ -32,6 +32,15 @@ public class AdminController {
 		return "adminProductManagement.jsp";
 	}
 	
+	@RequestMapping(value="/adminProductInsert.do")
+	public String selectAllProductDelete(ProductVO pvo, Model model) {
+		
+		System.out.println("adminProductInsert 들어옴");
+		model.addAttribute("datas", ProductSI.insertProduct(pvo));
+		System.out.println("adminProductInsert 나감");
+		return "adminProduct.do";
+	}
+	
 	@RequestMapping(value="/adminMember.do")
 	public String selectAllMember(MemberVO mvo, Model model) {
 		
