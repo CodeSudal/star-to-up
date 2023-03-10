@@ -37,10 +37,18 @@ public class MemberController {
 		return "myPage.jsp";
 	}
 
-	@RequestMapping(value = "/myList.do")
-	public String selectAllList() {
+	@RequestMapping(value = "/myList.do") // shopcart.do로 변경
+	public String selectAllList(Model model, MyLikeVO vo) {
 
-		return "myList.jsp";
+		model.addAttribute("i", memberSI.selectAllList(vo));
+		return "shopcart.jsp";
+	}
+	
+	@RequestMapping(value = "/shopcartDelete.do")
+	public String deleteList(Model model, MyLikeVO vo) {
+
+		model.addAttribute("i", memberSI.deleteList(vo));
+		return "redirect:shopcart.jsp";
 	}
 
 	@RequestMapping(value = "/agreement.do")
@@ -94,13 +102,10 @@ public class MemberController {
 	@RequestMapping(value="/kakaoLogin.do") 
 	   public String kakaoMember(MemberVO vo, HttpSession session) {
 	      
-	      System.out.println("로그 kakao 확인 id:"+vo.getmId()+"/mName:"+vo.getmName()+"/mEmail1:"+vo.getmEmail1());
-	      
+//	      System.out.println("로그 kakao 확인 id:"+vo.getmId()+"/mName:"+vo.getmName()+"/mEmail1:"+vo.getmEmail1());
 	      
 	      //처음 카카오로그인한 계정이라면, 회원가입
 	      if(memberSI.selectOneMember(vo) == null) {  
-	         System.out.println("카카오 회원가입 시작");
-	         System.out.println("vo"+vo);
 	         memberSI.insertKakaoMember(vo);
 	      }
 	      
