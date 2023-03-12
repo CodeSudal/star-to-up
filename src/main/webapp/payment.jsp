@@ -91,6 +91,7 @@ function payment(data) {
 
 	<!-- Breadcrumb End -->
 
+
 	<!-- Checkout Section Begin -->
 	
 	<section class="checkout spad">
