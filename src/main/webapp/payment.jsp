@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     <!DOCTYPE html>
 
 <html lang="zxx"><head>
@@ -9,12 +11,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Ashion | Template</title>
+<c:set var="product" value="${productList}" />
+	<c:set var="e" value="@" />
+	<c:set var="member" value="${memberList}" />
  <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- iamport -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript">
+
 
 //문서가 준비되면 제일 먼저 실행
 $(document).ready(function(){ 
@@ -31,15 +37,15 @@ function payment(data) {
         pg: "html5_inicis", //pg사명 or pg사명.CID (잘못 입력할 경우, 기본 PG사가 띄워짐)
         pay_method: "card", //지불 방법
         merchant_uid: "INIpayTest-0000004", //가맹점 주문번호 (아임포트를 사용하는 가맹점에서 중복되지 않은 임의의 문자열을 입력)
-        name: "별", //결제창에 노출될 상품명
-        amount: 100, //금액
-        buyer_email : "startoup@naver.com", 
-        buyer_name : "칸쮸롤",
-        buyer_tel : "010-1234-5678"
+        name: "${product.pName}", //결제창에 노출될 상품명
+        amount: <fmt:formatNumber value="${product.pPrice}" />, //금액
+        buyer_email : "${member.mEmail1} ${e} ${member.mEmail2}", 
+        buyer_name : "${member.mName}",
+        buyer_tel : "${member.mNum}"
     }, function (rsp) { // callback
         if (rsp.success) {
             alert("결제가 완료되었습니다.");
-            var link = 'myFundingList.jsp';
+            var link = 'paymentsuccess.do';
             
             location.href= link;
         } else {
@@ -85,22 +91,25 @@ function payment(data) {
 	<!-- Breadcrumb End -->
 
 	<!-- Checkout Section Begin -->
+	
 	<section class="checkout spad">
 		<div class="container">
 
 			<form action="#" class="checkout__form">
 				<h5 style="border-bottom: white; font-size: 30px; font-weight: 700; font-family: 'Noto Sans';">제품
 					정보</h5>
-				<table>
+
+					
+				<table >
 					<tbody>
 						<tr>
-							<td style="width: 147px; height: 47px; font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; line-height: 44px; color: #000000;"><img src="img/jupiter-942558_960_720.png" style="
+							<td style="width: 147px; height: 47px; font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; line-height: 44px; color: #000000;"><img src="${product.pImage}" style="
 "></td>
-							<td style="width: 10%;height: 47px;font-family: 'Noto Sans';font-style: normal;font-weight: 500;font-size: 30px;line-height: 44px;color: #000000;">Jupiter </td>
+							<td style="width: 10%;height: 47px;font-family: 'Noto Sans';font-style: normal;font-weight: 500;font-size: 30px;line-height: 44px;color: #000000;">${product.pName} </td>
 							<td style="width: 40%;height: 29px;font-family: 'Noto Sans';font-style: normal;font-weight: 400;font-size: 25px;line-height: 44px;color: #000000;text-align: right;">₩
-								1,298,338,000</td>
+	<fmt:formatNumber value="${product.pAmount}" /></td>
 							<td style="width: 40%;height: 29px;font-family: 'Noto Sans';font-style: normal;font-weight: 700;font-size: 28px;line-height: 44px;text-align: right;color: #000000;">₩
-								205,252</td>
+								<fmt:formatNumber value="${product.pPrice}" /></td>
 						</tr>
 					</tbody>
 				</table>
@@ -110,11 +119,12 @@ function payment(data) {
 								<h5 style="width: 156px; height: 44px; font-family: 'Noto Sans'; font-style: normal; font-weight: 700; font-size: 28px; line-height: 44px;
 	/* identical to box height */ color: #000000; border-bottom: white; margin-top: 50px;">후원자
 									정보</h5>
+									
 		<div class="checkout__form__input">
 								<p style="width: 48px;height: 27px;font-family: 'Noto Sans';font-style: normal;font-weight: 700;font-size: 16px;line-height: 27px;color: #000000;">
 									이 름 
 								</p>
-								<input type="text" style="width: 95%;margin-bottom: 10px;" readonly="">
+								<input type="text" style="width: 95%;margin-bottom: 10px;" value="${member.mName }" readonly>
 </div>
 							<div class="checkout__form__input">
 								<p style="width: 70px;height: 27px;font-family: 'Noto Sans';font-style: normal;font-weight: 700;font-size: 16px;line-height: 27px;color: #000000;">
@@ -123,7 +133,7 @@ function payment(data) {
 								<input type="text" style="
     width: 95%;
     margin-bottom: 10px;
-" readonly="">
+"  value="${member.mNum}" readonly>
 							</div>
 
 								<div class="checkout__form__input">
@@ -133,13 +143,14 @@ function payment(data) {
 									<input type="text" style="
     width: 95%;
     margin-bottom: 10px;
-" readonly="">
+" value="${member.mEmail1} ${e} ${member.mEmail2}" readonly>
 								</div>
 								<p> * 위 연락처와 이메일로 펀딩소식이 전달됩니다.</p> 
 
 
 
 					</div>
+					
 
 					<div class="col-lg-4">
 						<div class="checkout__order" style="margin-top: 70px;border-radius: 16px;">
@@ -154,7 +165,7 @@ function payment(data) {
 "><span class="top__text" style="font-size: 20px;">Product</span>
 										<span class="top__text__right" style="font-size: 20px;">Total</span>
 									</li>
-									<li style="font-size: 18px;margin-bottom: 30px;">Jupiter <span style="font-size: 16px;">₩ 205,252</span></li>
+									<li style="font-size: 18px;margin-bottom: 30px;">${product.pName } <span style="font-size: 16px;">₩<fmt:formatNumber value="${product.pPrice}" /> </span></li>
 								</ul>
 							</div>
 							
