@@ -82,6 +82,7 @@ function payment(data) {
 </style></head>
 
 <body>
+
        <%@ include file="header.jsp" %>
 
 	<!-- Header Section End -->
