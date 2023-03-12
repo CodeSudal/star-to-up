@@ -27,7 +27,7 @@ public class MemberController {
 
 	@Autowired
 	private ProductServiceImpl productSI;
-	
+
 	@Autowired
 	private ListServiceImpl listSI;
 
@@ -37,12 +37,41 @@ public class MemberController {
 		return "myPage.jsp";
 	}
 
-	@RequestMapping(value = "/myList.do")
-	public String selectAllList() {
+	// 찜목록
+	@RequestMapping(value = "/shopcart.do")
+	public String selectAllList(Model model, MyLikeVO mlvo, HttpSession session) {
 
-		return "myList.jsp";
+		// 로그인 되어 있으면 -> 멤버아이디,제품번호로 찜되어있는지 여부 파악해서
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		if (member != null) { // 로그인 했으면
+			mlvo.setMlMid(member.getmId()); // 세션에 저장되어있는 아이디 mlvo에 저장
+
+		} else {
+			return "login.jsp"; // 로그인 하세요 메세지 띄우기
+		}
+		
+		if (memberSI.selectAllLike(mlvo).isEmpty()) {
+			System.out.println("찜한 목록이 없습니다. 화면 보여주기");
+			return "shopcart.jsp";
+		}
+		System.out.println("ctrl의 return받아온값"+memberSI.selectAllLike(mlvo));
+		model.addAttribute("i", memberSI.selectAllLike(mlvo));
+
+		return "shopcart.jsp";
+
 	}
 
+	// 찜삭제
+	@RequestMapping(value = "/shopcartDelete.do")
+	public String deleteList(Model model, MyLikeVO mlvo) {
+
+//		mlvo.setMlPid(0); // mlvo의 MlPid에 받아온 값 넣어주기(안해줘도 될거같음 이름이 같아서)
+		
+		model.addAttribute("datas", memberSI.deleteLike(mlvo));
+		return "redirect:shopcart.do";
+	}
+
+	// 약관 동의
 	@RequestMapping(value = "/agreement.do")
 	public String agreement() {
 
@@ -71,18 +100,17 @@ public class MemberController {
 
 	// 로그인 했을 때
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String selectOneMember(MemberVO vo,Model model,String msg, HttpSession session) {
-		System.out.println("selectOneMember() 입장");
+	public String selectOneMember(MemberVO vo, Model model, String msg, HttpSession session) {
 		vo = memberSI.loginMember(vo);
-		System.out.println("vo : " + vo);
+		System.out.println("login : " + vo);
 
 		if (vo == null) { // 로그인 실패
-			//로그인 실패
-	         System.out.println("로그: 로그인 실패");
-	         
-	          msg = "아이디 또는 비밀번호를 잘못 입력하셨습니다.";
-	          model.addAttribute("msg",msg );
-	         return "alert.jsp";
+			// 로그인 실패
+			System.out.println("로그: 로그인 실패");
+
+			msg = "아이디 또는 비밀번호를 잘못 입력하셨습니다.";
+			model.addAttribute("msg", msg);
+			return "alert.jsp";
 
 //			return "redirect:login.do"; // 다시 로그인 페이지
 		} else { // 로그인 성공 하면
@@ -90,24 +118,20 @@ public class MemberController {
 			return "redirect:store.do";
 		}
 	}
-	
-	@RequestMapping(value="/kakaoLogin.do") 
-	   public String kakaoMember(MemberVO vo, HttpSession session) {
-	      
-	      System.out.println("로그 kakao 확인 id:"+vo.getmId()+"/mName:"+vo.getmName()+"/mEmail1:"+vo.getmEmail1());
-	      
-	      
-	      //처음 카카오로그인한 계정이라면, 회원가입
-	      if(memberSI.selectOneMember(vo) == null) {  
-	         System.out.println("카카오 회원가입 시작");
-	         System.out.println("vo"+vo);
-	         memberSI.insertKakaoMember(vo);
-	      }
-	      
-	      session.setAttribute("member", vo);
-	      return "redirect:store.do";   
-	   }
-	   
+
+	@RequestMapping(value = "/kakaoLogin.do")
+	public String kakaoMember(MemberVO vo, HttpSession session) {
+
+//	      System.out.println("로그 kakao 확인 id:"+vo.getmId()+"/mName:"+vo.getmName()+"/mEmail1:"+vo.getmEmail1());
+
+		// 처음 카카오로그인한 계정이라면, 회원가입
+		if (memberSI.selectOneMember(vo) == null) {
+			memberSI.insertKakaoMember(vo);
+		}
+
+		session.setAttribute("member", vo);
+		return "redirect:store.do";
+	}
 
 	// 로그아웃 했을 때
 	@RequestMapping(value = "/logout.do")
@@ -129,7 +153,7 @@ public class MemberController {
 	public String insertMember(MemberVO vo) {
 //		System.out.println("insertMember() 입장");
 
-//		memberSI.insertMember(vo);
+		memberSI.insertMember(vo);
 
 		return "redirect:login.do";
 	}
@@ -139,7 +163,7 @@ public class MemberController {
 	public String selcetOneBoard(ProductVO pvo, HttpSession session, MyLikeVO myvo, ListVO lvo, Model model) {
 
 		lvo.setlPid(pvo.getpNum()); // Pid 넘겨주기
-		
+
 		// 로그인 되어 있으면 -> 멤버아이디,제품번호로 찜되어있는지 여부 파악해서
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		if (member != null) {
@@ -150,7 +174,7 @@ public class MemberController {
 		// isMylike : 찜 여부 파악 용도 -> 찜 안 되어 있으면 null / 찜 되어 있으면 MylikeVO 리턴해줌.
 		// 현재 찜목록 하나 보는거 없어서 추가되면 할 예정!!
 		model.addAttribute("list", listSI.selectCount(lvo)); // 찜 인원
-		model.addAttribute("isMylike", memberSI.checkList(myvo));
+		model.addAttribute("isMylike", memberSI.checkLike(myvo));
 		model.addAttribute("data", productSI.selectOne(pvo));
 
 		return "detail.jsp";
@@ -163,7 +187,7 @@ public class MemberController {
 
 		System.out.println("vo:" + vo);
 
-		if (memberSI.insertList(vo)) {
+		if (memberSI.insertLike(vo)) {
 			System.out.println("저장됨");
 			return "success";
 		} else {
@@ -180,7 +204,7 @@ public class MemberController {
 
 		System.out.println("vo:" + vo);
 
-		if (memberSI.deleteList(vo)) {
+		if (memberSI.deleteLike(vo)) {
 			System.out.println("삭제됨");
 			return "success";
 		} else {

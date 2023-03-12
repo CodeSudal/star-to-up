@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 public class CrawlingServiceImpl implements CrawlingService {
 	
 	@Autowired
-	private CrawlingDAO crawlingDAO;
-	
-	
+	private CrawlingDAO cdao;
+
+	@Override
+	public boolean crawling() {
+		return cdao.crawling();
+	}
 
 }
