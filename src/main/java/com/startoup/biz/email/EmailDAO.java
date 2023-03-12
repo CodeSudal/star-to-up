@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public class EmailDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	
 }

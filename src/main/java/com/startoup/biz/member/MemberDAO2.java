@@ -73,6 +73,16 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
+	
+	// 이메일 중복확인
+	public MemberVO selectOneEamil(MemberVO vo) {
+		try {
+			return mybatis.selectOne("MemberDAO.selectOneEamil", vo);
+		} catch(Exception e) {
+			return null;
+		}
+	}
+
 
 	// 로그인
 	public MemberVO login(MemberVO vo) {
