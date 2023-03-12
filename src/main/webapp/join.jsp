@@ -192,7 +192,7 @@ select::-ms-expand {
 		console.log('phoneCheck() 실')
 		console.log('phone : ' + phone)
 		console.log(phone.value)
-		if (phone.value === '') {
+		if (phone.value == '') {
 			alert("번호를 입력해주세요.");
 			
 			
@@ -210,6 +210,7 @@ select::-ms-expand {
 				cache : false,
 				success : function(data) { 
 					$("#phone2").attr("disabled",false);
+					$("#phoneChk2").attr("disabled",false);
 					$("#phoneChk2").css("display","inline-block");
 					$("#phoneChk").css("backgroundColor","black");
 					$("#phoneChk").text("발송완료");
@@ -237,8 +238,6 @@ select::-ms-expand {
 			$("#phone2").attr("disabled",true);
 			
 
-			$("#btn-save").attr("disabled",false);
-			$("#btn-save").css("backgroundColor","black");
 			
 		} else {
 			alert("인증번호가 일치하지 않습니다.")
@@ -336,7 +335,7 @@ select::-ms-expand {
 					<input id="phone" name="mNum" type="text"
 						style="float: left; width: 400px;" required>
 				</div>
-				<button id="phoneChk" class="doubleChk" onclick="phoneCheck1()" disabled
+				<button id="phoneChk" class="doubleChk" onclick="phoneCheck1()"
 					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;">
 					인증번호 발송</button>
 				<span id="phone_result"></span>
