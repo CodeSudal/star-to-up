@@ -52,22 +52,22 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean insertList(MyLikeVO vo) {
+	public boolean insertLike(MyLikeVO vo) {
 		return mdao.insertLike(vo);
 	}
 
 	@Override
-	public boolean deleteList(MyLikeVO vo) {
+	public boolean deleteLike(MyLikeVO vo) {
 		return mdao.deleteLike(vo);
 	}
 
 	@Override
-	public List<MyLikeVO> selectAllList(MyLikeVO vo) {
+	public List<MyLikeVO> selectAllLike(MyLikeVO vo) {
 		return mdao.selectAllLike(vo);
 	}
 
 	@Override
-	public MyLikeVO checkList(MyLikeVO vo) {
+	public MyLikeVO checkLike(MyLikeVO vo) {
 		return mdao.checkLike(vo);
 	}
 

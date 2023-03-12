@@ -77,7 +77,7 @@
                   <div class="bg-secondary rounded h-100 p-4">
                   
                   <h3 class="mb-4">Add Product</h3>
-                     <form method="post" action="adminProduct.do" enctype="multipart/form-data">
+                     <form method="post" action="adminProductInsert.do" enctype="multipart/form-data">
                         
                         <div class="mb-3">
                            <label for="pName" class="form-label">상품

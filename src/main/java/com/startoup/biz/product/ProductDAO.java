@@ -36,6 +36,7 @@ public class ProductDAO {
    // 펀딩 완료 시(제품 펀딩 종료하기)
    final String UPDATE_FINISH = "UPDATE PRODUCT SET P_FINISH=1 WHERE P_NUM=?";
    
+   
    // 사용자가 구매했을 때 checkProduct
    public boolean checkProduct(ProductVO vo) {
       Object[] args= { vo.getpNum() };
@@ -66,10 +67,13 @@ public class ProductDAO {
 
    public boolean insertProduct(ProductVO vo) {
       try {
+    	 System.out.println("pdao insert 들어옴");
          int res=jdbcTemplate.update(INSERT_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpInfo(), vo.getpImage(),  vo.getpAmount());
+         System.out.println("update 실행완");
          if(res<1) { return false; }
          return true;
       } catch(Exception e) {
+    	  System.out.println("error"+e);
          return false;
       }
    }
@@ -172,42 +176,11 @@ class ProductRowMapper implements RowMapper<ProductVO> {
       data.setpInfo(rs.getString("P_INFO"));
       data.setpFinish(rs.getInt("P_FINISH"));
       data.setpImage(rs.getString("P_IMAGE"));
+      data.setpAmount(rs.getInt("P_AMOUNT"));
+      data.setpCRNAmount(rs.getInt("P_CRNAMOUNT"));
+      data.setpPercent(rs.getInt("P_PERCENT"));
       return data;
    }
 
 }
 
-//class FundingRowMapper implements RowMapper<FundingVO> {
-//
-//   @Override
-//   public FundingVO mapRow(ResultSet rs, int rowNum) throws SQLException {
-//      FundingVO data=new FundingVO();
-//      data.setfNum(rs.getInt("F_NUM"));
-//      data.setfPid(rs.getInt("F_PID"));
-//      data.setfCRNAmount(rs.getInt("F_AMOUNT"));
-//      data.setfAmount(rs.getInt("F_CRNAMOUNT"));
-//      return data;
-//   }
-//
-//}
-//
-//class PFundingRowMapper implements RowMapper<PFundingVO> {
-//
-//   @Override
-//   public PFundingVO mapRow(ResultSet rs, int rowNum) throws SQLException {
-//      PFundingVO data=new PFundingVO();
-//      data.setpNum(rs.getInt("P_NUM"));
-//      data.setpName(rs.getString("P_NAME"));
-//      data.setpPrice(rs.getInt("P_PRICE"));
-//      data.setpInfo(rs.getString("P_INFO"));
-//      data.setpFinish(rs.getInt("P_FINISH"));
-//      data.setpImage(rs.getString("P_IMAGE"));
-//      
-//      data.setfNum(rs.getInt("F_NUM"));
-//      data.setfPid(rs.getInt("F_PID"));
-//      data.setfCRNAmount(rs.getInt("F_AMOUNT"));
-//      data.setfAmount(rs.getInt("F_CRNAMOUNT"));
-//      return data;
-//   }
-//    
-//}
