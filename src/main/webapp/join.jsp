@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -98,6 +98,7 @@ select::-ms-expand {
 																				} else {
 																					$('#id_result').text('사용하실 수 있는 아이디입니다.');
 																					$('#id_result').css('color','green');
+																					
 
 																				}
 																		if (response == 'duplicate') {
@@ -150,16 +151,24 @@ select::-ms-expand {
 															},
 															success : function(
 																	response) {
-																if (response == 'duplicate') {
-																	$('#email_result').text('중복된 이메일입니다. 다시 작성해주세요.');
+																console.log(response);
+																if(email==''){
+																	$('#email_result').text('');
+																} else if (email != ''&& !emaCheck.test(email)) {
+																	$('#email_result').text('이메일은 5-15자의 영문과 숫자만 사용해야 합니다.');
 																	$('#email_result').css('color','red');
-																} else if (emailSel != ''
-																		&& response != 'duplicate'
-																		&& email != ''
-																		&& emaCheck.test(email)) {
+																}
+																else {
+																	if (response == 'duplicate') {
+																		$('#email_result').text('중복된 이메일입니다. 다시 작성해주세요.');
+																		$('#email_result').css('color','red');
+																	}else{
 																	$('#email_result').text('사용하실 수 있는 이메일입니다.');
 																	$('#email_result').css('color','green');
+																	}
+
 																}
+															
 															}
 														});
 											};
@@ -209,6 +218,7 @@ select::-ms-expand {
 				url : "phoneCheck.do?phone="+ sendedPhone,
 				cache : false,
 				success : function(data) { 
+					console.log("인증번호:"+data)
 					$("#phone2").attr("disabled",false);
 					$("#phoneChk2").attr("disabled",false);
 					$("#phoneChk2").css("display","inline-block");
@@ -216,6 +226,7 @@ select::-ms-expand {
 					$("#phoneChk").text("발송완료");
 					$("#phone").attr("readonly",true);
 					code2 = data;
+					
 				}
 			});
 			
@@ -225,8 +236,7 @@ select::-ms-expand {
 	function phoneAuth () {
 		event.preventDefault();
 		console.log($("#phone2").val())
-		console.log(code2)
-		if ($("#phone2").val() === code2) {
+		if ($("#phone2").val() == code2) {
 		/* 아침에 확인할 것
 		1. 문자 잘 오는 지 확인 > 잘됨
 		2. 문자와 인증번호와 일치하는 지/ 정규식 통과하는지 > 잘됨
@@ -257,7 +267,7 @@ select::-ms-expand {
 <body>
 
 
-	<form action="join.do" method="POST" class="checkout__form" >
+	<form action="join.do" method="POST" class="checkout__form">
 		<div class="col-lg-8">
 			<h5
 				style="font-weight: 700; font-size: 32px; font-family: 'Noto Sans'; margin-top: 50px; margin-left: 50px; border-bottom: white;">회원가입</h5>
@@ -279,8 +289,8 @@ select::-ms-expand {
 					</p>
 					<input type="password"
 						style="width: 400px; display: block; margin-bottom: 0;"
-						id="password" name="mPw" required> <span
-						id="pw_result" style="color: rgb(255, 0, 0); font-size: small;"></span>
+						id="password" name="mPw" required> <span id="pw_result"
+						style="color: rgb(255, 0, 0); font-size: small;"></span>
 				</div>
 				<div class="checkout__form__input" style="margin-top: 10px;">
 					<p>
@@ -296,14 +306,27 @@ select::-ms-expand {
 						이메일 <span id=star> *</span>
 					</p>
 					<input type="text"
-						style="float: left; width: 400px; margin-right: 10px; display: inline-block;"
-						id="email" name="mEmail1" required> <span
-						id="email_result"
-						style="color: rgb(255, 0, 0); /* float: left; */ font-size: small;"></span>
+						style="    float: left;
+    width: 400px;
+    margin-right: 10px;
+    display: inline-block;
+    margin-bottom: 10px;"
+						id="email" name="mEmail1" required> 
 					<span style="display: inline-block; float: left; margin-top: 10px;">
 						@ </span> <select id="email_sel" name="mEmail2" required
-						style="width: 400px; height: 50px;
-	/* width: 100%; */ border: 1px solid #e1e1e1; border-radius: 2px; margin-bottom: 25px; font-size: 14px; padding-left: 10px; color: #666666; margin-left: 10px; float: left;">
+						style="width: 400px;
+    height: 50px;
+    /* width: 100%; */
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    padding-left: 10px;
+    color: #666666;
+    margin-left: 10px;
+    float: left;
+    display: block;
+    margin-bottom: 10px;">
 						<option value="">이메일 선택</option>
 						<option value="naver.com">naver.com</option>
 						<option value="gmail.com">gmail.com</option>
@@ -319,38 +342,48 @@ select::-ms-expand {
 						<option value="hanmir.com">hanmir.com</option>
 						<option value="dreamwiz.com">dreamwiz.com</option>
 						<option value="paran.com">paran.com</option>
-					</select> <span id="email_result"></span>
+					</select> 
 				</div>
+				<span
+						id="email_result"
+						style="font-size: small;
+    display: block;
+    float: left;
+    width: 100%;
+}"></span>
 
 
 
 
-				<div class="checkout__form__input" style="width: 50%;">
+				<div class="checkout__form__input" style="display: block;">
 
 
 
-					<p id="pho">
+					<p id="pho" style="width: 100%;
+    display: block;
+    float: left;
+    margin-top: 20px;">
 						전화번호 <span id=star> *</span>
 					</p>
 					<input id="phone" name="mNum" type="text"
 						style="float: left; width: 400px;" required>
 				</div>
-				<button id="phoneChk" class="doubleChk" onclick="phoneCheck1()"
-					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;">
-					인증번호 발송</button>
+				<input type="button" id="phoneChk" class="doubleChk" onclick="phoneCheck1()"
+					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;"
+					value="인증번호 발송">
 				<span id="phone_result"></span>
 
 				<div class="checkout__form__input" style="width: 50%;">
 					<input id="phone2" type="text" name="phone2"
 						style="float: left; width: 400px;" required disabled>
 				</div>
-				<button id="phoneChk2" class="doubleChk" onclick="phoneAuth()" disabled
-					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;">
-					본인인증</button>
+				<input type="button" id="phoneChk2" class="doubleChk" onclick="phoneAuth()" disabled
+					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;"
+					value="본인인증">
 				<span id="phone2_result"></span>
 
 
-				<button id="btn-save" class="site-btn" onclick="submitBtn()" 
+				<button id="btn-save" class="site-btn" onclick="submitBtn()"
 					style="height: 50px; width: 200px; background: #D9D9D9; border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;">가입하기
 				</button>
 				<!-- <button onclick="alertTest()">alertTest</button> -->
