@@ -15,7 +15,7 @@ public class ProductDAO {
    private JdbcTemplate jdbcTemplate;
 
    // 제품추가
-   final String INSERT_PRODUCT = "INSERT INTO PRODUCT( P_NUM, P_NAME, P_PRICE, P_INFO, P_IMAGE, P_AMOUNT) VALUES( (SELECT NVL(MAX(P_NUM), 0) + 1 FROM PRODUCT), ?, ?, ?, ?, ?)";
+   final String INSERT_PRODUCT = "INSERT INTO PRODUCT( P_NUM, P_NAME, P_PRICE, P_IMAGE, P_AMOUNT) VALUES( (SELECT NVL(MAX(P_NUM), 0) + 1 FROM PRODUCT), ?, ?, ?, ?)";
    // 제품정보변경
    final String UPDATE_PRODUCT = "UPDATE PRODUCT SET P_NAME=?, P_PRICE=?, P_INFO=?, P_IMAGE=? WHERE P_NUM=?";
    // 제품삭제
@@ -67,7 +67,7 @@ public class ProductDAO {
 
    public boolean insertProduct(ProductVO vo) {
       try {
-         int res=jdbcTemplate.update(INSERT_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpInfo(), vo.getpImage(),  vo.getpAmount());
+         int res=jdbcTemplate.update(INSERT_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpImage(),  vo.getpAmount());
          if(res<1) { return false; }
          return true;
       } catch(Exception e) {
