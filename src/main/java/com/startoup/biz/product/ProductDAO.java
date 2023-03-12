@@ -67,6 +67,9 @@ public class ProductDAO {
 
    public boolean insertProduct(ProductVO vo) {
       try {
+    	 if(vo.getpImage()==null) {
+    		 vo.setpImage("default.jpg");
+    	 }
          int res=jdbcTemplate.update(INSERT_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpImage(),  vo.getpAmount());
          if(res<1) { return false; }
          return true;
