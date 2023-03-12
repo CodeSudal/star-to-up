@@ -31,7 +31,8 @@
         <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
         <link rel="stylesheet" href="css/style.css" type="text/css" />
-
+        
+        <!-- //rgb(24, 55, 208) // rgba(0, 0, 0, 0.25) -->
         <style>
             h3 {
                 display: inline;
@@ -48,8 +49,8 @@
             }
             .progress2 {
                 border-radius: 30px;
-                background: rgba(0, 0, 0, 0.25);
-                box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+                background: rgb(215,215,215);
+                box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(225, 225, 225, 0.08);
             }
 
             .progress-bar2 {
@@ -62,19 +63,19 @@
 
             .progress-moved .progress-bar2 {
                 background-color: black;
-                animation: progressAnimation 6s;
+                animation: progressAnimation 3s;
             }
 
             @keyframes progressAnimation {
                 0% {
                     width: 5%;
-                    background-color: rgb(24, 55, 208);
+                    background-color: black;  
                 }
                 100% {
                     background-color: black;
                 }
             }
-
+          
             @keyframes colorAnimation {
                 0% {
                     background-image: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #7dc8e8, #5856d6, #ff2d55);
@@ -117,106 +118,135 @@
             </div>
         </div>
         <!-- Breadcrumb End -->
-
+		
         <!-- Product Details Section Begin -->
-        <section class="product-details spad" style="margin-left:5%; padding-top:30px; !important" >
+        <section class="product-details spad" style="margin-left:5%; padding-top:20px; !important" >
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                    
+                    	<!-- 상품이미지(EL식으로 바꾸는 건 내일할 예정) 샘플데이터로 고정되어있음 -->
                         <div class="product__details__pic">
                            
-                            <div class="product__details__pic__left product__thumb nice-scroll" >
-                                <a class="pt" href="#">
-                                    <img src="img/shop-cart/Jupiter.png" alt="" />
-                                </a>
-                                <a class="pt" href="#">
-                                    <img src="img/shop-cart/Jupiter.png" alt="" />
-                                </a>
-                                <a class="pt" href="#">
-                                    <img src="img/shop-cart/Jupiter.png" alt="" />
-                                </a>
+                            <div class="product__details__pic__left product__thumb " style="width:15%; margin-top:5%; " >
+                                    <img  class="small_img"  src="img/shop-cart/Jupiter.png" alt="이미지1" style="cursor:pointer;"/>
+                               		<br/><br/><br/>
+                                    <img class="small_img"  src="img/shop-cart/jupiter1.png" alt="이미지2" onerror="this.style.display='none'" style="cursor:pointer;" />
+                              		<br/><br/><br/>
+                                    <img  class="small_img" src="img/shop-cart/MARS.png" alt="이미지3" onerror="this.style.display='none'" style="cursor:pointer;" />
                             </div>
-                            <div class="product__details__slider__content">
+                            <div class="product__details__slider__content" style="margin-left:10%;">
                                     <img
+                                    	data-hash=""
+                                    	id="big_img"
                                         class="product__big__img"
                                         src="img/shop-cart/Jupiter.png"
-                                        alt=""
-                                        style=" width: 100vw; "
+                                        alt="선택이미지"
+                                        style="width: 80vw; height:80hw; "
                                     />
                             </div>
-                            <!-- 
-                             <div class="product__details__slider__content">
+                            
+                            <!-- EL식적용 
+                            <div class="product__details__pic__left product__thumb " style="width:15%; margin-top:5%; " >
+                                    <img  class="small_img"  src="img/shop/${data.pName}1.png" alt="이미지1" style="cursor:pointer;"/>
+                               		<br/><br/><br/>
+                                    <img class="small_img"  src="img/shop/${data.pName}2.png" alt="이미지2" onerror="this.style.display='none'" style="cursor:pointer;" />
+                              		<br/><br/><br/>
+                                    <img  class="small_img" src="img/shop/${data.pName}3.png" alt="이미지3" onerror="this.style.display='none'" style="cursor:pointer;" />
+                            </div>
+                            <div class="product__details__slider__content" style="margin-left:10%;">
                                     <img
-                                        data-hash="product-1"
+                                    	data-hash=""
+                                    	id="big_img"
                                         class="product__big__img"
-                                        src="img/product/details/${data.pImage}"
-                                        alt=""
-                                        style="margin-left:10%; width: 100vw; height: 70vh;"
+                                        src="img/shop/${data.pName}1.png"
+                                        alt="선택이미지"
+                                        style="width: 80vw; height:80hw; "
                                     />
                             </div>
-                            -->
+                            
+                             -->
+                           
                             
                             
                         </div>
                         
                     </div>
-                  <!--  <div class="product__details__pic__slider owl-carousel"></div> -->
+					
                      
-                     <!-- !!참여자 수 계산해주세요!! -->
-                
-                   <!--  
-                    <div class="col-lg-6">
+           			<!-- 상품데이터 --> 
+                      <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
-                            <h3><span style="font-size: 24px">개인금액</span>${data.pPrice}</h3>
-                            원 <br /><br />
-                            <h3><span style="font-size: 24px">모인금액</span>${data.pCRNAmount}</h3>
-                            <span style="font-size: 24px">원</span> &nbsp
-                            <div style="display: inline; font-weight: bold; font-size: 36px">${data.pPercent}%</div>
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">개인금액</span>${data.pPrice}</h3>
+                            <span style="font-size: 20px">원</span> 
+                            <br /><br />
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">모인금액</span>${data.pCRNAmount}</h3>
+                            <span style="font-size: 20px">원</span> &nbsp
+                            <div style="display: inline; font-weight: bold; font-size: 32px">${data.pPercent}%</div>
                             <br /><br />
                             <div class="progress2 progress-moved" style="width: 80%">
                                 <div class="progress-bar2" style="width:${data.pPercent}%"></div>
                             </div>
-                            <br /><br /> 
-                            <h3><span style="font-size: 24px">참여자</span>${list.lNum}</h3>
-                            명 <br /><br /><br />
-                            <div class="product__details__button">
+                             <br />
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">후원자</span>${list.lNum}</h3>
+                            <span style="font-size: 20px">명</span> 
+                            <br /><br />
+                            <div class="product__details__button" style="display: flex; flex-direction:row; justify-content: left;">
                               <c:choose>
-                                 <c:when test="${data.pFinish ==0}">
-                                      <a
+                              	<c:when test="${data.pFinish ==0}">
+                              		<div style="width:40%;">
+                              		<a
                                         href="payment.do?pNum=${data.pNum}"
                                         class="cart-btn"
-                                        style="background-color: black; width: 40%; text-align: center; font-size: 28px"
+                                        style="width:100%; height:80%; background-color: black; border:none;  display: inline-flex; justify-content : center; font-size: 28px;"
                                        >
                                       펀딩하기</a>
-                                      <c:choose>
-                                   <c:when test="${not empty isMylike }">
-                                   <img id="heartIng" alt="좋아요상태"
-                                    src="img/icon-heart2.png"
-                                    style="width: 50px; height: 50px; cursor: pointer; margin-left:2%;margin-top:2%;">
-                                </c:when>
-                                <c:otherwise>
-                                   <img id="heartNot" alt="좋아요안한상태"
-                                        src="img/icon-heart1.png"
-                                        style="width: 50px; height: 50px; cursor: pointer; margin-left:2%;margin-top:2%;">
-                                </c:otherwise>
-                            </c:choose>
-                                 </c:when>
-                                <c:otherwise>
-                                     <button
-                                    id="finish"
-                                    class="cart-btn"
-                                    style="background-color: rgb(202, 202, 202); border:none; width: 40%; text-align: center; font-size: 28px"
-                                >
+                                     </div>
+                                 </c:when>   
+                                 <c:otherwise>
+                              		<div style="width:40%;">
+                                   <button
+                                       id="finish"
+                                       class="cart-btn"
+                                       style=" width:100%; height:80%; background-color: rgb(215,215,215); border:none;  display: inline-flex; justify-content : center; font-size: 28px;"
+                                      >
                                     펀딩완료</button>
-                                </c:otherwise>
+                                </div>  
+                              	</c:otherwise>
                               </c:choose>
+                               <c:choose>
+                                  <c:when test="${data.pFinish ==0 && not empty isMylike}">
+                                         <div id="heartIng" style="background-color: black; margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display:flex; justify-content: center; ">
+                                       			<img  alt="찜했음" src="img/heart.png"
+                                   					style="width: 20px; height: 20px; cursor: pointer; margin-left:2%;margin-top:30%; z-index:1;  ">
+                                		 </div>
+                                  </c:when>
+                                  <c:when test="${data.pFinish ==0 && empty isMylike}">
+                                       	<div id="heartNot" style="background-color: rgb(215,215,215); margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display:flex; justify-content: center; ">
+                                       			<img  alt="찜안했음"  src="img/heart.png"
+                                    					style="width: 20px; height: 20px; cursor: pointer; margin-left:2%;margin-top:30%; z-index:1;  ">
+                                 		</div>
+                                   </c:when>
+                                   <c:otherwise>
+                                   </c:otherwise>   		
+                                 </c:choose>
+                                 <c:choose>
+                                   <c:when test="${data.pFinish ==0}">
+                                       <div style="background-color: black; margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display: flex; justify-content: center;">
+                                       <a href="javascript:kakaoShare()"> <img  alt="카카오공유"  src="img/sharing.png"
+                                   			 style="width: 25px; height: 25px; cursor: pointer;margin-top:43%;margin-right:6%; z-index:1;  "> </a>
+                                 	   </div>
+                                 	</c:when>
+                                 	<c:otherwise>
+                                 	</c:otherwise>   
+                              	</c:choose>
+                              	
+                             
                             </div>
                         </div>
                     </div>
-                  -->
-                  
-           
+                    
+               
+                     <!-- 샘플로 해놓은 것 
                       <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">개인금액</span>200,000</h3>
@@ -234,31 +264,30 @@
                             <span style="font-size: 20px">명</span> 
                             <br /><br />
                             <div class="product__details__button" style="display: flex; flex-direction:row; justify-content: left;">
-                              <div style="width:40%; height:18%; ">
-                                   <button
-                                       id="finish"
-                                       class="cart-btn"
-                                       style=" width:100%;background-color: rgb(215,215,215); border:none; text-align: center; font-size: 28px;"
-                                      >
-                                    펀딩완료</button>
-                                </div>   
-                                <div style="background-color: rgb(215,215,215); margin-left:2%; margin-top:2%; width:50px; height:50px; border-radius:50%; display:flex; justify-content: center; ">
-                                       <img id="heartIng" alt="찜"
+                    		<div style="width:40%;">
+                              		<a
+                                        href="#"
+                                        class="cart-btn"
+                                        style="width:100%; height:80%; background-color: black; border:none;  display: inline-flex; justify-content : center; font-size: 28px;"
+                                       >
+                                      펀딩하기</a>
+                             </div>
+                                <div id="heartNot" style="background-color: rgb(215,215,215); margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display:flex; justify-content: center; ">
+                                       <img  alt="찜"
                                     src="img/heart.png"
                                     style="width: 20px; height: 20px; cursor: pointer; margin-left:2%;margin-top:30%; z-index:1;  ">
                                  </div>
-                                  <div style="background-color: black; margin-left:2%; margin-top:2%; width:50px; height:50px; border-radius:50%; display: flex; justify-content: center;">
-                                       <img id="sharing" alt="카카오공유"
+                               
+                                  <div style="background-color: black; margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display: flex; justify-content: center;">
+                                     <a href="javascript:kakaoShare()"> <img  alt="카카오공유"
                                     src="img/sharing.png"
-                                    style="width: 30px; height: 30px; cursor: pointer;margin-top:20%; z-index:1;  "> 
+                                    style="width: 25px; height: 25px; cursor: pointer;margin-top:43%;margin-right:6%; z-index:1;  "> </a>
                                  </div>
                                  
                             </div>
                         </div>
                     </div>
-                   
-                     
-                     
+                    -->
                     
                     <div class="col-lg-12">
                         <div class="product__details__tab">
@@ -298,109 +327,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- 
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="related__title">
-                            <h5>RELATED PRODUCTS</h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-1.jpg">
-                                <div class="label new">New</div>
-                                <ul class="product__hover">
-                                    <li>
-                                        <a href="img/product/related/rp-1.jpg" class="image-popup"
-                                            ><span class="arrow_expand"></span
-                                        ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="icon_heart_alt"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="icon_bag_alt"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Buttons tweed blazer</a></h6>
-                                <div class="product__price">$ 59.0</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-2.jpg">
-                                <ul class="product__hover">
-                                    <li>
-                                        <a href="img/product/related/rp-2.jpg" class="image-popup"
-                                            ><span class="arrow_expand"></span
-                                        ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="icon_heart_alt"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="icon_bag_alt"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Flowy striped skirt</a></h6>
-                                <div class="product__price">$ 49.0</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-3.jpg">
-                                <div class="label stockout">funding closed</div>
-                                <ul class="product__hover">
-                                    <li>
-                                        <a href="img/product/related/rp-3.jpg" class="image-popup"
-                                            ><span class="arrow_expand"></span
-                                        ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="icon_heart_alt"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="icon_bag_alt"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Cotton T-Shirt</a></h6>
-                                <div class="product__price">$ 59.0</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-4.jpg">
-                                <ul class="product__hover">
-                                    <li>
-                                        <a href="img/product/related/rp-4.jpg" class="image-popup"
-                                            ><span class="arrow_expand"></span
-                                        ></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="icon_heart_alt"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="icon_bag_alt"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Slim striped pocket shirt</a></h6>
-                                <div class="product__price">$ 59.0</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                --> 
+               
             </div>
         </section>
         <!-- Product Details Section End -->
@@ -425,16 +352,38 @@
       crossorigin="anonymous">
    </script>
    
+   
+   <!-- 사진이미지 변경 JS -->
+   <script type="text/javascript">
+   
+	 var bImg = document.querySelector('#big_img'); //큰 이미지 가져오기
+	  var sImg = document.querySelectorAll('.small_img'); //작은 이미지들 노드 리스트로 가져옴
+      
+	  for(var i = 0; i < sImg.length; i++) {
+	      sImg[i].onclick = showImg;  //노드를 클릭하면 showImg 함수 실행
+	  }
+
+	  function showImg() {
+		  console.log('showImg들어욤')
+		 
+	      var newImg = this.src; //클릭 이벤트가 발생한 대상의 src 속성 값을 가져옴
+	      console.log('newImg:'+newImg);
+	      bImg.setAttribute('src', newImg);  //newImg 값을 큰 이미지의 src 속성 값에 할당
+	      
+	  }
+
+   </script>
+   
    <!-- 찜 버튼 JS -->
    <script type="text/javascript">
    $(document).ready(function(){
-      
+	   
       //찜 추가 JS
       $("#heartNot").on("click",function(){
          
          //로그인을 안 한 상태였을 시
          if ("${member.mid}" == "") {
-                if (confirm("로그인 한 회원만 이용가능합니다. 로그인 하시겠습니까?")) {
+                if (confirm("로그인 한 회원만 이용 가능합니다. 로그인하시겠습니까?")) {
                     // 승낙하면 로그인 페이지로 이동
                     location.href = '${pageContext.request.contextPath}/login.do';
                 } else {
@@ -455,7 +404,7 @@
    
          $.ajax({
             
-            url: '${pageContext.request.contextPath}/insertMylist.do',
+            url: '${pageContext.request.contextPath}/heart.do',
             type:'POST',
             contentType : 'application/json; charset=utf-8',
               data :JSON.stringify(data),
@@ -463,7 +412,7 @@
                    if (resp == 'success') {
                        console.log("찜하기 성공!");
                        if (confirm("해당 상품을 찜하셨습니다. 찜목록 페이지로 이동하시겠습니까?")) {
-                            // 승낙하면 마이페이지의 찜목록페이지로 이동
+                            // 승낙하면 찜목록페이지로 이동
                             location.href = '${pageContext.request.contextPath}/myList.do';
                         } else {
                             // 거부하면 해당 페이지 새로고침하여 찜한거 반영되게하기(HTTP의 속성 때문)
@@ -472,7 +421,7 @@
                    }
                    else{
                       console.log('찜하기 실패!');
-                      alert('찜하기를 할 수 없습니다.관리자에게 문의 해주세요.');
+                      alert('찜하기를 할 수 없습니다. 관리자에게 문의해주세요.');
                       location.reload();
                    }
               
@@ -480,7 +429,7 @@
              error : function(e) {
                console.log('오류발생')
                    console.log(e);
-                   alert('찜하기를 할 수 없습니다.관리자에게 문의 해주세요.');
+                   alert('찜하기를 할 수 없습니다. 관리자에게 문의해주세요.');
                    location.reload(); // 실패시 새로고침하기   
              }
          });
@@ -501,7 +450,7 @@
    
          $.ajax({
             
-            url: '${pageContext.request.contextPath}/myListDelete.do',
+            url: '${pageContext.request.contextPath}/heartNo.do',
             type:'POST',
             contentType : 'application/json; charset=utf-8',
               data :JSON.stringify(data),
@@ -513,7 +462,7 @@
                    }
                    else{
                       console.log('찜취소 실패!');
-                      alert('찜 취소를 할 수 없습니다.관리자에게 문의 해주세요.');
+                      alert('찜 취소를 할 수 없습니다. 관리자에게 문의해주세요.');
                       location.reload();
                    }
               
@@ -521,7 +470,7 @@
              error : function(e) {
                console.log('오류발생')
                    console.log(e);
-               alert('찜 취소를 할 수 없습니다.관리자에게 문의 해주세요.');
+               alert('찜 취소를 할 수 없습니다. 관리자에게 문의해주세요.');
                    location.reload(); // 실패시 새로고침하기   
              }
          });
@@ -531,6 +480,45 @@
    });
    
    </script>
+   
+   <!-- 카카오 공유하기 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script type="text/javascript">
+ 	
+		// SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해줌.
+		Kakao.init('3d08dd963da5d6d0d9d5aed059ea3d21');
+
+		// SDK 초기화 여부를 판단함.(연결되었으면 true 반환)
+		console.log("카카오:"+Kakao.isInitialized());
+		//카카오톡 공유하기 메서드
+		function kakaoShare() {
+			Kakao.Link.sendDefault({
+				objectType : 'feed',
+				content : {
+					title : '[START TO UP]${data.pName}',
+					description : '나만의 별을 펀딩해보세요!',
+					imageUrl : 'https://ifh.cc/g/YjnLWC.png',
+					link : {
+						mobileWebUrl : 	
+							'http://localhost:8088/app/detail.do?pNum=${data.pNum}',
+						
+						webUrl : 'http://localhost:8088/app/detail.do?pNum=${data.pNum}',
+					},
+				},
+				buttons : [ {
+					title : '스타투업 가기',
+					link : {
+						mobileWebUrl : 'http://localhost:8088/app/detail.do?pNum=${data.pNum}',
+						webUrl : 'http://localhost:8088/app/detail.do?pNum=${data.pNum}',
+					},
+				}, ],
+				// 카카오톡 미설치 시 카카오톡 설치 경로이동 //  /app/main.do
+				installTalk : true,
+			})
+		
+		}
+ 	
+	</script>
    
    <!-- 펀딩 완료된 상품일 경우 JS -->
    <script type="text/javascript">
