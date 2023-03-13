@@ -14,12 +14,10 @@ public class CrawlingController {
 	private CrawlingServiceImpl CrawlingSI;
 
 	@RequestMapping(value = "/crawling.do")
-	public String selectOneMember() {
-		
+	public String crawling() {
 		if (CrawlingSI.crawling()) {
 			return "main.do";
 		} else {
-			System.out.println("실패야 바부야");
 			return "duplicate";
 		}
 

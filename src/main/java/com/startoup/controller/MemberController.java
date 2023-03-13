@@ -79,10 +79,23 @@ public class MemberController {
 	}
 
 	// 로그인 페이지로 처음 이동할 때
-	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
-	public @ResponseBody String check(@RequestBody MemberVO vo) {
+	
+	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
+	public @ResponseBody String checkId(@RequestBody MemberVO vo) {
 
 		vo = memberSI.selectOneMember(vo);
+		if (vo == null) {
+			return "success";
+		} else {
+			return "duplicate";
+		}
+
+	}
+	
+	@RequestMapping(value = "/checkEmail.do", method = RequestMethod.POST)
+	public @ResponseBody String checkEmail(@RequestBody MemberVO vo) {
+
+		vo = memberSI.selectOneEmail(vo);
 		if (vo == null) {
 			return "success";
 		} else {
@@ -128,7 +141,7 @@ public class MemberController {
 		if (memberSI.selectOneMember(vo) == null) {
 			memberSI.insertKakaoMember(vo);
 		}
-
+		session.setAttribute("mylike", vo);
 		session.setAttribute("member", vo);
 		return "redirect:store.do";
 	}

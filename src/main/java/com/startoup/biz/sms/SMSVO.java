@@ -27,6 +27,4 @@ public class SMSVO {
 	public String toString() {
 		return "SMSVO [sNum=" + sNum + ", sAuth=" + sAuth + ", sCheckAuth=" + sCheckAuth + "]";
 	}
-	
-	
 }

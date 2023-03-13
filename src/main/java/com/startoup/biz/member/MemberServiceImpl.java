@@ -35,6 +35,11 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO selectOneMember(MemberVO vo) {
 		return mdao.selectOneMember(vo);
 	}
+	
+	@Override
+	public MemberVO selectOneEmail(MemberVO vo) {
+		return mdao.selectOneEamil(vo);
+	}
 
 	@Override
 	public MemberVO loginMember(MemberVO vo) {
@@ -70,5 +75,7 @@ public class MemberServiceImpl implements MemberService {
 	public MyLikeVO checkLike(MyLikeVO vo) {
 		return mdao.checkLike(vo);
 	}
+
+	
 
 }

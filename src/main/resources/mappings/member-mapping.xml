@@ -21,6 +21,10 @@
 		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=#{mId}
 	</select>
 	
+	<select id="selectOneEamil" resultType="member">
+		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_EMAIL1=#{mEamil1} AND M_EMAIL2=#{mEamil2}
+	</select>
+	
 	<select id="login" resultType="member">
 		SELECT M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=#{mId} AND M_PW=#{mPw}
 	</select>
@@ -49,8 +53,9 @@
 		SELECT ML_NUM,ML_MID,ML_PID FROM MYLIKE WHERE ML_PID=#{mlPid} AND ML_MID=#{mlMid}
 	</select>
 	
-	<select id="countLike" resultType="Integer">
-		SELECT COUNT(*) FROM MYLIKE ML WHERE ML_MID =#{mlMid}
+	<select id="countLike" resultType="mylike">
+		SELECT COUNT(ML_NUM) AS ML_NUM FROM MYLIKE ML WHERE ML_MID=#{mlMid}
 	</select>
+	
 	
 </mapper>
