@@ -65,18 +65,6 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public boolean deleteLike(MyLikeVO mlvo) {
-		return mdao.deleteLike(mlvo);
-	}
-
-	
-	@Override
-	public boolean deleteLikeList(List<MyLikeVO> vo, MyLikeVO mlvo) {
-		return mdao.deleteLikeList(vo, mlvo);
-	}
-
-
-	@Override
 	public List<MyLikeVO> selectAllLike(MyLikeVO vo) {
 		return mdao.selectAllLike(vo);
 	}
@@ -89,6 +77,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<ProductVO> myLikeList(MyLikeVO vo) {
 		return mdao.myLikeList(vo);
+	}
+
+	@Override
+	public boolean deleteLike(MyLikeVO mlvo) {
+		return deleteLike(mlvo);
+	}
+
+	@Override
+	public boolean deleteLikeList(List<MyLikeVO> vo, MyLikeVO mlvo) {
+		return deleteLikeList(vo, mlvo);
 	}
 
 	
