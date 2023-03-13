@@ -9,5 +9,4 @@ public class EmailDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	
 }

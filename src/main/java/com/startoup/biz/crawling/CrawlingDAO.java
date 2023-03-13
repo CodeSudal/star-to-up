@@ -2,7 +2,6 @@ package com.startoup.biz.crawling;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -19,7 +18,8 @@ public class CrawlingDAO {
 	final String SELECT_ALL_PRODUCT = "SELECT P_NAME, P_INFO FROM PRODUCT";
 	final String INSERT_CRAWLING = "INSERT INTO CRAWLING( C_NUM, C_NAME, C_INFO) VALUES( (SELECT NVL(MAX(C_NUM), 0) + 1 FROM CRAWLING), ?, ?)";
 	final String UPDATE_PINFO = "UPDATE PRODUCT P SET P.P_INFO = (SELECT C.C_INFO FROM CRAWLING C WHERE P.P_NAME = C.C_NAME)";
-
+	final String SELECT_ONE_CRAWLING = "SELECT C_NUM, C_NAME, C_INFO FROM CRAWLING WHERE C_NAME = ?";
+	
 	public boolean crawling() {
 		SeleniumVO sel = new SeleniumVO();
 		List<SeleniumVO> datas;
@@ -30,13 +30,19 @@ public class CrawlingDAO {
 			DriverUtil.crawling();
 
 			//DriverUtil.craw.forEach((key, value) -> System.out.println(key + " : " + value));
-
+			
 			for (Entry<String, String> entrySet : DriverUtil.craw.entrySet()) {
 				sel.setcName(entrySet.getKey());
 				sel.setcInfo(entrySet.getValue());
-				jdbcTemplate.update(INSERT_CRAWLING, sel.getcName(), sel.getcInfo());
+				System.out.println(sel.getcName());
+				Object[] args= { sel.getcName() };
+				if(jdbcTemplate.queryForObject(SELECT_ONE_CRAWLING, args, new CSeleniumRowMapper())!=null) {
+					jdbcTemplate.update(INSERT_CRAWLING, sel.getcName(), sel.getcInfo());
+				} else {
+					
+				}
 			}
-
+			
 			datas=jdbcTemplate.query(SELECT_ALL_PRODUCT, new PSeleniumRowMapper());
 			for(int i=0; i<datas.size(); i++) {
 				title=datas.get(i).getpName();
