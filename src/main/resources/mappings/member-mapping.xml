@@ -42,10 +42,6 @@
 	</insert>
 	
 	<delete id="deleteLike">
-		DELETE FROM MYLIKE WHERE ML_NUM=#{mlNum}
-	</delete>
-	
-	<delete id="deleteLikeList">
 		DELETE FROM MYLIKE WHERE ML_MID=#{mlMid} AND ML_PID=#{mlPid}
 	</delete> 
 	

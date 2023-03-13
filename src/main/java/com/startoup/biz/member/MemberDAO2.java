@@ -75,7 +75,7 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
-
+	
 	// 이메일 중복확인
 	public MemberVO selectOneEmail(MemberVO vo) {
 		try {
@@ -98,7 +98,7 @@ public class MemberDAO2 {
 	}
 
 	// 로그아웃
-
+	
 	// 내 펀딩 목록 추가
 	public boolean insertFund(MyFundingVO vo) {
 		try {
@@ -130,19 +130,8 @@ public class MemberDAO2 {
 		}
 	}
 
-	public boolean deleteLike(MyLikeVO vo) {
-		try {
-			int res=mybatis.delete("MemberDAO.deleteLike", vo);
-			if(res<1) { return false; }
-			return true;
-		}
-		catch(Exception e) {
-			return false;
-		}
-	}
-
 	// 내 찜 목록 삭제
-	public boolean deleteLikeList(List<MyLikeVO> vo, MyLikeVO mlvo) {
+	public boolean deleteLike(List<MyLikeVO> vo, MyLikeVO mlvo) {
 		try {
 			mlvo.setMlMid(mlvo.getMlMid());
 			for(int i=0; i<vo.size(); i++) {
@@ -163,7 +152,7 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
-
+	
 	// 내 찜 여부 확인
 	public MyLikeVO checkLike(MyLikeVO vo) {
 		try {
@@ -172,7 +161,7 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
-
+	
 	// 내 찜 갯수 보기
 	public MyLikeVO countLike(MyLikeVO vo) {
 		try {
@@ -181,7 +170,7 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
-
+	
 	// 내 찜 목록 보기
 	public List<ProductVO> myLikeList(MyLikeVO vo){
 		try {
