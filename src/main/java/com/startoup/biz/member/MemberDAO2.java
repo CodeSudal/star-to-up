@@ -193,6 +193,7 @@ public class MemberDAO2 {
 }
 
 
+
 //class MemberRowMapper implements RowMapper<MemberVO> {
 //
 //	@Override
