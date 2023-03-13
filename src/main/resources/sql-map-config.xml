@@ -11,6 +11,7 @@
 		<typeAlias type="com.startoup.biz.member.MemberVO" alias="member" />
 		<typeAlias type="com.startoup.biz.member.MyFundingVO" alias="myfunding" />
 		<typeAlias type="com.startoup.biz.member.MyLikeVO" alias="mylike" />
+		<typeAlias type="com.startoup.biz.product.ProductVO" alias="product" />
 	</typeAliases>
 
 	<!-- 2. SQL Mapper 설정 -->
