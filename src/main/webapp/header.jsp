@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="css/header.css" type="text/css">
 </head>
 <body>
+
    <div class="header_box">
       <div class="top_left_box">
          <div class="logo_box"><a href="main.do">LOGO</a></div>
@@ -29,19 +30,18 @@
          <div class="menu_item1"><a href="about.do">ABOUT</a></div>
       </div>
       <div class="top_right_box">
-        <c:if test="${not empty member &&(member.mId == 'admin' || member.mId == 'ADMIN') }">
-         	<div style="margin-right:10%; margin-top:5%;">
-         		<p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
-         	</div>
+        <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
+            <div style="margin-right:10%; margin-top:5%;">
+               <p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
+            </div>
          </c:if>
          <div class="icon_box1">
             <div class="header__right1">
                <ul class="header__right__widget">
-                  <li><a href="myList.do"><span class="material-symbols-outlined">&#xE87D;</span>
-                       <!-- 로그인되었을때 찜개수 나타나게 만들어놓음 ${member.cnt} <c:if test="${not empty member}">
-                            <div class="tip">2</div> 
-                        </c:if> 
-                        -->
+                  <li><a href="shopcart.do"><span class="material-symbols-outlined">&#xE87D;</span>
+                        <c:if test="${member.mId != null}">
+                            <div class="tip"><%-- ${member.countLike} --%></div> 
+                        </c:if>
                       </a>
                   </li>
 
@@ -50,19 +50,19 @@
             <div class="icon_box1">
                <nav class="header__menu">
                   <ul>
-                     <li style="position: relative;"><span
-                           class="material-symbols-outlined">&#xF0D3;</span>
+                     <li style="position: relative;"><a href="#"><span
+                           class="material-symbols-outlined">&#xF0D3;</span></a>
                         <ul class="dropdown"
                            style="text-align: right; width: 110px; border-radius: 5px; background-color: rgba(0, 0, 0, 0.3); position: absolute; left: -80px; top: 38px">
                            <c:choose>
-                               <c:when test="${member.mId == 'admin' || member.mId == 'ADMIN'}">
-                                	<li><a href="myFundingList.do">펀딩 내역</a></li>
-                                 	<li><a href="myList.do">찜내역</a></li>
-	                                 <li><a href="logout.do">로그아웃</a></li>
-                               </c:when> 
+                               <c:when test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
+                                   <li><a href="myFundingList.do">펀딩 내역</a></li>
+                                    <li><a href="myList.do">찜내역</a></li>
+                                    <li><a href="logout.do">로그아웃</a></li>
+                               </c:when>
                               <c:when test="${member.mId != null}">
                                  <li><a href="myFundingList.do">펀딩 내역</a></li>
-                                 <li><a href="myList.do">찜내역</a></li>
+                                 <li><a href="shopcart.do">찜내역</a></li>
                                 <li><a href="withdrowal.do">회원 탈퇴</a></li>
                                  <li><a href="logout.do">로그아웃</a></li>
                               </c:when>
