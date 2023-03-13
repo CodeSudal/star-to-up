@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.startoup.biz.product.ProductVO;
+
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
 
@@ -62,8 +64,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean deleteLike(MyLikeVO vo) {
-		return mdao.deleteLike(vo);
+	public boolean deleteLike(List<MyLikeVO> vo, MyLikeVO mlvo) {
+		return mdao.deleteLike(vo, mlvo); // pidList, sessionid
 	}
 
 	@Override
@@ -74,6 +76,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MyLikeVO checkLike(MyLikeVO vo) {
 		return mdao.checkLike(vo);
+	}
+
+	@Override
+	public List<ProductVO> myLikeList(MyLikeVO vo) {
+		return mdao.myLikeList(vo);
 	}
 
 	
