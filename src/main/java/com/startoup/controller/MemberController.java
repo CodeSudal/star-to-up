@@ -56,6 +56,7 @@ public class MemberController {
 		}
 		System.out.println("ctrl의 return받아온값"+memberSI.selectAllLike(mlvo));
 		model.addAttribute("i", memberSI.selectAllLike(mlvo));
+		
 
 		return "shopcart.jsp";
 
@@ -92,8 +93,9 @@ public class MemberController {
 
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "/checkEmail.do", method = RequestMethod.POST)
-	public @ResponseBody String checkEmail(@RequestBody MemberVO vo) {
+	public String checkEmail(MemberVO vo) {
 
 		vo = memberSI.selectOneEmail(vo);
 		if (vo == null) {
@@ -164,7 +166,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String insertMember(MemberVO vo) {
-//		System.out.println("insertMember() 입장");
+		System.out.println("insertMember() 입장");
 
 		memberSI.insertMember(vo);
 
