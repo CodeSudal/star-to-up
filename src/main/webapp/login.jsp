@@ -47,16 +47,17 @@
                                         비밀번호<input type="text" placeholder="PASSWARD" name="mPw" id="pwInput"  style="margin-top:1px" required />
                                         <input type="submit" class="cart-btn" id="loginBtn"  style="background-color:#D9D9D9; color: white; width: 50%; text-align: center; margin-left:23%; border-radius:30px; padding-right:5%; font-size:18px;" value="로그인" />
                                     </form>
+                                    <button type="button" class="cart-btn" onclick="javascript:kakaoLogin();"
+										style="width: 50%; height: 50px; margin-left:23%; padding-right:5%; margin-top:-1%; margin-bottom: 5px; display: inline-flex; justify-content : center; background-color: #FEE500; border: none; border-radius: 30px; font-size: 15px;">
+									<div style="margin-top: 2%">
+											<img src="./img/kakao.png" style="border-radius: 30px;"/>카카오로그인
+									</div>
+									</button>
                                 </div>
                 </div>
             </div>
 		<!-- 카카오 로그인 js 연결 및 버튼 생성 -->
-		<button type="button" onclick="javascript:kakaoLogin();"
-			style="width: 185px; height: 50px; margin-left: 42%; margin-right: 30%; margin-bottom: 5px; display: block; background-color: #FEE500; text-align: center; border: none; border-radius: 30px; font-size: 15px;">
-			<div style="margin-left: -9%">
-				<img src="./img/kakao.png" />카카오로그인
-			</div>
-		</button>
+		
 		<!-- 카카오 연결끊기-->
       	<a href="javascript:kakaoDelete()" style="text-decoration: none;"> 
             		<center><span style="color: white;">카카오회원탈퇴</span></center>
