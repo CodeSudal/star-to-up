@@ -54,7 +54,7 @@
 	</select>
 	
 	<select id="countLike" resultType="mylike">
-		SELECT COUNT(ML_NUM) FROM MYLIKE ML WHERE ML_MID=#{mlMid}
+		SELECT COUNT(ML_NUM) AS ML_NUM FROM MYLIKE ML WHERE ML_MID=#{mlMid}
 	</select>
 	
 	
