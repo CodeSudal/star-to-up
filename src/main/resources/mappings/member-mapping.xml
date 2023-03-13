@@ -10,7 +10,7 @@
 	</insert>
 
 	<delete id="deleteMember">
-		DELETE FROM MEMBER WHERE MID=#{mid}
+		DELETE FROM MEMBERS WHERE M_ID=#{mId}
 	</delete>
 
 	<select id="selectAllMember" resultType="member">
@@ -19,6 +19,10 @@
 	
 	<select id="selectOneMember" resultType="member">
 		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=#{mId}
+	</select>
+	
+	<select id="selectOneEamil" resultType="member">
+		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_EMAIL1=#{mEamil1} AND M_EMAIL2=#{mEamil2}
 	</select>
 	
 	<select id="login" resultType="member">
@@ -47,6 +51,10 @@
 	
 	<select id="checkLike" resultType="mylike">
 		SELECT ML_NUM,ML_MID,ML_PID FROM MYLIKE WHERE ML_PID=#{mlPid} AND ML_MID=#{mlMid}
+	</select>
+	
+	<select id="countLike" resultType="mylike">
+		SELECT COUNT(ML_NUM) FROM MYLIKE ML WHERE ML_MID=#{mlMid}
 	</select>
 	
 </mapper>

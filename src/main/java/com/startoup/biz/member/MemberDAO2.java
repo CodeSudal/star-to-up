@@ -73,6 +73,16 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
+	
+	// 이메일 중복확인
+	public MemberVO selectOneEamil(MemberVO vo) {
+		try {
+			return mybatis.selectOne("MemberDAO.selectOneEamil", vo);
+		} catch(Exception e) {
+			return null;
+		}
+	}
+
 
 	// 로그인
 	public MemberVO login(MemberVO vo) {
@@ -142,6 +152,15 @@ public class MemberDAO2 {
 	public MyLikeVO checkLike(MyLikeVO vo) {
 		try {
 			return mybatis.selectOne("MemberDAO.checkLike", vo);
+		} catch(Exception e) {
+			return null;
+		}
+	}
+	
+	// 내 찜 갯수 보기
+	public MyLikeVO countLike(MyLikeVO vo) {
+		try {
+			return mybatis.selectOne("MemberDAO.countLike", vo);
 		} catch(Exception e) {
 			return null;
 		}

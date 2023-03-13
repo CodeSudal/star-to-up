@@ -95,9 +95,9 @@
 										<!-- <th scope="row">1</th> -->
 										<td>${v.mId}</td>
 										<td>${v.mName}</td>
-										<td>${v.mEmail}</td>
+										<td>${v.mEmail1} @ ${v.mEmail2}</td>
 										<td>${v.mNum}</td>
-										<td>${v.mDate}</td>
+										<td>${v.mRegdate}</td>
 										<td><a href="adminMemberDelete.do?mId=${v.mId}"><button type="button"
 												class="btn btn-primary rounded-pill m-2" >Delete</button></a></td>
 									</tr>

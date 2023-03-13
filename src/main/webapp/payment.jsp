@@ -76,6 +76,7 @@ function payment(data) {
 </style></head>
 
 <body>
+
        <%@ include file="header.jsp" %>
 
 	<!-- Header Section End -->
@@ -83,6 +84,7 @@ function payment(data) {
 	<!-- Breadcrumb Begin -->
 
 	<!-- Breadcrumb End -->
+
 
 	<!-- Checkout Section Begin -->
 	<section class="checkout spad">

@@ -395,15 +395,15 @@ p[data-value]:after {
 										<h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;${v.pName}
 										</h3>
 										<span
-											style="text-align: right; margin-left: 90%; color: white">${v.percent}%</span>
+											style="text-align: right; margin-left: 90%; color: white">${v.pPercent}%</span>
 										<div class="progress2 progress-moved" style="width: 100%">
-											<div class="progress-bar2" style="width: ${v.percent}%"></div>
+											<div class="progress-bar2" style="width: ${v.pPercent}%"></div>
 										</div>
 										<br> <br>
 										<form method="post" action="sendEmailQR.do?lPid=${v.pNum}"
 											enctype="multipart/form-data">
 											<c:choose>
-												<c:when test="${v.percent==100}">
+												<c:when test="${v.pPercent==100}">
 													<button type="button" id="my-button"
 														class="btn btn-primary rounded-pill m-2"
 														style="padding: 10px 30px;" onclick="onClickUpload(); ">QR삽입</button>
