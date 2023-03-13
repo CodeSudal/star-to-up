@@ -218,20 +218,24 @@ public class MemberController {
 
 	
 	// 찜취소
-	@RequestMapping(value = "/heartNo.do", method = RequestMethod.POST)
-	public @ResponseBody String heartNo(@RequestBody MyLikeVO vo) {
-		System.out.println("heartNoBoard 입장");
-
-		System.out.println("vo:" + vo);
-
-		if (memberSI.deleteLike(vo)) {
-			System.out.println("삭제됨");
-			return "success";
-		} else {
-			System.out.println("삭제안됨");
-			return "s";
+		@RequestMapping(value="/heartNo.do",method=RequestMethod.POST)
+		   public @ResponseBody String heartNo(@RequestBody MyLikeVO vo){ 
+		      System.out.println("heartNoBoard 입장");
+		   
+		    
+		      
+		      System.out.println("vo:"+vo);
+		      
+		   if(memberSI.deleteLike(vo)) {
+		      System.out.println("삭제됨");
+		      return "success";
+		      }
+		      else {
+		         System.out.println("삭제안됨");
+		         return "s";
+		      }
 		}
 
-	}
+
 
 }
