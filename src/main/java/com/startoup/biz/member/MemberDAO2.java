@@ -142,11 +142,8 @@ public class MemberDAO2 {
 	// 내 찜 목록 보기
 	public List<MyLikeVO> selectAllLike(MyLikeVO vo){
 		try {
-			System.out.println("vo : "+vo);
-			System.out.println(mybatis.selectList("MemberDAO.selectAllLike", vo));
 			return mybatis.selectList("MemberDAO.selectAllLike", vo);
 		} catch(Exception e) {
-			System.out.println("selectAllLike error : "+e);
 			return null;
 		}
 	}
@@ -161,12 +158,11 @@ public class MemberDAO2 {
 	}
 	
 	// 내 찜 갯수 보기
-	public int countLike(MyLikeVO vo) {
-		int result=0;
+	public MyLikeVO countLike(MyLikeVO vo) {
 		try {
 			return mybatis.selectOne("MemberDAO.countLike", vo);
 		} catch(Exception e) {
-			return result;
+			return null;
 		}
 	}
 }
