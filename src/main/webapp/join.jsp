@@ -12,8 +12,6 @@
 <title>회원가입</title>
 <style type="text/css">
 
-
-
 /* select {
 	width: 200px;
 	padding: .8em .5em;
@@ -32,22 +30,22 @@ select::-ms-expand {
 #star {
 	color: red;
 }
+
 .doubleChk {
-background: #D9D9D9;
+	background: #D9D9D9;
 }
 
 .doubleChk:hover {
-background: black;
-} 
+	background: black;
+}
 
 .site-btn {
-background: #D9D9D9;
+	background: #D9D9D9;
 }
 
 .site-btn:hover {
-background: black;
+	background: black;
 }
-
 </style>
 
 <!-- Google Font -->
@@ -325,19 +323,18 @@ background: black;
 		
 	}
 	function submitBtn () {
-		
-		if(!idFlag || !pwFlag || !nameFlag || !emaFlag || !phoFlag || !pho2Flag){
-			console.log('ㄴㄴ 아직 값 다 안들어옴')
-			alert('정확한 값을 입력해주세요.');
-			
-			
-		}else{
-			console.log('값 다들어옴~~')
-			$('#btn-save').submit();
-			
-		
-			
-		}
+	      
+	      if(!idFlag || !pwFlag || !nameFlag || !emaFlag || !phoFlag || !pho2Flag){
+	         console.log('ㄴㄴ 아직 값 다 안들어옴')
+	         $('#btn-save').attr("type", "button");
+	         alert('정확한 값을 입력해주세요.');
+	         
+	      }else{
+	         console.log('값 다들어옴~~')
+	         $('#btn-save').attr("type", "submit");
+	         $('#btn-save').submit();
+  
+	      }
 	
 	// 입력 값 전송
 	
@@ -446,13 +443,10 @@ background: black;
 				<input type="button" id="phoneChk2" class="doubleChk2"
 					onclick="phoneAuth()" disabled
 					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;"
-					value="본인인증"> 
+					value="본인인증"> <input type="submit" id="btn-save"
+					class="site-btn" onclick="submitBtn()" value="가입하기"
+					style="height: 50px; width: 200px; border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;">
 
-
-				<button   id="btn-save" class="site-btn" onclick="submitBtn(); return false;"
-					
-					style="height: 50px; width: 200px;  border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;">가입하기
-				</button>
 				<!-- <button onclick="alertTest()">alertTest</button> -->
 
 			</div>
@@ -473,7 +467,7 @@ background: black;
 	</div>
 	<!-- Search End -->
 
-	<!-- Js Plugins -->
+	<!— Js Plugins —>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.magnific-popup.min.js"></script>
