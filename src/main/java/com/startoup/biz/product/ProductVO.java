@@ -2,6 +2,8 @@ package com.startoup.biz.product;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.startoup.biz.list.ListVO;
 
 public class ProductVO {
@@ -11,7 +13,14 @@ public class ProductVO {
 	private String pInfo; // 제품설명
 	private int pFinish; // 펀딩종료확인, 0이면 진행중 1이면 끝
 	private String pImage1; // 제품 이미지
+	private MultipartFile uploadFile;
 	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	public String getpImage1() {
 		return pImage1;
 	}
