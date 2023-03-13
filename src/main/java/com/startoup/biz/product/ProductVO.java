@@ -13,12 +13,18 @@ public class ProductVO {
 	private String pInfo; // 제품설명
 	private int pFinish; // 펀딩종료확인, 0이면 진행중 1이면 끝
 	private String pImage1; // 제품 이미지
-	private MultipartFile uploadFile;
+	private String pImage2; // 제품 이미지
+	private String pImage3; // 제품 이미지
+	private List<ListVO> pList; // 해당 제품 펀딩 회원리스트
+	private int pAmount; // 펀딩목표금액
+	private int pCRNAmount; // 현재펀딩금액
+	private int pPercent; // 펀딩목표 퍼센트에이지
+	private List<MultipartFile> uploadFile;
 	
-	public MultipartFile getUploadFile() {
+	public List<MultipartFile> getUploadFile() {
 		return uploadFile;
 	}
-	public void setUploadFile(MultipartFile uploadFile) {
+	public void setUploadFile(List<MultipartFile> uploadFile) {
 		this.uploadFile = uploadFile;
 	}
 	public String getpImage1() {
@@ -39,13 +45,6 @@ public class ProductVO {
 	public void setpImage3(String pImage3) {
 		this.pImage3 = pImage3;
 	}
-	private String pImage2; // 제품 이미지
-	private String pImage3; // 제품 이미지
-	private List<ListVO> pList; // 해당 제품 펀딩 회원리스트
-	private int pAmount; // 펀딩목표금액
-	private int pCRNAmount; // 현재펀딩금액
-	private int pPercent; // 펀딩목표 퍼센트에이지
-	
 	public int getpPercent() {
 		return pPercent;
 	}
