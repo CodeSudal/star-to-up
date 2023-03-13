@@ -164,7 +164,7 @@ input:checked+.osSlider:before {
 						<tr>
 							<td
 								style="width: 147px; height: 47px; font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; line-height: 44px; color: #000000;"><img
-								src="${product.pImage}" style=""></td>
+								src="${product.pImage1}" style=""></td>
 							<td
 								style="width: 10%; height: 47px; font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; line-height: 44px; color: #000000;">${product.pName}
 							</td>
