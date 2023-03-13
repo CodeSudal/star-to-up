@@ -161,12 +161,11 @@ public class MemberDAO2 {
 	}
 	
 	// 내 찜 갯수 보기
-	public int countLike(MyLikeVO vo) {
-		int result=0;
+	public MyLikeVO countLike(MyLikeVO vo) {
 		try {
 			return mybatis.selectOne("MemberDAO.countLike", vo);
 		} catch(Exception e) {
-			return result;
+			return null;
 		}
 	}
 }
