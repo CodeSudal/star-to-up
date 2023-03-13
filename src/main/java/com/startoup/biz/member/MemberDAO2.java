@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.startoup.biz.product.ProductVO;
+
 @Repository("memberDAO")
 public class MemberDAO2 {
 	// Mybatis 프레임워크
@@ -129,10 +131,13 @@ public class MemberDAO2 {
 	}
 
 	// 내 찜 목록 삭제
-	public boolean deleteLike(MyLikeVO vo) {
+	public boolean deleteLike(List<MyLikeVO> vo, MyLikeVO mlvo) {
 		try {
-			int res=mybatis.delete("MemberDAO.deleteLike", vo);
-			if(res<1) { return false; }
+			mlvo.setMlMid(mlvo.getMlMid());
+			for(int i=0; i<vo.size(); i++) {
+				mlvo.setMlPid(vo.get(i).getMlPid());
+				mybatis.delete("MemberDAO.deleteLike", mlvo);
+			}
 			return true;
 		} catch(Exception e) {
 			return false;
@@ -161,6 +166,15 @@ public class MemberDAO2 {
 	public MyLikeVO countLike(MyLikeVO vo) {
 		try {
 			return mybatis.selectOne("MemberDAO.countLike", vo);
+		} catch(Exception e) {
+			return null;
+		}
+	}
+	
+	// 내 찜 목록 보기
+	public List<ProductVO> myLikeList(MyLikeVO vo){
+		try {
+			return mybatis.selectList("MemberDAO.myLikeList", vo);
 		} catch(Exception e) {
 			return null;
 		}
