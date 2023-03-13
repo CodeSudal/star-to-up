@@ -42,7 +42,7 @@
 	</insert>
 	
 	<delete id="deleteLike">
-		DELETE FROM MYLIKE WHERE ML_NUM=#{mlNum}
+		DELETE FROM MYLIKE WHERE ML_MID=#{mlMid} AND ML_PID=#{mlPid}
 	</delete> 
 	
 	<select id="selectAllLike" resultType="mylike">
