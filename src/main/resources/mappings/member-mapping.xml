@@ -57,4 +57,5 @@
 		SELECT COUNT(ML_NUM) FROM MYLIKE ML WHERE ML_MID=#{mlMid}
 	</select>
 	
+	
 </mapper>
