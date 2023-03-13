@@ -129,11 +129,10 @@ public class MemberDAO2 {
 	}
 
 	// 내 찜 목록 삭제
-	public boolean deleteLike(List<MyLikeVO> vo) {
+	public boolean deleteLike(List<MyLikeVO> vo, MyLikeVO mlvo) {
 		try {
-			MyLikeVO mlvo = new MyLikeVO();
+			mlvo.setMlMid(mlvo.getMlMid());
 			for(int i=0; i<vo.size(); i++) {
-				mlvo.setMlMid(vo.get(i).getMlMid());
 				mlvo.setMlPid(vo.get(i).getMlPid());
 				mybatis.delete("MemberDAO.deleteLike", mlvo);
 			}
