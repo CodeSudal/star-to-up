@@ -33,7 +33,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/adminProductInsert.do")
-	public String selectAllProductDelete(ProductVO pvo, Model model) {
+	public String selectAllProductInsert(ProductVO pvo, Model model) {
 		
 		System.out.println("adminProductInsert 들어옴");
 		model.addAttribute("datas", ProductSI.insertProduct(pvo));

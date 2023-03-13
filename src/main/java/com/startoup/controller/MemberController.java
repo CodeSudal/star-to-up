@@ -39,40 +39,7 @@ public class MemberController {
 		return "myPage.jsp";
 	}
 
-	// 찜목록
-	@RequestMapping(value = "/shopcart.do")
-	public String selectAllList(Model model, MyLikeVO mlvo, HttpSession session) {
-
-		// 로그인 되어 있으면 -> 멤버아이디,제품번호로 찜되어있는지 여부 파악해서
-		MemberVO member = (MemberVO) session.getAttribute("member");
-		if (member != null) { // 로그인 했으면
-			mlvo.setMlMid(member.getmId()); // 세션에 저장되어있는 아이디 mlvo에 저장
-
-		} else {
-			return "login.jsp"; // 로그인 하세요 메세지 띄우기
-		}
-		
-		if (memberSI.selectAllLike(mlvo).isEmpty()) {
-			System.out.println("찜한 목록이 없습니다. 화면 보여주기");
-			return "shopcart.jsp";
-		}
-		System.out.println("ctrl의 return받아온값"+memberSI.myLikeList(mlvo));
-		/* model.addAttribute("i", memberSI.selectAllLike(mlvo)); */
-		model.addAttribute("i", memberSI.myLikeList(mlvo));
-		
-
-		return "shopcart.jsp";
-
-	}
-
-	// 찜삭제
-	@RequestMapping(value = "/shopcartDelete.do")
-	public String deleteList(Model model,List<MyLikeVO> vo,HttpSession session) {
-
-		MyLikeVO mlvo = (MyLikeVO) session.getAttribute("member");		
-		model.addAttribute("datas", memberSI.deleteLike(vo, mlvo));
-		return "redirect:shopcart.do";
-	}
+	
 
 	// 약관 동의
 	@RequestMapping(value = "/agreement.do")
@@ -197,6 +164,41 @@ public class MemberController {
 		return "detail.jsp";
 	}
 
+	// 찜목록
+		@RequestMapping(value = "/shopcart.do")
+		public String selectAllList(Model model, MyLikeVO mlvo, HttpSession session) {
+
+			// 로그인 되어 있으면 -> 멤버아이디,제품번호로 찜되어있는지 여부 파악해서
+			MemberVO member = (MemberVO) session.getAttribute("member");
+			if (member != null) { // 로그인 했으면
+				mlvo.setMlMid(member.getmId()); // 세션에 저장되어있는 아이디 mlvo에 저장
+
+			} else {
+				return "login.jsp"; // 로그인 하세요 메세지 띄우기
+			}
+			
+			if (memberSI.selectAllLike(mlvo).isEmpty()) {
+				System.out.println("찜한 목록이 없습니다. 화면 보여주기");
+				return "shopcart.jsp";
+			}
+			System.out.println("ctrl의 return받아온값"+memberSI.myLikeList(mlvo));
+			/* model.addAttribute("i", memberSI.selectAllLike(mlvo)); */
+			model.addAttribute("i", memberSI.myLikeList(mlvo));
+			
+
+			return "shopcart.jsp";
+
+		}
+
+		// 찜목록 -  삭제
+		@RequestMapping(value = "/shopcartDelete.do")
+		public String deleteList(Model model,List<MyLikeVO> vo,HttpSession session) {
+
+			MyLikeVO mlvo = (MyLikeVO) session.getAttribute("member");		
+			model.addAttribute("datas", memberSI.deleteLikeList(vo, mlvo));
+			return "redirect:shopcart.do";
+		}
+		
 	// 찜하기
 	@RequestMapping(value = "/heart.do", method = RequestMethod.POST)
 	public @ResponseBody String heart(@RequestBody MyLikeVO vo) {
@@ -214,14 +216,15 @@ public class MemberController {
 
 	}
 
+	
 	// 찜취소
 	@RequestMapping(value = "/heartNo.do", method = RequestMethod.POST)
-	public @ResponseBody String heartNo(@RequestBody MyLikeVO vo, HttpSession session) {
+	public @ResponseBody String heartNo(@RequestBody MyLikeVO vo) {
 		System.out.println("heartNoBoard 입장");
-		
-		MyLikeVO mlvo = (MyLikeVO) session.getAttribute("member");		
 
-		if (memberSI.deleteLike(vo, mlvo)) {
+		System.out.println("vo:" + vo);
+
+		if (memberSI.deleteLike(vo)) {
 			System.out.println("삭제됨");
 			return "success";
 		} else {

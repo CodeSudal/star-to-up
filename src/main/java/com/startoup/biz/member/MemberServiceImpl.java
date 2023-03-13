@@ -63,10 +63,18 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.insertLike(vo);
 	}
 
+
 	@Override
-	public boolean deleteLike(List<MyLikeVO> vo, MyLikeVO mlvo) {
-		return mdao.deleteLike(vo, mlvo); // pidList, sessionid
+	public boolean deleteLike(MyLikeVO mlvo) {
+		return mdao.deleteLike(mlvo);
 	}
+
+	
+	@Override
+	public boolean deleteLikeList(List<MyLikeVO> vo, MyLikeVO mlvo) {
+		return mdao.deleteLikeList(vo, mlvo);
+	}
+
 
 	@Override
 	public List<MyLikeVO> selectAllLike(MyLikeVO vo) {
@@ -83,6 +91,7 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.myLikeList(vo);
 	}
 
+	
 	
 
 }
