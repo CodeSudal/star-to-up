@@ -75,9 +75,9 @@ public class MemberDAO2 {
 	}
 	
 	// 이메일 중복확인
-	public MemberVO selectOneEamil(MemberVO vo) {
+	public MemberVO selectOneEmail(MemberVO vo) {
 		try {
-			return mybatis.selectOne("MemberDAO.selectOneEamil", vo);
+			return mybatis.selectOne("MemberDAO.selectOneEmail", vo);
 		} catch(Exception e) {
 			return null;
 		}
