@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -36,10 +37,10 @@ public class CrawlingDAO {
 				sel.setcInfo(entrySet.getValue());
 				System.out.println(sel.getcName());
 				Object[] args= { sel.getcName() };
-				if(jdbcTemplate.queryForObject(SELECT_ONE_CRAWLING, args, new CSeleniumRowMapper())!=null) {
+				try{jdbcTemplate.queryForObject(SELECT_ONE_CRAWLING, args, new CSeleniumRowMapper());
+					continue;
+				} catch(EmptyResultDataAccessException e){
 					jdbcTemplate.update(INSERT_CRAWLING, sel.getcName(), sel.getcInfo());
-				} else {
-					
 				}
 			}
 			
