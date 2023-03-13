@@ -79,8 +79,9 @@ public class MemberController {
 	}
 
 	// 로그인 페이지로 처음 이동할 때
+	@ResponseBody
 	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
-	public @ResponseBody String check(@RequestBody MemberVO vo) {
+	public String check(MemberVO vo) {
 
 		vo = memberSI.selectOneMember(vo);
 		if (vo == null) {
