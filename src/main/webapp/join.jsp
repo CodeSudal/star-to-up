@@ -40,6 +40,14 @@ background: #D9D9D9;
 background: black;
 } 
 
+.site-btn {
+background: #D9D9D9;
+}
+
+.site-btn:hover {
+background: black;
+}
+
 </style>
 
 <!-- Google Font -->
@@ -62,15 +70,6 @@ background: black;
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
 
-$('.doubleChk2').hover(function(){
-
-    $(this).css('background', 'black');   
-
-}, function(){
-   $(this).css('background','#D9D9D9'); 
-
-
-})
 
 
  	/* 알럿창 테스트 */
@@ -113,16 +112,18 @@ $('.doubleChk2').hover(function(){
 																};
 																console.log(id);
 																$.ajax({
-																	url : 'check.do',
+																	url : 'checkId.do',
 																	type : 'POST',
 																	contentType : 'application/json; charset=utf-8',
 														              data :JSON.stringify(data),
 																	success : function(response) {
 																				if (id == '') {
 																					$('#id_result').text('');
+																					 idFlag = false;
 																				} else if (id != ''&& !idCheck.test(id)) {
 																					$('#id_result').text('아이디는 2-10자의 영문과 숫자와 일부 특수문자(._-)만 사용해야 합니다.');
 																					$('#id_result').css('color','red');
+																					 idFlag = false;
 																				} else {
 																					$('#id_result').text('사용하실 수 있는 아이디입니다.');
 																					$('#id_result').css('color','green');
@@ -133,6 +134,7 @@ $('.doubleChk2').hover(function(){
 																		if (response == 'duplicate') {
 																			$('#id_result').text('중복된 아이디입니다. 다시 입력해주세요');
 																					$('#id_result').css('color','red');
+																					 idFlag = false;
 																				}
 																			},
 
@@ -141,10 +143,12 @@ $('.doubleChk2').hover(function(){
 
 											if (password == '') {
 												$('#pw_result').text('');
+													pwFlag = false;
 
 											} else if (password != ''&& !pwdCheck.test(password)) {
 												$('#pw_result').text('비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.');
 												$('#pw_result').css('color','red');
+												pwFlag = false;
 
 											} else {
 												$('#pw_result').text('사용하실 수 있는 비밀번호입니다.');
@@ -152,11 +156,14 @@ $('.doubleChk2').hover(function(){
 												pwFlag=true;
 												console.log('비번'+pwFlag);
 											}
-											if (username == '') {	$('#name_result').text('');
+											if (username == '') {	
+												$('#name_result').text('');
+												nameFlag = false;
 
 											} else if (username != ''&& !getName.test(username)) {
 												$('#name_result').text('이름은 한글 2글자 이상 입력해야합니다.');
 												$('#name_result').css('color','red');
+												nameFlag = false;
 											} else {
 												$('#name_result').text('올바른 이름입니다.');
 												$('#name_result').css('color','green');
@@ -176,7 +183,7 @@ $('.doubleChk2').hover(function(){
 														+ '@'
 														+ $('#email_sel').val();
 														$.ajax({
-															url : 'check.do',
+															url : 'checkEamil.do',
 															type : 'POST',
 															data : {
 																useremail : useremail
@@ -186,14 +193,19 @@ $('.doubleChk2').hover(function(){
 																console.log(response);
 																if(email==''){
 																	$('#email_result').text('');
+																	emaFlag = false;
 																} else if (email != ''&& !emaCheck.test(email)) {
 																	$('#email_result').text('이메일은 5-15자의 영문과 숫자만 사용해야 합니다.');
 																	$('#email_result').css('color','red');
+																	emaFlag = false;
+
 																}
 																else {
 																	if (response == 'duplicate') {
 																		$('#email_result').text('중복된 이메일입니다. 다시 작성해주세요.');
 																		$('#email_result').css('color','red');
+																		emaFlag = false;
+
 																	}else{
 																	$('#email_result').text('사용하실 수 있는 이메일입니다.');
 																	$('#email_result').css('color','green');
@@ -216,11 +228,7 @@ $('.doubleChk2').hover(function(){
 	
 	//전화번호 유효성 검사
 	
-	function submitBtn () {
-		// 입력 값 전송
-		$('#btn-save').submit();
-		
-	}
+	
 	
 	var code2 = '';
 	
@@ -236,10 +244,13 @@ $('.doubleChk2').hover(function(){
 		console.log(phone.value)
 		if (phone.value == '') {
 			alert("번호를 입력해주세요.");
+			phoFlag = false;
+
 			
 			
 		} else if (!phoCheck.test(phone.value)) {
 			alert('올바른 전화번호를 입력하세요.');
+			phoFlag = false;
 
 				
 		} else {
@@ -299,10 +310,11 @@ $('.doubleChk2').hover(function(){
 			$("#phoneDoubleChk").val("true");
 			$("#phone2").attr('disabled',true);
 			$("#phoneChk2").attr('disabled',true);
-			check()
 
 			
 		} else {
+			pho2Flag = false;
+
 			alert("인증번호가 일치하지 않습니다.")
 			$("#phoneDoubleChk").val("false");
 			$(this).attr("autofocus",true);
@@ -310,25 +322,27 @@ $('.doubleChk2').hover(function(){
 		
 		
 	}
-	
-	function check(){
-		if(idFlag && pwFlag && nameFlag && emaFlag && phoFlag && pho2Flag){
-			console.log('값 다들어옴~~')
-			$("#btn-save").attr("disabled",false);
-			$('.site-btn').hover(function(){
-
-				    $(this).css('background', 'black');   
-
-				}, function(){
-				   $(this).css('background','#D9D9D9'); 
-
-
-				})
+	function submitBtn () {
+		
+		if(!idFlag || !pwFlag || !nameFlag || !emaFlag || !phoFlag || !pho2Flag){
+			console.log('ㄴㄴ 아직 값 다 안들어옴')
+			alert('정확한 값을 입력해주세요.');
+			 return false;
 			
 		}else{
-			console.log('ㄴㄴ 아직 값 다 안들어옴')
+			console.log('값 다들어옴~~')
+			$('#btn-save').submit();
+			
+		
+			
 		}
-	}
+	
+	// 입력 값 전송
+	
+	
+}
+	
+
 </script>
 
 
@@ -433,9 +447,9 @@ $('.doubleChk2').hover(function(){
 					value="본인인증"> 
 
 
-				<button id="btn-save" class="site-btn" onclick="submitBtn()"
-					disabled
-					style="height: 50px; width: 200px; background: #D9D9D9; border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;">가입하기
+				<button type="button"  id="btn-save" class="site-btn" onclick="submitBtn()"
+					
+					style="height: 50px; width: 200px;  border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;">가입하기
 				</button>
 				<!-- <button onclick="alertTest()">alertTest</button> -->
 
