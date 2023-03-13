@@ -62,7 +62,7 @@
 	</select>
 	
 	<select id="myLikeList" resultType="product">
-		SELECT DISTINCT p.P_PRICE, p.P_NAME, p.P_AMOUNT, p.P_IMAGE1 FROM PRODUCT p, MYLIKE l, MEMBERS m WHERE p.P_NUM = l.ML_PID AND l.ML_MID = #{mlMid}
+		SELECT DISTINCT p.P_NUM, p.P_PRICE, p.P_NAME, p.P_AMOUNT, p.P_IMAGE1 FROM PRODUCT p, MYLIKE l, MEMBERS m WHERE p.P_NUM = l.ML_PID AND l.ML_MID = #{mlMid}
 	</select>
 	
 	
