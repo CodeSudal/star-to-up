@@ -12,6 +12,8 @@
 <title>회원가입</title>
 <style type="text/css">
 
+
+
 /* select {
 	width: 200px;
 	padding: .8em .5em;
@@ -30,6 +32,14 @@ select::-ms-expand {
 #star {
 	color: red;
 }
+.doubleChk {
+background: #D9D9D9;
+}
+
+.doubleChk:hover {
+background: black;
+} 
+
 </style>
 
 <!-- Google Font -->
@@ -52,11 +62,27 @@ select::-ms-expand {
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
 
+$('.doubleChk2').hover(function(){
+
+    $(this).css('background', 'black');   
+
+}, function(){
+   $(this).css('background','#D9D9D9'); 
+
+
+})
+
 
  	/* 알럿창 테스트 */
 	/* function alertTest() {
 		alert('alert 무한반복?')
 	} */
+	var idFlag = false;
+	var pwFlag = false;
+	var nameFlag = false;
+	var emaFlag = false;
+	var phoFlag = false;
+	var pho2Flag = false;
 	
 	$(document).ready( function() {
 						// input 요소에서 keyup 이벤트 발생 시 실시간으로 유효성 검사 수행
@@ -76,6 +102,8 @@ select::-ms-expand {
 											const emailSel = $("#email_sel").val();
 											var phone = $('#phone').val();
 											var phone2 = $('#phone2').val();
+											
+											
 
 											$('#id').on('input',
 															function() {
@@ -98,6 +126,7 @@ select::-ms-expand {
 																				} else {
 																					$('#id_result').text('사용하실 수 있는 아이디입니다.');
 																					$('#id_result').css('color','green');
+																					idFlag=true;
 																					
 
 																				}
@@ -120,6 +149,8 @@ select::-ms-expand {
 											} else {
 												$('#pw_result').text('사용하실 수 있는 비밀번호입니다.');
 												$('#pw_result').css('color','green');
+												pwFlag=true;
+												console.log('비번'+pwFlag);
 											}
 											if (username == '') {	$('#name_result').text('');
 
@@ -129,6 +160,7 @@ select::-ms-expand {
 											} else {
 												$('#name_result').text('올바른 이름입니다.');
 												$('#name_result').css('color','green');
+												nameFlag=true;
 											}
 
 											// email input change event handler
@@ -165,6 +197,7 @@ select::-ms-expand {
 																	}else{
 																	$('#email_result').text('사용하실 수 있는 이메일입니다.');
 																	$('#email_result').css('color','green');
+																	emaFlag=true;
 																	}
 
 																}
@@ -210,21 +243,38 @@ select::-ms-expand {
 
 				
 		} else {
+			
+			phoFlag=true;
 			alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
-			$("#phoneChk2").attr("disabled",false);
+			$("#phoneChk2").attr('disabled',false);
+			$("#phoneChk").css('background','black');
+			$("#phoneChk").attr('value','발송완료');
+			$("#phoneChk").attr('disabled',true);
 			var sendedPhone = $("#phone").val();
+		
 			$.ajax({
-				type : "GET",
+				type : "GET",	
 				url : "phoneCheck.do?phone="+ sendedPhone,
 				cache : false,
 				success : function(data) { 
 					console.log("인증번호:"+data)
-					$("#phone2").attr("disabled",false);
-					$("#phoneChk2").attr("disabled",false);
-					$("#phoneChk2").css("display","inline-block");
-					$("#phoneChk").css("backgroundColor","black");
-					$("#phoneChk").text("발송완료");
-					$("#phone").attr("readonly",true);
+					$("#phone2").attr('disabled',false);
+					$("#phoneChk2").attr('disabled',false);
+					$("#phoneChk2").css('display','inline-block');
+					
+					
+						$('.doubleChk2').hover(function(){
+
+							    $(this).css('background', 'black');   
+
+							}, function(){
+							   $(this).css('background','#D9D9D9'); 
+
+
+							})
+							
+						
+					$("#phone").attr('readonly',true);
 					code2 = data;
 					
 				}
@@ -242,11 +292,14 @@ select::-ms-expand {
 		2. 문자와 인증번호와 일치하는 지/ 정규식 통과하는지 > 잘됨
 		3. 서브밋..최종가입 > 민경확인! /확인완료시 해당 주석 삭제바람*/
 			alert("인증번호가 일치합니다.");
-			$("#phoneChk2").css("backgroundColor","black");
-			$("#phoneChk2").text("인증완료");
+		$('.doubleChk2').unbind('mouseenter mouseleave');
+		pho2Flag=true;
+			$("#phoneChk2").css('background','black');
+			$("#phoneChk2").attr('value','인증완료');
 			$("#phoneDoubleChk").val("true");
-			$("#phone2").attr("disabled",true);
-			
+			$("#phone2").attr('disabled',true);
+			$("#phoneChk2").attr('disabled',true);
+			check()
 
 			
 		} else {
@@ -256,6 +309,25 @@ select::-ms-expand {
 		}
 		
 		
+	}
+	
+	function check(){
+		if(idFlag && pwFlag && nameFlag && emaFlag && phoFlag && pho2Flag){
+			console.log('값 다들어옴~~')
+			$("#btn-save").attr("disabled",false);
+			$('.site-btn').hover(function(){
+
+				    $(this).css('background', 'black');   
+
+				}, function(){
+				   $(this).css('background','#D9D9D9'); 
+
+
+				})
+			
+		}else{
+			console.log('ㄴㄴ 아직 값 다 안들어옴')
+		}
 	}
 </script>
 
@@ -306,28 +378,13 @@ select::-ms-expand {
 						이메일 <span id=star> *</span>
 					</p>
 					<input type="text"
-						style="    float: left;
-    width: 400px;
-    margin-right: 10px;
-    display: inline-block;
-    margin-bottom: 10px;"
-						id="email" name="mEmail1" required> 
-					<span style="display: inline-block; float: left; margin-top: 10px;">
+						style="float: left; width: 400px; margin-right: 10px; display: inline-block; margin-bottom: 10px;"
+						id="email" name="mEmail1" required> <span
+						style="display: inline-block; float: left; margin-top: 10px;">
 						@ </span> <select id="email_sel" name="mEmail2" required
-						style="width: 400px;
-    height: 50px;
-    /* width: 100%; */
-    border: 1px solid #e1e1e1;
-    border-radius: 2px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    padding-left: 10px;
-    color: #666666;
-    margin-left: 10px;
-    float: left;
-    display: block;
-    margin-bottom: 10px;">
-						<option value="">이메일 선택</option>
+						style="width: 400px; height: 50px;
+	/* width: 100%; */ border: 1px solid #e1e1e1; border-radius: 2px; margin-bottom: 10px; font-size: 14px; padding-left: 10px; color: #666666; margin-left: 10px; float: left; display: block; margin-bottom: 10px;">
+						<option selected disabled>이메일 선택</option>
 						<option value="naver.com">naver.com</option>
 						<option value="gmail.com">gmail.com</option>
 						<option value="daum.net">daum.net</option>
@@ -342,15 +399,10 @@ select::-ms-expand {
 						<option value="hanmir.com">hanmir.com</option>
 						<option value="dreamwiz.com">dreamwiz.com</option>
 						<option value="paran.com">paran.com</option>
-					</select> 
+					</select>
 				</div>
-				<span
-						id="email_result"
-						style="font-size: small;
-    display: block;
-    float: left;
-    width: 100%;
-}"></span>
+				<span id="email_result"
+					style="font-size: small; display: block; float: left; width: 100%;"></span>
 
 
 
@@ -359,31 +411,30 @@ select::-ms-expand {
 
 
 
-					<p id="pho" style="width: 100%;
-    display: block;
-    float: left;
-    margin-top: 20px;">
+					<p id="pho"
+						style="width: 100%; display: block; float: left; margin-top: 20px;">
 						전화번호 <span id=star> *</span>
 					</p>
 					<input id="phone" name="mNum" type="text"
 						style="float: left; width: 400px;" required>
 				</div>
-				<input type="button" id="phoneChk" class="doubleChk" onclick="phoneCheck1()"
-					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;"
+				<input type="button" id="phoneChk" class="doubleChk"
+					onclick="phoneCheck1()"
+					style="border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;"
 					value="인증번호 발송">
-				<span id="phone_result"></span>
 
 				<div class="checkout__form__input" style="width: 50%;">
 					<input id="phone2" type="text" name="phone2"
 						style="float: left; width: 400px;" required disabled>
 				</div>
-				<input type="button" id="phoneChk2" class="doubleChk" onclick="phoneAuth()" disabled
+				<input type="button" id="phoneChk2" class="doubleChk2"
+					onclick="phoneAuth()" disabled
 					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;"
-					value="본인인증">
-				<span id="phone2_result"></span>
+					value="본인인증"> 
 
 
 				<button id="btn-save" class="site-btn" onclick="submitBtn()"
+					disabled
 					style="height: 50px; width: 200px; background: #D9D9D9; border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;">가입하기
 				</button>
 				<!-- <button onclick="alertTest()">alertTest</button> -->
