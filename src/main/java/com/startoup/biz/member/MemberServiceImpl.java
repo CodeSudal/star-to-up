@@ -81,7 +81,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean deleteLike(MyLikeVO mlvo) {
-		return deleteLike(mlvo);
+		return mdao.deleteLike(mlvo);
 	}
 
 	@Override
