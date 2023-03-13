@@ -43,7 +43,7 @@
 	
 	<delete id="deleteLike">
 		DELETE FROM MYLIKE WHERE ML_MID=#{mlMid} AND ML_PID=#{mlPid}
-	</delete> 
+	</delete>
 	
 	<select id="selectAllLike" resultType="mylike">
 		SELECT a.M_ID, b.ML_NUM, b.ML_PID FROM MEMBERS a INNER JOIN MYLIKE b ON a.M_ID = b.ML_MID
