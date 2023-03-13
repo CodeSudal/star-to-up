@@ -179,14 +179,16 @@ background: black;
 											$('#email_sel').on('change',function() { checkEmailDuplicate();});
 
 											function checkEmailDuplicate() {
-												var useremail = $('#email').val()
-														+ '@'
-														+ $('#email_sel').val();
+												var useremail1 = $('#email').val();
+														
+											var useremail2 = $('#email_sel').val();
 														$.ajax({
 															url : 'checkEamil.do',
 															type : 'POST',
 															data : {
-																useremail : useremail
+															mEmail1 : useremail1,
+															mEmail2 : useremail2
+															
 															},
 															success : function(
 																	response) {
