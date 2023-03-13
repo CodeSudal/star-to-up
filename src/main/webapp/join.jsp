@@ -327,7 +327,7 @@ background: black;
 		if(!idFlag || !pwFlag || !nameFlag || !emaFlag || !phoFlag || !pho2Flag){
 			console.log('ㄴㄴ 아직 값 다 안들어옴')
 			alert('정확한 값을 입력해주세요.');
-			 return false;
+			
 			
 		}else{
 			console.log('값 다들어옴~~')
@@ -447,7 +447,7 @@ background: black;
 					value="본인인증"> 
 
 
-				<button type="button"  id="btn-save" class="site-btn" onclick="submitBtn()"
+				<button   id="btn-save" class="site-btn" onclick="submitBtn(); return false;"
 					
 					style="height: 50px; width: 200px;  border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;">가입하기
 				</button>
