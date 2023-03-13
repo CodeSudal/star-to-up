@@ -34,6 +34,19 @@
         
         <!-- //rgb(24, 55, 208) // rgba(0, 0, 0, 0.25) -->
         <style>
+        	
+        	#heartNot:hover {
+                 cursor: pointer;
+               background-color:black;
+            }
+            
+            #heartIng:hover {
+                cursor: pointer;
+                background-color:rgb(215,215,215);
+            }
+            
+            
+        
             h3 {
                 display: inline;
                 font-size: 44px;
