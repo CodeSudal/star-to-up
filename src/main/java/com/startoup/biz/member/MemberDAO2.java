@@ -147,7 +147,7 @@ public class MemberDAO2 {
 			mlvo.setMlMid(mlvo.getMlMid());
 			for(int i=0; i<vo.size(); i++) {
 				mlvo.setMlPid(vo.get(i).getMlPid());
-				mybatis.delete("MemberDAO.deleteLike", mlvo);
+				mybatis.delete("MemberDAO.deleteLikeList", mlvo);
 			}
 			return true;
 		} catch(Exception e) {
