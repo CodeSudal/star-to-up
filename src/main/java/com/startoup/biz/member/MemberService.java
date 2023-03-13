@@ -8,6 +8,7 @@ public interface MemberService {
 	public boolean deleteMember(MemberVO vo);
 	public List<MemberVO> selectAllMember(MemberVO vo);
 	public MemberVO selectOneMember(MemberVO vo);
+	public MemberVO selectOneEmail(MemberVO vo);
 	public MemberVO loginMember(MemberVO vo);
 	public boolean insertFunding(MyFundingVO vo);
 	public List<MyFundingVO> selectAllFund(MyFundingVO vo);
