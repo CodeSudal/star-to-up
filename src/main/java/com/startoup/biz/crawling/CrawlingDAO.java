@@ -20,22 +20,23 @@ public class CrawlingDAO {
 	final String INSERT_CRAWLING = "INSERT INTO CRAWLING( C_NUM, C_NAME, C_INFO) VALUES( (SELECT NVL(MAX(C_NUM), 0) + 1 FROM CRAWLING), ?, ?)";
 	final String UPDATE_PINFO = "UPDATE PRODUCT P SET P.P_INFO = (SELECT C.C_INFO FROM CRAWLING C WHERE P.P_NAME = C.C_NAME)";
 	final String SELECT_ONE_CRAWLING = "SELECT C_NUM, C_NAME, C_INFO FROM CRAWLING WHERE C_NAME = ?";
+	final String SELECT_ALL_CRAWLING = "SELECT C_NUM, C_NAME, C_INFO FROM CRAWLING";
 	
 	public boolean crawling() {
 		SeleniumVO sel = new SeleniumVO();
 		List<SeleniumVO> datas;
+		List<SeleniumVO> cdb;
 		String title;
 		String info;
 
 		try {
-			DriverUtil.crawling();
+			cdb=jdbcTemplate.query(SELECT_ALL_CRAWLING, new CSeleniumRowMapper());
+			if(cdb.size()<9) { DriverUtil.crawling(); }
+			else { return true; }
 
-			//DriverUtil.craw.forEach((key, value) -> System.out.println(key + " : " + value));
-			
 			for (Entry<String, String> entrySet : DriverUtil.craw.entrySet()) {
 				sel.setcName(entrySet.getKey());
 				sel.setcInfo(entrySet.getValue());
-				System.out.println(sel.getcName());
 				Object[] args= { sel.getcName() };
 				try{jdbcTemplate.queryForObject(SELECT_ONE_CRAWLING, args, new CSeleniumRowMapper());
 					continue;
