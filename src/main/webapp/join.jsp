@@ -180,15 +180,15 @@ background: black;
 
 											function checkEmailDuplicate() {
 												var useremail1 = $('#email').val();
+												console.log('zhsthfhdaskfadsn')
 														
 											var useremail2 = $('#email_sel').val();
 														$.ajax({
-															url : 'checkEamil.do',
+															url : 'checkEmail.do',
 															type : 'POST',
 															data : {
 															mEmail1 : useremail1,
 															mEmail2 : useremail2
-															
 															},
 															success : function(
 																	response) {
