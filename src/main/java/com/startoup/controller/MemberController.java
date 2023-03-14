@@ -17,6 +17,7 @@ import com.startoup.biz.list.ListServiceImpl;
 import com.startoup.biz.list.ListVO;
 import com.startoup.biz.member.MemberServiceImpl;
 import com.startoup.biz.member.MemberVO;
+import com.startoup.biz.member.MyFundingVO;
 import com.startoup.biz.member.MyLikeVO;
 import com.startoup.biz.product.ProductServiceImpl;
 import com.startoup.biz.product.ProductVO;
@@ -145,52 +146,44 @@ public class MemberController {
 	public String withdrowalView() {
 		return "withdrowal.jsp";
 	}
-
+	
 	// 회원탈퇴 버튼 누름
 	@RequestMapping(value = "/withdrowal.do", method = RequestMethod.POST)
-	
-	public String deleteMember( MemberVO vo, HttpSession session) {
+	public String deletemember(MemberVO vo, HttpSession session) {
 		System.out.println("deleteMember() 입장");
-		System.out.println("vo: "+vo);
+		session.removeAttribute("member");
+		memberSI.deleteMember(vo); // deleteMemter session.removeAttribute("member");
+		return "store.do";
+	}
+
+	
+	@ResponseBody
+	@RequestMapping(value = "/pwChk.do", method = RequestMethod.POST)
+
+	public String deleteMember(MemberVO vo, HttpSession session) {
 		
+		System.out.println("vo: " + vo);
+
 		System.out.println("나여7기~");
 		MemberVO member = (MemberVO) session.getAttribute("member");
-
+		System.out.println("세션:" + member.getmPw());
 		System.out.println(vo.getmPw());
-		if(member.getmPw().equals(vo.getmPw())) {
-			System.out.println("-0");
-			return "0";
-		} else {
+		vo.setmPw(vo.getmPw());
+		if (member.getmPw().equals(vo.getmPw())) {
 			System.out.println("truet");
 			memberSI.deleteMember(vo); // deleteMemter
 			session.removeAttribute("member"); // 세션 특정 정보만 비우기
 			return "true";
-		}
-		/*
-		memberSI.deleteMember(vo); // deleteMemter
-		session.removeAttribute("member"); // 세션 특정 정보만 비우기
-
-		return "store.do";
-		*/
-
-	}
-	
-	/*
-	@RequestMapping(value = "/pwChk.do", method = RequestMethod.POST)
-	@ResponseBody
-	public String pwcheck(@RequestBody MemberVO vo, HttpSession session) {
-		System.out.println("나여7기~");
-		MemberVO member = (MemberVO) session.getAttribute("member");
-
-		System.out.println(vo.getmPw());
-		if(member.getmPw().equals(vo.getmPw())) {
-			return "0";
 		} else {
-			return "true";
+			System.out.println("-0");
+			return "0";
 		}
+		
+
 	}
-	*/
+
 	
+
 	// 상품디테일 페이지 들어갔을 때 찜 여부 확인하기위함.
 	@RequestMapping(value = "/detail.do")
 	public String selcetOneBoard(ProductVO pvo, HttpSession session, MyLikeVO myvo, ListVO lvo, Model model) {
@@ -301,6 +294,16 @@ public class MemberController {
 			System.out.println("삭제안됨");
 			return "s";
 		}
+	}
+
+	@RequestMapping(value = "/myFundingList.do")
+	public String withdrowalVie(MyFundingVO vo, Model model, HttpSession session) {
+		System.out.println("펀딩 내역 들어옴");
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
+		vo.setMfMid(mvo.getmId());
+		model.addAttribute("datas", memberSI.myFundList(vo));
+		System.out.println(memberSI.myFundList(vo));
+		return "orderList.jsp";
 	}
 
 }

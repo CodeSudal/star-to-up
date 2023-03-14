@@ -37,7 +37,7 @@
             </div>
          </div>
 
-         <% 
+         <%-- <% 
          	/* 임시 더미데이터 */
             ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
             
@@ -80,26 +80,26 @@
             productList.add(p6); */
 
               request.setAttribute("datas", productList);
-         %>
+         %> --%>
 
          <c:forEach items="${datas}" var="i">
          <div class="mid">
             <div class="item_box">
                <div class="product_item bc">
                   <div class="img_box">
-                     <img src="${i.img}" alt="img" width="100%"
+                     <img src="${i.pImage1}" alt="img" width="100%"
                         height="100%">
                   </div>
-                  <div class="title_box">${i.name}</div>
+                  <div class="title_box">${i.pName}</div>
                </div>
                <div class="total_item bc">
-                  <div class="text_box">${i.total}</div>
+                  <div class="text_box">${i.pAmount}</div>
                </div>
                <div class="amount_item bc">
-                  <div class="text_box">${i.price}</div>
+                  <div class="text_box">${i.pPrice}</div>
                </div>
 
-                  </label>
+                 <!--  </label> -->
                </div>
          </div>
           </c:forEach>
