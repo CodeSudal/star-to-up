@@ -30,8 +30,8 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/font.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     
     <link rel="stylesheet" href="css/header.css" type="text/css">
 </head>
@@ -83,9 +83,9 @@
          <div class="menu_item1"><a href="info.do">INFO</a></div>
          <div class="menu_item1"><a href="about.do">ABOUT</a></div>
       </div>
-      <div style="display: flex; font-weight: bold; margin-left: 80px;">
-      	 <div style="width: 30px;" class="menu_item1"><a href="about.do?lang=en"><img alt="ENGLISH" src="img/United-States-of-America.png"></a></div>
-      	 <div style="width: 30px;" class="menu_item1"><a href="about.do?lang=ko"><img alt="한국어" src="img/South-Korea.png"></a></div>
+      <div style="display: flex; font-weight: bold; margin-left: 30%;">
+      	 <div style="width: 30px;" class="menu_item1"><a href="about.do?lang=en"><img alt="ENGLISH" src="img/icon-united-states.png"></a></div>
+      	 <div style="width: 30px;" class="menu_item1"><a href="about.do?lang=ko"><img alt="한국어" src="img/icon-south-korea.png"></a></div>
 	  </div>
       <div class="top_right_box">
         <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
