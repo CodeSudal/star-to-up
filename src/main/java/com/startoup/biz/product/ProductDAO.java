@@ -36,6 +36,9 @@ public class ProductDAO {
    // 펀딩 완료 시(제품 펀딩 종료하기)
    final String UPDATE_FINISH = "UPDATE PRODUCT SET P_FINISH=1 WHERE P_NUM=?";
    
+   // 제품 INFO 업데이트
+   final String UPDATE_PINFO = "UPDATE PRODUCT P SET P.P_INFO = (SELECT C.C_INFO FROM CRAWLING C WHERE P.P_NAME = C.C_NAME)";
+   
    
    // 사용자가 구매했을 때 checkProduct
    public boolean checkProduct(ProductVO vo) {
@@ -67,7 +70,6 @@ public class ProductDAO {
    
 
    public boolean insertProduct(ProductVO vo) {
-	   System.out.println("가보자고");
       try {
     	 if(vo.getpImage1()==null) {
     		 vo.setpImage1("default.jpg");
@@ -78,10 +80,11 @@ public class ProductDAO {
     	 if(vo.getpImage3()==null) {
     		 vo.setpImage3("default.jpg");
     	 }
-    	 System.out.println(vo);
          int res=jdbcTemplate.update(INSERT_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpImage1(), vo.getpImage2(),vo.getpImage3(), vo.getpAmount());
          System.out.println(vo);
          if(res<1) { return false; }
+         
+         jdbcTemplate.update(UPDATE_PINFO);
          return true;
       } catch(Exception e) {
          return false;

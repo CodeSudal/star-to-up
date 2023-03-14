@@ -15,11 +15,16 @@ import org.springframework.stereotype.Repository;
 public class CrawlingDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
+	
+	// 상품 확인
 	final String SELECT_ALL_PRODUCT = "SELECT P_NAME, P_INFO FROM PRODUCT";
+	// 크롤링 정보 DB에 저장
 	final String INSERT_CRAWLING = "INSERT INTO CRAWLING( C_NUM, C_NAME, C_INFO) VALUES( (SELECT NVL(MAX(C_NUM), 0) + 1 FROM CRAWLING), ?, ?)";
+	// 상품 INFO 업데이트
 	final String UPDATE_PINFO = "UPDATE PRODUCT P SET P.P_INFO = (SELECT C.C_INFO FROM CRAWLING C WHERE P.P_NAME = C.C_NAME)";
+	// SELECTONE
 	final String SELECT_ONE_CRAWLING = "SELECT C_NUM, C_NAME, C_INFO FROM CRAWLING WHERE C_NAME = ?";
+	// SELECTALL
 	final String SELECT_ALL_CRAWLING = "SELECT C_NUM, C_NAME, C_INFO FROM CRAWLING";
 	
 	public boolean crawling() {
@@ -31,9 +36,10 @@ public class CrawlingDAO {
 
 		try {
 			cdb=jdbcTemplate.query(SELECT_ALL_CRAWLING, new CSeleniumRowMapper());
-			if(cdb.size()<9) { DriverUtil.crawling(); }
-			else { return true; }
-
+			if(cdb.size()>8) { return true; }
+			
+			DriverUtil.crawling();
+			
 			for (Entry<String, String> entrySet : DriverUtil.craw.entrySet()) {
 				sel.setcName(entrySet.getKey());
 				sel.setcInfo(entrySet.getValue());
@@ -56,7 +62,7 @@ public class CrawlingDAO {
 			}
 			return true;
 		} catch(Exception e) {
-			System.out.println("뭔에러: "+e);
+			System.out.println(e);
 			return false;
 		}
 	}
