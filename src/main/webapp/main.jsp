@@ -106,18 +106,15 @@
                 </section>
                 <!-- Section: Description -->
             </div>
-        </div  style="display: none;">
+        </div>
         <div class="container my-5">
             <!-- Section: Intro -->
             <section class="text-center mb-4">
-                <h4 class="mb-4">
-                    <strong><div id="intro-date" style="display: none"></div></strong>
-                </h4>
+                    <div id="intro-date" style="display: none"></div>
             </section>
             <!-- Section: Intro -->
 
             <!-- Section: Demo -->
-            <section class="mb-4">
                 <!-- Section: Date -->
                 <section class="mb-4">
                     <!-- Datepicker -->
@@ -134,11 +131,9 @@
                             value=""
                             style="display: none"
                         />
-                    </div>
-                </div>
                 </section>
+                    </div>
                 <!-- Section: Date -->
-            </section>
        
 
         <!-- Js Plugins -->
@@ -199,6 +194,5 @@
             }
             // ]]>
         </script>
-        </div>
     </body>
 </html>

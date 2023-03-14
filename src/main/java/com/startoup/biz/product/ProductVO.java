@@ -20,7 +20,7 @@ public class ProductVO {
 	private int pCRNAmount; // 현재펀딩금액
 	private int pPercent; // 펀딩목표 퍼센트에이지
 	private int people;	// 펀딩 목표 총 인원
-	private List<MultipartFile> uploadFile;
+	private List<MultipartFile> uploadFile;	// 업로드 파일
 	
 	public int getPeople() {
 		return people;

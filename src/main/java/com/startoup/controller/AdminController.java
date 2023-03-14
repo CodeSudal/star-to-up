@@ -43,12 +43,16 @@ public class AdminController {
 
 		List<MultipartFile> fileList = pvo.getUploadFile();
 		System.out.println("src value : " + pvo.getUploadFile());
-
+		
+		// MultipartFile에 업로드 파일이 들어왔는지 확인
 		if (!fileList.isEmpty()) {
 			System.out.println("이미지 업로드 확인");
 		}
-
+		
+		// 파일을 저장할 내 경로
 		String path = "/Users/ljh0323/Desktop/Program/Eclipse/eclipseFile/LEE1108/workspace02/startoup/src/main/webapp/img/";
+		
+		// forEach문을 돌면서 순차적으로 이미지를 저장하기 위한 변수 i
 		int i=0;
 
 		for (MultipartFile mf : fileList) {
@@ -57,20 +61,27 @@ public class AdminController {
 
 			System.out.println("originFileName : " + originFileName);
 			System.out.println("fileSize : " + fileSize);
-
+			
+			// 첫번째 이미지는 setpIamge1에 저장
 			if(i==0) {
 				pvo.setpImage1(originFileName);
 			}
+			// 두번째 이미지
 			else if(i==1) {
 				pvo.setpImage2(originFileName);
 			}
+			// 세번째 이미지
 			else if(i==2) {
 				pvo.setpImage3(originFileName);
 			}
 
+			// 파일 업로드 경로 + 파일 이름
 			String safeFile = path + originFileName;
+			
+			// 다음 이미지 저장으로 가기 위한 i++
 			i++;
 			try {
+				// 해당 경로에 파일 저장
 				mf.transferTo(new File(safeFile));
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
@@ -80,6 +91,7 @@ public class AdminController {
 		}
 
 		System.out.println("adminProductInsert 들어옴");
+		// INSERT PRODUCT
 		model.addAttribute("datas", ProductSI.insertProduct(pvo));
 		System.out.println("adminProductInsert 나감");
 		return "adminProduct.do";
