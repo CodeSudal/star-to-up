@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="css/shopcart.css" type="text/css">
 
 <link
-   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"   
+   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
    rel="stylesheet" />
 </head>
 
@@ -40,106 +40,52 @@
             </div>
          </div>
 
-         <% 
-            /* 임시 더미데이터 */
-            ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
-            
-            HashMap<String, String> p1 = new HashMap<String, String>();
-            p1.put("pId", "1");
-            p1.put("name", "Jupiter");
-            p1.put("price", "32000");
-            p1.put("total", "600000");
-            p1.put("img", "img/jupiter.png");
-            HashMap<String, String> p2 = new HashMap<String, String>();
-            p2.put("pId", "2");
-            p2.put("name", "Mars");
-            p2.put("price", "21000");
-            p2.put("total", "820000");
-            p2.put("img", "img/mars.png");
-            HashMap<String, String> p3 = new HashMap<String, String>();
-            p3.put("pId", "3");
-            p3.put("name", "Mercury");
-            p3.put("price", "52000");
-            p3.put("total", "1253000");
-            p3.put("img", "img/mercury.png");
-            HashMap<String, String> p4 = new HashMap<String, String>();
-            p4.put("pId", "4");
-            p4.put("name", "Venus");
-            p4.put("price", "32000");
-            p4.put("total", "6253000");
-            p4.put("img", "img/venus.png");
-            HashMap<String, String> p5 = new HashMap<String, String>();
-            p5.put("pId", "5");
-            p5.put("name", "Earth");
-            p5.put("price", "15000");
-            p5.put("total", "305100");
-            p5.put("img", "img/earth.png");
-            HashMap<String, String> p6 = new HashMap<String, String>();
-            p6.put("pId", "6");
-            p6.put("name", "Sun");
-            p6.put("price", "22000");
-            p6.put("total", "533000");
-            p6.put("img", "img/sun.png");
-            
-            productList.add(p1);
-            productList.add(p2);
-            productList.add(p3);
-            productList.add(p4);
-            productList.add(p5);
-            productList.add(p6);
-
-            request.setAttribute("datas", productList);
-         %>
-
          <c:forEach items="${datas}" var="i">
-         <div class="mid">
-            <div class="item_box">
-               <div class="product_item bc">
-                  <div class="img_box">
-                     <img src="${i.img}" alt="img" width="100%"
-                        height="100%">
-                  </div>
-                  <div class="title_box">${i.name}</div>
-               </div>
-               <div class="total_item bc">
-                  <div class="text_box">${i.total}</div>
-               </div>
-               <div class="amount_item bc">
-                  <div class="text_box">${i.price}</div>
-               </div>
-               <div class="check_item bc">
-                  <label class="check_icon_box"> <input type="checkbox" data-pId="${i.pId}"
-                     value="${i.pId}" name="selectedList">
-                     <div class="circle">
-                        <span class="material-symbols-outlined">&#xe876</span>
+            <div class="mid">
+               <div class="item_box">
+                  <div class="product_item bc">
+                     <div class="img_box">
+                        <img src="${i.pImage1}" alt="img" width="100%" height="100%">
                      </div>
-                  </label>
+                     <div class="title_box">${i.pName}</div>
+                  </div>
+                  <div class="total_item bc">
+                     <div class="text_box">${i.pAmount}</div>
+                  </div>
+                  <div class="amount_item bc">
+                     <div class="text_box">${i.pPrice}</div>
+                  </div>
+                  <div class="check_item bc">
+                     <label class="check_icon_box"> <input type="checkbox"
+                        data-pId="${i.pNum}" value="${i.pNum}" name="selectedList">
+                        <div class="circle">
+                           <span class="material-symbols-outlined">&#xe876</span>
+                        </div>
+                     </label>
+                  </div>
                </div>
-         </div>
-          </c:forEach>
-          
-
-         </div>
+         </c:forEach>
 
 
-         <div class="bot">
-            <input type="button" class="bot_left" disabled="disabled" onclick="deleteItems()"
-               value="삭제하기">
-            <div class="bot_right">
-               <div class="right">Total:</div>
-               <div class="text_box2">0 ₩</div>
-            </div>
+      </div>
+
+
+      <div class="bot">
+         <input type="button" class="bot_left" disabled="disabled"
+            onclick="deleteItems()" value="삭제하기">
+         <div class="bot_right">
+            <div class="right">Total:</div>
+            <div class="text_box2">0 ₩</div>
          </div>
       </div>
- 
+   </div>
+
 
 </body>
 
 <script>
 
 var deleteList = [];
-
-
 
 function deleteItems() {
    console.log('삭제하기 실행()');
@@ -149,18 +95,29 @@ function deleteItems() {
    for(let i=0; i < checkedItem2.length; i++) {
       console.log(checkedItem2[i].value);
       deleteList.push(Number(checkedItem2[i].value));
-   }
+   };
    
-   console.log('삭제 리스트 :')
+   var objParams = {
+         "deleteList" : deleteList
+   };
+   
+   console.log('삭제 리스트 :');
    console.log(deleteList);
    
 
         $.ajax({
+           
             url  : "shopcartDelete.do",
             type : "POST",
-            data : deleteList,
+            data : JSON.stringify(objParams),
+            contentType : "application/json",
             success : function(res) {
                 alert('찜 목록 삭제 성공!');
+                if(res) {                   
+                    alert('찜 목록 삭제 성공!');
+                     } else {
+                     alert('응답 없음');
+                     }
                 
 
             },
