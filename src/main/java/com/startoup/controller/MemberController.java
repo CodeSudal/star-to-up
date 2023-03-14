@@ -156,7 +156,9 @@ public class MemberController {
 		session.removeAttribute("member"); // 세션 특정 정보만 비우기
 
 		return "store.do";
+
 	}
+	
 	
 	// 상품디테일 페이지 들어갔을 때 찜 여부 확인하기위함.
 	@RequestMapping(value = "/detail.do")
