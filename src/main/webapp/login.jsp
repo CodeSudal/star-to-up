@@ -44,7 +44,7 @@
                                 <div style="margin-left: 35%; margin-right: 35%;">
                                     <form  method="post" action="login.do" >
                                         아이디<input type="text" placeholder="ID" name="mId" id="idInput" style="margin-top:1px; margin-bottom:7%;"required />
-                                        비밀번호<input type="text" placeholder="PASSWARD" name="mPw" id="pwInput"  style="margin-top:1px" required />
+                                        비밀번호<input type="password" placeholder="PASSWARD" name="mPw" id="pwInput"  style="margin-top:1px" required />
                                         <input type="submit" class="cart-btn" id="loginBtn"  style="background-color:#D9D9D9; color: white; width: 50%; text-align: center; margin-left:23%; border-radius:30px; padding-right:5%; font-size:18px;" value="로그인" />
                                     </form>
                                     <button type="button" class="cart-btn" onclick="javascript:kakaoLogin();"
