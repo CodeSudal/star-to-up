@@ -31,9 +31,10 @@ public class CrawlingDAO {
 
 		try {
 			cdb=jdbcTemplate.query(SELECT_ALL_CRAWLING, new CSeleniumRowMapper());
-			if(cdb.size()<9) { DriverUtil.crawling(); }
-			else { return true; }
-
+			if(cdb.size()>8) { return true; }
+			
+			DriverUtil.crawling();
+			
 			for (Entry<String, String> entrySet : DriverUtil.craw.entrySet()) {
 				sel.setcName(entrySet.getKey());
 				sel.setcInfo(entrySet.getValue());
@@ -56,7 +57,7 @@ public class CrawlingDAO {
 			}
 			return true;
 		} catch(Exception e) {
-			System.out.println("뭔에러: "+e);
+			System.out.println(e);
 			return false;
 		}
 	}
