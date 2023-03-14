@@ -53,7 +53,7 @@ public class ProductDAO {
          
          // 구매 후 퍼센트에이지 변경
          int per=(pvo.getpCRNAmount()/pvo.getpAmount())*100;
-         System.out.println(per);
+         System.out.println("퍼센트에이지 : "+per);
          pvo.setpPercent(per);
          jdbcTemplate.update(UPDATE_PERCENT, pvo.getpPercent(), pvo.getpNum());
          
