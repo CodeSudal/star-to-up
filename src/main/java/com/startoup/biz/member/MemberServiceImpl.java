@@ -85,8 +85,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean deleteLikeList(List<MyLikeVO> vo, MyLikeVO mlvo) {
-		return deleteLikeList(vo, mlvo);
+	public boolean deleteLikeList(List<Integer> list, MyLikeVO mlvo) {
+		return mdao.deleteLikeList(list, mlvo);
 	}
 
 	

@@ -32,11 +32,30 @@
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
         <link rel="stylesheet" href="css/style.css" type="text/css" />
         
-        <!-- //rgb(24, 55, 208) // rgba(0, 0, 0, 0.25) -->
         <style>
+        	
+        	
             h3 {
                 display: inline;
                 font-size: 44px;
+            }
+            
+            #heartNot {
+                background-color: rgb(215,215,215);
+            }
+            
+            #heartNot:hover {
+               background-color:black;
+               cursor: pointer;
+            }
+            
+            #heartIng {
+                background-color:black;
+            }
+            
+            #heartIng:hover {
+               background-color:rgb(215,215,215);
+               cursor: pointer;
             }
 
             @keyframes progressAnimationStrike {
@@ -97,12 +116,8 @@
     </head>
 
     <body>
-        <!-- Page Preloder -->
-       <%@ include file="header.jsp" %>
-        <!-- Offcanvas Menu End -->
-
         <!-- Header Section Begin -->
-      
+        <%@ include file="header.jsp" %>
         <!-- Header Section End -->
 
         <!-- Breadcrumb Begin -->
@@ -147,32 +162,27 @@
                             
                             <!-- EL식적용 
                             <div class="product__details__pic__left product__thumb " style="width:15%; margin-top:5%; " >
-                                    <img  class="small_img"  src="img/shop/${data.pName}1.png" alt="이미지1" style="cursor:pointer;"/>
+                                    <img  class="small_img"  src="img/shop/${data.pImage1}" alt="이미지1" style="cursor:pointer;"/>
                                      <br/><br/><br/>
-                                    <img class="small_img"  src="img/shop/${data.pName}2.png" alt="이미지2" onerror="this.style.display='none'" style="cursor:pointer;" />
+                                    <img class="small_img"  src="img/shop/${data.pImage2}" alt="이미지2" onerror="this.style.display='none'" style="cursor:pointer;" />
                                     <br/><br/><br/>
-                                    <img  class="small_img" src="img/shop/${data.pName}3.png" alt="이미지3" onerror="this.style.display='none'" style="cursor:pointer;" />
+                                    <img  class="small_img" src="img/shop/${data.pImage3}" alt="이미지3" onerror="this.style.display='none'" style="cursor:pointer;" />
                             </div>
                             <div class="product__details__slider__content" style="margin-left:10%;">
                                     <img
                                        data-hash=""
                                        id="big_img"
                                         class="product__big__img"
-                                        src="img/shop/${data.pName}1.png"
+                                        src="img/shop/${data.pImage1}"
                                         alt="선택이미지"
                                         style="width: 80vw; height:80hw; "
                                     />
                             </div>
                             
                              -->
-                           
-                            
-                            
                         </div>
-                        
                     </div>
-               
-                     
+                   
                     <!-- 상품데이터 --> 
                       <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
@@ -194,12 +204,12 @@
                               <c:choose>
                                  <c:when test="${data.pFinish ==0}">
                                     <div style="width:40%;">
-                                    <a
-                                        href="payment.do?pNum=${data.pNum}"
+                                    <button  
+                                        id="buying" 
                                         class="cart-btn"
                                         style="width:100%; height:80%; background-color: black; border:none;  display: inline-flex; justify-content : center; font-size: 28px;"
                                        >
-                                      펀딩하기</a>
+                                      펀딩하기</button>
                                      </div>
                                  </c:when>   
                                  <c:otherwise>
@@ -215,15 +225,15 @@
                               </c:choose>
                                <c:choose>
                                   <c:when test="${data.pFinish ==0 && not empty isMylike}">
-                                         <div id="heartIng" style="background-color: black; margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display:flex; justify-content: center; ">
+                                         <div id="heartIng" style=" margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display:flex; justify-content: center; ">
                                                 <img  alt="찜했음" src="img/heart.png"
-                                                  style="width: 20px; height: 20px; cursor: pointer; margin-left:2%;margin-top:30%; z-index:1;  ">
+                                                  style="width: 20px; height: 20px; margin-left:2%;margin-top:30%; z-index:1;  ">
                                        </div>
                                   </c:when>
                                   <c:when test="${data.pFinish ==0 && empty isMylike}">
-                                          <div id="heartNot" style="background-color: rgb(215,215,215); margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display:flex; justify-content: center; ">
+                                          <div id="heartNot" style=" margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display:flex; justify-content: center; ">
                                                 <img  alt="찜안했음"  src="img/heart.png"
-                                                   style="width: 20px; height: 20px; cursor: pointer; margin-left:2%;margin-top:30%; z-index:1;  ">
+                                                   style="width: 20px; height: 20px; margin-left:2%;margin-top:30%; z-index:1;  ">
                                        </div>
                                    </c:when>
                                    <c:otherwise>
@@ -231,9 +241,9 @@
                                  </c:choose>
                                  <c:choose>
                                    <c:when test="${data.pFinish ==0}">
-                                       <div style="background-color: black; margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display: flex; justify-content: center;">
+                                       <div class="kakaosharing" style="cursor: pointer; background-color: black; margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display: flex; justify-content: center;">
                                        <a href="javascript:kakaoShare()"> <img  alt="카카오공유"  src="img/sharing.png"
-                                             style="width: 25px; height: 25px; cursor: pointer;margin-top:43%;margin-right:6%; z-index:1;  "> </a>
+                                             style="width: 25px; height: 25px; margin-top:43%;margin-right:6%; z-index:1;  "> </a>
                                        </div>
                                     </c:when>
                                     <c:otherwise>
@@ -244,9 +254,9 @@
                             </div>
                         </div>
                     </div>
-                    
+                  
                
-                     <!-- 샘플로 해놓은 것 
+                    <!--  샘플로 해놓은 것 
                       <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">개인금액</span>200,000</h3>
@@ -264,14 +274,14 @@
                             <span style="font-size: 20px">명</span> 
                             <br /><br />
                             <div class="product__details__button" style="display: flex; flex-direction:row; justify-content: left;">
-                          <div style="width:40%;">
-                                    <a
-                                        href="#"
+                         <div style="width:40%;">
+                                    <button  
+                                        id="buying" 
                                         class="cart-btn"
                                         style="width:100%; height:80%; background-color: black; border:none;  display: inline-flex; justify-content : center; font-size: 28px;"
                                        >
-                                      펀딩하기</a>
-                             </div>
+                                      펀딩하기</button>
+                                     </div>
                                 <div id="heartNot" style="background-color: rgb(215,215,215); margin-left:2%; margin-top:1%; width:50px; height:50px; border-radius:50%; display:flex; justify-content: center; ">
                                        <img  alt="찜"
                                     src="img/heart.png"
@@ -298,31 +308,12 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                    <h6>Detail</h6>
                                     <p>
                                         ${data.pInfo}
                                     </p>
                                     
                                 </div>
-                               <!-- 
-                                <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                    <h6>Specification</h6>
-                                    <p>
-                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret
-                                        fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt loret. Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si.
-                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret
-                                        fugit, sed quia ipsu consequuntur magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt. Nulla consequat massa quis enim.
-                                    </p>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
-                                        eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-                                        montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                                        eu, pretium quis, sem.
-                                    </p>
-                                </div>
-                                 -->
+                               
                             </div>
                         </div>
                     </div>
@@ -351,7 +342,6 @@
       integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
       crossorigin="anonymous">
    </script>
-   
    
    <!-- 사진이미지 변경 JS -->
    <script type="text/javascript">
@@ -520,8 +510,31 @@
     
    </script>
    
-   <!-- 펀딩 완료된 상품일 경우 JS -->
+   <!-- 펀딩 버튼 클릭 JS -->
    <script type="text/javascript">
+   	  
+      //펀딩하기 버튼 클릭시
+       $("#buying").on("click",function(){
+    	   
+    	   //로그인을 안 한 상태였을 시
+           if ("${member.mId}" == "") {
+                  if (confirm("로그인 후 이용 가능합니다. 로그인하시겠습니까?")) {
+                      // 승낙하면 로그인 페이지로 이동
+                      location.href = '${pageContext.request.contextPath}/login.do';
+                  } else {
+                      // 거부하면 해당 페이지 새로고침
+                      location.reload();
+                  }
+            // 로그인 상태시 결제 페이지로 이동  
+           } else {
+            	  
+            	  location.href = '${pageContext.request.contextPath}/payment.do?pNum=${data.pNum}&mId=${member.mId}';  
+            	  
+           }
+
+       }); 
+   
+      //펀딩완료일 경우
       $("#finish").on("click",function(){
          alert('펀딩 완료된 상품입니다.');
       });   
