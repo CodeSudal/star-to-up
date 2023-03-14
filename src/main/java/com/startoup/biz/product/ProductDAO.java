@@ -71,6 +71,7 @@ public class ProductDAO {
 
    public boolean insertProduct(ProductVO vo) {
       try {
+    	  // 이미지를 넣지 않았다면 default.jpg로 설정
     	 if(vo.getpImage1()==null) {
     		 vo.setpImage1("default.jpg");
     	 }
@@ -80,10 +81,12 @@ public class ProductDAO {
     	 if(vo.getpImage3()==null) {
     		 vo.setpImage3("default.jpg");
     	 }
+    	 // 제품 추가
          int res=jdbcTemplate.update(INSERT_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpImage1(), vo.getpImage2(),vo.getpImage3(), vo.getpAmount());
          System.out.println(vo);
          if(res<1) { return false; }
          
+         // 추가한 제품 INFO를 크롤링 테이블에 있는 정보로 UPDATE
          jdbcTemplate.update(UPDATE_PINFO);
          return true;
       } catch(Exception e) {
@@ -93,6 +96,7 @@ public class ProductDAO {
    
    public boolean updateProduct(ProductVO vo) {
       try {
+    	  // 제품 정보 수정
          int res=jdbcTemplate.update(UPDATE_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpInfo(), vo.getpImage1(), vo.getpImage2(), vo.getpImage3(), vo.getpNum());
          if(res<1) { return false; }
          return true;
@@ -103,6 +107,7 @@ public class ProductDAO {
    
    public boolean deleteProduct(ProductVO vo) {
       try {
+    	  // 제품 삭제
          int res=jdbcTemplate.update(DELETE_PRODUCT, vo.getpNum());
          if(res<1) { return false; }
          return true;
@@ -113,6 +118,7 @@ public class ProductDAO {
 
    public List<ProductVO> selectAll(ProductVO vo){
       try {
+    	  // 전체 출력
          return jdbcTemplate.query(SELECT_ALL, new ProductRowMapper());
       } catch(Exception e) {
     	  System.out.println(e);
@@ -123,7 +129,13 @@ public class ProductDAO {
    public ProductVO selectOne(ProductVO vo) {
       Object[] args= { vo.getpNum() };
       try {
-         return jdbcTemplate.queryForObject(SELECT_ONE, args, new ProductRowMapper());
+    	  // 제품 하나 출력
+    	 ProductVO pvo=jdbcTemplate.queryForObject(SELECT_ONE, args, new ProductRowMapper());
+         // 총 가격 나누기 제품 가격으로 펀딩에 필요한 총 인원 구해서 setPeople
+    	 int p=pvo.getpAmount()/pvo.getpPrice();
+         pvo.setPeople(p);
+         System.out.println(pvo);
+         return pvo;
       } catch(Exception e) {
          return null;
       }
