@@ -144,12 +144,14 @@ public class MemberDAO2 {
 	}
 
 	// 내 찜 목록 삭제
-	public boolean deleteLikeList(List<MyLikeVO> vo, MyLikeVO mlvo) {
+	public boolean deleteLikeList(List<Integer> list, MyLikeVO mlvo) {
 		try {
 			mlvo.setMlMid(mlvo.getMlMid());
-			for(int i=0; i<vo.size(); i++) {
-				mlvo.setMlPid(vo.get(i).getMlPid());
-				mybatis.delete("MemberDAO.deleteLike", mlvo);
+			mlvo.setpList(list);
+			mybatis.delete("MemberDAO.deleteLikeList",mlvo);
+			for(int i=0; i<mlvo.getpList().size(); i++) {
+				mlvo.setMlPid(mlvo.getpList().get(i));
+				mybatis.delete("MemberDAO.deleteLikeList", mlvo);
 			}
 			return true;
 		} catch(Exception e) {
