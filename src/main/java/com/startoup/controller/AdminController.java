@@ -62,6 +62,10 @@ public class AdminController {
 			System.out.println("originFileName : " + originFileName);
 			System.out.println("fileSize : " + fileSize);
 			
+			if(originFileName.isBlank()) {
+				break;
+			}
+			
 			// 첫번째 이미지는 setpIamge1에 저장
 			if(i==0) {
 				pvo.setpImage1(originFileName);
