@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
-
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -147,8 +145,10 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/jquery.nicescroll.min.js"></script>
         <script src="js/main.js"></script>
-
+		
+		<!-- NASA API JS -->
         <script src="js/apod-ver2.js"></script>
+        
         <!-- Code injected by live-server -->
         <script>
             // <![CDATA[  <-- For SVG support
