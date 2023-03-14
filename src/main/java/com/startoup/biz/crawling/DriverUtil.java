@@ -31,7 +31,7 @@ public class DriverUtil {
 		/*
 		 * headless mode를 사용하면 자바스크립트를 많이 사용해서 html을 로드하는 사이트의 경우 
 		 * 가끔 모든 html이 로드되지 않을 수 있음.
-		 * 그런 사이트는 굳이 이유가없다면 headless 옵션을 끄고 크롤링하는게 좋음.
+		 * 그런 사이트는 굳이 이유가 없다면 headless 옵션을 끄고 크롤링하는게 좋음.
 		 * 또한 chromedriver는 headless모드에 적합하지 않음.
 		 * 잔오류가 많기 때문에 firefox 혹은 
 		 * 다른 headless모드 지원하는 드라이버로 테스트하는 것이 좋음.
