@@ -10,15 +10,20 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 
 public class DriverUtil {
+	// 크롬 웹 드라이버
 	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
+	// 웹 드라이버 경로 지정
 	public static final String WEB_DRIVER_PATH = "/Users/ljh0323/Desktop/Program/chromedriver_mac_arm64/chromedriver";
+	// 크롤링한 정보를 담아줄 Map 객체 선언
 	public static Map<String, String> craw = new HashMap<>();
 
+	// 셀레니움 크롤링 함수
 	public static void crawling() { 
 		
 		System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
 		ChromeOptions options = new ChromeOptions();
+		// ChromeDriver 111.0.5563.19 버전의 오류를 해결하기 위한 option 추가
 		options.addArguments("--remote-allow-origins=*");
 		
 		// options.addArguments("headless");
@@ -33,7 +38,8 @@ public class DriverUtil {
 		 */
 
 		WebDriver driver = new ChromeDriver(options);
-
+		
+		// 크롤링할 사이트(target)
 		String url = "https://astro.kasi.re.kr/learning/pageView/5123";
 
 		driver.get(url);
@@ -41,19 +47,29 @@ public class DriverUtil {
 		//브라우저 이동시 생기는 로드시간을 기다린다.
 		//HTTP응답속도보다 자바의 컴파일 속도가 더 빠르기 때문에 임의적으로 1초를 대기한다.
 		try {Thread.sleep(1000);} catch (InterruptedException e) {}
-
+		
+		// 크롤링할 대상 이름
 		String name="";
+		// 크롤링할 대상 정보
 		String info="";
 
+		// 원하는 정보만큼 for문
 		for(int i=2; i<11; i++) {
+			// i를 넣어 for문을 반복하며 원하는 부분(다음 부분)의 element를 지정
+			
+			// 해당 요소를 클릭하여 원하는 페이지로 이동
 			driver.findElement(By.cssSelector("#leftNav1_drop > li:nth-child("+i+")")).click();
+			// 해당 페이지의 크롤링 대상 이름 저장
 			name=driver.findElement(By.cssSelector("#leftNav1_drop > li:nth-child("+i+")")).getText();
+			// 해당 페이지의 크롤링 대상 정보 저장
 			info=driver.findElement(By.className("content_wrap")).getText();
 			System.out.println("------------");
 			System.out.println("[ "+name+" ]");
 			System.out.println(info);
 			System.out.println("------------");
+			// Map에 저장
 			craw.put(name, info);
+			// 로딩을 위한 쓰레드 슬립
 			try {Thread.sleep(1000);} catch (InterruptedException e) {}
 		}
 		
@@ -66,11 +82,8 @@ public class DriverUtil {
 		driver.quit();
 	}
 
+	// Map에 담긴 데이터를 지우고 싶을 때 쓰는 함수
 	public static void crawClear() { 
 		craw.clear();
-	}
-	
-	public static void main(String[] args) {
-		crawling();
 	}
 }
