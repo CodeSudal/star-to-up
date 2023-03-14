@@ -143,22 +143,53 @@ public class MemberController {
 	// 회원탈퇴 페이지로
 	@RequestMapping(value = "/withdrowal.do", method = RequestMethod.GET)
 	public String withdrowalView() {
-
 		return "withdrowal.jsp";
 	}
 
 	// 회원탈퇴 버튼 누름
 	@RequestMapping(value = "/withdrowal.do", method = RequestMethod.POST)
-	public String deleteMember(MemberVO vo, HttpSession session) {
+	
+	public String deleteMember( MemberVO vo, HttpSession session) {
 		System.out.println("deleteMember() 입장");
+		System.out.println("vo: "+vo);
+		
+		System.out.println("나여7기~");
+		MemberVO member = (MemberVO) session.getAttribute("member");
 
+		System.out.println(vo.getmPw());
+		if(member.getmPw().equals(vo.getmPw())) {
+			System.out.println("-0");
+			return "0";
+		} else {
+			System.out.println("truet");
+			memberSI.deleteMember(vo); // deleteMemter
+			session.removeAttribute("member"); // 세션 특정 정보만 비우기
+			return "true";
+		}
+		/*
 		memberSI.deleteMember(vo); // deleteMemter
 		session.removeAttribute("member"); // 세션 특정 정보만 비우기
 
 		return "store.do";
+		*/
 
 	}
 	
+	/*
+	@RequestMapping(value = "/pwChk.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String pwcheck(@RequestBody MemberVO vo, HttpSession session) {
+		System.out.println("나여7기~");
+		MemberVO member = (MemberVO) session.getAttribute("member");
+
+		System.out.println(vo.getmPw());
+		if(member.getmPw().equals(vo.getmPw())) {
+			return "0";
+		} else {
+			return "true";
+		}
+	}
+	*/
 	
 	// 상품디테일 페이지 들어갔을 때 찜 여부 확인하기위함.
 	@RequestMapping(value = "/detail.do")
