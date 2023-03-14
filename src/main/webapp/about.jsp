@@ -11,8 +11,12 @@
     <meta name="keywords" content="Ashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>STU ABOUT</title>
+    <title><spring:message code="message.about.title"/></title>
 
+	<link
+   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+   rel="stylesheet" />
+	
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
@@ -28,6 +32,8 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/font.css" type="text/css">
+    
+    <link rel="stylesheet" href="css/header.css" type="text/css">
 </head>
 
 <style>
@@ -70,7 +76,68 @@
 </style>
 
 <body>
-    <%@ include file="header.jsp" %>
+    <div class="header_box">
+      <div class="top_left_box">
+         <div class="logo_box"><a href="main.do">LOGO</a></div>
+         <div class="menu_item1"><a href="store.do">STORE</a></div>
+         <div class="menu_item1"><a href="info.do">INFO</a></div>
+         <div class="menu_item1"><a href="about.do">ABOUT</a></div>
+      </div>
+      <div style="display: flex; font-weight: bold; margin-left: 80px;">
+      	 <div style="width: 30px;" class="menu_item1"><a href="about.do?lang=en"><img alt="ENGLISH" src="img/United-States-of-America.png"></a></div>
+      	 <div style="width: 30px;" class="menu_item1"><a href="about.do?lang=ko"><img alt="한국어" src="img/South-Korea.png"></a></div>
+	  </div>
+      <div class="top_right_box">
+        <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
+            <div style="margin-right:10%; margin-top:5%;">
+               <p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
+            </div>
+         </c:if>
+         <div class="icon_box1">
+            <div class="header__right1">
+               <ul class="header__right__widget">
+                  <li><a href="shopcart.do"><span class="material-symbols-outlined">&#xE87D;</span>
+                        <c:if test="${member.mId != null}">
+                            <div class="tip"><%-- ${member.countLike} --%></div> 
+                        </c:if>
+                      </a>
+                  </li>
+
+               </ul>
+            </div>
+            <div class="icon_box1">
+               <nav class="header__menu">
+                  <ul>
+                     <li style="position: relative;"><a href="#"><span
+                           class="material-symbols-outlined">&#xF0D3;</span></a>
+                        <ul class="dropdown"
+                           style="text-align: right; width: 110px; border-radius: 5px; background-color: rgba(0, 0, 0, 0.3); position: absolute; left: -80px; top: 38px">
+                           <c:choose>
+                               <c:when test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
+                                   <li><a href="myFundingList.do"><spring:message code="message.about.gnb1"/></a></li>
+                                    <li><a href="myList.do"><spring:message code="message.about.gnb2"/></a></li>
+                                    <li><a href="logout.do"><spring:message code="message.about.gnb3"/></a></li>
+                               </c:when>
+                              <c:when test="${member.mId != null}">
+                                 <li><a href="myFundingList.do"><spring:message code="message.about.gnb4"/></a></li>
+                                 <li><a href="shopcart.do"><spring:message code="message.about.gnb5"/></a></li>
+                                <li><a href="withdrowal.do"><spring:message code="message.about.gnb6"/></a></li>
+                                 <li><a href="logout.do"><spring:message code="message.about.gnb7"/></a></li>
+                              </c:when>
+                               <c:otherwise>
+                                  <li><a href="login.do"><spring:message code="message.about.gnb8"/></a></li>
+                                 <li><a href="agreement.do"><spring:message code="message.about.gnb9"/></a></li>
+                     </c:otherwise>
+                    </c:choose>      
+                        </ul></li>
+                  </ul>
+               </nav>
+
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="header_box_space"></div>
 
     
 
@@ -81,7 +148,7 @@
             	 <div style="margin-top:5%; margin-left:5%;" >
             	 	 <div class="blog__item" style="text-align:center">
             	 	 <div class="blog__item__text">
-            	 	 	<h1 style="font-weight: bold; font-size: 50px; ">About</h1>
+            	 	 	<h1 style="font-weight: bold; font-size: 50px; "><spring:message code="message.about.title2"/></h1>
             	 	 </div>
             	 	 </div>
             	 
@@ -89,7 +156,7 @@
             	<div style="margin-top:10%; margin-left:5%;" >
             	 	 <div class="blog__item" style="text-align:center">
             	 	 <div class="blog__item__text">
-            	 	 	<h1 style="font-weight: bold; font-size: 60px; ">Star To Up !</h1>
+            	 	 	<h1 style="font-weight: bold; font-size: 60px; "><spring:message code="message.about.center"/></h1>
             	 	 </div>
             	 	 </div>
             	 
@@ -134,7 +201,7 @@
             	<div style="margin-top:10%; margin-left:5%;" >
             	 	 <div class="blog__item" style="text-align:center">
             	 	 <div class="blog__item__text">
-            	 	 	<h1 style="font-weight: bold; font-size: 70px; ">About Us</h1>
+            	 	 	<h1 style="font-weight: bold; font-size: 70px; "><spring:message code="message.about.about"/></h1>
             	 	 </div>
             	 	 </div>
             	</div>
@@ -207,14 +274,10 @@
 		</section>
 		
 		<div>
-		 <h1 style="font-size:21vw; font-weight:bold; margin-left:-6%;margin-top:10%; white-space:nowrap;  ">Star To Up</h1>
+		 <h1 style="font-size:21vw; font-weight:bold; margin-left:-6%;margin-top:10%; white-space:nowrap;  "><spring:message code="message.about.under"/></h1>
 		</div>
 		 <!-- About Section End -->
 		 
-		<a href="about.do?lang=en">ENGLISH</a>
-		<a href="about.do?lang=ko">한국어</a>
-				
-				
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
