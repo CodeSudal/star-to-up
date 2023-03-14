@@ -123,7 +123,11 @@ public class ProductDAO {
    public ProductVO selectOne(ProductVO vo) {
       Object[] args= { vo.getpNum() };
       try {
-         return jdbcTemplate.queryForObject(SELECT_ONE, args, new ProductRowMapper());
+    	 ProductVO pvo=jdbcTemplate.queryForObject(SELECT_ONE, args, new ProductRowMapper());
+         int p=pvo.getpAmount()/pvo.getpPrice();
+         pvo.setPeople(p);
+         System.out.println(pvo);
+         return pvo;
       } catch(Exception e) {
          return null;
       }

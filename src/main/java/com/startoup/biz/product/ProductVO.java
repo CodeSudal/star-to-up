@@ -19,8 +19,15 @@ public class ProductVO {
 	private int pAmount; // 펀딩목표금액
 	private int pCRNAmount; // 현재펀딩금액
 	private int pPercent; // 펀딩목표 퍼센트에이지
+	private int people;	// 펀딩 목표 총 인원
 	private List<MultipartFile> uploadFile;
 	
+	public int getPeople() {
+		return people;
+	}
+	public void setPeople(int people) {
+		this.people = people;
+	}
 	public List<MultipartFile> getUploadFile() {
 		return uploadFile;
 	}
@@ -103,9 +110,9 @@ public class ProductVO {
 	public String toString() {
 		return "ProductVO [pNum=" + pNum + ", pName=" + pName + ", pPrice=" + pPrice + ", pInfo=" + pInfo + ", pFinish="
 				+ pFinish + ", pImage1=" + pImage1 + ", pImage2=" + pImage2 + ", pImage3=" + pImage3 + ", pList="
-				+ pList + ", pAmount=" + pAmount + ", pCRNAmount=" + pCRNAmount + ", pPercent=" + pPercent + "]";
+				+ pList + ", pAmount=" + pAmount + ", pCRNAmount=" + pCRNAmount + ", pPercent=" + pPercent + ", people="
+				+ people + ", uploadFile=" + uploadFile + "]";
 	}
 
 	
-
 }
