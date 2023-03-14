@@ -57,15 +57,15 @@
 
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
+	var pwFlag = false;
+	
 $(document).ready( function() {
+		
 	
 	$('input').on('keyup',
 			function() {
-		
-	var pwFlag = false;
-	var password = $('#pwChk').val();
 	
-	if(password==''){
+	if($('#pwChk').val()==''){
 		
 		$("#ok").attr('disabled',true);
 		
@@ -83,9 +83,14 @@ $(document).ready( function() {
 
 
 		})
+	
+	}
+	});
 		
 		
 	$("#ok").on("click", function(){
+		var password = $('#pwChk').val();
+		console.log(password);
 		$("#ok").css('background','black');
 		$.ajax({
 			url : "pwChk.do",
@@ -93,14 +98,19 @@ $(document).ready( function() {
 			dataType : "json",
 			data : {mPw:password},
 			success: function(data){
+				console.log(data);
 				
-				if(data==0){
-					alert("비밀번호가 틀렸습니다.");
+				if(data == "0"){
+					alert('비밀번호가 틀렸습니다.');
 					$("#pwChk").focus();
 					return;
 				}else{
 					if(confirm("회원탈퇴하시겠습니까?")){
+						location.href="withdrowal.do";
 						$("#ok").submit();
+					}else{
+						$("#pwChk").attr('value','');
+						location.href="#";
 					}
 					
 				}
@@ -109,8 +119,8 @@ $(document).ready( function() {
 	});
 		
 	
-}
-	})
+
+	
 	})
 
 	
@@ -161,7 +171,7 @@ $(document).ready( function() {
 							required> <span
 							style="font-size: 15px; display: block; margin-bottom: 40px; font-family: 'Noto Sans'; color: #FF5858; text-align: center; font-weight: 500;">회원
 							탈퇴 시 모든 펀딩 데이터가 삭제됩니다.</span><input type="submit" class="cart-btn"
-							id="ok" onclick="location.href='withdrowal.do'"
+							id="ok" 
 							style="height:50px; border: 1px solid #D9D9D9; background-color: #D9D9D9; color: white; width: 16%; text-align: center; margin-left: 33%; border-radius: 8px; /* padding-right: 5%; */ font-size: 15px; font-weight: 600; font-family: 'Noto Sans'; padding-left: 0; padding-right: 0;"
 							value="탈퇴하기" disabled> <input type="submit" class="cart-btn"
 							id="no" onclick="location.href='store.do'"
