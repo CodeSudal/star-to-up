@@ -89,6 +89,16 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.deleteLikeList(list, mlvo);
 	}
 
+	@Override
+	public List<ProductVO> myFundList(MyFundingVO vo) {
+		return mdao.myFundList(vo);
+	}
+
+	@Override
+	public MyLikeVO countLike(MyLikeVO vo) {
+		return mdao.countLike(vo);
+	}
+
 	
 	
 

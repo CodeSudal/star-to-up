@@ -17,6 +17,7 @@ import com.startoup.biz.list.ListServiceImpl;
 import com.startoup.biz.list.ListVO;
 import com.startoup.biz.member.MemberServiceImpl;
 import com.startoup.biz.member.MemberVO;
+import com.startoup.biz.member.MyFundingVO;
 import com.startoup.biz.member.MyLikeVO;
 import com.startoup.biz.product.ProductServiceImpl;
 import com.startoup.biz.product.ProductVO;
@@ -82,7 +83,7 @@ public class MemberController {
 
 	// 로그인 했을 때
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String selectOneMember(MemberVO vo, Model model, String msg, HttpSession session) {
+	public String selectOneMember(MemberVO vo, MyLikeVO mlvo, Model model, String msg, HttpSession session) {
 		vo = memberSI.loginMember(vo);
 		System.out.println("login : " + vo);
 
@@ -96,13 +97,16 @@ public class MemberController {
 
 //         return "redirect:login.do"; // 다시 로그인 페이지
 		} else { // 로그인 성공 하면
+			mlvo.setMlMid(vo.getmId()); // 아이디 mlvo에 저장
+			vo.setmLikecnt(memberSI.countLike(mlvo).getMlNum());// likecnt 쿼리문 돌려서 저장
 			session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
+			
 			return "redirect:store.do";
 		}
 	}
 
 	@RequestMapping(value = "/kakaoLogin.do")
-	public String kakaoMember(MemberVO vo, HttpSession session) {
+	public String kakaoMember(MemberVO vo,MyLikeVO mlvo, HttpSession session) {
 
 //         System.out.println("로그 kakao 확인 id:"+vo.getmId()+"/mName:"+vo.getmName()+"/mEmail1:"+vo.getmEmail1());
 
@@ -110,8 +114,9 @@ public class MemberController {
 		if (memberSI.selectOneMember(vo) == null) {
 			memberSI.insertKakaoMember(vo);
 		}
-		session.setAttribute("mylike", vo);
-		session.setAttribute("member", vo);
+		mlvo.setMlMid(vo.getmId()); // 아이디 mlvo에 저장
+		vo.setmLikecnt(memberSI.countLike(mlvo).getMlNum());// likecnt 쿼리문 돌려서 저장
+		session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
 		return "redirect:store.do";
 	}
 
@@ -120,6 +125,7 @@ public class MemberController {
 	public String logoutMember(HttpSession session) {
 		System.out.println("logoutMember() 입장");
 
+		session.removeAttribute("mylike");
 		session.removeAttribute("member"); // 세션 특정 정보만 비우기
 
 		return "redirect:login.do";
@@ -141,56 +147,43 @@ public class MemberController {
 	}
 
 	// 회원탈퇴 페이지로
-	@RequestMapping(value = "/withdrowal.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/withdrowal.do")
 	public String withdrowalView() {
 		return "withdrowal.jsp";
 	}
-
+	
 	// 회원탈퇴 버튼 누름
-	@RequestMapping(value = "/withdrowal.do", method = RequestMethod.POST)
-	
-	public String deleteMember( MemberVO vo, HttpSession session) {
+	@RequestMapping(value = "/deleteMember.do")
+	public String deletemember(MemberVO vo, HttpSession session) {
 		System.out.println("deleteMember() 입장");
-		System.out.println("vo: "+vo);
-		
-		System.out.println("나여7기~");
 		MemberVO member = (MemberVO) session.getAttribute("member");
-
-		System.out.println(vo.getmPw());
-		if(member.getmPw().equals(vo.getmPw())) {
-			System.out.println("-0");
-			return "0";
-		} else {
-			System.out.println("truet");
-			memberSI.deleteMember(vo); // deleteMemter
-			session.removeAttribute("member"); // 세션 특정 정보만 비우기
-			return "true";
-		}
-		/*
-		memberSI.deleteMember(vo); // deleteMemter
-		session.removeAttribute("member"); // 세션 특정 정보만 비우기
-
+		vo.setmId(member.getmId());
+		memberSI.deleteMember(vo); // deleteMemter session.removeAttribute("member");
+		System.out.println("db 삭제 성공");
+		session.removeAttribute("member");
+		System.out.println("session 비워짐");
 		return "store.do";
-		*/
-
 	}
+
 	
-	/*
-	@RequestMapping(value = "/pwChk.do", method = RequestMethod.POST)
+	// 비밀번호 확인
 	@ResponseBody
-	public String pwcheck(@RequestBody MemberVO vo, HttpSession session) {
-		System.out.println("나여7기~");
+	@RequestMapping(value = "/pwChk.do")
+	public String pwChk(MemberVO vo, HttpSession session) {
+		
 		MemberVO member = (MemberVO) session.getAttribute("member");
-
-		System.out.println(vo.getmPw());
-		if(member.getmPw().equals(vo.getmPw())) {
-			return "0";
-		} else {
+		vo.setmPw(vo.getmPw());
+		if (member.getmPw().equals(vo.getmPw())) {
 			return "true";
+		} else {
+			return "0";
 		}
+		
+
 	}
-	*/
+
 	
+
 	// 상품디테일 페이지 들어갔을 때 찜 여부 확인하기위함.
 	@RequestMapping(value = "/detail.do")
 	public String selcetOneBoard(ProductVO pvo, HttpSession session, MyLikeVO myvo, ListVO lvo, Model model) {
@@ -272,16 +265,16 @@ public class MemberController {
 
 	// 찜하기
 	@RequestMapping(value = "/heart.do", method = RequestMethod.POST)
-	public @ResponseBody String heart(@RequestBody MyLikeVO vo) {
+	public @ResponseBody String heart(@RequestBody MyLikeVO mlvo, HttpSession session) {
 		System.out.println("heartBoard 입장");
 
-		System.out.println("vo:" + vo);
-
-		if (memberSI.insertLike(vo)) {
-			System.out.println("저장됨");
+		if (memberSI.insertLike(mlvo)) { // 찜하기 성공
+			MemberVO vo = (MemberVO) session.getAttribute("member");
+			mlvo.setMlMid(vo.getmId());
+			vo.setmLikecnt(memberSI.countLike(mlvo).getMlNum());// likecnt 쿼리문 돌려서 저장
+			session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
 			return "success";
 		} else {
-			System.out.println("저장안됨");
 			return "fail";
 		}
 
@@ -289,18 +282,28 @@ public class MemberController {
 
 	// 찜취소
 	@RequestMapping(value = "/heartNo.do", method = RequestMethod.POST)
-	public @ResponseBody String heartNo(@RequestBody MyLikeVO vo) {
-		System.out.println("heartNoBoard 입장");
+	public @ResponseBody String heartNo(@RequestBody MyLikeVO mlvo, HttpSession session) {
 
-		System.out.println("vo:" + vo);
-
-		if (memberSI.deleteLike(vo)) {
-			System.out.println("삭제됨");
+		if (memberSI.deleteLike(mlvo)) {
+			MemberVO vo = (MemberVO) session.getAttribute("member");
+			mlvo.setMlMid(vo.getmId());
+			vo.setmLikecnt(memberSI.countLike(mlvo).getMlNum());// likecnt 쿼리문 돌려서 저장
+			session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
 			return "success";
 		} else {
 			System.out.println("삭제안됨");
 			return "s";
 		}
+	}
+
+	@RequestMapping(value = "/myFundingList.do")
+	public String withdrowalVie(MyFundingVO vo, Model model, HttpSession session) {
+		System.out.println("펀딩 내역 들어옴");
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
+		vo.setMfMid(mvo.getmId());
+		model.addAttribute("datas", memberSI.myFundList(vo));
+		System.out.println(memberSI.myFundList(vo));
+		return "orderList.jsp";
 	}
 
 }

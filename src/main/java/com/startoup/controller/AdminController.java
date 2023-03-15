@@ -50,7 +50,7 @@ public class AdminController {
 		}
 		
 		// 파일을 저장할 내 경로
-		String path = "/Users/ljh0323/Desktop/Program/Eclipse/eclipseFile/LEE1108/workspace02/startoup/src/main/webapp/img/";
+		String path = "C:\\jiwon1108\\workspace2\\startoup\\src\\main\\webapp\\img\\";
 		
 		// forEach문을 돌면서 순차적으로 이미지를 저장하기 위한 변수 i
 		int i=0;
