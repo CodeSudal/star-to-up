@@ -33,8 +33,8 @@
         <link rel="stylesheet" href="css/style.css" type="text/css" />
         
         <style>
-        	
-        	
+           
+           
             h3 {
                 display: inline;
                 font-size: 44px;
@@ -126,7 +126,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb__links">
-                            <span style="font-weight: bold; font-size: 50px; color: black">${data.pName}</span>
+                            <span style="font-weight: bold; font-size: 50px; color: black">${data. pEN}</span>
                         </div>
                     </div>
                 </div>
@@ -139,16 +139,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                       <!-- 상품이미지 샘플 -->
-                       <!-- 
+                       
+                       
                         <div class="product__details__pic">
-                           
+                        
+                           <!-- 상품이미지 샘플 -->
+                            <!-- 
                             <div class="product__details__pic__left product__thumb " style="width:15%; margin-top:5%; " >
-                                    <img  class="small_img"  src="img/shop-cart/Jupiter.png" alt="이미지1" style="cursor:pointer;"/>
+                                    <img  class="small_img"  src="img/shop-cart/venus1.png" alt="이미지1" style="cursor:pointer;"/>
                                      <br/><br/><br/>
-                                    <img class="small_img"  src="img/shop-cart/jupiter1.png" alt="이미지2" onerror="this.style.display='none'" style="cursor:pointer;" />
+                                    <img class="small_img"  src="img/shop-cart/venus2.png" alt="이미지2" onerror="this.style.display='none'" style="cursor:pointer;" />
                                     <br/><br/><br/>
-                                    <img  class="small_img" src="img/shop-cart/MARS.png" alt="이미지3" onerror="this.style.display='none'" style="cursor:pointer;" />
+                                    <img  class="small_img" src="img/shop-cart/venus3.png" alt="이미지3" onerror="this.style.display='none'" style="cursor:pointer;" />
                             </div>
                             <div class="product__details__slider__content" style="margin-left:10%;">
                                     <img
@@ -160,9 +162,10 @@
                                         style="width: 80vw; height:80hw; "
                                     />
                             </div>
-                             -->
+                            -->
                              
                             <!-- 상품이미지 -->
+                           
                             <div class="product__details__pic__left product__thumb " style="width:15%; margin-top:5%; " >
                                     <img  class="small_img"  src="img/${data.pImage1}" alt="이미지1" style="cursor:pointer;"/>
                                      <br/><br/><br/>
@@ -180,6 +183,8 @@
                                         style="width: 80vw; height:80hw; "
                                     />
                             </div>
+                          
+                          
                         </div>
                     </div>
                    
@@ -189,10 +194,8 @@
                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px">개인금액</span>${data.pPrice}</h3>
                             <span style="font-size: 20px">원</span> 
                             <br />
-                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">전체금액 / 총인원</span>${data.pAmount}</h3>
+                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">전체금액</span>${data.pAmount}</h3>
                             <span style="font-size: 20px">원 </span> 
-     			            <h3 style="font-weight: bold; font-size:40px; display:inline"> / ${data.people}</h3>
-                            <span style="font-size: 20px">명</span> 
                             <br />
                              <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">모인금액</span>${data.pCRNAmount}</h3>
                             <span style="font-size: 20px">원</span> &nbsp
@@ -269,10 +272,8 @@
                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px">개인금액</span>200,000</h3>
                             <span style="font-size: 20px">원</span> 
                             <br />
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">전체금액 / 총인원</span>2,500,000</h3>
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">전체금액 </span>2,500,000</h3>
                             <span style="font-size: 20px">원 </span> 
-                            <h3 style="font-weight: bold; font-size:40px; display:inline"> / 100</h3>
-                            <span style="font-size: 20px">명</span> 
                             <br />
                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">모인금액</span>50,000</h3>
                             <span style="font-size: 20px">원</span> &nbsp
@@ -391,7 +392,7 @@
                     location.href = '${pageContext.request.contextPath}/login.do';
                 } else {
                     // 거부하면 해당 페이지 그대로
-                	history.back();
+                   history.back();
                 }
             // 로그인 상태시 찜하기 버튼을 누르면    
             } else {
@@ -498,7 +499,7 @@
          Kakao.Link.sendDefault({
             objectType : 'feed',
             content : {
-               title : '[START TO UP]${data.pName}',
+               title : '[START TO UP]${data. pEN}',
                description : '나만의 별을 펀딩해보세요!',
                imageUrl : 'https://ifh.cc/g/YjnLWC.png',
                link : {
@@ -525,24 +526,24 @@
    
    <!-- 펀딩 버튼 클릭 JS -->
    <script type="text/javascript">
-   	  
+        
       //펀딩하기 버튼 클릭시
        $("#buying").on("click",function(){
-    	   
-    	   //로그인을 안 한 상태였을 시
+          
+          //로그인을 안 한 상태였을 시
            if ("${member.mId}" == "") {
                   if (confirm("로그인 후 이용 가능합니다. 로그인하시겠습니까?")) {
                       // 승낙하면 로그인 페이지로 이동
                       location.href = '${pageContext.request.contextPath}/login.do';
                   } else {
                       //거부하면 해당 페이지에 그대로 있음
-                	  history.back();
+                     history.back();
                   }
             // 로그인 상태시 결제 페이지로 이동  
            } else {
-            	  
-            	  location.href = '${pageContext.request.contextPath}/payment.do?pNum=${data.pNum}&mId=${member.mId}';  
-            	  
+                 
+                 location.href = '${pageContext.request.contextPath}/payment.do?pNum=${data.pNum}&mId=${member.mId}';  
+                 
            }
 
        }); 

@@ -44,8 +44,12 @@
 </head>
 
 <style>
-
-
+   #preview {
+      
+      
+   
+   }
+   
 </style>
 
 <body>
@@ -96,7 +100,7 @@
                               <label for="funding" class="form-label">펀딩인원 / 1인당 금액</label>
                            </div>
                            <div style="display: inline-block ; width: 48%">   
-                              <input type='text' name='sell2' id='personnel'
+                              <input type='text' name='people' id='personnel'
                                  onkeyup='call()' class="form-control"
                                  id="funding" pattern="[0-9]+" required>
                            </div>
@@ -119,7 +123,7 @@
                               이미지 등록</label> <input class="form-control bg-dark" type="file"
                               id="formFileMultiple" name="uploadFile"
                               onchange="readURL(this);" multiple />
-                           <img id="preview" style="margin-top:5%; margin-left:30%;" />
+                           <div id="preview" ></div>
                         </div>
                         <br> <br>
                         <button type="submit" class="btn btn-primary"
@@ -166,23 +170,68 @@
       }
    </script>
    
+     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous">
+   </script>
+   
    <!-- 상품 미리보기 JS -->
-   <script type="text/javascript">
-         function readURL(input) {   
-              let img = document.getElementById('preview');
-              if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                 reader.onload = function(e) {
-                   img.src = e.target.result;
-                   img.width = 300;
-                   img.height = 300;
-                 };
-                reader.readAsDataURL(input.files[0]);
+    <script type="text/javascript">
+         
+         function readURL(input) {
+        
+           //초기화해주어야함
+            $('#preview').empty();
+            
+             var files = input.files;  
+             var filesArr = Array.prototype.slice.call(files);  
+            
+             //파일은 최대 3개까지 업로드 가능 //3개 초과이면 초기화,alert창
+             if(files.length > 3){
+                var agent = navigator.userAgent.toLowerCase();
+                if (agent.indexOf("msie") != -1) {
+                 //브라우저가 ie 일때 
+                 $("#formFileMultiple").replaceWith( $("#formFileMultiple").clone(true) );
               } else {
-                document.getElementById('preview').src = "img/logo.png";
-              }
+                 // other browser 일때 
+                 $("#formFileMultiple").val("");
+              }  
+               alert("최대 3장까지 업로드 할 수 있습니다."); 
+               return;
+               }
+             else{ //파일이 3개이하이면 미리보기 가능
+             
+             //privew 영역 사이즈 설정
+             document.getElementById('preview').style.cssText  = 'width:600px; height:200px; margin-top:50px; margin-left:20%;'; 
+                
+             filesArr.forEach(function(f){  
+               console.log('들어옴'+f); 
+                
+                //이미지 파일만 미리보기 가능
+               if(!f.type.match("image/.*")){
+                      alert("이미지 확장자만 업로드 가능합니다.");
+                       return;
+                };
+               
+                      
+               var reader = new FileReader();
+                reader.onload = function(e) {
+                   document.getElementById('preview').innerHTML += '<img width="30%" height="90%" src="' + e.target.result + '">';
+                }
+                reader.readAsDataURL(f); 
+              
+                
+                
+             });   //foreach
+             
+             }
+
          }
    </script>
+   
+   
+   
+  
    
    
 </body>
