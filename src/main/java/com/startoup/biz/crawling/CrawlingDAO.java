@@ -49,6 +49,7 @@ public class CrawlingDAO {
 		String info;
 
 		try {
+			jdbcTemplate.update(UPDATE_PNAME);
 			// 이미 크롤링 데이터가 9개 이상이라면 크롤링 Skip
 			cdb=jdbcTemplate.query(SELECT_ALL_CRAWLING, new CSeleniumRowMapper());
 			if(cdb.size()>8) { return true; }
@@ -83,7 +84,6 @@ public class CrawlingDAO {
 				sel.setcInfo(info);
 				jdbcTemplate.update(UPDATE_PINFO);
 			}
-			jdbcTemplate.update(UPDATE_PNAME);
 			return true;
 		} catch(Exception e) {
 			System.out.println(e);
