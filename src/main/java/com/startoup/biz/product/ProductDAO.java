@@ -102,13 +102,13 @@ public class ProductDAO {
 		try {
 			// 이미지를 넣지 않았다면 default.jpg로 설정
 			if(vo.getpImage1()==null) {
-				vo.setpImage1("default.jpg");
+				vo.setpImage1("default.png");
 			}
 			if(vo.getpImage2()==null) {
-				vo.setpImage2("default.jpg");
+				vo.setpImage2("default.png");
 			}
 			if(vo.getpImage3()==null) {
-				vo.setpImage3("default.jpg");
+				vo.setpImage3("default.png");
 			}
 			// 제품 추가
 			int res=jdbcTemplate.update(INSERT_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpImage1(), vo.getpImage2(),vo.getpImage3(), vo.getpAmount());
