@@ -139,7 +139,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                       <!-- 상품이미지(EL식으로 바꾸는 건 내일할 예정) 샘플데이터로 고정되어있음 -->
+                       <!-- 상품이미지 샘플 -->
+                       <!-- 
                         <div class="product__details__pic">
                            
                             <div class="product__details__pic__left product__thumb " style="width:15%; margin-top:5%; " >
@@ -159,14 +160,15 @@
                                         style="width: 80vw; height:80hw; "
                                     />
                             </div>
-                            
-                            <!-- EL식적용 
+                             -->
+                             
+                            <!-- 상품이미지 -->
                             <div class="product__details__pic__left product__thumb " style="width:15%; margin-top:5%; " >
-                                    <img  class="small_img"  src="img/shop/${data.pImage1}" alt="이미지1" style="cursor:pointer;"/>
+                                    <img  class="small_img"  src="img/${data.pImage1}" alt="이미지1" style="cursor:pointer;"/>
                                      <br/><br/><br/>
-                                    <img class="small_img"  src="img/shop/${data.pImage2}" alt="이미지2" onerror="this.style.display='none'" style="cursor:pointer;" />
+                                    <img class="small_img"  src="img/${data.pImage2}" alt="이미지2" onerror="this.style.display='none'" style="cursor:pointer;" />
                                     <br/><br/><br/>
-                                    <img  class="small_img" src="img/shop/${data.pImage3}" alt="이미지3" onerror="this.style.display='none'" style="cursor:pointer;" />
+                                    <img  class="small_img" src="img/${data.pImage3}" alt="이미지3" onerror="this.style.display='none'" style="cursor:pointer;" />
                             </div>
                             <div class="product__details__slider__content" style="margin-left:10%;">
                                     <img
@@ -178,26 +180,29 @@
                                         style="width: 80vw; height:80hw; "
                                     />
                             </div>
-                            
-                             -->
                         </div>
                     </div>
                    
                     <!-- 상품데이터 --> 
                       <div class="col-lg-6">
                         <div class="product__details__text" style="margin-left: 5%">
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">개인금액</span>${data.pPrice}</h3>
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px">개인금액</span>${data.pPrice}</h3>
                             <span style="font-size: 20px">원</span> 
-                            <br /><br />
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">모인금액</span>${data.pCRNAmount}</h3>
+                            <br />
+                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">전체금액 / 총인원</span>${data.pAmount}</h3>
+                            <span style="font-size: 20px">원 </span> 
+     			            <h3 style="font-weight: bold; font-size:40px; display:inline"> / ${data.people}</h3>
+                            <span style="font-size: 20px">명</span> 
+                            <br />
+                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">모인금액</span>${data.pCRNAmount}</h3>
                             <span style="font-size: 20px">원</span> &nbsp
                             <div style="display: inline; font-weight: bold; font-size: 32px">${data.pPercent}%</div>
-                            <br /><br />
+                            <br />
                             <div class="progress2 progress-moved" style="width: 80%">
                                 <div class="progress-bar2" style="width:${data.pPercent}%"></div>
                             </div>
                              <br />
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">후원자</span>${list.lNum}</h3>
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:-1%;  ">후원자</span>${list.lNum}</h3>
                             <span style="font-size: 20px">명</span> 
                             <br /><br />
                             <div class="product__details__button" style="display: flex; flex-direction:row; justify-content: left;">
@@ -254,23 +259,30 @@
                             </div>
                         </div>
                     </div>
-                  
+                   -->
+                    
                
-                    <!--  샘플로 해놓은 것 
-                      <div class="col-lg-6">
-                        <div class="product__details__text" style="margin-left: 5%">
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">개인금액</span>200,000</h3>
+                   <!--   샘플로 해놓은 것  -->
+                   <!--                      
+                   <div class="col-lg-6">
+                        <div class="product__details__text" style="margin-left: 5%; margin-top:-5%;">
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px">개인금액</span>200,000</h3>
                             <span style="font-size: 20px">원</span> 
-                            <br /><br />
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">모인금액</span>50,000</h3>
+                            <br />
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">전체금액 / 총인원</span>2,500,000</h3>
+                            <span style="font-size: 20px">원 </span> 
+                            <h3 style="font-weight: bold; font-size:40px; display:inline"> / 100</h3>
+                            <span style="font-size: 20px">명</span> 
+                            <br />
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">모인금액</span>50,000</h3>
                             <span style="font-size: 20px">원</span> &nbsp
-                            <div style="display: inline; font-weight: bold; font-size: 32px">50%</div>
-                            <br /><br />
+                            <div style="display: inline; font-weight: bold; font-size: 35px">50%</div>
+                            <br />
                             <div class="progress2 progress-moved" style="width: 80%">
                                 <div class="progress-bar2" style="width:50%"></div>
                             </div>
                              <br />
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 20px">후원자</span>1,000</h3>
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:-1%;  ">후원자</span>1,000</h3>
                             <span style="font-size: 20px">명</span> 
                             <br /><br />
                             <div class="product__details__button" style="display: flex; flex-direction:row; justify-content: left;">
@@ -298,7 +310,8 @@
                         </div>
                     </div>
                     -->
-                    
+                  
+                    <!-- 상품상세정보(글) -->
                     <div class="col-lg-12">
                         <div class="product__details__tab">
                             <ul class="nav nav-tabs" role="tablist">
@@ -377,8 +390,8 @@
                     // 승낙하면 로그인 페이지로 이동
                     location.href = '${pageContext.request.contextPath}/login.do';
                 } else {
-                    // 거부하면 해당 페이지 새로고침
-                    location.reload();
+                    // 거부하면 해당 페이지 그대로
+                	history.back();
                 }
             // 로그인 상태시 찜하기 버튼을 누르면    
             } else {
@@ -522,8 +535,8 @@
                       // 승낙하면 로그인 페이지로 이동
                       location.href = '${pageContext.request.contextPath}/login.do';
                   } else {
-                      // 거부하면 해당 페이지 새로고침
-                      location.reload();
+                      //거부하면 해당 페이지에 그대로 있음
+                	  history.back();
                   }
             // 로그인 상태시 결제 페이지로 이동  
            } else {
