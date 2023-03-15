@@ -49,6 +49,7 @@ public class CrawlingDAO {
 		String info;
 
 		try {
+			insertNaming();
 			jdbcTemplate.update(UPDATE_PNAME);
 			// 이미 크롤링 데이터가 9개 이상이라면 크롤링 Skip
 			cdb=jdbcTemplate.query(SELECT_ALL_CRAWLING, new CSeleniumRowMapper());
@@ -56,7 +57,6 @@ public class CrawlingDAO {
 			
 			// 셀레니움 크롤링 함수 호출
 			DriverUtil.crawling();
-			insertNaming();
 			
 			// forEach문을 돌면서 크롤링 정보가 담긴 map에 있는 정보들을
 			// DB에 저장
