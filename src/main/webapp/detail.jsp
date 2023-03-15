@@ -126,7 +126,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb__links">
-                            <span style="font-weight: bold; font-size: 50px; color: black">${data.pName}</span>
+                            <span style="font-weight: bold; font-size: 50px; color: black">${data. pEN}</span>
                         </div>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                                        data-hash=""
                                        id="big_img"
                                         class="product__big__img"
-                                        src="img/shop/${data.pImage1}"
+                                        src="img/${data.pImage1}"
                                         alt="선택이미지"
                                         style="width: 80vw; height:80hw; "
                                     />
@@ -194,10 +194,8 @@
                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px">개인금액</span>${data.pPrice}</h3>
                             <span style="font-size: 20px">원</span> 
                             <br />
-                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">전체금액 / 총인원</span>${data.pAmount}</h3>
+                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">전체금액</span>${data.pAmount}</h3>
                             <span style="font-size: 20px">원 </span> 
-                          <h3 style="font-weight: bold; font-size:40px; display:inline"> / ${data.people}</h3>
-                            <span style="font-size: 20px">명</span> 
                             <br />
                              <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">모인금액</span>${data.pCRNAmount}</h3>
                             <span style="font-size: 20px">원</span> &nbsp
@@ -274,10 +272,8 @@
                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px">개인금액</span>200,000</h3>
                             <span style="font-size: 20px">원</span> 
                             <br />
-                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">전체금액 / 총인원</span>2,500,000</h3>
+                            <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">전체금액 </span>2,500,000</h3>
                             <span style="font-size: 20px">원 </span> 
-                            <h3 style="font-weight: bold; font-size:40px; display:inline"> / 100</h3>
-                            <span style="font-size: 20px">명</span> 
                             <br />
                             <h3 style="font-weight: bold; font-size:40px;"><span style="font-size: 17px; margin-top:3%;">모인금액</span>50,000</h3>
                             <span style="font-size: 20px">원</span> &nbsp
@@ -503,7 +499,7 @@
          Kakao.Link.sendDefault({
             objectType : 'feed',
             content : {
-               title : '[START TO UP]${data.pName}',
+               title : '[START TO UP]${data. pEN}',
                description : '나만의 별을 펀딩해보세요!',
                imageUrl : 'https://ifh.cc/g/YjnLWC.png',
                link : {
