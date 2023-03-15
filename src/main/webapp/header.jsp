@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
 
+
 <link rel="stylesheet" href="css/font.css" type="text/css">
 <link
    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -24,10 +25,14 @@
 
    <div class="header_box">
       <div class="top_left_box">
-         <div class="logo_box"><a href="main.do">LOGO</a></div>
-         <div class="menu_item1"><a href="store.do">STORE</a></div>
-         <div class="menu_item1"><a href="info.do">INFO</a></div>
-         <div class="menu_item1"><a href="about.do">ABOUT</a></div>
+         <div class="logo_box"><a href="main.do" style="color: black;
+    font-weight: 700;">LOGO</a></div>
+         <div class="menu_item1"><a href="store.do" style="color: black;
+    font-weight: 700;">STORE</a></div>
+         <div class="menu_item1"><a href="info.do" style="color: black;
+    font-weight: 700;">INFO</a></div>
+         <div class="menu_item1"><a href="about.do" style="color: black;
+    font-weight: 700;">ABOUT</a></div>
       </div>
       <div class="top_right_box">
         <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">

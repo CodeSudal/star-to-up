@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="css/shopcart.css" type="text/css">
 
 <link
-   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"   
+   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
    rel="stylesheet" />
 </head>
 
@@ -40,223 +40,107 @@
             </div>
          </div>
 
-         <% 
-         	/* 임시 더미데이터 */
-            ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
-            
-            HashMap<String, String> p1 = new HashMap<String, String>();
-            p1.put("name", "Jupiter");
-            p1.put("price", "32000");
-            p1.put("total", "600000");
-            p1.put("img", "img/jupiter.png");
-            HashMap<String, String> p2 = new HashMap<String, String>();
-            p2.put("name", "Mars");
-            p2.put("price", "21000");
-            p2.put("total", "820000");
-            p2.put("img", "img/mars.png");
-            HashMap<String, String> p3 = new HashMap<String, String>();
-            p3.put("name", "Mercury");
-            p3.put("price", "52000");
-            p3.put("total", "1253000");
-            p3.put("img", "img/mercury.png");
-            HashMap<String, String> p4 = new HashMap<String, String>();
-            p4.put("name", "Venus");
-            p4.put("price", "32000");
-            p4.put("total", "6253000");
-            p4.put("img", "img/venus.png");
-            HashMap<String, String> p5 = new HashMap<String, String>();
-            p5.put("name", "Earth");
-            p5.put("price", "15000");
-            p5.put("total", "305100");
-            p5.put("img", "img/earth.png");
-            HashMap<String, String> p6 = new HashMap<String, String>();
-            p6.put("name", "Sun");
-            p6.put("price", "22000");
-            p6.put("total", "533000");
-            p6.put("img", "img/sun.png");
-            
-            productList.add(p1);
-            productList.add(p2);
-            productList.add(p3);
-            productList.add(p4);
-            productList.add(p5);
-            productList.add(p6);
-
-              request.setAttribute("datas", productList);
-         %>
-
          <c:forEach items="${datas}" var="i">
-         <div class="mid">
-            <div class="item_box">
-               <div class="product_item bc">
-                  <div class="img_box">
-                     <img src="${i.img}" alt="img" width="100%"
-                        height="100%">
-                  </div>
-                  <div class="title_box">${i.name}</div>
-               </div>
-               <div class="total_item bc">
-                  <div class="text_box">${i.total}</div>
-               </div>
-               <div class="amount_item bc">
-                  <div class="text_box">${i.price}</div>
-               </div>
-               <div class="check_item bc">
-                  <label class="check_icon_box"> <input type="checkbox"
-                     value="jupiter" name="selectedList">
-                     <div class="circle">
-                        <span class="material-symbols-outlined">&#xe876</span>
+            <div class="mid">
+               <div class="item_box">
+                  <div class="product_item bc">
+                     <div class="img_box">
+                        <img src="${i.pImage1}" alt="img" width="100%" height="100%">
                      </div>
-
-                  </label>
-               </div>
-         </div>
-          </c:forEach>
-          
-            <!-- 반복문으로 바꿀 영역 -->
-            
-            
-            <!--
-            <div class="item_box">
-               <div class="product_item bc">
-                  <div class="img_box">
-                     <img src="img/shop-cart/jupiter1.png" alt="img" width="100%"
-                        height="100%">
+                     <div class="title_box">${i.pName}</div>
                   </div>
-                  <div class="title_box">{{ moon }}</div>
-               </div>
-               <div class="total_item bc">
-                  <div class="text_box">{{ datas.price }}</div>
-               </div>
-               <div class="amount_item bc">
-                  <div class="text_box">1000</div>
-               </div>
-               <div class="check_item bc">
-                  <label class="check_icon_box"> <input type="checkbox"
-                     value="moon" name="selectedList">
-                     <div class="circle">
-                        <span class="material-symbols-outlined">&#xe876</span>
-                     </div>
-                  </label>
-               </div>
-            </div>
-            <div class="item_box">
-               <div class="product_item bc">
-                  <div class="img_box">
-                     <img src="img/shop-cart/jupiter1.png" alt="img" width="100%"
-                        height="100%">
+                  <div class="total_item bc">
+                     <div class="text_box">${i.pAmount}</div>
                   </div>
-                  <div class="title_box">{{ earth }}</div>
-               </div>
-               <div class="total_item bc">
-                  <div class="text_box">{{ datas.price }}</div>
-               </div>
-               <div class="amount_item bc">
-                  <div class="text_box">1500</div>
-               </div>
-               <div class="check_item bc">
-                  <label class="check_icon_box"> <input type="checkbox"
-                     value="earth" name="selectedList">
-                     <div class="circle">
-                        <span class="material-symbols-outlined">&#xe876</span>
-                     </div>
-                  </label>
-               </div>
-            </div>
-            <div class="item_box">
-               <div class="product_item bc">
-                  <div class="img_box">
-                     <img src="img/shop-cart/jupiter1.png" alt="img" width="100%"
-                        height="100%">
+                  <div class="amount_item bc">
+                     <div class="text_box">${i.pPrice}</div>
                   </div>
-                  <div class="title_box">{{ sun }}</div>
-               </div>
-               <div class="total_item bc">
-                  <div class="text_box">{{ datas.price }}</div>
-               </div>
-               <div class="amount_item bc">
-                  <div class="text_box">2000</div>
-               </div>
-               <div class="check_item bc">
-                  <label class="check_icon_box"> <input type="checkbox"
-                     value="sun" name="selectedList">
-                     <div class="circle">
-                        <span class="material-symbols-outlined">&#xe876</span>
-                     </div>
-                  </label>
-               </div>
-            </div>
-            <div class="item_box">
-               <div class="product_item bc">
-                  <div class="img_box">
-                     <img src="img/shop-cart/jupiter1.png" alt="img" width="100%"
-                        height="100%">
+                  <div class="check_item bc">
+                     <label class="check_icon_box"> <input type="checkbox"
+                        data-pId="${i.pNum}" value="${i.pNum}" name="selectedList">
+                        <div class="circle">
+                           <span class="material-symbols-outlined">&#xe876</span>
+                        </div>
+                     </label>
                   </div>
-                  <div class="title_box">{{ mars }}</div>
                </div>
-               <div class="total_item bc">
-                  <div class="text_box">{{ datas.price }}</div>
-               </div>
-               <div class="amount_item bc">
-                  <div class="text_box">4000</div>
-               </div>
-               <div class="check_item bc">
-                  <label class="check_icon_box"> <input type="checkbox"
-                     value="mars" name="selectedList">
-                     <div class="circle">
-                        <span class="material-symbols-outlined">&#xe876</span>
-                     </div>
-                  </label>
-               </div>
-            </div>
-            <div class="item_box">
-               <div class="product_item bc">
-                  <div class="img_box">
-                     <img src="img/shop-cart/jupiter1.png" alt="img" width="100%"
-                        height="100%">
-                  </div>
-                  <div class="title_box">{{ zeus }}</div>
-               </div>
-               <div class="total_item bc">
-                  <div class="text_box">{{ datas.price }}</div>
-               </div>
-               <div class="amount_item bc">
-                  <div class="text_box">5000</div>
-               </div>
-               <div class="check_item bc">
-                  <label class="check_icon_box"> <input type="checkbox"
-                     value="zeus" name="selectedList">
-                     <div class="circle">
-                        <span class="material-symbols-outlined">&#xe876</span>
-                     </div>
-                  </label>
-               </div>
-            </div>
-             -->
-            <!-- 반복문으로 바꿀 영역 -->
-
-         </div>
+         </c:forEach>
 
 
-         <div class="bot">
-            <input type="button" class="bot_left" disabled="disabled"
-               value="삭제하기">
-            <div class="bot_right">
-               <div class="right">Total:</div>
-               <div class="text_box2">0 ₩</div>
-            </div>
+      </div>
+
+
+      <div class="bot">
+         <input type="button" class="bot_left" disabled="disabled"
+            onclick="deleteItems()" value="삭제하기">
+         <div class="bot_right">
+            <div class="right">Total:</div>
+            <div class="text_box2">0 ₩</div>
          </div>
       </div>
- 
+   </div>
+
 
 </body>
 
 <script>
 
+var deleteList = [];
+
+function deleteItems() {
+   console.log('삭제하기 실행()');
+   var checkedItem2 = $("input[name=selectedList]:checked");
+     
+   
+   for(let i=0; i < checkedItem2.length; i++) {
+      console.log(checkedItem2[i].value);
+      deleteList.push(Number(checkedItem2[i].value));
+   };
+   
+   var objParams = {
+         "deleteList" : deleteList
+   };
+   
+   console.log('삭제 리스트 :');
+   console.log(deleteList);
+   
+
+        $.ajax({
+           
+            url  : "shopcartDelete.do",
+            type : "POST",
+            data : JSON.stringify(objParams),
+            contentType : "application/json",
+            success : function(res) {
+                alert('찜 목록 삭제 성공!');
+                if(res) {                   
+                    alert('찜 목록 삭제 성공!');
+                     } else {
+                     alert('응답 없음');
+                     }
+                
+
+            },
+            error : function(data) {
+                alert("댓글이 삭제되지 않았습니다.");
+            }
+        });
+ 
+
+   
+   
+   deleteList = [];
+
+   
+   
+}
 
    
 $(document).ready(function() {
    console.log('페이지 렌더링시 실행되는 함수');
+   
+   
+   
    
    let totalAmount = 0;
    /* 체크박스가 클릭될 때 실행되는 함수 */
@@ -269,26 +153,13 @@ $(document).ready(function() {
       
        let oneAmount = checkedItem.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.innerText;
        
-       /* console.log('형제 >>');
-       console.log(checkedItem.nextElementSibling); */
-       
-      /*  console.log(checkedItem.nextElementSibling.classList); */
+
        checkedItem.nextElementSibling.classList.toggle('checked');
        
-      /*  if(e.target.className == ''){
-          let parentTrTag = e.target;
-          
-          for(;parentTrTag.nodeName != 'text_box' ; parentTrTag=parentTrTag.parentElement);
-       } */
-       
-      /*  if(선택하는 이벤트타겟이 체크속성이 되어있다면){
-         원 어마운트만큼  더해줘
-         
-       }else{아니면
-         원 어마운트 만큼 빼줘~
-         고 ㄱ ㄹ ㄷ    이
-       } */
-      /////////////////////////////////////// 
+       console.log('체크됨');
+      
+      
+
         if(checkedItem.checked==true){
          totalAmount += Number(oneAmount);
          
@@ -312,36 +183,20 @@ $(document).ready(function() {
           /* console.log('삭제하기 버튼 활성화 될 예쩡') */
          
           $(".bot_left").css({"backgroundColor":"#000000","cursor":"pointer"});
-             $(".delete").prop("disabled",false);
+             $(".bot_left").prop("disabled",false);
        }
        else{
             $(".bot_left").css({"backgroundColor":"#D9D9D9","cursor":"auto"});
-            $(".delete").prop("disabled",true);
+            $(".bot_left").prop("disabled",true);
           
        }
        
-      
-       
-       
-       
-       /* if($("input[name=selectedList]").is(":checked")) {
-          $("input[name=selectedList]").prop("checked", true);
-          
-          $(".bot_left").css({"backgroundColor":"#000000","cursor":"pointer"});
-             $(".bot_left").prop("disabled",false);
-          
-       } else {
-            $("input[name=selectedList]").prop("checked", false);
-         $(".bot_left").css({"backgroundColor":"#D9D9D9","cursor":"auto"}).prop("disabled",true);
 
-       } */
     });
     
 });
 
 
 </script>
-
-
 
 </html>

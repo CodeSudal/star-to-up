@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -96,26 +97,26 @@
             	<div style="margin-top:5%; margin-left:5%;" >
             	 	 <div class="blog__item" style="text-align:center">
             	 	 <div class="blog__item__text">
-            	 	 	<h1 style="font-weight: bold; font-size: 60px; ">무엇을 상상하던 그 이상.</h1>
+            	 	 	<h1 style="font-weight: bold; font-size: 60px; "><spring:message code="message.about.content1"/></h1>
             	 	 </div>
             	 	 </div>
             	</div>
             	<div style="margin-top:5%; margin-left:5%;" >
             	 	 <div class="blog__item" style="text-align:center">
             	 	 <div class="blog__item__text">
-            	 	 	<h1 style="font-weight: bold; font-size: 60px; display:inline;">별</h1>
-            	 	 	<h1 style="font-weight: bold; font-size: 60px; color:#787878; display:inline;">을</h1>
-            	 	 	<h1 style="font-weight: bold; font-size: 60px; display:inline; margin-left:20px;"> 소유</h1>
-            	 	 	<h1 style="font-weight: bold; font-size: 60px; color:#787878; display:inline;">하세요.</h1>
+            	 	 	<h1 style="font-weight: bold; font-size: 60px; display:inline;"><spring:message code="message.about.content2"/></h1>
+            	 	 	<h1 style="font-weight: bold; font-size: 60px; color:#787878; display:inline;"><spring:message code="message.about.content3"/></h1>
+            	 	 	<h1 style="font-weight: bold; font-size: 60px; display:inline; margin-left:20px;"><spring:message code="message.about.content4"/></h1>
+            	 	 	<h1 style="font-weight: bold; font-size: 60px; color:#787878; display:inline;"><spring:message code="message.about.content5"/></h1>
             	 	 </div>
             	 	 </div>
             	</div>
             	<!-- margin-left:50%; margin-top:100%; -->
             	<div class="about">
             		<div class="content" style="margin-left:15%; margin-top:40%; text-align:right;">
-            			<h1 style="color:white; font-weight:bold; ">지금,</h1>
-            			<h1 style="color:black; font-weight:bold; ">Star to up</h1>
-            			<h1 style="color:white; font-weight:bold; ">에서.</h1>
+            			<h1 style="color:white; font-weight:bold; "><spring:message code="message.about.fund1"/></h1>
+            			<h1 style="color:black; font-weight:bold; "><spring:message code="message.about.fund2"/></h1>
+            			<h1 style="color:white; font-weight:bold; "><spring:message code="message.about.fund3"/></h1>
             		</div>
             		<div class="aboutImg" style="transform: translate(80%, 40%);">
             		    <img alt="행성이미지1" src="img/about2.png"> 
@@ -124,9 +125,9 @@
             		    <img alt="행성이미지2" src="img/about3.png"> 
             		</div>
             		<div class="content" style="transform: translate(160%, 725%); text-align:left;">
-            			<h1 style="color:white; font-weight:bold;">당신의 별에,</h1>
-            			<h1 style="color:black; font-weight:bold; display:inline; ">펀딩</h1>
-            			<h1 style="color:white; font-weight:bold; display:inline; ">하세요!</h1>
+            			<h1 style="color:white; font-weight:bold;"><spring:message code="message.about.fund4"/></h1>
+            			<h1 style="color:black; font-weight:bold; display:inline; "><spring:message code="message.about.fund5"/></h1>
+            			<h1 style="color:white; font-weight:bold; display:inline; "><spring:message code="message.about.fund6"/></h1>
             		</div>
             		<div class="about-cover"></div>
             	</div>
@@ -140,8 +141,8 @@
             	<div style="margin-top:5%; margin-left:5%;" >
             	 	 <div class="blog__item" style="text-align:center">
             	 	 <div class="blog__item__text">
-            	 	 	<h1 style=" font-size: 45px; ">함께 협동하고, 맞춰가고,</h1>
-            	 	 	<h1 style="font-size: 45px; ">발전하는 팀원들을 소개합니다.</h1>
+            	 	 	<h1 style=" font-size: 45px; "><spring:message code="message.about.us1"/></h1>
+            	 	 	<h1 style="font-size: 45px; "><spring:message code="message.about.us2"/></h1>
             	 	 </div>
             	 	 </div>
             	</div>
@@ -151,27 +152,27 @@
 					<img alt="재환" src="img/jae-hwan.png"
 						style="width: 280px; height: 280px;">
 				</div>
-				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;">이재환</h3>
-				<h5 style="text-align: center; margin-top: 3%;">취미:음악,영화감상,게임</h5>
-				<h5 style="text-align: center; margin-top: 3%;">성격:탐구하기를 즐김</h5>
+				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;"><spring:message code="message.about.jh1"/></h3>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.jh2"/></h5>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.jh3"/></h5>
 			</div>
 			<div class="col-lg-6 col-md-4 col-sm-6">
 				<div style="display: flex; justify-content: center;">
 					<img alt="소진" src="img/so-jin.png"
 						style="width: 280px; height: 280px;">
 				</div>
-				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;">남소진</h3>
-				<h5 style="text-align: center; margin-top: 3%;">취미:퍼즐,산책,영화보기</h5>
-				<h5 style="text-align: center; margin-top: 3%;">성격:친철하며 꼼꼼함</h5>
+				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;"><spring:message code="message.about.sj1"/></h3>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.sj2"/></h5>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.sj3"/></h5>
 			</div>
 			<div class="col-lg-6 col-md-4 col-sm-6" style="margin-top: 5%;">
 				<div style="display: flex; justify-content: center;">
 					<img alt="정연" src="img/jeong-yeon.png"
 						style="width: 280px; height: 280px;">
 				</div>
-				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;">허정연</h3>
-				<h5 style="text-align: center; margin-top: 3%;">취미:노래,사진찍기,전시회</h5>
-				<h5 style="text-align: center; margin-top: 3%;">성격:끼와 웃음이 많음</h5>
+				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;"><spring:message code="message.about.jy1"/></h3>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.jy2"/></h5>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.jy3"/></h5>
 
 			</div>
 			<div class="col-lg-6 col-md-4 col-sm-6" style="margin-top: 5%;">
@@ -179,27 +180,27 @@
 					<img alt="민경" src="img/min-gyeong.png"
 						style="width: 280px; height: 280px;">
 				</div>
-				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;">이민경</h3>
-				<h5 style="text-align: center; margin-top: 3%;">취미:큐브,게임,퍼즐</h5>
-				<h5 style="text-align: center; margin-top: 3%;">성격:장난끼가 많음</h5>
+				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;"><spring:message code="message.about.mg1"/></h3>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.mg2"/></h5>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.mg3"/></h5>
 			</div>
 			<div class="col-lg-6 col-md-4 col-sm-6" style="margin-top: 5%;">
 				<div style="display: flex; justify-content: center;">
 					<img alt="지원" src="img/ji-won.png"
 						style="width: 280px; height: 280px;">
 				</div>
-				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;">강지원</h3>
-				<h5 style="text-align: center; margin-top: 3%;">취미:큐브,골프,음악감상</h5>
-				<h5 style="text-align: center; margin-top: 3%;">성격:웃음이 많으며 계획적</h5>
+				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;"><spring:message code="message.about.jw1"/></h3>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.jw2"/></h5>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.jw3"/></h5>
 			</div>
 			<div class="col-lg-6 col-md-4 col-sm-6" style="margin-top: 5%;">
 				<div style="display: flex; justify-content: center;">
 					<img alt="재호" src="img/jae-ho.png"
 						style="width: 280px; height: 280px;">
 				</div>
-				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;">이재호</h3>
-				<h5 style="text-align: center; margin-top: 3%;">취미:게임,소설,노래듣기</h5>
-				<h5 style="text-align: center; margin-top: 3%;">성격:유연하며 때론 신중</h5>
+				<h3 style="text-align: center; font-weight: bold; margin-top: 5%;"><spring:message code="message.about.jh4"/></h3>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.jh5"/></h5>
+				<h5 style="text-align: center; margin-top: 3%;"><spring:message code="message.about.jh6"/></h5>
 			</div>
 
 		</div>
@@ -209,7 +210,11 @@
 		 <h1 style="font-size:21vw; font-weight:bold; margin-left:-6%;margin-top:10%; white-space:nowrap;  ">Star To Up</h1>
 		</div>
 		 <!-- About Section End -->
-
+		 
+		<a href="about.do?lang=en">ENGLISH</a>
+		<a href="about.do?lang=ko">한국어</a>
+				
+				
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

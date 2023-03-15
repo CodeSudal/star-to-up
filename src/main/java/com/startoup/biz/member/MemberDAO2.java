@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.startoup.biz.product.ProductVO;
+
 @Repository("memberDAO")
 public class MemberDAO2 {
 	// Mybatis 프레임워크
@@ -73,11 +75,11 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
-	
+
 	// 이메일 중복확인
-	public MemberVO selectOneEamil(MemberVO vo) {
+	public MemberVO selectOneEmail(MemberVO vo) {
 		try {
-			return mybatis.selectOne("MemberDAO.selectOneEamil", vo);
+			return mybatis.selectOne("MemberDAO.selectOneEmail", vo);
 		} catch(Exception e) {
 			return null;
 		}
@@ -96,7 +98,7 @@ public class MemberDAO2 {
 	}
 
 	// 로그아웃
-	
+
 	// 내 펀딩 목록 추가
 	public boolean insertFund(MyFundingVO vo) {
 		try {
@@ -128,11 +130,29 @@ public class MemberDAO2 {
 		}
 	}
 
-	// 내 찜 목록 삭제
 	public boolean deleteLike(MyLikeVO vo) {
 		try {
 			int res=mybatis.delete("MemberDAO.deleteLike", vo);
+			System.out.println("dkdk");
 			if(res<1) { return false; }
+			return true;
+		}
+		catch(Exception e) {
+			System.out.println("e"+e);
+			return false;
+		}
+	}
+
+	// 내 찜 목록 삭제
+	public boolean deleteLikeList(List<Integer> list, MyLikeVO mlvo) {
+		try {
+			mlvo.setMlMid(mlvo.getMlMid());
+			mlvo.setpList(list);
+			mybatis.delete("MemberDAO.deleteLikeList",mlvo);
+			for(int i=0; i<mlvo.getpList().size(); i++) {
+				mlvo.setMlPid(mlvo.getpList().get(i));
+				mybatis.delete("MemberDAO.deleteLikeList", mlvo);
+			}
 			return true;
 		} catch(Exception e) {
 			return false;
@@ -147,7 +167,7 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
-	
+
 	// 내 찜 여부 확인
 	public MyLikeVO checkLike(MyLikeVO vo) {
 		try {
@@ -156,7 +176,7 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
-	
+
 	// 내 찜 갯수 보기
 	public MyLikeVO countLike(MyLikeVO vo) {
 		try {
@@ -165,7 +185,18 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
+
+	// 내 찜 목록 보기
+	public List<ProductVO> myLikeList(MyLikeVO vo){
+		try {
+			return mybatis.selectList("MemberDAO.myLikeList", vo);
+		} catch(Exception e) {
+			return null;
+		}
+	}
 }
+
+
 
 //class MemberRowMapper implements RowMapper<MemberVO> {
 //

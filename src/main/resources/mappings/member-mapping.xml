@@ -21,8 +21,8 @@
 		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=#{mId}
 	</select>
 	
-	<select id="selectOneEamil" resultType="member">
-		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_EMAIL1=#{mEamil1} AND M_EMAIL2=#{mEamil2}
+	<select id="selectOneEmail" resultType="member">
+		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_EMAIL1=#{mEmail1} AND M_EMAIL2=#{mEmail2}
 	</select>
 	
 	<select id="login" resultType="member">
@@ -43,6 +43,10 @@
 	
 	<delete id="deleteLike">
 		DELETE FROM MYLIKE WHERE ML_NUM=#{mlNum}
+	</delete>
+	
+	<delete id="deleteLikeList">
+		DELETE FROM MYLIKE WHERE ML_MID=#{mlMid} AND ML_PID=#{mlPid}
 	</delete> 
 	
 	<select id="selectAllLike" resultType="mylike">
@@ -54,7 +58,12 @@
 	</select>
 	
 	<select id="countLike" resultType="mylike">
-		SELECT COUNT(ML_NUM) FROM MYLIKE ML WHERE ML_MID=#{mlMid}
+		SELECT COUNT(ML_NUM) AS ML_NUM FROM MYLIKE ML WHERE ML_MID=#{mlMid}
 	</select>
+	
+	<select id="myLikeList" resultType="product">
+		SELECT DISTINCT p.P_NUM, p.P_PRICE, p.P_NAME, p.P_AMOUNT, p.P_IMAGE1 FROM PRODUCT p, MYLIKE l, MEMBERS m WHERE p.P_NUM = l.ML_PID AND l.ML_MID = #{mlMid}
+	</select>
+	
 	
 </mapper>

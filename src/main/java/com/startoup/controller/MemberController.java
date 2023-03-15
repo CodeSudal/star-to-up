@@ -1,5 +1,7 @@
 package com.startoup.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,40 +39,6 @@ public class MemberController {
 		return "myPage.jsp";
 	}
 
-	// 찜목록
-	@RequestMapping(value = "/shopcart.do")
-	public String selectAllList(Model model, MyLikeVO mlvo, HttpSession session) {
-
-		// 로그인 되어 있으면 -> 멤버아이디,제품번호로 찜되어있는지 여부 파악해서
-		MemberVO member = (MemberVO) session.getAttribute("member");
-		if (member != null) { // 로그인 했으면
-			mlvo.setMlMid(member.getmId()); // 세션에 저장되어있는 아이디 mlvo에 저장
-
-		} else {
-			return "login.jsp"; // 로그인 하세요 메세지 띄우기
-		}
-		
-		if (memberSI.selectAllLike(mlvo).isEmpty()) {
-			System.out.println("찜한 목록이 없습니다. 화면 보여주기");
-			return "shopcart.jsp";
-		}
-		System.out.println("ctrl의 return받아온값"+memberSI.selectAllLike(mlvo));
-		model.addAttribute("i", memberSI.selectAllLike(mlvo));
-
-		return "shopcart.jsp";
-
-	}
-
-	// 찜삭제
-	@RequestMapping(value = "/shopcartDelete.do")
-	public String deleteList(Model model, MyLikeVO mlvo) {
-
-//		mlvo.setMlPid(0); // mlvo의 MlPid에 받아온 값 넣어주기(안해줘도 될거같음 이름이 같아서)
-		
-		model.addAttribute("datas", memberSI.deleteLike(mlvo));
-		return "redirect:shopcart.do";
-	}
-
 	// 약관 동의
 	@RequestMapping(value = "/agreement.do")
 	public String agreement() {
@@ -79,10 +47,24 @@ public class MemberController {
 	}
 
 	// 로그인 페이지로 처음 이동할 때
-	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
-	public @ResponseBody String check(@RequestBody MemberVO vo) {
+
+	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
+	public @ResponseBody String checkId(@RequestBody MemberVO vo) {
 
 		vo = memberSI.selectOneMember(vo);
+		if (vo == null) {
+			return "success";
+		} else {
+			return "duplicate";
+		}
+
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/checkEmail.do", method = RequestMethod.POST)
+	public String checkEmail(MemberVO vo) {
+
+		vo = memberSI.selectOneEmail(vo);
 		if (vo == null) {
 			return "success";
 		} else {
@@ -112,7 +94,7 @@ public class MemberController {
 			model.addAttribute("msg", msg);
 			return "alert.jsp";
 
-//			return "redirect:login.do"; // 다시 로그인 페이지
+//         return "redirect:login.do"; // 다시 로그인 페이지
 		} else { // 로그인 성공 하면
 			session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
 			return "redirect:store.do";
@@ -122,13 +104,13 @@ public class MemberController {
 	@RequestMapping(value = "/kakaoLogin.do")
 	public String kakaoMember(MemberVO vo, HttpSession session) {
 
-//	      System.out.println("로그 kakao 확인 id:"+vo.getmId()+"/mName:"+vo.getmName()+"/mEmail1:"+vo.getmEmail1());
+//         System.out.println("로그 kakao 확인 id:"+vo.getmId()+"/mName:"+vo.getmName()+"/mEmail1:"+vo.getmEmail1());
 
 		// 처음 카카오로그인한 계정이라면, 회원가입
 		if (memberSI.selectOneMember(vo) == null) {
 			memberSI.insertKakaoMember(vo);
 		}
-
+		session.setAttribute("mylike", vo);
 		session.setAttribute("member", vo);
 		return "redirect:store.do";
 	}
@@ -151,13 +133,31 @@ public class MemberController {
 
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String insertMember(MemberVO vo) {
-//		System.out.println("insertMember() 입장");
+		System.out.println("insertMember() 입장");
 
 		memberSI.insertMember(vo);
 
 		return "redirect:login.do";
 	}
 
+	// 회원탈퇴 페이지로
+	@RequestMapping(value = "/withdrowal.do", method = RequestMethod.GET)
+	public String withdrowalView() {
+
+		return "withdrowal.jsp";
+	}
+
+	// 회원탈퇴 버튼 누름
+	@RequestMapping(value = "/withdrowal.do", method = RequestMethod.POST)
+	public String deleteMember(MemberVO vo, HttpSession session) {
+		System.out.println("deleteMember() 입장");
+
+		memberSI.deleteMember(vo); // deleteMemter
+		session.removeAttribute("member"); // 세션 특정 정보만 비우기
+
+		return "store.do";
+	}
+	
 	// 상품디테일 페이지 들어갔을 때 찜 여부 확인하기위함.
 	@RequestMapping(value = "/detail.do")
 	public String selcetOneBoard(ProductVO pvo, HttpSession session, MyLikeVO myvo, ListVO lvo, Model model) {
@@ -178,6 +178,63 @@ public class MemberController {
 		model.addAttribute("data", productSI.selectOne(pvo));
 
 		return "detail.jsp";
+	}
+
+	// 찜목록
+	@RequestMapping(value = "/shopcart.do")
+	public String selectAllList(@ModelAttribute("i") MyLikeVO mlvo, Model model, HttpSession session) {
+
+		// 로그인 되어 있으면 -> 멤버아이디,제품번호로 찜되어있는지 여부 파악해서
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		if (member != null) { // 로그인 했으면
+			mlvo.setMlMid(member.getmId()); // 세션에 저장되어있는 아이디 mlvo에 저장
+		} else {
+			return "login.jsp"; // 로그인 하세요 메세지 띄우기
+		}
+		System.out.println(memberSI.myLikeList(mlvo));
+		if (memberSI.myLikeList(mlvo).isEmpty()) {
+			System.out.println("찜한 목록이 없습니다. 화면 보여주기");
+			return "shopcart.jsp";
+		}
+		System.out.println("ctrl의 return받아온값" + memberSI.myLikeList(mlvo));
+		model.addAttribute("datas", memberSI.myLikeList(mlvo));
+
+		return "shopcart.jsp";
+
+	}
+
+	/*
+	 * // 찜목록 - 삭제
+	 * 
+	 * @RequestMapping(value = "/shopcartDelete.do", method = RequestMethod.POST)
+	 * 
+	 * @ResponseBody public String deleteLikeList(@RequestBody List objParams, Model
+	 * model, HttpSession session) { //@RequestParam(value="deleteList[]")
+	 * List<Integer> deleteList, List<MyLikeVO> mlist, MyLikeVO mlvo,
+	 * 
+	 * 
+	 * 
+	 * System.out.println("들어옴"+objParams );
+	 * 
+	 * MemberVO mvo = (MemberVO) session.getAttribute("member");
+	 * //mlvo.setMlMid(mvo.getmId()); System.out.println("진입전");
+	 * 
+	 * //model.addAttribute("datas", memberSI.deleteLikeList(mlist, mlvo));
+	 * System.out.println("return 전"); return "true"; }
+	 */
+
+	// 찜목록 - 삭제
+	@RequestMapping(value = "/shopcartDelete.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String deleteLikeList(@RequestBody List<Integer> list, Model model, MyLikeVO mlvo, HttpSession session) {
+
+		System.out.println("들어옴" + list);
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
+		mlvo.setMlMid(mvo.getmId());
+		System.out.println("진입전");
+		model.addAttribute("datas", memberSI.deleteLikeList(list, mlvo));
+		System.out.println("return 전");
+		return "true";
 	}
 
 	// 찜하기
@@ -211,7 +268,6 @@ public class MemberController {
 			System.out.println("삭제안됨");
 			return "s";
 		}
-
 	}
 
 }
