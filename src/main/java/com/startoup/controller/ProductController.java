@@ -1,5 +1,7 @@
 package com.startoup.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import com.startoup.biz.list.ListServiceImpl;
 import com.startoup.biz.list.ListVO;
 import com.startoup.biz.member.MemberServiceImpl;
 import com.startoup.biz.member.MemberVO;
+import com.startoup.biz.member.MyFundingVO;
 import com.startoup.biz.product.ProductServiceImpl;
 import com.startoup.biz.product.ProductVO;
 
@@ -41,10 +44,19 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/paymentsuccess.do")
-	public String insertList(ProductVO pvo, ListVO lvo, Model model) {
+	public String insertList(ProductVO pvo, ListVO lvo, MyFundingVO myvo, Model model,HttpSession session) {
+		System.out.println("insertList 실행됨");
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
+		lvo.setlMid(mvo.getmId());
+		myvo.setMfMid(mvo.getmId());
 		
+		lvo.setlPid(pvo.getpNum());
+		myvo.setMfPid(pvo.getpNum());
+		System.out.println("lvo : "+lvo);
 		model.addAttribute("list", listSI.insertList(lvo));
-		model.addAttribute("product", productSI.updateProduct(pvo));
+		System.out.println("pvo : "+pvo);
+		model.addAttribute("product", productSI.checkProduct(pvo));
+		model.addAttribute("member", memberSI.insertFunding(myvo));
 		/* model.addAttribute("list", productSI.update) */
 		
 		return "redirect:myFundingList.do";

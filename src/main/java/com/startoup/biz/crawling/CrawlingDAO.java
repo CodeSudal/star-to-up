@@ -28,22 +28,33 @@ public class CrawlingDAO {
 	final String SELECT_ALL_CRAWLING = "SELECT C_NUM, C_NAME, C_INFO FROM CRAWLING";
 	
 	public boolean crawling() {
+		// DB(크롤링 테이블)에 저장해줄 sel 객체
 		SeleniumVO sel = new SeleniumVO();
+		// 제품 SELECTALL을 담기 위한 배열
 		List<SeleniumVO> datas;
+		// 크롤링 DB에 있는 정보 개수 확인을 위한 배열
 		List<SeleniumVO> cdb;
+		// 셀레니움 크롤링 대상 이름
 		String title;
+		// 셀레니움 크롤링 대상 정보
 		String info;
 
 		try {
+			// 이미 크롤링 데이터가 9개 이상이라면 크롤링 Skip
 			cdb=jdbcTemplate.query(SELECT_ALL_CRAWLING, new CSeleniumRowMapper());
 			if(cdb.size()>8) { return true; }
 			
+			// 셀레니움 크롤링 함수 호출
 			DriverUtil.crawling();
 			
+			// forEach문을 돌면서 크롤링 정보가 담긴 map에 있는 정보들을
+			// DB에 저장
 			for (Entry<String, String> entrySet : DriverUtil.craw.entrySet()) {
 				sel.setcName(entrySet.getKey());
 				sel.setcInfo(entrySet.getValue());
 				Object[] args= { sel.getcName() };
+				
+				// DB에 이미 있는 정보라면 skip하고 다음 정보로
 				try{jdbcTemplate.queryForObject(SELECT_ONE_CRAWLING, args, new CSeleniumRowMapper());
 					continue;
 				} catch(EmptyResultDataAccessException e){
@@ -51,7 +62,9 @@ public class CrawlingDAO {
 				}
 			}
 			
+			// SELECTALL로 현재 제품 리스트 저장
 			datas=jdbcTemplate.query(SELECT_ALL_PRODUCT, new PSeleniumRowMapper());
+			// 제품 개수만큼 for문을 돌면서 크롤링한 데이터(INFO)로 UPDATE
 			for(int i=0; i<datas.size(); i++) {
 				title=datas.get(i).getpName();
 				info=DriverUtil.craw.get(title);

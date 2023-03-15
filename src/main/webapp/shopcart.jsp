@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>shopcart</title>
+<title>shopCart</title>
 
 <script type="text/javascript"
    src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -109,12 +109,12 @@ function deleteItems() {
            
             url  : "shopcartDelete.do",
             type : "POST",
-            data : JSON.stringify(objParams),
+            data : JSON.stringify(deleteList),
             contentType : "application/json",
             success : function(res) {
-                alert('찜 목록 삭제 성공!');
-                if(res) {                   
+                if(true) {                   
                     alert('찜 목록 삭제 성공!');
+                    window.location.reload();
                      } else {
                      alert('응답 없음');
                      }
