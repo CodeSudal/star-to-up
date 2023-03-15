@@ -83,18 +83,16 @@
          <div class="menu_item1"><a href="info.do">INFO</a></div>
          <div class="menu_item1"><a href="about.do">ABOUT</a></div>
       </div>
-      <div style="display: flex; font-weight: bold; margin-left: 30%;">
       
+      <div class="top_right_box">
       <c:choose>
       	<c:when test="${param.lang eq 'en'}">
-      		<div style="width: 20px;" class="menu_item1"><a href="about.do?lang=ko"><img alt="ENGLISH" src="img/lang.png"></a></div>
+      		<div style="width: 20px; margin-right:15%; align:left;"><a href="about.do?lang=ko"><img alt="ENGLISH" src="img/lang.png"></a></div>
      	</c:when>
      	<c:otherwise>
-      		<div style="width: 20px;" class="menu_item1"><a href="about.do?lang=en"><img alt="한국어" src="img/lang.png"></a></div>
+      		<div style="width: 20px; margin-right:15%; align:left;"><a href="about.do?lang=en"><img alt="한국어" src="img/lang.png"></a></div>
       	</c:otherwise>
       </c:choose>
-	  </div>
-      <div class="top_right_box">
         <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
             <div style="margin-right:10%; margin-top:5%;">
                <p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
