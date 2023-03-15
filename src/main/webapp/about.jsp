@@ -76,7 +76,7 @@
 </style>
 
 <body>
-    <div class="header_box">
+    <div class="header_box" style="font-weight: 700;">
       <div class="top_left_box">
          <div class="logo_box"><a href="main.do">LOGO</a></div>
          <div class="menu_item1"><a href="store.do">STORE</a></div>

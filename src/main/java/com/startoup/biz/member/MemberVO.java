@@ -13,7 +13,14 @@ public class MemberVO {
 	private Date mRegdate;	// 가입일자
 	private List<MyFundingVO> mPlist; // 회원 펀딩 목록
 	private List<MyLikeVO> mLlist; // 회원 찜 목록
+	private int mLikecnt; // 내 찜 갯수
 	
+	public int getmLikecnt() {
+		return mLikecnt;
+	}
+	public void setmLikecnt(int mLikecnt) {
+		this.mLikecnt = mLikecnt;
+	}
 	public String getmId() {
 		return mId;
 	}
@@ -68,13 +75,11 @@ public class MemberVO {
 	public void setmLlist(List<MyLikeVO> mLlist) {
 		this.mLlist = mLlist;
 	}
+	
 	@Override
 	public String toString() {
 		return "MemberVO [mId=" + mId + ", mPw=" + mPw + ", mName=" + mName + ", mEmail1=" + mEmail1 + ", mEmail2="
 				+ mEmail2 + ", mNum=" + mNum + ", mRegdate=" + mRegdate + ", mPlist=" + mPlist + ", mLlist=" + mLlist
-				+ "]";
+				+ ", mLikecnt=" + mLikecnt + "]";
 	}
-	
-
-	
 }
