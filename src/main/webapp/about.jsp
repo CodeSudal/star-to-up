@@ -87,10 +87,10 @@
       
       <c:choose>
       	<c:when test="${param.lang eq 'en'}">
-      		<div style="width: 30px;" class="menu_item1"><a href="about.do?lang=ko"><img alt="ENGLISH" src="img/lang.png"></a></div>
+      		<div style="width: 20px;" class="menu_item1"><a href="about.do?lang=ko"><img alt="ENGLISH" src="img/lang.png"></a></div>
      	</c:when>
      	<c:otherwise>
-      		<div style="width: 30px;" class="menu_item1"><a href="about.do?lang=en"><img alt="한국어" src="img/lang.png"></a></div>
+      		<div style="width: 20px;" class="menu_item1"><a href="about.do?lang=en"><img alt="한국어" src="img/lang.png"></a></div>
       	</c:otherwise>
       </c:choose>
 	  </div>
@@ -122,7 +122,7 @@
                            <c:choose>
                                <c:when test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
                                    <li><a href="myFundingList.do"><spring:message code="message.about.gnb1"/></a></li>
-                                    <li><a href="myList.do"><spring:message code="message.about.gnb2"/></a></li>
+                                    <li><a href="shopcart.do"><spring:message code="message.about.gnb2"/></a></li>
                                     <li><a href="logout.do"><spring:message code="message.about.gnb3"/></a></li>
                                </c:when>
                               <c:when test="${member.mId != null}">
