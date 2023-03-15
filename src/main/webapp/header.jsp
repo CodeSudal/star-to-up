@@ -18,7 +18,6 @@
 <!-- Css Styles -->
 
 
-<link rel="stylesheet" href="css/style.css" type="text/css">
 <link rel="stylesheet" href="css/header.css" type="text/css">
 </head>
 <body>
@@ -62,12 +61,12 @@
                            <c:choose>
                                <c:when test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
                                    <li><a href="myFundingList.do">펀딩 내역</a></li>
-                                    <li><a href="myList.do">찜내역</a></li>
+                                    <li><a href="shopcart.do">찜내역</a></li>
                                     <li><a href="logout.do">로그아웃</a></li>
                                </c:when>
                               <c:when test="${member.mId != null}">
                                  <li><a href="myFundingList.do">펀딩 내역</a></li>
-                                 <li><a href="shopcart.do">찜내역</a></li>
+                                 <li><a href="shopcart.do">찜목록</a></li>
                                 <li><a href="withdrowal.do">회원 탈퇴</a></li>
                                  <li><a href="logout.do">로그아웃</a></li>
                               </c:when>
