@@ -17,7 +17,7 @@
    rel="stylesheet" />
 <!-- Css Styles -->
 
-
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <link rel="stylesheet" href="css/header.css" type="text/css">
 </head>
@@ -45,7 +45,7 @@
                <ul class="header__right__widget">
                   <li><a href="shopcart.do"><span class="material-symbols-outlined">&#xE87D;</span>
                         <c:if test="${member.mId != null}">
-                            <div class="tip">${member.mLikecnt}</div> 
+                            <div class="tip"><%-- ${member.countLike} --%></div> 
                         </c:if>
                       </a>
                   </li>

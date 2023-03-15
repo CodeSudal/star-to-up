@@ -94,11 +94,6 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.myFundList(vo);
 	}
 
-	@Override
-	public MyLikeVO countLike(MyLikeVO vo) {
-		return mdao.countLike(vo);
-	}
-
 	
 	
 

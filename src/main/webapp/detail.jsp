@@ -175,7 +175,7 @@
                                        data-hash=""
                                        id="big_img"
                                         class="product__big__img"
-                                        src="img/${data.pImage1}"
+                                        src="img/shop/${data.pImage1}"
                                         alt="선택이미지"
                                         style="width: 80vw; height:80hw; "
                                     />

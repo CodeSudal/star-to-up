@@ -19,8 +19,6 @@ public interface MemberService {
 	public boolean deleteLikeList(List<Integer> list, MyLikeVO mlvo);
 	public List<MyLikeVO> selectAllLike(MyLikeVO vo);
 	public MyLikeVO checkLike(MyLikeVO vo);
-	public MyLikeVO countLike(MyLikeVO vo);
 	public List<ProductVO> myLikeList(MyLikeVO vo);
-	public List<ProductVO> myFundList(MyFundingVO vo);
 
 }

@@ -83,7 +83,7 @@ public class MemberController {
 
 	// 로그인 했을 때
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String selectOneMember(MemberVO vo, MyLikeVO mlvo, Model model, String msg, HttpSession session) {
+	public String selectOneMember(MemberVO vo, Model model, String msg, HttpSession session) {
 		vo = memberSI.loginMember(vo);
 		System.out.println("login : " + vo);
 
@@ -97,16 +97,13 @@ public class MemberController {
 
 //         return "redirect:login.do"; // 다시 로그인 페이지
 		} else { // 로그인 성공 하면
-			mlvo.setMlMid(vo.getmId()); // 아이디 mlvo에 저장
-			vo.setmLikecnt(memberSI.countLike(mlvo).getMlNum());// likecnt 쿼리문 돌려서 저장
 			session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
-			
 			return "redirect:store.do";
 		}
 	}
 
 	@RequestMapping(value = "/kakaoLogin.do")
-	public String kakaoMember(MemberVO vo,MyLikeVO mlvo, HttpSession session) {
+	public String kakaoMember(MemberVO vo, HttpSession session) {
 
 //         System.out.println("로그 kakao 확인 id:"+vo.getmId()+"/mName:"+vo.getmName()+"/mEmail1:"+vo.getmEmail1());
 
@@ -114,9 +111,8 @@ public class MemberController {
 		if (memberSI.selectOneMember(vo) == null) {
 			memberSI.insertKakaoMember(vo);
 		}
-		mlvo.setMlMid(vo.getmId()); // 아이디 mlvo에 저장
-		vo.setmLikecnt(memberSI.countLike(mlvo).getMlNum());// likecnt 쿼리문 돌려서 저장
-		session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
+		session.setAttribute("mylike", vo);
+		session.setAttribute("member", vo);
 		return "redirect:store.do";
 	}
 
@@ -125,7 +121,6 @@ public class MemberController {
 	public String logoutMember(HttpSession session) {
 		System.out.println("logoutMember() 입장");
 
-		session.removeAttribute("mylike");
 		session.removeAttribute("member"); // 세션 특정 정보만 비우기
 
 		return "redirect:login.do";
@@ -147,35 +142,40 @@ public class MemberController {
 	}
 
 	// 회원탈퇴 페이지로
-	@RequestMapping(value = "/withdrowal.do")
+	@RequestMapping(value = "/withdrowal.do", method = RequestMethod.GET)
 	public String withdrowalView() {
 		return "withdrowal.jsp";
 	}
 	
 	// 회원탈퇴 버튼 누름
-	@RequestMapping(value = "/deleteMember.do")
+	@RequestMapping(value = "/withdrowal.do", method = RequestMethod.POST)
 	public String deletemember(MemberVO vo, HttpSession session) {
 		System.out.println("deleteMember() 입장");
-		MemberVO member = (MemberVO) session.getAttribute("member");
-		vo.setmId(member.getmId());
-		memberSI.deleteMember(vo); // deleteMemter session.removeAttribute("member");
-		System.out.println("db 삭제 성공");
 		session.removeAttribute("member");
-		System.out.println("session 비워짐");
+		memberSI.deleteMember(vo); // deleteMemter session.removeAttribute("member");
 		return "store.do";
 	}
 
 	
-	// 비밀번호 확인
 	@ResponseBody
-	@RequestMapping(value = "/pwChk.do")
-	public String pwChk(MemberVO vo, HttpSession session) {
+	@RequestMapping(value = "/pwChk.do", method = RequestMethod.POST)
+
+	public String deleteMember(MemberVO vo, HttpSession session) {
 		
+		System.out.println("vo: " + vo);
+
+		System.out.println("나여7기~");
 		MemberVO member = (MemberVO) session.getAttribute("member");
+		System.out.println("세션:" + member.getmPw());
+		System.out.println(vo.getmPw());
 		vo.setmPw(vo.getmPw());
 		if (member.getmPw().equals(vo.getmPw())) {
+			System.out.println("truet");
+			memberSI.deleteMember(vo); // deleteMemter
+			session.removeAttribute("member"); // 세션 특정 정보만 비우기
 			return "true";
 		} else {
+			System.out.println("-0");
 			return "0";
 		}
 		
@@ -265,16 +265,16 @@ public class MemberController {
 
 	// 찜하기
 	@RequestMapping(value = "/heart.do", method = RequestMethod.POST)
-	public @ResponseBody String heart(@RequestBody MyLikeVO mlvo, HttpSession session) {
+	public @ResponseBody String heart(@RequestBody MyLikeVO vo) {
 		System.out.println("heartBoard 입장");
 
-		if (memberSI.insertLike(mlvo)) { // 찜하기 성공
-			MemberVO vo = (MemberVO) session.getAttribute("member");
-			mlvo.setMlMid(vo.getmId());
-			vo.setmLikecnt(memberSI.countLike(mlvo).getMlNum());// likecnt 쿼리문 돌려서 저장
-			session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
+		System.out.println("vo:" + vo);
+
+		if (memberSI.insertLike(vo)) {
+			System.out.println("저장됨");
 			return "success";
 		} else {
+			System.out.println("저장안됨");
 			return "fail";
 		}
 
@@ -282,13 +282,13 @@ public class MemberController {
 
 	// 찜취소
 	@RequestMapping(value = "/heartNo.do", method = RequestMethod.POST)
-	public @ResponseBody String heartNo(@RequestBody MyLikeVO mlvo, HttpSession session) {
+	public @ResponseBody String heartNo(@RequestBody MyLikeVO vo) {
+		System.out.println("heartNoBoard 입장");
 
-		if (memberSI.deleteLike(mlvo)) {
-			MemberVO vo = (MemberVO) session.getAttribute("member");
-			mlvo.setMlMid(vo.getmId());
-			vo.setmLikecnt(memberSI.countLike(mlvo).getMlNum());// likecnt 쿼리문 돌려서 저장
-			session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
+		System.out.println("vo:" + vo);
+
+		if (memberSI.deleteLike(vo)) {
+			System.out.println("삭제됨");
 			return "success";
 		} else {
 			System.out.println("삭제안됨");
