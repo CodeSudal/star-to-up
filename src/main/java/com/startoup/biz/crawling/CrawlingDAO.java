@@ -11,6 +11,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.startoup.biz.product.NamingVO;
+
 @Repository("crawlingDAO")
 public class CrawlingDAO {
 	@Autowired
@@ -26,6 +28,13 @@ public class CrawlingDAO {
 	final String SELECT_ONE_CRAWLING = "SELECT C_NUM, C_NAME, C_INFO FROM CRAWLING WHERE C_NAME = ?";
 	// SELECTALL
 	final String SELECT_ALL_CRAWLING = "SELECT C_NUM, C_NAME, C_INFO FROM CRAWLING";
+	
+	// NAMING SELECTALL
+	final String SELECT_ALL_NAMING = "SELECT N_NUM, N_NAME, N_EN FROM NAMING";
+	// INSERT NAMING
+	final String INSERT_NAMING = "INSERT INTO NAMING(N_NUM, N_NAME, N_EN) VALUES((SELECT NVL(MAX(N_NUM), 0) + 1 FROM NAMING), ?, ?)";
+	// 제품 NAME 업데이트
+	final String UPDATE_PNAME = "UPDATE PRODUCT P SET P.P_EN = (SELECT N.N_EN FROM NAMING N WHERE P.P_NAME = N.N_NAME)";
 	
 	public boolean crawling() {
 		// DB(크롤링 테이블)에 저장해줄 sel 객체
@@ -46,6 +55,7 @@ public class CrawlingDAO {
 			
 			// 셀레니움 크롤링 함수 호출
 			DriverUtil.crawling();
+			insertNaming();
 			
 			// forEach문을 돌면서 크롤링 정보가 담긴 map에 있는 정보들을
 			// DB에 저장
@@ -73,9 +83,30 @@ public class CrawlingDAO {
 				sel.setcInfo(info);
 				jdbcTemplate.update(UPDATE_PINFO);
 			}
+			jdbcTemplate.update(UPDATE_PNAME);
 			return true;
 		} catch(Exception e) {
 			System.out.println(e);
+			return false;
+		}
+	}
+	
+	public boolean insertNaming() {
+		try {
+			if(jdbcTemplate.query(SELECT_ALL_NAMING, new NamingRowMapper()).size()>8) {
+				return true;
+			}
+			jdbcTemplate.update(INSERT_NAMING, "천왕성", "Uranus");
+			jdbcTemplate.update(INSERT_NAMING, "수성", "Mercury");
+			jdbcTemplate.update(INSERT_NAMING, "지구", "Earth");
+			jdbcTemplate.update(INSERT_NAMING, "화성", "Mars");
+			jdbcTemplate.update(INSERT_NAMING, "해왕성", "Neptuen");
+			jdbcTemplate.update(INSERT_NAMING, "토성", "Saturn");
+			jdbcTemplate.update(INSERT_NAMING, "금성", "Venus");
+			jdbcTemplate.update(INSERT_NAMING, "태양", "The Sun");
+			jdbcTemplate.update(INSERT_NAMING, "목성", "Jupiter");
+			return true;
+		} catch(Exception e) {
 			return false;
 		}
 	}
@@ -94,6 +125,8 @@ class PSeleniumRowMapper implements RowMapper<SeleniumVO> {
 
 }
 
+
+
 class CSeleniumRowMapper implements RowMapper<SeleniumVO> {
 
 	@Override
@@ -102,6 +135,19 @@ class CSeleniumRowMapper implements RowMapper<SeleniumVO> {
 		data.setcInfo(rs.getString("C_INFO"));
 		data.setcNum(rs.getInt("C_NUM"));
 		data.setcName(rs.getString("C_NAME"));
+		return data;
+	}
+
+}
+
+class NamingRowMapper implements RowMapper<NamingVO> {
+
+	@Override
+	public NamingVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		NamingVO data=new NamingVO();
+		data.setnNum(rs.getInt("N_NUM"));
+		data.setnName(rs.getString("N_NAME"));
+		data.setnEN(rs.getString("N_EN"));
 		return data;
 	}
 
