@@ -20,6 +20,7 @@ public class ProductVO {
 	private int pCRNAmount; // 현재펀딩금액
 	private int pPercent; // 펀딩목표 퍼센트에이지
 	private int people;	// 펀딩 목표 총 인원
+	private String pEN;	// 펀딩 목표 총 인원
 	private List<MultipartFile> uploadFile;	// 업로드 파일
 	
 	public int getPeople() {
@@ -106,13 +107,22 @@ public class ProductVO {
 	public void setpList(List<ListVO> pList) {
 		this.pList = pList;
 	}
+	
+	
+	public String getpEN() {
+		return pEN;
+	}
+	public void setpEN(String pEN) {
+		this.pEN = pEN;
+	}
 	@Override
 	public String toString() {
 		return "ProductVO [pNum=" + pNum + ", pName=" + pName + ", pPrice=" + pPrice + ", pInfo=" + pInfo + ", pFinish="
 				+ pFinish + ", pImage1=" + pImage1 + ", pImage2=" + pImage2 + ", pImage3=" + pImage3 + ", pList="
 				+ pList + ", pAmount=" + pAmount + ", pCRNAmount=" + pCRNAmount + ", pPercent=" + pPercent + ", people="
-				+ people + ", uploadFile=" + uploadFile + "]";
+				+ people + ", pEN=" + pEN + ", uploadFile=" + uploadFile + "]";
 	}
 
+	
 	
 }
