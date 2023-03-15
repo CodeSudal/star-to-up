@@ -126,7 +126,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb__links">
-                            <span style="font-weight: bold; font-size: 50px; color: black">Jupiter${data.pName}</span>
+                            <span style="font-weight: bold; font-size: 50px; color: black">${data.pName}</span>
                         </div>
                     </div>
                 </div>
@@ -259,7 +259,7 @@
                             </div>
                         </div>
                     </div>
-                   -->
+                 
                     
                
                    <!--   샘플로 해놓은 것  -->
