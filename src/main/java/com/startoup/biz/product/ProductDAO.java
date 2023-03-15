@@ -44,22 +44,23 @@ public class ProductDAO {
    public boolean checkProduct(ProductVO vo) {
       Object[] args= { vo.getpNum() };
       try {
-         ProductVO pvo = jdbcTemplate.queryForObject(SELECT_ONE, args, new ProductRowMapper());
-         
-         
+    	  
          // 구매 후 현재 펀딩금액 상승
          int res=jdbcTemplate.update(UPDATE_CRNAMOUNT, vo.getpNum(), vo.getpNum(), vo.getpNum());
          if(res<1) { return false; }
          
+         ProductVO pvo = jdbcTemplate.queryForObject(SELECT_ONE, args, new ProductRowMapper());
+         
          // 구매 후 퍼센트에이지 변경
          int per=(pvo.getpCRNAmount()/pvo.getpAmount())*100;
-         vo.setpPercent(per);
-         jdbcTemplate.update(UPDATE_PERCENT, vo.getpPercent(), vo.getpNum());
+         System.out.println("퍼센트에이지 : "+per);
+         pvo.setpPercent(per);
+         jdbcTemplate.update(UPDATE_PERCENT, pvo.getpPercent(), pvo.getpNum());
          
          // 구매 후 펀딩종료 확인 (펀딩금액이 모두 찼으면 pFinish 1로 변경[종료])
          pvo = jdbcTemplate.queryForObject(CHECK_FINISH, args, new PercentRowMapper());
          if(pvo.getpPercent()==100) {
-            jdbcTemplate.update(UPDATE_FINISH, vo.getpNum());
+            jdbcTemplate.update(UPDATE_FINISH, pvo.getpNum());
             return true;
          }
          return true;
