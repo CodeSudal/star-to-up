@@ -194,6 +194,15 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
+	
+	// 내 펀딩 목록 보기
+	public List<ProductVO> myFundList(MyFundingVO vo){
+		try {
+			return mybatis.selectList("MemberDAO.myFundList", vo);
+		} catch(Exception e) {
+			return null;
+		}
+	}
 }
 
 

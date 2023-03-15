@@ -15,7 +15,7 @@ public class ListDAO {
 	private JdbcTemplate jdbcTemplate;
 
 	// 펀딩 목록 추가
-	final String INSERT_LISTS = "INSERT INTO LISTS(L_NUM, L_PID, L_MID) VALUES( (SELECT NVL(MAX(F_NUM), 0) + 1 FROM LISTS), ?, ?)";
+	final String INSERT_LISTS = "INSERT INTO LISTS(L_NUM, L_PID, L_MID) VALUES( (SELECT NVL(MAX(L_NUM), 0) + 1 FROM LISTS), ?, ?)";
 	// 펀딩 SELECT_ALL (제품으로 검색) == 제품을 구매한 고객 리스트
 	final String SELECT_ALL_MEMEBER = "SELECT L_NUM, L_PID, L_MID FROM LISTS WHERE L_PID=?";
 	// 펀딩 SELECT_ALL (아이디로 검색) == 회원이 구매한 제품 리스트

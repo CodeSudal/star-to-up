@@ -89,6 +89,11 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.deleteLikeList(list, mlvo);
 	}
 
+	@Override
+	public List<ProductVO> myFundList(MyFundingVO vo) {
+		return mdao.myFundList(vo);
+	}
+
 	
 	
 
