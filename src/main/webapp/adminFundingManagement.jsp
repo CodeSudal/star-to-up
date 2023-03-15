@@ -87,9 +87,13 @@ keyframes progressAnimation { 0% {
 
 
 
+
+
 %
 {
 background-color
+
+
 
 
 
@@ -99,14 +103,18 @@ background-color
 
 
 
+
+
 black
+
+
 
 
 ;
 }
 }
-@
-keyframes colorAnimation { 0% {
+
+keyframes colorAnimation { 
 	background-image: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #7dc8e8, #5856d6,
 		#ff2d55);
 }
@@ -116,9 +124,13 @@ keyframes colorAnimation { 0% {
 
 
 
+
+
 %
 {
 background-image
+
+
 
 
 
@@ -128,7 +140,11 @@ background-image
 
 
 
+
+
 linear-gradient
+
+
 
 
 (
@@ -136,7 +152,11 @@ linear-gradient
 
 
 
+
+
 to
+
+
 
 
 
@@ -158,7 +178,11 @@ right
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -168,9 +192,13 @@ right
 
 
 
+
+
 %
 {
 background-image
+
+
 
 
 
@@ -180,7 +208,11 @@ background-image
 
 
 
+
+
 linear-gradient
+
+
 
 
 (
@@ -188,7 +220,11 @@ linear-gradient
 
 
 
+
+
 to
+
+
 
 
 
@@ -210,7 +246,11 @@ right
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -220,9 +260,13 @@ right
 
 
 
+
+
 %
 {
 background-image
+
+
 
 
 
@@ -232,7 +276,11 @@ background-image
 
 
 
+
+
 linear-gradient
+
+
 
 
 (
@@ -240,7 +288,11 @@ linear-gradient
 
 
 
+
+
 to
+
+
 
 
 
@@ -262,7 +314,11 @@ right
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -272,9 +328,13 @@ right
 
 
 
+
+
 %
 {
 background-image
+
+
 
 
 
@@ -284,7 +344,11 @@ background-image
 
 
 
+
+
 linear-gradient
+
+
 
 
 (
@@ -292,7 +356,11 @@ linear-gradient
 
 
 
+
+
 to
+
+
 
 
 
@@ -314,7 +382,11 @@ right
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -392,7 +464,7 @@ p[data-value]:after {
 									style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
 									<div class="bg-secondary h-100 p-4"
 										style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.2) !important">
-										<h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;${v.pName}
+										<h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;${v.pEN}
 										</h3>
 										<span
 											style="text-align: right; margin-left: 90%; color: white">${v.pPercent}%</span>

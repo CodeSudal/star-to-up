@@ -47,7 +47,7 @@
                      <div class="img_box">
                         <img src="${i.pImage1}" alt="img" width="100%" height="100%">
                      </div>
-                     <div class="title_box">${i.pName}</div>
+                     <div class="title_box">${i.pEN}</div>
                   </div>
                   <div class="total_item bc">
                      <div class="text_box">${i.pAmount}</div>
