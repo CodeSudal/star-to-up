@@ -3,14 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Ashion Template">
 <meta name="keywords" content="Ashion, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Store</title>
+<title>STU STORE</title>
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 
 <!-- Google Font -->
 <!--<link rel="stylesheet" href="css/font.css" type="text/css">-->

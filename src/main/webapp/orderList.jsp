@@ -4,10 +4,13 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%><!-- formatting 태그 임포트 -->
 <%@page import="java.util.*"%>
 <!DOCTYPE html>
+<html lang="ko">
 <html>
 <head>
 <meta charset="UTF-8">
-<title>orderList</title>
+<title>STU ORDERLIST</title>
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 
 <script type="text/javascript"
    src="https://code.jquery.com/jquery-3.5.1.js"></script>

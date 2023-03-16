@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>제품이 없습니다.</title>
+<title>STU NOPRODUCT</title>
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 <link rel="stylesheet" href="css/noProduct.css" type="text/css">
 </head>
 <body>

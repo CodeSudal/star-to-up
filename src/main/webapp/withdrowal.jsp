@@ -10,7 +10,9 @@
 <meta name="keywords" content="Ashion, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>STU LOGIN</title>
+<title>STU SIGNOUT</title>
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 
 <!-- Google Font -->
 <link
