@@ -97,8 +97,8 @@
 										<td>${v.mName}</td>
 										<td>${v.mEmail1} @ ${v.mEmail2}</td>
 										<td>${v.mNum}</td>
-										<td>${v.mRegdate}</td>
-										<td><a href="adminMemberDelete.do?mId=${v.mId}"><button type="button"
+										<td>${v.mRegdate}</td> 
+										<td><a href="javascript:delMember();"><button type="button"
 												class="btn btn-primary rounded-pill m-2" >Delete</button></a></td>
 									</tr>
 									</c:forEach>
@@ -134,6 +134,27 @@
 
 	<!-- Template Javascript -->
 	<script src="js/mainAdmin.js"></script>
+	
+	<!-- 회원삭제실행여부확인 JS -->
+	<script type="text/javascript">
+	
+		function delMember() {
+	
+			if(confirm("해당 회원 정보를 삭제하시겠습니까?")){
+				 // 승낙하면 회원삭제
+                location.href = '${pageContext.request.contextPath}/adminMemberDelete.do?mId=${v.mId}';
+			}
+			else{
+				//거부하면 해당 페이지에 그대로 있음
+                history.back();
+			}
+
+		}
+	
+	</script>
+	
+	
+	
 
 </body>
 </html>
