@@ -2,14 +2,16 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Ashion Template">
 <meta name="keywords" content="Ashion, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>회원가입</title>
+<title>STU SIGNIN</title>
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 <style type="text/css">
 
 /* select {

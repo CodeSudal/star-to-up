@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ashion Template">
@@ -12,6 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><spring:message code="message.about.title"/></title>
+    
+    <!-- 파비콘 삽입 -->
+	<link rel="icon" href="img/StarToUp_Logo.png">
 
 	<link
    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
