@@ -80,7 +80,7 @@ public class ProductDAO {
 			ProductVO pvo = jdbcTemplate.queryForObject(SELECT_ONE, args, new ProductRowMapper());
 
 			// 구매 후 퍼센트에이지 변경
-			int per=(pvo.getpCRNAmount()/pvo.getpAmount())*100;
+			double per=((double)pvo.getpCRNAmount())/pvo.getpAmount()*100;
 			System.out.println("퍼센트에이지 : "+per);
 			pvo.setpPercent(per);
 			jdbcTemplate.update(UPDATE_PERCENT, pvo.getpPercent(), pvo.getpNum());

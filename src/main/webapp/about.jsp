@@ -83,11 +83,16 @@
          <div class="menu_item1"><a href="info.do">INFO</a></div>
          <div class="menu_item1"><a href="about.do">ABOUT</a></div>
       </div>
-      <div style="display: flex; font-weight: bold; margin-left: 30%;">
-      	 <div style="width: 30px;" class="menu_item1"><a href="about.do?lang=en"><img alt="ENGLISH" src="img/icon-united-states.png"></a></div>
-      	 <div style="width: 30px;" class="menu_item1"><a href="about.do?lang=ko"><img alt="한국어" src="img/icon-south-korea.png"></a></div>
-	  </div>
+      
       <div class="top_right_box">
+      <c:choose>
+      	<c:when test="${param.lang eq 'en'}">
+      		<div style="width: 20px; margin-right:15%; align:left;"><a href="about.do?lang=ko"><img alt="ENGLISH" src="img/lang.png"></a></div>
+     	</c:when>
+     	<c:otherwise>
+      		<div style="width: 20px; margin-right:15%; align:left;"><a href="about.do?lang=en"><img alt="한국어" src="img/lang.png"></a></div>
+      	</c:otherwise>
+      </c:choose>
         <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
             <div style="margin-right:10%; margin-top:5%;">
                <p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
@@ -115,7 +120,7 @@
                            <c:choose>
                                <c:when test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
                                    <li><a href="myFundingList.do"><spring:message code="message.about.gnb1"/></a></li>
-                                    <li><a href="myList.do"><spring:message code="message.about.gnb2"/></a></li>
+                                    <li><a href="shopcart.do"><spring:message code="message.about.gnb2"/></a></li>
                                     <li><a href="logout.do"><spring:message code="message.about.gnb3"/></a></li>
                                </c:when>
                               <c:when test="${member.mId != null}">
