@@ -148,6 +148,7 @@ public class MemberController {
 			msg = "joinTrue";
 			lo = "login.do";
 			model.addAttribute("msg", msg);
+			model.addAttribute("lo", lo);
 		}
 		return "alert.jsp";
 	}
