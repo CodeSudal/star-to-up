@@ -112,7 +112,6 @@ public class MemberController {
 		mlvo.setMlMid(vo.getmId()); // 아이디 mlvo에 저장
 		vo.setmLikecnt(memberSI.countLike(mlvo).getMlNum());// likecnt 쿼리문 돌려서 저장
 		session.setAttribute("member", vo); // 세션에 정보 저장 "member"라는 이름으로
-		System.out.println(vo);
 		return "redirect:store.do";
 	}
 
@@ -248,7 +247,7 @@ public class MemberController {
 
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		mlvo.setMlMid(mvo.getmId());
-		model.addAttribute("datas", memberSI.deleteLikeList(list, mlvo));
+		memberSI.deleteLikeList(list, mlvo);
 		mvo.setmLikecnt(memberSI.countLike(mlvo).getMlNum());// likecnt 쿼리문 돌려서 저장
 		session.setAttribute("member", mvo); // 세션에 정보 저장 "member"라는 이름으로
 
@@ -290,7 +289,7 @@ public class MemberController {
 
 	// 내 펀딩 내역 보기
 	@RequestMapping(value = "/myFundingList.do")
-	public String withdrowalVie(MyFundingVO vo, Model model, HttpSession session) {
+	public String myFundingList(MyFundingVO vo, Model model, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		if (member != null) {
 			vo.setMfMid(member.getmId());

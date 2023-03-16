@@ -32,6 +32,12 @@
 	} else if (msg == 'paymentSuccess') {
 		alert('결제를 성공하셨습니다! 내 펀딩 목록 페이지로 이동합니다.');
 		location.href = '${lo}';
+	} else if (msg == 'insertImageFalse') {
+		alert('펀딩 상품 추가를 실패하였습니다.');
+		location.href = document.referrer;
+	} else if (msg == 'insertImageTrue') {
+		alert('펀딩 상품을 성공적으로 추가했습니다.');
+		location.href = '${lo}';
 	} else {
 		alert('관리자에게 문의해주세요');
 		location.href = document.referrer;

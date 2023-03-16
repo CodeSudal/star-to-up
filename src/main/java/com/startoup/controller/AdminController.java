@@ -39,7 +39,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value="/adminProductInsert.do")
-	public String selectAllProductInsert(ProductVO pvo, Model model, MultipartHttpServletRequest mtfRequest) {
+	public String selectAllProductInsert(ProductVO pvo, Model model, String msg, String lo, MultipartHttpServletRequest mtfRequest) {
 
 		List<MultipartFile> fileList = pvo.getUploadFile();
 		System.out.println("src value : " + pvo.getUploadFile());
@@ -94,11 +94,17 @@ public class AdminController {
 			}
 		}
 
-		System.out.println("adminProductInsert 들어옴");
-		// INSERT PRODUCT
-		model.addAttribute("datas", ProductSI.insertProduct(pvo));
-		System.out.println("adminProductInsert 나감");
-		return "adminProduct.do";
+		boolean insert = ProductSI.insertProduct(pvo);
+		if(!insert) {
+			msg = "insertImageFalse";
+			model.addAttribute("msg", msg);
+		} else {
+			msg = "insertImageTrue";
+			lo = "adminProduct.do";
+			model.addAttribute("msg", msg);
+			model.addAttribute("lo", lo);
+		}
+		return "alert.jsp";
 	}
 
 	@RequestMapping(value="/adminMember.do")
