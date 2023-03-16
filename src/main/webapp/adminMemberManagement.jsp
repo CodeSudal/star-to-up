@@ -43,6 +43,24 @@
 <link href="css/styleAdmin.css" rel="stylesheet" />
 </head>
 
+
+	
+<script type="text/javascript">
+function deleteMem(mId){
+	console.log('여기로 들어와줬으면해..');
+	if(confirm("해당 회원 정보를 삭제하시겠습니까?")){
+		location.href="adminMemberDelete.do?mId="+mId+"";
+	}else{
+        history.back();
+	}
+	
+}
+
+
+
+</script>
+
+
 <body>
 	<div class="container-fluid position-relative d-flex p-0">
 		<!-- Spinner Start -->
@@ -56,13 +74,13 @@
 		<!-- Spinner End -->
 
 		<!-- Sidebar Start -->
-		<STU:sideBar/>
+		<STU:sideBar />
 		<!-- Sidebar End -->
 
 		<!-- Content Start -->
 		<div class="content">
 			<!-- Navbar Start -->
-			<STU:navBar/>
+			<STU:navBar />
 			<!-- Navbar End -->
 
 			<!-- Table Start -->
@@ -87,24 +105,29 @@
 
 									</tr>
 								</thead>
-								
+
 								<tbody>
-									<c:forEach var="v" items="${memberList}" >
-									<tr>
-									
-										<!-- <th scope="row">1</th> -->
-										<td>${v.mId}</td>
-										<td>${v.mName}</td>
-										<td>${v.mEmail1} @ ${v.mEmail2}</td>
-										<td>${v.mNum}</td>
-										<td>${v.mRegdate}</td> 
-										<td><a href="javascript:delMember();"><button type="button"
-												class="btn btn-primary rounded-pill m-2" >Delete</button></a></td>
-									</tr>
+									<c:forEach var="v" items="${memberList}">
+										<tr>
+
+											<!-- <th scope="row">1</th> -->
+											<td id="${v.mId}">${v.mId}</td>
+
+											<td>${v.mName}</td>
+											<td>${v.mEmail1}@ ${v.mEmail2}</td>
+											<td>${v.mNum}</td>
+											<td>${v.mRegdate}</td>
+
+
+											<td>
+											<button class="btn btn-primary rounded-pill m-2" type="button" onclick = "deleteMem('${v.mId}')"
+													>
+													Delete</button></td>
+										</tr>
 									</c:forEach>
-				
+
 								</tbody>
-								
+
 							</table>
 						</div>
 					</div>
@@ -136,22 +159,7 @@
 	<script src="js/mainAdmin.js"></script>
 	
 	<!-- 회원삭제실행여부확인 JS -->
-	<script type="text/javascript">
-	
-		function delMember() {
-	
-			if(confirm("해당 회원 정보를 삭제하시겠습니까?")){
-				 // 승낙하면 회원삭제
-                location.href = '${pageContext.request.contextPath}/adminMemberDelete.do?mId=${v.mId}';
-			}
-			else{
-				//거부하면 해당 페이지에 그대로 있음
-                history.back();
-			}
 
-		}
-	
-	</script>
 	
 	
 	
