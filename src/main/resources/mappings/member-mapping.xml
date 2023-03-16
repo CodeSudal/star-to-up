@@ -14,7 +14,7 @@
 	</delete>
 
 	<select id="selectAllMember" resultType="member">
-		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS
+		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE UPPER(M_ID) NOT LIKE 'ADMIN'
 	</select>
 	
 	<select id="selectOneMember" resultType="member">
