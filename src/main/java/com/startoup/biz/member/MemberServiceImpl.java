@@ -99,6 +99,11 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.countLike(vo);
 	}
 
+	@Override
+	public MemberVO selectKakaoMember(MemberVO vo) {
+		return mdao.selectKakaoMember(vo);
+	}
+
 	
 	
 

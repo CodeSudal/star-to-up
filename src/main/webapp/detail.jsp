@@ -127,7 +127,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="breadcrumb__links">
+                        <div class="breadcrumb__links" style="margin-left:5%;">
                             <span style="font-weight: bold; font-size: 50px; color: black">${data. pEN}</span>
                         </div>
                     </div>
@@ -182,7 +182,7 @@
                                         class="product__big__img"
                                         src="img/${data.pImage1}"
                                         alt="선택이미지"
-                                        style="width: 80vw; height:80hw; "
+                                        style="width: 90%; height:90%; "
                                     />
                             </div>
                           
@@ -315,8 +315,8 @@
                     -->
                   
                     <!-- 상품상세정보(글) -->
-                    <div class="col-lg-12">
-                        <div class="product__details__tab">
+                    <div class="col-lg-12" >
+                        <div class="product__details__tab" style="margin-right:5%";>
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Detail</a>
@@ -463,7 +463,7 @@
               success : function(resp) {
                    if (resp == 'success') {
                        console.log("찜취소 성공!");
-                      // alert('찜하기 취소 하셨습니다.');
+                      alert('해당 상품을 찜 취소 하셨습니다.');
                        location.reload();
                    }
                    else{

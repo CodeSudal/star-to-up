@@ -21,6 +21,10 @@
 		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=#{mId}
 	</select>
 	
+	<select id="selectKakaoMember" resultType="member">
+		SELECT M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=#{mId}
+	</select>
+	
 	<select id="selectOneEmail" resultType="member">
 		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_EMAIL1=#{mEmail1} AND M_EMAIL2=#{mEmail2}
 	</select>
