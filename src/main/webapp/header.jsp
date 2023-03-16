@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Header</title>
+<title>STU INFO</title>
 
 
 <link rel="stylesheet" href="css/font.css" type="text/css">
@@ -65,7 +65,13 @@
                                     <li><a href="shopcart.do">찜 목록</a></li>
                                     <li><a href="logout.do">로그아웃</a></li>
                                </c:when>
-                              <c:when test="${member.mId != null}">
+                              <c:when test="${member.mId != null && member.mPw == 'KAKAO'}">
+                                 <li><a href="myFundingList.do">펀딩 내역</a></li>
+                                 <li><a href="shopcart.do">찜 목록</a></li>
+                                <li><a href="withdrowal2.do">회원 탈퇴</a></li>
+                                 <li><a href="logout.do">로그아웃</a></li>
+                              </c:when>
+                              <c:when test="${member.mId != null }">
                                  <li><a href="myFundingList.do">펀딩 내역</a></li>
                                  <li><a href="shopcart.do">찜 목록</a></li>
                                 <li><a href="withdrowal.do">회원 탈퇴</a></li>
