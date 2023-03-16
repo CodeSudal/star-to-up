@@ -14,11 +14,15 @@
 	</delete>
 
 	<select id="selectAllMember" resultType="member">
-		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS
+		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE UPPER(M_ID) NOT LIKE 'ADMIN'
 	</select>
 	
 	<select id="selectOneMember" resultType="member">
 		SELECT M_ID, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=#{mId}
+	</select>
+	
+	<select id="selectKakaoMember" resultType="member">
+		SELECT M_ID, M_PW, M_NAME, M_EMAIL1, M_EMAIL2, M_NUM, M_REGDATE FROM MEMBERS WHERE M_ID=#{mId}
 	</select>
 	
 	<select id="selectOneEmail" resultType="member">
@@ -62,11 +66,11 @@
 	</select>
 	
 	<select id="myLikeList" resultType="product">
-		SELECT DISTINCT p.P_NUM, p.P_PRICE, p.P_NAME, p.P_AMOUNT, p.P_IMAGE1 FROM PRODUCT p, MYLIKE l, MEMBERS m WHERE p.P_NUM = l.ML_PID AND l.ML_MID = #{mlMid}
+		SELECT DISTINCT p.P_NUM, p.P_PRICE, p.P_NAME, p.P_AMOUNT, p.P_IMAGE1, p.P_EN FROM PRODUCT p, MYLIKE l, MEMBERS m WHERE p.P_NUM = l.ML_PID AND l.ML_MID = #{mlMid}
 	</select>
 	
 	<select id="myFundList" resultType="product">
-		SELECT DISTINCT p.P_NUM, p.P_PRICE, p.P_NAME, p.P_AMOUNT, p.P_IMAGE1 FROM PRODUCT p, MYFUNDING f, MEMBERS m WHERE p.P_NUM = f.MF_PID AND f.MF_MID = #{mfMid}
+		SELECT DISTINCT p.P_NUM, p.P_PRICE, p.P_NAME, p.P_AMOUNT, p.P_IMAGE1, p.P_EN FROM PRODUCT p, MYFUNDING f, MEMBERS m WHERE p.P_NUM = f.MF_PID AND f.MF_MID = #{mfMid}
 	</select>
 	
 	

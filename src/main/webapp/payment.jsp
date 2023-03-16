@@ -4,14 +4,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
-<html lang="zxx">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Ashion Template">
 <meta name="keywords" content="Ashion, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Ashion | Template</title>
+<title>STU PAYMENT</title>
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -164,7 +166,7 @@ input:checked+.osSlider:before {
 						<tr>
 							<td
 								style="width: 147px; height: 47px; font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; line-height: 44px; color: #000000;"><img
-								src="${product.pImage1}" style=""></td>
+								src="img/${product.pImage1}" style="width:60px; height:60px;"></td>
 							<td
 								style="width: 10%; height: 47px; font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; line-height: 44px; color: #000000;">${product.pName}
 							</td>

@@ -75,6 +75,15 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
+	
+	// 카카오회원 자세히보기
+	public MemberVO selectKakaoMember(MemberVO vo) {
+		try {
+			return mybatis.selectOne("MemberDAO.selectKakaoMember", vo);
+		} catch(Exception e) {
+			return null;
+		}
+	}
 
 	// 이메일 중복확인
 	public MemberVO selectOneEmail(MemberVO vo) {

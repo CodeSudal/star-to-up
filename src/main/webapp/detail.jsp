@@ -14,6 +14,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>STU DETAILS</title>
+        <!-- 파비콘 삽입 -->
+		<link rel="icon" href="img/StarToUp_Logo.png">
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet" />
@@ -499,14 +501,14 @@
          Kakao.Link.sendDefault({
             objectType : 'feed',
             content : {
-               title : '[START TO UP]${data. pEN}',
+               title : '[START TO UP] ${data. pEN}',
                description : '나만의 별을 펀딩해보세요!',
                imageUrl : 'https://ifh.cc/g/YjnLWC.png',
                link : {
                   mobileWebUrl :    
-                     'http://localhost:8088/app/detail.do?pNum=${data.pNum}',
+                     'http://localhost:8080/app/detail.do?pNum=${data.pNum}',
                   
-                  webUrl : 'http://localhost:8088/app/detail.do?pNum=${data.pNum}',
+                  webUrl : 'http://localhost:8080/app/detail.do?pNum=${data.pNum}',
                },
             },
             buttons : [ {

@@ -26,16 +26,14 @@ public class ProductController {
 	@Autowired
 	private ListServiceImpl listSI;
 	
+	// 스토어 메인 화면
 	@RequestMapping(value="/store.do")
 	public String storeView(@ModelAttribute("product")ProductVO vo, Model model) {
-		/*
-		 * System.out.println("store.do 입장");
-		 * System.out.println("[로그]  "+ProductSI.selectAll(vo));
-		 */
 		model.addAttribute("productList", productSI.selectAll(vo));
 		return "store.jsp";
 	}
 	
+	// 결제 화면 입장
 	@RequestMapping(value="/payment.do")
 	public String selectOne(ProductVO pvo, MemberVO mvo, Model model) {
 		model.addAttribute("product", productSI.selectOne(pvo));
@@ -43,23 +41,27 @@ public class ProductController {
 		return "payment.jsp";
 	}
 	
+	// 결제 완료
 	@RequestMapping(value="/paymentsuccess.do")
-	public String insertList(ProductVO pvo, ListVO lvo, MyFundingVO myvo, Model model,HttpSession session) {
-		System.out.println("insertList 실행됨");
-		MemberVO mvo = (MemberVO) session.getAttribute("member");
+	public String insertList(ProductVO pvo, ListVO lvo, MyFundingVO myvo, String msg, String lo, Model model,HttpSession session) {
+		MemberVO mvo = (MemberVO) session.getAttribute("member"); // 세션 정보 가져와 mvo에 저장
+		// mvo의 Id, PW 값을 lvo와 myvo에 저장
 		lvo.setlMid(mvo.getmId());
 		myvo.setMfMid(mvo.getmId());
-		
 		lvo.setlPid(pvo.getpNum());
 		myvo.setMfPid(pvo.getpNum());
-		System.out.println("lvo : "+lvo);
-		model.addAttribute("list", listSI.insertList(lvo));
-		System.out.println("pvo : "+pvo);
+		
+		// db 변경
+		model.addAttribute("list", listSI.insertList(lvo)); // 펀딩 내역 추가
 		model.addAttribute("product", productSI.checkProduct(pvo));
 		model.addAttribute("member", memberSI.insertFunding(myvo));
 		/* model.addAttribute("list", productSI.update) */
 		
-		return "redirect:myFundingList.do";
+		msg = "paymentSuccess";
+		lo = "myFundingList.do";
+		model.addAttribute("msg", msg);
+		model.addAttribute("lo", lo);
+		return "alert.jsp";
 	}
 	
 	

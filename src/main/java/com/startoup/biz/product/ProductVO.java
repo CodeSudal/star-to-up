@@ -18,7 +18,7 @@ public class ProductVO {
 	private List<ListVO> pList; // 해당 제품 펀딩 회원리스트
 	private int pAmount; // 펀딩목표금액
 	private int pCRNAmount; // 현재펀딩금액
-	private int pPercent; // 펀딩목표 퍼센트에이지
+	private double pPercent; // 펀딩목표 퍼센트에이지
 	private int people;	// 펀딩 목표 총 인원
 	private String pEN;	// 펀딩 목표 총 인원
 	private List<MultipartFile> uploadFile;	// 업로드 파일
@@ -53,10 +53,10 @@ public class ProductVO {
 	public void setpImage3(String pImage3) {
 		this.pImage3 = pImage3;
 	}
-	public int getpPercent() {
+	public double getpPercent() {
 		return pPercent;
 	}
-	public void setpPercent(int pPercent) {
+	public void setpPercent(double pPercent) {
 		this.pPercent = pPercent;
 	}
 	public int getpNum() {
