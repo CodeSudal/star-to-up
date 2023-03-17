@@ -71,10 +71,10 @@ public class AdminController {
 		 */
 		JsonObject obj = new JsonObject();
 
-		listSI.selectAllProduct(vo);
+		listSI.selectAllList(vo);
 		obj.addProperty("name", vo.getlMid());// id
-		// obj.addProperty("pName", vo.getpName()); //pName
-		// obj.addProperty("email", vo.getEmail); //Email
+		obj.addProperty("pName", vo.getLpName()); //pName
+		obj.addProperty("email", vo.getlEmail()); //Email
 		
 
 		//JsonObject data = new JsonObject();

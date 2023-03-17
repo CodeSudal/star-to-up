@@ -32,4 +32,9 @@ public class ListServiceImpl implements ListService{
 		return ldao.selectCount(vo);
 	}
 
+	@Override
+	public List<ListVO> selectAllList(ListVO vo) {
+		return ldao.selectAllList(vo);
+	}
+
 }
