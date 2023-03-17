@@ -22,7 +22,13 @@ public class ListDAO {
 	final String SELECT_ALL_PRODUCT = "SELECT L_NUM, L_PID, L_MID FROM LISTS WHERE L_MID=?";
 	// 펀딩한 사람 인원 수
 	final String SELECT_COUNT = "SELECT COUNT(L_NUM) AS L_NUM FROM LISTS WHERE L_PID=?";
-
+	
+	// 펀딩 이메일 정보
+	final String SELECT_ALL_LIST = "SELECT DISTINCT l.L_NUM, l.L_PID, l.L_MID, m.M_EMAIL1||'@'||m.M_EMAIL2 AS EMAIL, p.P_NAME \n"
+			+ "FROM LISTS l \n"
+			+ "INNER JOIN MEMBERS m ON l.L_MID = m.M_ID \n"
+			+ "INNER JOIN PRODUCT p ON l.L_PID = p.P_NUM \n"
+			+ "WHERE l.L_PID = ?";
 
 	// 사용자가 구매했다면 실행 (구매자 리스트 추가)
 	public boolean insertList(ListVO vo) {
@@ -64,6 +70,16 @@ public class ListDAO {
 			return null;
 		}
 	}
+	
+	public List<ListVO> selectAllList(ListVO vo){
+		try {
+			Object[] args= { vo.getlPid() };
+			return jdbcTemplate.query(SELECT_ALL_MEMEBER, args, new ListRowMapper3());
+		} catch(Exception e) {
+			return null;
+		}
+	}
+}
 
 	class ListRowMapper implements RowMapper<ListVO> {
 
@@ -75,10 +91,7 @@ public class ListDAO {
 			data.setlMid(rs.getString("L_MID"));
 			return data;
 		}
-
 	}
-
-}
 
 
 class ListRowMapper2 implements RowMapper<ListVO> {
@@ -90,6 +103,19 @@ class ListRowMapper2 implements RowMapper<ListVO> {
 
 		return data;
 	}
-
 }
 
+class ListRowMapper3 implements RowMapper<ListVO> {
+
+	@Override
+	public ListVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		ListVO data=new ListVO();
+		data.setlNum(rs.getInt("L_NUM"));
+		data.setlPid(rs.getInt("L_PID"));
+		data.setlMid(rs.getString("L_MID"));
+		data.setlEmail("EAMIL");
+		data.setLpName("P_NAME");
+
+		return data;
+	}
+}
