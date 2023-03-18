@@ -13,7 +13,11 @@ import org.springframework.stereotype.Repository;
 public class ProductDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
+	
+	// 제품 NAME 업데이트2
+	final String UPDATE_PNAME2 = "UPDATE PRODUCT SET P_EN = ? WHERE P_NAME = ?";
+	// 상품 이름 확인
+	final String SELECT_ALL_PRODUCT2 = "SELECT P_NAME, P_EN FROM PRODUCT";
 	// 제품추가
 	final String INSERT_PRODUCT = "INSERT INTO PRODUCT( P_NUM, P_NAME, P_PRICE, P_IMAGE1, P_IMAGE2, P_IMAGE3, P_AMOUNT) VALUES( (SELECT NVL(MAX(P_NUM), 0) + 1 FROM PRODUCT), ?, ?, ?, ?, ?, ?)";
 	// 제품정보변경
@@ -119,6 +123,18 @@ public class ProductDAO {
 			jdbcTemplate.update(UPDATE_PINFO);
 
 			jdbcTemplate.update(UPDATE_PNAME);
+			
+			// 네이밍을 한글로 해줄 LIST
+			List<NamingVO> ndb;
+			ndb=jdbcTemplate.query(SELECT_ALL_PRODUCT2, new PNamingRowMapper());
+			
+			System.out.println(ndb);
+			
+			for(int i=0; i<ndb.size(); i++) {
+				if(ndb.get(i).getnEN()==null) {
+					jdbcTemplate.update(UPDATE_PNAME2, ndb.get(i).getnName(), ndb.get(i).getnName());
+				}
+			}
 
 			return true;
 		} catch(Exception e) {
@@ -264,6 +280,18 @@ class NamingRowMapper implements RowMapper<NamingVO> {
 		data.setnNum(rs.getInt("N_NUM"));
 		data.setnName(rs.getString("N_NAME"));
 		data.setnEN(rs.getString("N_EN"));
+		return data;
+	}
+
+}
+
+class PNamingRowMapper implements RowMapper<NamingVO> {
+
+	@Override
+	public NamingVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		NamingVO data=new NamingVO();
+		data.setnName(rs.getString("P_NAME"));
+		data.setnEN(rs.getString("P_EN"));
 		return data;
 	}
 
