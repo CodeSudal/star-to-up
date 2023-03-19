@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>     
 
@@ -9,23 +9,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STU INFO</title>
-<!-- 파비콘 삽입 -->
-<link rel="icon" href="img/StarToUp_Logo.png">
+
 
 <link rel="stylesheet" href="css/font.css" type="text/css">
 <link
    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
    rel="stylesheet" />
 <!-- Css Styles -->
-
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
+
+
 <link rel="stylesheet" href="css/header.css" type="text/css">
 </head>
 <body>
 
-   <div class="header_box" style="background-color: rgb(255,255,255,0.7);">
-      <div class="top_left_box">
+<div class="header_box" style="background-color: rgb(255,255,255,0.7);">      <div class="top_left_box">
          <div class="logo_box"><a href="main.do" style="color: black;
     font-weight: 700;">LOGO</a></div>
          <div class="menu_item1"><a href="store.do" style="color: black;
@@ -38,7 +36,7 @@
       <div class="top_right_box">
         <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
             <div style="margin-right:10%; margin-top:5%;">
-               <p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
+               <p style="font-weight: bold; color:black; "> <a href="adminFunding.do" style="color: black;" >ADMIN</a></p>
             </div>
          </c:if>
          <div class="icon_box1">
@@ -46,7 +44,7 @@
                <ul class="header__right__widget">
                   <li><a href="shopcart.do"><span class="material-symbols-outlined">&#xE87D;</span>
                         <c:if test="${member.mId != null}">
-                            <div class="tip"><%-- ${member.countLike} --%></div> 
+                            <div class="tip">${member.mLikecnt}</div> 
                         </c:if>
                       </a>
                   </li>
@@ -63,12 +61,18 @@
                            <c:choose>
                                <c:when test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
                                    <li><a href="myFundingList.do">펀딩 내역</a></li>
-                                    <li><a href="myList.do">찜내역</a></li>
+                                    <li><a href="shopcart.do">찜 목록</a></li>
                                     <li><a href="logout.do">로그아웃</a></li>
                                </c:when>
-                              <c:when test="${member.mId != null}">
+                              <c:when test="${member.mId != null && member.mPw == 'KAKAO'}">
                                  <li><a href="myFundingList.do">펀딩 내역</a></li>
-                                 <li><a href="shopcart.do">찜내역</a></li>
+                                 <li><a href="shopcart.do">찜 목록</a></li>
+                                <li><a href="withdrowal2.do">회원 탈퇴</a></li>
+                                 <li><a href="logout.do">로그아웃</a></li>
+                              </c:when>
+                              <c:when test="${member.mId != null }">
+                                 <li><a href="myFundingList.do">펀딩 내역</a></li>
+                                 <li><a href="shopcart.do">찜 목록</a></li>
                                 <li><a href="withdrowal.do">회원 탈퇴</a></li>
                                  <li><a href="logout.do">로그아웃</a></li>
                               </c:when>
