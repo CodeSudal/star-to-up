@@ -472,7 +472,7 @@ p[data-value]:after {
 											<div class="progress-bar2" style="width: ${v.pPercent}%"></div>
 										</div>
 										<br> <br>
-										<form method="post" action="sendEmailQR.do?lPid=${v.pNum}"
+										<form method="post" action="sendAllMail.do?lPid=${v.pNum}"
 											enctype="multipart/form-data">
 											<%-- <c:choose>
 												<c:when test="${v.pPercent==100}">
@@ -487,10 +487,10 @@ p[data-value]:after {
 														onclick="onClickUpload(); disabled">QR삽입</button>
 												</c:otherwise>
 											</c:choose> --%>
-											<a href="sendEmailQR.do?lPid=${v.pNum}"><button 
+											<a href="sendAllMail.do?lPid=${v.pNum}"><button 
 													type="button" class="btn btn-primary rounded-pill m-2"
 													style="padding: 10px 30px; float: right;" id="sendQR"
-													onclick="location.href='sendAllMail.do'" disabled> 메일 전송 </button></a> <input
+													onclick="location.href='sendAllMail.do=?lPid=${v.pNum}'" disabled> 메일 전송 </button></a> <input
 												id="my-input" type="file" type="hidden"
 												onchange="readURL(this);"
 												style="height: 1px; display: none;" />
@@ -513,16 +513,16 @@ p[data-value]:after {
                            <div class="progress-bar2" style="width: 100%"></div>
                         </div>
                         <br> <br>
-                        <form method="post" action="sendEmailQR.do?lPid=${v.lPid}"
+                        <form method="post" action="sendAllMail.do?lPid=${v.lPid}"
                            enctype="multipart/form-data">
                          <!--   <button type="button" id="my-button"
                               class="btn btn-primary rounded-pill m-2"
                               style="padding: 10px 30px;" onclick="onClickUpload();">QR삽입</button> -->
 
-                           <a href="sendEmailQR.do?lPid=${v.pNum}"><button 
+                           <a href="sendAllMail.do?lPid=${v.pNum}"><button 
 													type="button" class="btn btn-primary rounded-pill m-2"
 													style="padding: 10px 30px; float: right;" id="sendQR"
-													onclick="location.href='sendAllMail.do'"> 메일 전송 </button></a> <input
+													onclick="location.href='sendAllMail.do=?lPid=${v.pNum}'"> 메일 전송 </button></a> <input
 												id="my-input" type="file" type="hidden"
 												onchange="readURL(this);"
 												style="height: 1px; display: none;" />
