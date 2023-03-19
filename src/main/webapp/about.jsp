@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
     <link rel="stylesheet" href="css/header.css" type="text/css">
+
+  
 </head>
 
 <style>
@@ -78,74 +80,11 @@
     }
     
 </style>
+<%@ include file="header.jsp"%>
+
 
 <body>
-    <div class="header_box" style="font-weight: 700;">
-      <div class="top_left_box">
-         <div class="logo_box"><a href="main.do">LOGO</a></div>
-         <div class="menu_item1"><a href="store.do">STORE</a></div>
-         <div class="menu_item1"><a href="info.do">INFO</a></div>
-         <div class="menu_item1"><a href="about.do">ABOUT</a></div>
-      </div>
-      
-      <div class="top_right_box">
-      <c:choose>
-      	<c:when test="${param.lang eq 'en'}">
-      		<div style="width: 20px; margin-right:15%; align:left;"><a href="about.do?lang=ko"><img alt="ENGLISH" src="img/lang.png"></a></div>
-     	</c:when>
-     	<c:otherwise>
-      		<div style="width: 20px; margin-right:15%; align:left;"><a href="about.do?lang=en"><img alt="한국어" src="img/lang.png"></a></div>
-      	</c:otherwise>
-      </c:choose>
-        <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
-            <div style="margin-right:10%; margin-top:5%;">
-               <p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
-            </div>
-         </c:if>
-         <div class="icon_box1">
-            <div class="header__right1">
-               <ul class="header__right__widget">
-                  <li><a href="shopcart.do"><span class="material-symbols-outlined">&#xE87D;</span>
-                        <c:if test="${member.mId != null}">
-                            <div class="tip"><%-- ${member.countLike} --%></div> 
-                        </c:if>
-                      </a>
-                  </li>
-
-               </ul>
-            </div>
-            <div class="icon_box1">
-               <nav class="header__menu">
-                  <ul>
-                     <li style="position: relative;"><a href="#"><span
-                           class="material-symbols-outlined">&#xF0D3;</span></a>
-                        <ul class="dropdown"
-                           style="text-align: right; width: 110px; border-radius: 5px; background-color: rgba(0, 0, 0, 0.3); position: absolute; left: -80px; top: 38px">
-                           <c:choose>
-                               <c:when test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
-                                   <li><a href="myFundingList.do"><spring:message code="message.about.gnb1"/></a></li>
-                                    <li><a href="shopcart.do"><spring:message code="message.about.gnb2"/></a></li>
-                                    <li><a href="logout.do"><spring:message code="message.about.gnb3"/></a></li>
-                               </c:when>
-                              <c:when test="${member.mId != null}">
-                                 <li><a href="myFundingList.do"><spring:message code="message.about.gnb4"/></a></li>
-                                 <li><a href="shopcart.do"><spring:message code="message.about.gnb5"/></a></li>
-                                <li><a href="withdrowal.do"><spring:message code="message.about.gnb6"/></a></li>
-                                 <li><a href="logout.do"><spring:message code="message.about.gnb7"/></a></li>
-                              </c:when>
-                               <c:otherwise>
-                                  <li><a href="login.do"><spring:message code="message.about.gnb8"/></a></li>
-                                 <li><a href="agreement.do"><spring:message code="message.about.gnb9"/></a></li>
-                     </c:otherwise>
-                    </c:choose>      
-                        </ul></li>
-                  </ul>
-               </nav>
-
-            </div>
-         </div>
-      </div>
-   </div>
+ 
    <div class="header_box_space"></div>
 
     

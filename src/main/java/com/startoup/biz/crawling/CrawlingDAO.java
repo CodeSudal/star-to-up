@@ -92,7 +92,8 @@ public class CrawlingDAO {
 					jdbcTemplate.update(INSERT_CRAWLING, sel.getcName(), sel.getcInfo());
 				}
 			}
-			
+
+			/*
 			// SELECTALL로 현재 제품 리스트 저장
 			datas=jdbcTemplate.query(SELECT_ALL_PRODUCT, new PSeleniumRowMapper());
 			// 제품 개수만큼 for문을 돌면서 크롤링한 데이터(INFO)로 UPDATE
@@ -104,6 +105,9 @@ public class CrawlingDAO {
 				sel.setcName(title);
 				jdbcTemplate.update(UPDATE_PINFO2, sel.getcName());
 			}
+			*/
+			
+			jdbcTemplate.update(UPDATE_PINFO);
 			return true;
 		} catch(Exception e) {
 			System.out.println(e);
