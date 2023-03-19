@@ -474,7 +474,7 @@ p[data-value]:after {
 										<br> <br>
 										<form method="post" action="sendEmailQR.do?lPid=${v.pNum}"
 											enctype="multipart/form-data">
-											<c:choose>
+											<%-- <c:choose>
 												<c:when test="${v.pPercent==100}">
 													<button type="button" id="my-button"
 														class="btn btn-primary rounded-pill m-2"
@@ -486,11 +486,11 @@ p[data-value]:after {
 														style="padding: 10px 30px;"
 														onclick="onClickUpload(); disabled">QR삽입</button>
 												</c:otherwise>
-											</c:choose>
-											<a href="sendEmailQR.do?lPid=${v.pNum}"><button
+											</c:choose> --%>
+											<a href="sendEmailQR.do?lPid=${v.pNum}"><button 
 													type="button" class="btn btn-primary rounded-pill m-2"
 													style="padding: 10px 30px; float: right;" id="sendQR"
-													onclick="sendQR()" disabled>QR전송</button></a> <input
+													onclick="location.href='sendAllMail.do'" disabled> 메일 전송 </button></a> <input
 												id="my-input" type="file" type="hidden"
 												onchange="readURL(this);"
 												style="height: 1px; display: none;" />
@@ -499,9 +499,8 @@ p[data-value]:after {
 									</div>
 								</div>
 							</c:forEach>
-
-
-							<!-- ▼ 예시로 만들어져 있는 건 무조건 QR삽입 가능할 수 있게 만들어 놨어요
+<!-- 
+ ▼ 예시로 만들어져 있는 건 무조건 QR삽입 가능할 수 있게 만들어 놨어요 -->
                <div class="col-sm-12 col-xl-6 "
                      style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
                      <div class="bg-secondary h-100 p-4"
@@ -516,21 +515,22 @@ p[data-value]:after {
                         <br> <br>
                         <form method="post" action="sendEmailQR.do?lPid=${v.lPid}"
                            enctype="multipart/form-data">
-                           <button type="button" id="my-button"
+                         <!--   <button type="button" id="my-button"
                               class="btn btn-primary rounded-pill m-2"
-                              style="padding: 10px 30px;" onclick="onClickUpload();">QR삽입</button>
+                              style="padding: 10px 30px;" onclick="onClickUpload();">QR삽입</button> -->
 
-                           <a href="sendEmailQR.do?lPid=${v.lPid}"><button type="button"
-                                 class="btn btn-primary rounded-pill m-2"
-                                 style="padding: 10px 30px; float: right;" id="sendQR"
-                                 onclick="sendQR()" disabled>QR전송</button></a> <input
-                              id="my-input" type="file" type="hidden"
-                              onchange="readURL(this);" style="height: 1px; display: none;" />
+                           <a href="sendEmailQR.do?lPid=${v.pNum}"><button 
+													type="button" class="btn btn-primary rounded-pill m-2"
+													style="padding: 10px 30px; float: right;" id="sendQR"
+													onclick="location.href='sendAllMail.do'"> 메일 전송 </button></a> <input
+												id="my-input" type="file" type="hidden"
+												onchange="readURL(this);"
+												style="height: 1px; display: none;" />
 
                         </form>
                      </div>
                   </div>
-                  -->
+                
 
 
 

@@ -183,7 +183,7 @@ $(document).ready(function() {
           /* console.log('삭제하기 버튼 활성화 될 예쩡') */
          
           $(".bot_left").css({"backgroundColor":"#000000","cursor":"pointer"});
-             $(".bot_left").prop("disabled",false);
+          $(".bot_left").prop("disabled",false);
        }
        else{
             $(".bot_left").css({"backgroundColor":"#D9D9D9","cursor":"auto"});

@@ -13,9 +13,8 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 
-<!-- Favicon -->
-<link href="img/favicon.ico" rel="icon">
-
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -24,18 +23,14 @@
 	rel="stylesheet">
 
 <!-- Icon Font Stylesheet -->
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
 	rel="stylesheet">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
 	rel="stylesheet">
 
 <!-- Libraries Stylesheet -->
-<link href="lib/owlcarousel/assets/owl.carousel.min.css"
-	rel="stylesheet">
-<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
-	rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+ <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href="css/bootstrapAdmin.min.css" rel="stylesheet">
@@ -51,7 +46,7 @@ keyframes progressAnimationStrike {from { width:0;
 to {
 	width: 100%;
 }
-
+s
 }
 .progress2 {
 	border-radius: 30px;
@@ -80,43 +75,18 @@ keyframes progressAnimation { 0% {
 	background-color: rgb(39, 22, 94);
 }
 
+#addLinkBtn :hover !important{
+	color: rgb(108, 114, 147) !important;
+	
+
+}
+
 100
-
-
-
-
-
-
-
-
 %
 {
 background-color
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
-
-
-black
-
-
-
-
-
-
-;
+black;
 }
 }
 keyframes colorAnimation {
@@ -125,343 +95,19 @@ keyframes colorAnimation {
 }
 
 20
-
-
-
-
-
-
-
-
 %
 {
-background-image
+background-image:linear-gradient( to right, #5ac8fa,#007aff,#7dc8e8,#5856d6,#ff2d55,#4cd964);
 
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-linear-gradient
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-to
-
-
-
-
-
-
-
-
-right
-,
-#5ac8fa
-,
-#007aff
-,
-#7dc8e8
-,
-#5856d6
-,
-#ff2d55
-,
-#4cd964
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-;
+}40%{
+background-image:linear-gradient(to right,#007aff,#7dc8e8,#5856d6,#ff2d55,#4cd964,#5ac8fa);
+}60%{
+background-image:linear-gradient(to right,#7dc8e8,#5856d6,#ff2d55,#4cd964,#5ac8fa,#007aff);
+}100%{
+background-image:
+linear-gradient(to right ,#5856d6,#ff2d55,#4cd964,#5ac8fa,#007aff,#7dc8e8);
 }
-40
-
-
-
-
-
-
-
-
-%
-{
-background-image
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-linear-gradient
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-to
-
-
-
-
-
-
-
-
-right
-,
-#007aff
-,
-#7dc8e8
-,
-#5856d6
-,
-#ff2d55
-,
-#4cd964
-,
-#5ac8fa
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-;
-}
-60
-
-
-
-
-
-
-
-
-%
-{
-background-image
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-linear-gradient
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-to
-
-
-
-
-
-
-
-
-right
-,
-#7dc8e8
-,
-#5856d6
-,
-#ff2d55
-,
-#4cd964
-,
-#5ac8fa
-,
-#007aff
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-;
-}
-100
-
-
-
-
-
-
-
-
-%
-{
-background-image
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-linear-gradient
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-to
-
-
-
-
-
-
-
-
-right
-,
-#5856d6
-,
-#ff2d55
-,
-#4cd964
-,
-#5ac8fa
-,
-#007aff
-,
-#7dc8e8
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-;
-}
-}
-p[data-value] {
+}p[data-value] {
 	position: relative;
 }
 
@@ -486,9 +132,102 @@ p[data-value]:after {
 }
 }
 </style>
+
 </head>
 
 
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script type="text/javascript"> // emailJS API 
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('nwpJttHh3NhV-NGqV');
+        })();
+    </script>
+
+<script type="text/javascript">
+
+    // 임시 더미데이터
+    var datas = [
+          { name: 'lee', pName: 'earth', email: 'qazseeszaq3219@gmail.com'},
+          { name: 'james', pName: 'mars', email: 'qazseeszaq3219@gmail.com'},
+          { name: 'heo', pName: 'jupiter', email: 'qazseeszaq3219@gmail.com'},
+          { name: 'sophia', pName: 'venus', email: 'qazseeszaq3219@gmail.com'},
+          { name: 'ben', pName: 'sun', email: 'qazseeszaq3219@gmail.com'},
+       ]
+    
+       // prompt에서 입력받은 링크변수 초기화
+       var answer = "";   
+           
+       // 링크 추가 프롬프트창();
+       function addLink() {
+            answer = prompt("Please Insert Link");
+            
+       	 if(answer){
+        	console.log(answer);
+        	console.log('버튼실행됨');
+        	
+        	
+        	$("#contact-form-btn").attr("disabled",false);
+        	$("#contact-form-btn").css('background', '#ffffff');
+        	$("#contact-form-btn").css('opacity', '100');
+        	
+        	
+       	 } else {           
+       
+       		console.log(answer);
+        	
+            $("#contact-form-btn").attr("disabled",true);
+        	console.log('버튼실행안됨');
+        	
+       	}
+       }
+       
+       
+       
+       // emailJS send버튼 실행
+       window.onload = function() {
+    	   
+    	   console.log(' emailJS send버튼 실행함수 들어옴');
+            document.getElementById('contact-form').addEventListener('click', function(event, i) { // submit실행 시 페이지 reloading으로 인해 clickEvent로 바꿈 
+                event.preventDefault(); // 기본 이벤트 방지
+                
+                for(let i=0; i<datas.length; i++) {  // 해당 데이터(펀딩인원수)의 길이만큼 send반복
+                   
+                   //form parameter에 데이터변수 넣기 
+                   this["name"].value = datas[i].name; 
+                   this["email"].value = datas[i].email;
+                   this["pName"].value = datas[i].pName;
+                   this["message"].value = answer;
+                   
+                   
+                    //해당 parameter 확인 
+                   console.log(this["name"].value);
+                   console.log(this["email"].value);
+                   console.log(this["pName"].value);
+                   console.log(this["message"].value);
+   
+                
+                   // send emailJS API 호출  
+                   emailjs.sendForm('service_v72x4pg', 'template_5or2fwc', this) // ( emailjs 유저 토큰, 템플릿 ID, form 데이터 객체 ) 담아서 전송
+                       .then(function() {
+                           console.log('SUCCESS!');
+                       }, function(error) {
+                           console.log('FAILED...', error);
+                       });
+                   
+                   
+                }           
+            });
+        }
+        
+      
+		<!-- 링크추가 + 메일 전송 버튼 활성화  JS -->
+			
+			
+				      
+    </script>
 
 
 
@@ -497,6 +236,9 @@ p[data-value]:after {
 
 
 <body>
+
+
+
 	<div class="container-fluid position-relative d-flex p-0">
 		<!-- Spinner Start -->
 		<div id="spinner"
@@ -600,14 +342,9 @@ p[data-value]:after {
 
 			<!-- Navbar End -->
 
-			<span style="    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    margin-left: 5%;
-    margin-top: 3%;
-    display: block;
-    color: #FFFFFF;">SAND MAIL</span>
+			<span
+				style="font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; margin-left: 5%; margin-top: 3%; display: block; color: #FFFFFF;">SAND
+				MAIL</span>
 
 			<!-- Table Start -->
 			<div class="container-fluid pt-4 px-4">
@@ -627,26 +364,42 @@ p[data-value]:after {
 
 
 
+							<input type="button" id="addLinkBtn" value="add link"
+								class="btn btn-primary rounded-pill m-2 addLinkBtn" onclick="addLink()"
+								style="padding: 10px 30px; display: block; margin-left: 15% !important; margin-bottom: 6% !important; width: 70%; background: #FFFFFF; color: #6c7293 !important; " >
+								
+						<form id="contact-form" onsubmit="return false;">		
+							<input type="hidden" name="name" id="name">
+							<input type="hidden" name="email" id="email">
+							<input type="hidden" name="pName" id="pName">
+							<input type="hidden" name="message" id="message">
 
-								<button type="button" id="my-button"
-									class="btn btn-primary rounded-pill m-2"
-									style="padding: 10px 30px; display: block; margin-left: 15% !important; margin-bottom: 6% !important; width: 70%; background: #FFFFFF; opacity: 0.5;"
-									onclick="onClickUpload();">LiNK ADD</button>
+							<input type="button" class="btn btn-primary rounded-pill m-2 " value="SendMail"
+								style="padding: 10px 30px; float: left; display: block; margin-left: 15% !important; margin-bottom: 10% !important; width: 70%; background: #FFFFFF;  opacity: 0.5;  color: #6c7293 !important;"
+								id="contact-form-btn"  disabled>
+							
+						</form>
+							
+							
+							
+							<!-- <input id="my-input" type="file" onchange="readURL(this);"
+								style="height: 1px; display: none;"> -->
+								
+								
+								
+								
+								<span style="display: block; float: left; margin-bottom: 5% !important; margin-left: 10% !important; text-align: center;">
+								해당 펀딩 참여자에게 메일이 일괄 전송됩니다.</span>
+								
+	
+	
+	<!-- 	<input type="button" value="Send" id="contact-form-btn"> -->
+	
+	<!-- <input type="button" value="add link" id="addLinkBtn"onclick="addLink()"> -->
+	<!-- addLink버튼 -->
 
-								<button type="button" class="btn btn-primary rounded-pill m-2"
-									style="padding: 10px 30px; float: left; display: block; margin-left: 15% !important; margin-bottom: 10% !important; width: 70%; background: #FFFFFF; opacity: 0.5; color: #6c7293;"
-									id="sendQR" onclick="sendQR()" disabled>SAND MAIL</button>
-								<input id="my-input" type="file" onchange="readURL(this);"
-									style="height: 1px; display: none;"> <span
-									style="display: block; float: left; margin-bottom: 5% !important; margin-left: 10% !important; text-align: center;">해당
-									펀딩 참여자에게 메일이 일괄 전송됩니다.</span>
 
-					
-
-
-
-
-
+	
 
 						</div>
 					</div>
@@ -673,67 +426,22 @@ p[data-value]:after {
 		<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
 		<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-		<script src="https://code.jquery.com/jquery-3.6.3.min.js"
-			integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-			crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
-		<!-- QR삽입 버튼 활성화 JS -->
-		<script type="text/javascript">
-			function onClickUpload() {
-				let myInput = document.getElementById("my-input");
-				myInput.click();
-			}
-		</script>
+		
 
-
-		<!-- QR추가 + QR전송 버튼 활성화  JS -->
-		<script type="text/javascript">
-			function readURL(input) {
-				console.log('들어왔음');
-				const qrBtn = document.getElementById('my-button');
-				const sendBtn = document.getElementById('sendQR');
-
-				//QR추가 했다면
-				if (input.files && input.files[0]) {
-					console.log('파일 있음');
-					//QR삽입 버튼 스타일 
-					qrBtn.style.backgroundColor = "#6c7293";
-					qrBtn.style.color = "#fff";
-					qrBtn.style.borderColor = "#6c7293";
-					//QR전송 버튼 활성화됨
-					$("#sendQR").prop("disabled", false);
-
-				} else { //QR추가 안 했다면
-					console.log('파일 없음');
-					//QR삽입 버튼 스타일
-					qrBtn.style.backgroundColor = "#fff";
-					qrBtn.style.color = "#6c7293";
-					qrBtn.style.borderColor = "#fff";
-					//QR전송 버튼은 활성화 안 됨
-
-				}
-
-			}
-		</script>
-
-
-		<script type="text/javascript"
-			src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-			
-		</script>
-		<script type="text/javascript">
-			(function() {
-				emailjs.init("hgRoerm1aeWKedrNw");
-			})();
-		</script>
 
 		<!-- Template Javascript -->
 		<script src="js/mainAdmin.js"></script>
 
-
-
-
 	</div>
+	
+	
+	
+	
+	
+	
+	
 </body>
 </html>
 
