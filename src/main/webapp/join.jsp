@@ -92,7 +92,7 @@ select::-ms-expand {
 											var getName = RegExp(/^(?:[가-힣]{2,})+$/);
 											/* 		  var getName= RegExp(/^[가-힣]+$/); */
 											var emaCheck = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{5,15}$/;
-											var phoCheck = /01[016789][^0][0-9]{3,4}[0-9]{4}/;
+											var phoCheck = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[0-9]{4}[0-9]{4}$/; 
 
 											var id = $('#id').val();
 											var password = $('#password').val();
@@ -100,7 +100,6 @@ select::-ms-expand {
 											var email = $('#email').val();
 											const emailSel = $("#email_sel").val();
 											var phone = $('#phone').val();
-											var phone2 = $('#phone2').val();
 											
 											
 
@@ -219,50 +218,60 @@ select::-ms-expand {
 															}
 														});
 											};
-
 											
+											var code2 = '';
+											
+											console.log('phoneCheck() 실')
+											console.log('phone : ' + phone)
+											console.log(phone.value)
+											if (phone== '') {
+												$('#pho_result').text('');
+												$("#phoneChk").css('background','#D9D9D9');
+												$("#phoneChk").attr('value','인증번호 발송');
+												$("#phoneChk").attr('disabled',true);
+												phoFlag = false;
+
+												
+												
+											} else if (!phoCheck.test(phone)) {
+												$('#pho_result').text('올바른 전화번호를 입력하세요.');
+												$('#pho_result').css('color','red');
+												$("#phoneChk").css('background','#D9D9D9');
+												$("#phoneChk").attr('value','인증번호 발송');
+												$("#phoneChk").attr('disabled',true);
+
+												phoFlag = false;
+
+													
+											} else {
+												
+												
+												$('#pho_result').text('올바른 전화번호 형식입니다.');
+												$('#pho_result').css('color','green');
+												$("#phoneChk").attr('disabled',false);
+												phoFlag=true;
+												$('#phoneChk').hover(function(){
+
+												    $(this).css('background', 'black');   
+
+												}, function(){
+												   $(this).css('background','#D9D9D9'); 
+
+
+												})
+												
+						
+											}
+										
 
 										 });
 					});
+	function phoneCheck1(){
 	
 	
-	
-	
-	//전화번호 유효성 검사
-	
-	
-	
-	var code2 = '';
-	
-	function phoneCheck1 () {
-		
-	/* 	var phoCheck = /01[016789][^0][0-9]{3,4}[0-9]{4}/; */
-	/*  var phoCheck = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/g; */
-		var phoCheck = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/; //하이픈(-)도 사용 가능한 정규식
-		
-		
-		console.log('phoneCheck() 실')
-		console.log('phone : ' + phone)
-		console.log(phone.value)
-		if (phone.value == '') {
-			alert("번호를 입력해주세요.");
-			phoFlag = false;
-
 			
-			
-		} else if (!phoCheck.test(phone.value)) {
-			alert('올바른 전화번호를 입력하세요.');
-			phoFlag = false;
-
-				
-		} else {
-			
-			phoFlag=true;
 			alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
-			$("#phoneChk2").attr('disabled',false);
-			$("#phoneChk").css('background','black');
-			$("#phoneChk").attr('value','발송완료');
-			$("#phoneChk").attr('disabled',true);
+			
 			var sendedPhone = $("#phone").val();
 		
 			$.ajax({
@@ -274,42 +283,48 @@ select::-ms-expand {
 					$("#phone2").attr('disabled',false);
 					$("#phoneChk2").attr('disabled',false);
 					$("#phoneChk2").css('display','inline-block');
+					$("#phoneChk2").css('background','#D9D9D9');
+					$("#phoneChk2").attr('value','본인 인증');
+					$("#phoneChk").attr('disabled',true);
+					$('#phoneChk').unbind('mouseenter mouseleave');
+					$("#phoneChk").css('background','black');
+					$("#phoneChk").attr('value','발송완료');
+					 $('#phone2').val('');
 					
 					
-						$('.doubleChk2').hover(function(){
-
-							    $(this).css('background', 'black');   
-
-							}, function(){
-							   $(this).css('background','#D9D9D9'); 
-
-
-							})
+						
+				
 							
 						
-					$("#phone").attr('readonly',true);
 					code2 = data;
+					
 					
 				}
 			});
 			
-		}
-	};
+					
+			
+	}
+		
+	
+
+	
 	
 	function phoneAuth () {
 		event.preventDefault();
 		console.log($("#phone2").val())
 		if ($("#phone2").val() == code2) {
-		/* 아침에 확인할 것
-		1. 문자 잘 오는 지 확인 > 잘됨
-		2. 문자와 인증번호와 일치하는 지/ 정규식 통과하는지 > 잘됨
-		3. 서브밋..최종가입 > 민경확인! /확인완료시 해당 주석 삭제바람*/
+		
 			alert("인증번호가 일치합니다.");
-		$('.doubleChk2').unbind('mouseenter mouseleave');
+		$('#phoneChk2').unbind('mouseenter mouseleave');
 		pho2Flag=true;
 			$("#phoneChk2").css('background','black');
 			$("#phoneChk2").attr('value','인증완료');
 			$("#phoneDoubleChk").val("true");
+			$('#phoneChk').unbind('mouseenter mouseleave');
+			$("#phoneChk").css('background','black');
+			
+			$("#phoneChk").attr('disabled',true);
 			$("#phone2").attr('disabled',true);
 			$("#phoneChk2").attr('disabled',true);
 
@@ -318,6 +333,10 @@ select::-ms-expand {
 			pho2Flag = false;
 
 			alert("인증번호가 일치하지 않습니다.")
+			$('#phoneChk').unbind('mouseenter mouseleave');
+			$("#phoneChk").css('background','black');
+			
+			$("#phoneChk").attr('disabled',true);
 			$("#phoneDoubleChk").val("false");
 			$(this).attr("autofocus",true);
 		}
@@ -436,7 +455,7 @@ select::-ms-expand {
 				<input type="button" id="phoneChk" class="doubleChk"
 					onclick="phoneCheck1()"
 					style="border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;"
-					value="인증번호 발송">
+					value="인증번호 발송" disabled>
 
 				<div class="checkout__form__input" style="width: 50%;">
 					<input id="phone2" type="text" name="phone2"
@@ -445,9 +464,14 @@ select::-ms-expand {
 				<input type="button" id="phoneChk2" class="doubleChk2"
 					onclick="phoneAuth()" disabled
 					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;"
-					value="본인인증"> <input type="submit" id="btn-save"
+					value="본인인증"> 
+					<span id="pho_result"
+					style="font-size: small; display: block; float: left; width: 100%;"></span>
+					
+					<input type="submit" id="btn-save"
 					class="site-btn" onclick="submitBtn()" value="가입하기"
 					style="height: 50px; width: 200px; border-radius: 42px; margin-left: 900px; margin-bottom: 50px; margin-right: 50px;">
+					
 
 				<!-- <button onclick="alertTest()">alertTest</button> -->
 
