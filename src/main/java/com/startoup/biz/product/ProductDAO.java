@@ -177,10 +177,10 @@ public class ProductDAO {
 		}
 	}
 	
-	public List<ProductVO> selectLastProduct(ProductVO vo){
+	public ProductVO selectLastProduct(ProductVO vo){
 		try {
 			// 전체 출력
-			return jdbcTemplate.query(SELECT_LAST_PRODUCT, new ProductRowMapper());
+			return jdbcTemplate.queryForObject(SELECT_LAST_PRODUCT, new ProductRowMapper());
 		} catch(Exception e) {
 			System.out.println(e);
 			return null;
