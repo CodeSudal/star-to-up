@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVO> selectLastProduct(ProductVO vo) {
+	public ProductVO selectLastProduct(ProductVO vo) {
 		return pdao.selectLastProduct(vo);
 	}
 	

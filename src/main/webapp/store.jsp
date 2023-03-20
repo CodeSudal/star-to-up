@@ -113,7 +113,7 @@
    <!-- Header Section Start -->
    <%@ include file="header.jsp"%>
    <!-- Header Section End -->
-   
+
    <!-- 팝업창 띄울지 여부 파악 -->
    <c:if test="${bool}">
          <script type="text/javascript">
@@ -123,19 +123,18 @@
        });
       </script>
    </c:if>
-   
    <!-- 팝업창 -->
     <div class="modalwrap" id="popup">
       <div class="modalheader">
          <img src="img/new.png" />
       </div>
-      <div class="modalImg" style="text-align: center; ">
-         <a id="popup-link" href="detail.do?pNum=${neww.pNum}" target="_blank"> 
-         <img src="img/${neww.pImage1}.png" />
+     <div class="modalImg" style="text-align: center; ">
+         <a id="popup-link" href="detail.do?pNum=${last.pNum}" target="_blank"> 
+         <img src="img/${last.pImage1}" />
          </a>
       </div> 
       <div class="modalName" style="text-align: center; padding-top: 20px; ">
-         <h1 style="color:white; font-weight: bold; font-size:50px;">${neww.pEN}</h1>
+         <h1 style="color:white; font-weight: bold; font-size:50px;">${last.pEN}</h1>
       </div>
       <div
          style="display: flex; justify-content: space-between; padding-top: 10px; margin-top:5%; ">
@@ -144,7 +143,7 @@
          </label>
          <button class="modal-close" onClick="popClose()" style="color:white; padding-right: 20px; ">닫기</button>
       </div>
-   </div>   
+   </div>
    
    
     <!-- 팝업창 샘플 -->

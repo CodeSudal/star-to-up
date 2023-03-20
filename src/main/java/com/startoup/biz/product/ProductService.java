@@ -9,6 +9,6 @@ public interface ProductService {
 	public boolean deleteProduct(ProductVO vo);
 	public List<ProductVO> selectAll(ProductVO vo);
 	public ProductVO selectOne(ProductVO vo);
-	public List<ProductVO> selectLastProduct(ProductVO vo);
+	public ProductVO selectLastProduct(ProductVO vo);
 
 }
