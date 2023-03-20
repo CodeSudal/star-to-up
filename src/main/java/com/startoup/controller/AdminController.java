@@ -37,30 +37,14 @@ public class AdminController {
 		model.addAttribute("fundingList", ProductSI.selectAll(pvo));
 		return "adminFundingManagement.jsp";
 	}
+	
+	@RequestMapping(value = "/sendAllMail.do")
+	public String selectAllMail(ProductVO pvo, Model model) {
 
-	// 메일 요청 페이지로 이동 // 기존 방식
-	/*
-	 * @RequestMapping(value="/sendEmail.do") public String sendEmail(ProductVO pvo,
-	 * Model model) { System.out.println("sendEmailController 입장");
-	 * 
-	 * 
-	 * model.addAttribute("fundingList", ProductSI.selectAll(pvo)); return
-	 * "sendAllMail.jsp"; }
-	 */
+		/* model.addAttribute("fundingList", ProductSI.selectAll(pvo)); */
+		return "sendAllMail.jsp";
+	}
 
-	// 두번째 시도
-	// VO가 아닌 DTO의 개념을 많이 쓰지만 하나의 메서드에서만 사용되어 편의상 VO 사용
-	/*
-	 * @GetMapping("/sendAllMail.do") public ListVO sendEmail(@RequestParam("name")
-	 * String name,
-	 * 
-	 * @RequestParam("pName") String pName,
-	 * 
-	 * @RequestParam("email") String email, ListVO vo, Model model) {
-	 * 
-	 * model.addAttribute("datas", ListSI.selectAllProduct(vo)); return vo; //return
-	 * new ListVO(name, pName, email); }
-	 */
 	@ResponseBody
 	@RequestMapping("/sendEmailQR.co")
 	public String sendEmailQR(Gson gson, ListVO vo) {
@@ -71,10 +55,10 @@ public class AdminController {
 		 */
 		JsonObject obj = new JsonObject();
 
-		listSI.selectAllProduct(vo);
+		listSI.selectAllList(vo);
 		obj.addProperty("name", vo.getlMid());// id
-		// obj.addProperty("pName", vo.getpName()); //pName
-		// obj.addProperty("email", vo.getEmail); //Email
+		obj.addProperty("pName", vo.getLpName()); //pName
+		obj.addProperty("email", vo.getlEmail()); //Email
 		
 
 		//JsonObject data = new JsonObject();

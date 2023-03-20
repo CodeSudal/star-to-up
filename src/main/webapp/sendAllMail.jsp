@@ -150,11 +150,11 @@ p[data-value]:after {
 
     // 임시 더미데이터
     var datas = [
-          { name: 'lee', pName: 'earth', email: 'leesh132@naver.com'},
-          { name: 'james', pName: 'mars', email: 'leesh940312@gmail.com'},
+          { name: 'lee', pName: 'earth', email: 'qazseeszaq3219@gmail.com'},
+          { name: 'james', pName: 'mars', email: 'qazseeszaq3219@gmail.com'},
           { name: 'heo', pName: 'jupiter', email: 'qazseeszaq3219@gmail.com'},
-          { name: 'sophia', pName: 'venus', email: 'leesh132@naver.com'},
-          { name: 'ben', pName: 'sun', email: 'leesh132@naver.com'},
+          { name: 'sophia', pName: 'venus', email: 'qazseeszaq3219@gmail.com'},
+          { name: 'ben', pName: 'sun', email: 'qazseeszaq3219@gmail.com'},
        ]
     
        // prompt에서 입력받은 링크변수 초기화
