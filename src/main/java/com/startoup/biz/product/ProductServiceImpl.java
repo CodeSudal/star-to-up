@@ -41,6 +41,11 @@ public class ProductServiceImpl implements ProductService{
 	public ProductVO selectOne(ProductVO vo) {
 		return pdao.selectOne(vo);
 	}
+
+	@Override
+	public ProductVO selectLastProduct(ProductVO vo) {
+		return pdao.selectLastProduct(vo);
+	}
 	
 	
 

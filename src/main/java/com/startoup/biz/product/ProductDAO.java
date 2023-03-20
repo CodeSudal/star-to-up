@@ -35,7 +35,7 @@ public class ProductDAO {
 	final String UPDATE_PERCENT = "UPDATE PRODUCT SET P_PERCENT=? WHERE P_NUM=?";
 
 	// 펀딩 완료 되었는지 확인
-	final String CHECK_FINISH = "SELECT P_PERCENT FROM PRODUCT WHERE P_NUM=?";
+	final String CHECK_FINISH = "SELECT P_PERCENT, P_NUM FROM PRODUCT WHERE P_NUM=?";
 	// 펀딩 완료 시(제품 펀딩 종료하기)
 	final String UPDATE_FINISH = "UPDATE PRODUCT SET P_FINISH=1 WHERE P_NUM=?";
 
@@ -52,7 +52,7 @@ public class ProductDAO {
 	final String INSERT_NAMING = "INSERT INTO NAMING(N_NUM, N_NAME, N_EN) VALUES((SELECT NVL(MAX(N_NUM), 0) + 1 FROM NAMING), ?, ?)";
 
 	// 가장 최신 제품
-	final String SELECT_LAST_PRODUCT = "SELECT P_NUM, P_NAME, P_PRICE, P_INFO, P_FINISH, P_IMAGE1, P_IMAGE2, P_IMAGE3, P_AMOUNT, P_CRNAMOUNT, P_PERCENT FROM PRODUCT WHERE P_NUM=(SELECT NVL(MAX(P_NUM), 0) FROM PRODUCT)";
+	final String SELECT_LAST_PRODUCT = "SELECT P_NUM, P_NAME, P_PRICE, P_INFO, P_FINISH, P_IMAGE1, P_IMAGE2, P_IMAGE3, P_AMOUNT, P_CRNAMOUNT, P_PERCENT, P_EN FROM PRODUCT WHERE P_NUM=(SELECT NVL(MAX(P_NUM), 0) FROM PRODUCT)";
 	
 	public boolean insertNaming(NamingVO vo) {
 		try {
@@ -94,7 +94,7 @@ public class ProductDAO {
 
 			// 구매 후 펀딩종료 확인 (펀딩금액이 모두 찼으면 pFinish 1로 변경[종료])
 			pvo = jdbcTemplate.queryForObject(CHECK_FINISH, args, new PercentRowMapper());
-			if(pvo.getpPercent()==100) {
+			if(pvo.getpPercent()>=100) {
 				jdbcTemplate.update(UPDATE_FINISH, pvo.getpNum());
 				return true;
 			}
@@ -177,10 +177,10 @@ public class ProductDAO {
 		}
 	}
 	
-	public List<ProductVO> selectLastProduct(ProductVO vo){
+	public ProductVO selectLastProduct(ProductVO vo){
 		try {
 			// 전체 출력
-			return jdbcTemplate.query(SELECT_LAST_PRODUCT, new ProductRowMapper());
+			return jdbcTemplate.queryForObject(SELECT_LAST_PRODUCT, new ProductRowMapper());
 		} catch(Exception e) {
 			System.out.println(e);
 			return null;
