@@ -74,7 +74,7 @@ public class ListDAO {
 	public List<ListVO> selectAllList(ListVO vo){
 		try {
 			Object[] args= { vo.getlPid() };
-			return jdbcTemplate.query(SELECT_ALL_MEMEBER, args, new ListRowMapper3());
+			return jdbcTemplate.query(SELECT_ALL_LIST, args, new ListRowMapper3());
 		} catch(Exception e) {
 			return null;
 		}
