@@ -52,7 +52,7 @@ public class ProductController {
 		}
 
 		model.addAttribute("bool", bool); // bool 값 뷰로 넘겨주기 : bool == true면 팝업창 안뜸
-		model.addAttribute("neww", productSI.selectOne(vo)); // 최신상품 selectone한 값 뷰로 넘겨주기
+		model.addAttribute("neww", productSI.selectLastProduct(vo)); // 최신상품 selectone한 값 뷰로 넘겨주기
 
 		model.addAttribute("productList", productSI.selectAll(vo));
 		return "store.jsp";
