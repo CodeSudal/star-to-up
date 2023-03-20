@@ -12,8 +12,13 @@ body {
 
 a{
 	color: black;
-
+ text-decoration: none;	
+ font-weight: 500;
 	}
+	
+a:hover{
+	font-weight: 700;
+}	
 
 
 
@@ -63,7 +68,6 @@ a{
 .logo_box {
    width: 150px;
    height: 60px;
-   background-color: rgb(202, 202, 202);
    margin-left: 20px;
    border-radius: 50px;
    display: flex;
