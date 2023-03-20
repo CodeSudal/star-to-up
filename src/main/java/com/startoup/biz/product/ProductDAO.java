@@ -35,7 +35,7 @@ public class ProductDAO {
 	final String UPDATE_PERCENT = "UPDATE PRODUCT SET P_PERCENT=? WHERE P_NUM=?";
 
 	// 펀딩 완료 되었는지 확인
-	final String CHECK_FINISH = "SELECT P_PERCENT FROM PRODUCT WHERE P_NUM=?";
+	final String CHECK_FINISH = "SELECT P_PERCENT, P_NUM FROM PRODUCT WHERE P_NUM=?";
 	// 펀딩 완료 시(제품 펀딩 종료하기)
 	final String UPDATE_FINISH = "UPDATE PRODUCT SET P_FINISH=1 WHERE P_NUM=?";
 
@@ -94,7 +94,7 @@ public class ProductDAO {
 
 			// 구매 후 펀딩종료 확인 (펀딩금액이 모두 찼으면 pFinish 1로 변경[종료])
 			pvo = jdbcTemplate.queryForObject(CHECK_FINISH, args, new PercentRowMapper());
-			if(pvo.getpPercent()==100) {
+			if(pvo.getpPercent()>=100) {
 				jdbcTemplate.update(UPDATE_FINISH, pvo.getpNum());
 				return true;
 			}
