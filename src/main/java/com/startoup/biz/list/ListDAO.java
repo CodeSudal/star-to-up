@@ -113,8 +113,8 @@ class ListRowMapper3 implements RowMapper<ListVO> {
 		data.setlNum(rs.getInt("L_NUM"));
 		data.setlPid(rs.getInt("L_PID"));
 		data.setlMid(rs.getString("L_MID"));
-		data.setlEmail("EAMIL");
-		data.setLpName("P_NAME");
+		data.setlEmail(rs.getString("EAMIL"));
+		data.setLpName(rs.getString("P_NAME"));
 
 		return data;
 	}
