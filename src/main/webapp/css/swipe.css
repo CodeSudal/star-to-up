@@ -31,12 +31,10 @@ swiper-slide {
     width: 240px;
     height: 240px;
     margin-top: 20px;
-    margin-left: 50px;
 }
 
 .swiper-bottom {
     margin-top: 70px;
-    margin-left: 20px;
 }
 
 .swiper-button {

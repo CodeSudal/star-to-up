@@ -35,8 +35,8 @@
 		IMP.request_pay({// param
 			pg : "html5_inicis", //pg사명 or pg사명.CID (잘못 입력할 경우, 기본 PG사가 띄워짐)
 			pay_method : "card", //지불 방법
-			merchant_uid : "INIpayTest-0000016", //가맹점 주문번호 (아임포트를 사용하는 가맹점에서 중복되지 않은 임의의 문자열을 입력)
-			name : "${product.pName}", //결제창에 노출될 상품명
+			merchant_uid : "INIpayTest-0000022", //가맹점 주문번호 (아임포트를 사용하는 가맹점에서 중복되지 않은 임의의 문자열을 입력)
+			name : "${product.pEN}", //결제창에 노출될 상품명
 			amount : "${product.pPrice}", //금액
 			buyer_email : "${member.mEmail1} @ ${member.mEmail2}",
 			buyer_name : "${member.mName}",
@@ -168,7 +168,7 @@ input:checked+.osSlider:before {
 								style="width: 147px; height: 47px; font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; line-height: 44px; color: #000000;"><img
 								src="img/${product.pImage1}" style="width:60px; height:60px;"></td>
 							<td
-								style="width: 10%; height: 47px; font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; line-height: 44px; color: #000000;">${product.pName}
+								style="width: 10%; height: 47px; font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; line-height: 44px; color: #000000;">${product.pEN}
 							</td>
 							<td
 								style="width: 40%; height: 29px; font-family: 'Noto Sans'; font-style: normal; font-weight: 400; font-size: 25px; line-height: 44px; color: #000000; text-align: right;">₩
