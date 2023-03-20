@@ -54,7 +54,7 @@
 				<div id="${product.pNum}">
 					<div class="swiper-top" style="margin-right: 100px;">${product. pEN}</div>
 					<div>
-						<img class="swiper-image" src="img/${product.pImage1}" alt="${product. pEN}이미지">
+						<a href="detail.do?pNum=${product.pNum}"><img class="swiper-image" src="img/${product.pImage1}" alt="${product. pEN}이미지"></a>
 					</div>
 					<div class="swiper-bottom">
 						￦ <fmt:formatNumber value="${product.pPrice}" />
