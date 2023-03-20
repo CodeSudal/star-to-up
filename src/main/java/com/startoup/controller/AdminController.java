@@ -54,7 +54,7 @@ public class AdminController {
       
       // 펀딩한 사람들 이메일, 펀딩한 사람 이름(아이디), 제품명
       model.addAttribute("fundingList", listSI.selectAllList(vo));
-      
+      model.addAttribute("datas", listSI.selectAllList(vo));
       
       return "sendAllMail.jsp";
    }
@@ -74,6 +74,7 @@ public class AdminController {
       System.out.println(listSI.selectAllList(vo));
       
       model.addAttribute("fundingList", listSI.selectAllList(vo));
+      model.addAttribute("datas", listSI.selectAllList(vo));
       //JsonObject data = new JsonObject();
       //data.addProperty("time", "12:00");
       //obj.add("data", data);

@@ -23,14 +23,18 @@
 	rel="stylesheet">
 
 <!-- Icon Font Stylesheet -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
 	rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
 	rel="stylesheet">
 
 <!-- Libraries Stylesheet -->
-<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
- <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+	rel="stylesheet">
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href="css/bootstrapAdmin.min.css" rel="stylesheet">
@@ -46,7 +50,12 @@ keyframes progressAnimationStrike {from { width:0;
 to {
 	width: 100%;
 }
+
 s
+
+
+
+
 }
 .progress2 {
 	border-radius: 30px;
@@ -75,18 +84,31 @@ keyframes progressAnimation { 0% {
 	background-color: rgb(39, 22, 94);
 }
 
-#addLinkBtn :hover !important{
+#addLinkBtn :hover !important {
 	color: rgb(108, 114, 147) !important;
-	
-
 }
 
 100
+
+
+
+
 %
 {
 background-color
+
+
+
+
 :
-black;
+
+
+
+
+black
+
+
+;
 }
 }
 keyframes colorAnimation {
@@ -95,19 +117,162 @@ keyframes colorAnimation {
 }
 
 20
+
+
+
+
 %
 {
-background-image:linear-gradient( to right, #5ac8fa,#007aff,#7dc8e8,#5856d6,#ff2d55,#4cd964);
+background-image
 
-}40%{
-background-image:linear-gradient(to right,#007aff,#7dc8e8,#5856d6,#ff2d55,#4cd964,#5ac8fa);
-}60%{
-background-image:linear-gradient(to right,#7dc8e8,#5856d6,#ff2d55,#4cd964,#5ac8fa,#007aff);
-}100%{
-background-image:
-linear-gradient(to right ,#5856d6,#ff2d55,#4cd964,#5ac8fa,#007aff,#7dc8e8);
+
+:linear-gradient
+
+
+(
+
+ 
+
+to
+
+ 
+
+right
+,
+#5ac8fa
+,
+#007aff
+,
+#7dc8e8
+,
+#5856d6
+,
+#ff2d55
+,
+#4cd964
+
+
+)
+
+
+;
 }
-}p[data-value] {
+40
+
+
+%
+{
+background-image
+
+
+:
+
+
+linear-gradient
+(
+
+
+to
+
+
+right
+,
+#007aff
+,
+#7dc8e8
+,
+#5856d6
+,
+#ff2d55
+,
+#4cd964
+,
+#5ac8fa
+
+
+)
+;
+
+
+}
+60
+
+
+%
+{
+background-image
+
+
+:
+
+
+linear-gradient
+(
+
+
+to
+
+
+right
+,
+#7dc8e8
+,
+#5856d6
+,
+#ff2d55
+,
+#4cd964
+,
+#5ac8fa
+,
+#007aff
+
+
+)
+;
+
+
+}
+100
+
+
+%
+{
+background-image
+
+
+:
+
+
+linear-gradient
+(
+
+
+to
+
+
+right
+,
+#5856d6
+,
+#ff2d55
+,
+#4cd964
+,
+#5ac8fa
+,
+#007aff
+,
+#7dc8e8
+
+
+)
+;
+
+
+}
+}
+p[data-value] {
 	position: relative;
 }
 
@@ -136,99 +301,6 @@ p[data-value]:after {
 </head>
 
 
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-<script type="text/javascript"> // emailJS API 
-        (function() {
-            // https://dashboard.emailjs.com/admin/account
-            emailjs.init('nwpJttHh3NhV-NGqV');
-        })();
-    </script>
-
-<script type="text/javascript">
-
-    // 임시 더미데이터
-    var datas = [
-          { name: 'lee', pName: 'earth', email: 'qazseeszaq3219@gmail.com'},
-          { name: 'james', pName: 'mars', email: 'qazseeszaq3219@gmail.com'},
-          { name: 'heo', pName: 'jupiter', email: 'qazseeszaq3219@gmail.com'},
-          { name: 'sophia', pName: 'venus', email: 'qazseeszaq3219@gmail.com'},
-          { name: 'ben', pName: 'sun', email: 'qazseeszaq3219@gmail.com'},
-       ]
-    
-       // prompt에서 입력받은 링크변수 초기화
-       var answer = "";   
-           
-       // 링크 추가 프롬프트창();
-       function addLink() {
-            answer = prompt("Please Insert Link");
-            
-       	 if(answer){
-        	console.log(answer);
-        	console.log('버튼실행됨');
-        	
-        	
-        	$("#contact-form-btn").attr("disabled",false);
-        	$("#contact-form-btn").css('background', '#ffffff');
-        	$("#contact-form-btn").css('opacity', '100');
-        	
-        	
-       	 } else {           
-       
-       		console.log(answer);
-        	
-            $("#contact-form-btn").attr("disabled",true);
-        	console.log('버튼실행안됨');
-        	
-       	}
-       }
-       
-       
-       
-       // emailJS send버튼 실행
-       window.onload = function() {
-    	   
-    	   console.log(' emailJS send버튼 실행함수 들어옴');
-            document.getElementById('contact-form').addEventListener('click', function(event, i) { // submit실행 시 페이지 reloading으로 인해 clickEvent로 바꿈 
-                event.preventDefault(); // 기본 이벤트 방지
-                
-                for(let i=0; i<datas.length; i++) {  // 해당 데이터(펀딩인원수)의 길이만큼 send반복
-                   
-                   //form parameter에 데이터변수 넣기 
-                   this["name"].value = datas[i].name; 
-                   this["email"].value = datas[i].email;
-                   this["pName"].value = datas[i].pName;
-                   this["message"].value = answer;
-                   
-                   
-                    //해당 parameter 확인 
-                   console.log(this["name"].value);
-                   console.log(this["email"].value);
-                   console.log(this["pName"].value);
-                   console.log(this["message"].value);
-   
-                
-                   // send emailJS API 호출  
-                   emailjs.sendForm('service_v72x4pg', 'template_5or2fwc', this) // ( emailjs 유저 토큰, 템플릿 ID, form 데이터 객체 ) 담아서 전송
-                       .then(function() {
-                           console.log('SUCCESS!');
-                       }, function(error) {
-                           console.log('FAILED...', error);
-                       });
-                   
-                   
-                }           
-            });
-        }
-        
-      
-		<!-- 링크추가 + 메일 전송 버튼 활성화  JS -->
-			
-			
-				      
-    </script>
-
 
 
 
@@ -236,6 +308,7 @@ p[data-value]:after {
 
 
 <body>
+
 
 
 
@@ -273,29 +346,9 @@ p[data-value]:after {
 		<script src="https://code.jquery.com/jquery-3.6.3.min.js"
 			integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
 			crossorigin="anonymous">
-			
-		</script>
+         
+      </script>
 		<!--메뉴 active 유지 JS -->
-		<script type="text/javascript">
-			var pageUrl = window.location.href; //창의 url을 가져온다.http~~ 부터 전체 url을 가져온다.
-
-			$(window).on('load', function() {
-				//다른 active가 있으면 지워준다.
-				//menuLinks.classList.remove('active');
-
-				var menuLinks = document.querySelectorAll('.nav-item');
-
-				if (pageUrl.includes('Funding')) {
-					menuLinks[0].classList.add('active');
-				} else if (pageUrl.includes('Product')) {
-					menuLinks[1].classList.add('active');
-				} else if (pageUrl.includes('Member')) {
-					menuLinks[2].classList.add('active');
-				}
-
-			});
-		</script>
-
 
 
 		<!-- Sidebar End -->
@@ -309,10 +362,10 @@ p[data-value]:after {
 				class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0"
 				style="height: 80px">
 				<!-- <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-					<h2 class="text-primary mb-0">
-						<i class="fa fa-user-edit"></i>
-					</h2>
-				</a>  -->
+               <h2 class="text-primary mb-0">
+                  <i class="fa fa-user-edit"></i>
+               </h2>
+            </a>  -->
 				<a href="#" class="sidebar-toggler flex-shrink-0"> <i
 					class="fa fa-bars"></i>
 				</a>
@@ -331,7 +384,7 @@ p[data-value]:after {
 									<a href="logout.do">&nbsp;LOGOUT</a>
 								</h5>
 								<!-- <span
-								class="d-none d-lg-inline-flex" style="color: white">LOGOUT</span> -->
+                        class="d-none d-lg-inline-flex" style="color: white">LOGOUT</span> -->
 							</div>
 
 						</div>
@@ -346,103 +399,243 @@ p[data-value]:after {
 				style="font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-size: 30px; margin-left: 5%; margin-top: 3%; display: block; color: #FFFFFF;">SAND
 				MAIL</span>
 
+
 			<!-- Table Start -->
 			<div class="container-fluid pt-4 px-4">
 				<div class="row g-4">
 
 					<div class="col-sm-12 col-xl-6" style="width: 100%">
 
+						<%
+						String pName = request.getParameter("pName");
+						String pId = request.getParameter("pId");
+						%>
+
+						<h1>>>>>></h1>
+						<h1>${fundingList}</h1>
+						<h1>>>>>></h1>
+						<%-- <h1>${fundingList.lMid}</h1> 
+							<h1>>>>>></h1>--%>
+						<h1>${datas}</h1>
+						<h1>>>>>></h1>
 						<div class="bg-secondary rounded h-100 p-4"
 							style="width: 50%; background: #1A1C23; border-radius: 30px !important; margin-left: 25%; margin-top: 8%; height: 90% !important;">
-							<h3 class="mb-4"
-								style="text-align: center; margin-top: 5% !important; margin-bottom: 10% !important;">${product.pName}</h3>
-
-
-
-
-
-
+							<h1 class="mb-4"
+								style="text-align: center; margin-top: 5% !important; margin-bottom: 10% !important;"><%=pName%></h1>
 
 
 							<input type="button" id="addLinkBtn" value="add link"
-								class="btn btn-primary rounded-pill m-2 addLinkBtn" onclick="addLink()"
-								style="padding: 10px 30px; display: block; margin-left: 15% !important; margin-bottom: 6% !important; width: 70%; background: #FFFFFF; color: #6c7293 !important; " >
-								
-						<form id="contact-form" onsubmit="return false;">		
-							<input type="hidden" name="name" id="name">
-							<input type="hidden" name="email" id="email">
-							<input type="hidden" name="pName" id="pName">
-							<input type="hidden" name="message" id="message">
+								class="btn btn-primary rounded-pill m-2 addLinkBtn"
+								onclick="addLink()"
+								style="padding: 10px 30px; display: block; margin-left: 15% !important; margin-bottom: 6% !important; width: 70%; background: #FFFFFF; color: #6c7293 !important;">
 
-							<input type="button" class="btn btn-primary rounded-pill m-2 " value="SendMail"
-								style="padding: 10px 30px; float: left; display: block; margin-left: 15% !important; margin-bottom: 10% !important; width: 70%; background: #FFFFFF;  opacity: 0.5;  color: #6c7293 !important;"
-								id="contact-form-btn"  disabled>
-							
-						</form>
-							
-							
-							
+							<c:forEach var="data" items="${datas}">
+								<form id="contact-form" onsubmit="return false;">
+									<input type="hidden" value="${data.lMid}" name="name" id="lMid">
+									<input type="hidden" value="${data.lEmail}" name="email"
+										id="lEmail"> <input type="hidden"
+										value="${data.lpName}" name="pName" id="lpName"> <input
+										type="hidden" value="" name="message" id="message">
+								</form>
+							</c:forEach>
+
+
+							<input type="button" class="btn btn-primary rounded-pill m-2 "
+								value="SendMail"
+								style="padding: 10px 30px; float: left; display: block; margin-left: 15% !important; margin-bottom: 10% !important; width: 70%; background: #FFFFFF; opacity: 0.5; color: #6c7293 !important;"
+								id="contact-form-btn">
+
 							<!-- <input id="my-input" type="file" onchange="readURL(this);"
-								style="height: 1px; display: none;"> -->
-								
-								
-								
-								
-								<span style="display: block; float: left; margin-bottom: 5% !important; margin-left: 10% !important; text-align: center;">
+                        style="height: 1px; display: none;"> -->
+
+
+
+
+							<span
+								style="display: block; float: left; margin-bottom: 5% !important; margin-left: 10% !important; text-align: center;">
 								해당 펀딩 참여자에게 메일이 일괄 전송됩니다.</span>
-								
-	
-	
-	<!-- 	<input type="button" value="Send" id="contact-form-btn"> -->
-	
-	<!-- <input type="button" value="add link" id="addLinkBtn"onclick="addLink()"> -->
-	<!-- addLink버튼 -->
 
 
-	
 
+							<!--    <input type="button" value="Send" id="contact-form-btn"> -->
+
+							<!-- <input type="button" value="add link" id="addLinkBtn"onclick="addLink()"> -->
+							<!-- addLink버튼 -->
 						</div>
 					</div>
+
+
+
 				</div>
 				<!-- Table End -->
 			</div>
+
+
 			<!-- Content End -->
 		</div>
-
-		<!-- Back to Top -->
-		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
-			style="display: none;"><i class="bi bi-arrow-up"></i></a>
-
-
-		<!-- JavaScript Libraries -->
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="lib/chart/chart.min.js"></script>
-		<script src="lib/easing/easing.min.js"></script>
-		<script src="lib/waypoints/waypoints.min.js"></script>
-		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-		<script src="lib/tempusdominus/js/moment.min.js"></script>
-		<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-		<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-		<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-
-		
-
-
-		<!-- Template Javascript -->
-		<script src="js/mainAdmin.js"></script>
-
 	</div>
-	
-	
-	
-	
-	
-	
-	
-</body>
-</html>
+	<!-- Back to Top -->
 
+	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+		style="display: none;"><i class="bi bi-arrow-up"></i></a>
+
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="lib/chart/chart.min.js"></script>
+	<script src="lib/easing/easing.min.js"></script>
+	<script src="lib/waypoints/waypoints.min.js"></script>
+	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="lib/tempusdominus/js/moment.min.js"></script>
+	<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+	<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+		integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+		crossorigin="anonymous"></script>
+
+
+
+
+	<!-- Template Javascript -->
+	<script src="js/mainAdmin.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script type="text/javascript"> // emailJS API 
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('nwpJttHh3NhV-NGqV');
+        })();
+    </script>
+
+<script type="text/javascript">
+
+    // 임시 더미데이터
+    /* var datas = [
+          { name: 'lee', pName: 'earth', email: 'qazseeszaq3219@gmail.com'},
+          { name: 'james', pName: 'mars', email: 'qazseeszaq3219@gmail.com'},
+          { name: 'heo', pName: 'jupiter', email: 'qazseeszaq3219@gmail.com'},
+          { name: 'sophia', pName: 'venus', email: 'qazseeszaq3219@gmail.com'},
+          { name: 'ben', pName: 'sun', email: 'qazseeszaq3219@gmail.com'},
+       ] 
+        */
+  
+       
+       
+
+       // prompt에서 입력받은 링크변수 초기화
+       var answer = "";   
+          
+       // 링크 추가 프롬프트창();
+       function addLink() {
+            answer = prompt("Please Insert Link");
+            
+           if(answer){
+           console.log(answer);
+           console.log('버튼실행됨');
+           
+           
+           $("#contact-form-btn").attr("disabled",false);
+           $("#contact-form-btn").css('background', '#ffffff');
+           $("#contact-form-btn").css('opacity', '100');
+           
+           
+           } else {           
+       
+             console.log(answer);
+           
+            $("#contact-form-btn").attr("disabled",true);
+           console.log('버튼실행안됨');
+           
+          }
+       }
+       
+       
+       
+       // emailJS send버튼 실행
+       window.onload = function() {
+          
+          console.log(' emailJS send버튼 실행함수 들어옴');
+            document.getElementById('contact-form').addEventListener('click', function(event,i) { // submit실행 시 페이지 reloading으로 인해 clickEvent로 바꿈 
+                event.preventDefault(); // 기본 이벤트 방지
+                
+                var datas = ${fundingList}
+                console.log(datas);
+                
+                
+                for(let i=0; i<datas.length; i++) {  // 해당 데이터(펀딩인원수)의 길이만큼 send반복
+                   
+                   //form parameter에 데이터변수 넣기 
+                   this["name"].value = datas[i].lMid; 
+                   this["email"].value = datas[i].lEmail;
+                   this["pName"].value = datas[i].lpName;
+                   this["message"].value = answer;
+                   
+                   
+                    //해당 parameter 확인 
+                   console.log(this["name"].value);
+                   console.log(this["email"].value);
+                   console.log(this["pName"].value);
+                   console.log(this["message"].value);
+   
+                
+                   // send emailJS API 호출  
+                   emailjs.sendForm('service_v72x4pg', 'template_5or2fwc', this) // ( emailjs 유저 토큰, 템플릿 ID, form 데이터 객체 ) 담아서 전송
+                       .then(function() {
+                           console.log('SUCCESS!');
+                       }, function(error) {
+                           console.log('FAILED...', error);
+                       });
+                   
+                   
+                }           
+            });
+        }
+        
+      
+      <!-- 링크추가 + 메일 전송 버튼 활성화  JS -->
+         
+         
+                  
+    </script>
+<script type="text/javascript">
+         var pageUrl = window.location.href; //창의 url을 가져온다.http~~ 부터 전체 url을 가져온다.
+
+         $(window).on('load', function() {
+            //다른 active가 있으면 지워준다.
+            //menuLinks.classList.remove('active');
+
+            var menuLinks = document.querySelectorAll('.nav-item');
+
+            if (pageUrl.includes('Funding')) {
+               menuLinks[0].classList.add('active');
+            } else if (pageUrl.includes('Product')) {
+               menuLinks[1].classList.add('active');
+            } else if (pageUrl.includes('Member')) {
+               menuLinks[2].classList.add('active');
+            }
+
+         });
+      </script>
+
+
+
+
+</html>
 
