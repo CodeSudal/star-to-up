@@ -121,8 +121,15 @@
                var con = document.getElementById("popup");    
                    con.style.display = 'block';    
        });
+       
+       
+      
+       
+       
+       
       </script>
    </c:if>
+ 
    <!-- 팝업창 -->
     <div class="modalwrap" id="popup" style="display:none;">
       <div class="modalheader">
@@ -187,10 +194,23 @@
                <div>
                   <a href="detail.do?pNum=${product.pNum}"><img class="swiper-image" src="img/${product.pImage1}" alt="${product. pEN}이미지"></a>
                </div>
-               <div class="swiper-bottom">
+              
+                 <c:choose>
+                                 <c:when test="${product.pFinish ==0}">
+                                    <div class="swiper-bottom">
                   ￦ <fmt:formatNumber value="${product.pPrice}" />
-                  <button class="swiper-button" onclick="location.href='detail.do?pNum=${product.pNum}'">펀딩하기</button>
+                  <button id="funding"class="swiper-button" onclick="location.href='detail.do?pNum=${product.pNum}'">펀딩하기</button>
                </div>
+                                 </c:when>   
+                                 <c:otherwise>
+                                     
+                                
+                                <div class="swiper-bottom">
+                  ￦ <fmt:formatNumber value="${product.pPrice}" />
+                  <button id="funding"class="swiper-button" onclick="location.href='detail.do?pNum=${product.pNum}'" style="background:#D9D9D9; border:none;">펀딩 완료</button>
+               </div>
+                                 </c:otherwise>
+                                 </c:choose>
             </div>
          </swiper-slide>
       </c:forEach>

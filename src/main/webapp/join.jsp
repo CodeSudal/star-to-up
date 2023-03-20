@@ -33,13 +33,7 @@ select::-ms-expand {
 	color: red;
 }
 
-.doubleChk {
-	background: #D9D9D9;
-}
 
-.doubleChk:hover {
-	background: black;
-}
 
 .site-btn {
 	background: #D9D9D9;
@@ -225,6 +219,7 @@ select::-ms-expand {
 											console.log('phone : ' + phone)
 											console.log(phone.value)
 											if (phone== '') {
+												$('#phoneChk').unbind('mouseenter mouseleave');
 												$('#pho_result').text('');
 												$("#phoneChk").css('background','#D9D9D9');
 												$("#phoneChk").attr('value','인증번호 발송');
@@ -234,6 +229,7 @@ select::-ms-expand {
 												
 												
 											} else if (!phoCheck.test(phone)) {
+												$('#phoneChk').unbind('mouseenter mouseleave');
 												$('#pho_result').text('올바른 전화번호를 입력하세요.');
 												$('#pho_result').css('color','red');
 												$("#phoneChk").css('background','#D9D9D9');
