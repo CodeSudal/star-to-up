@@ -51,6 +51,9 @@ public class ProductDAO {
 	// INSERT NAMING
 	final String INSERT_NAMING = "INSERT INTO NAMING(N_NUM, N_NAME, N_EN) VALUES((SELECT NVL(MAX(N_NUM), 0) + 1 FROM NAMING), ?, ?)";
 
+	// 가장 최신 제품
+	final String SELECT_LAST_PRODUCT = "SELECT P_NUM, P_NAME, P_PRICE, P_INFO, P_FINISH, P_IMAGE1, P_IMAGE2, P_IMAGE3, P_AMOUNT, P_CRNAMOUNT, P_PERCENT FROM PRODUCT WHERE P_NUM=(SELECT NVL(MAX(P_NUM), 0) FROM PRODUCT)";
+	
 	public boolean insertNaming(NamingVO vo) {
 		try {
 			if(jdbcTemplate.query(SELECT_ALL_NAMING, new NamingRowMapper()).size()>8) {
@@ -168,6 +171,16 @@ public class ProductDAO {
 		try {
 			// 전체 출력
 			return jdbcTemplate.query(SELECT_ALL, new ProductRowMapper());
+		} catch(Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+	
+	public List<ProductVO> selectLastProduct(ProductVO vo){
+		try {
+			// 전체 출력
+			return jdbcTemplate.query(SELECT_LAST_PRODUCT, new ProductRowMapper());
 		} catch(Exception e) {
 			System.out.println(e);
 			return null;
