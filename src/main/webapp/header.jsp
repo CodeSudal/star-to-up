@@ -26,13 +26,13 @@
    <div class="header_box">
       <div class="top_left_box">
          <div class="logo_box"><a href="main.do" style="color: black;
-    font-weight: 700;">LOGO</a></div>
+    "><img src="img/default.png" style="margin-top:5px; width: 30px; height:30px;"/></a></div>
          <div class="menu_item1"><a href="store.do" style="color: black;
-    font-weight: 700;">STORE</a></div>
+    ">STORE</a></div>
          <div class="menu_item1"><a href="info.do" style="color: black;
-    font-weight: 700;">INFO</a></div>
+    ">INFO</a></div>
          <div class="menu_item1"><a href="about.do" style="color: black;
-    font-weight: 700;">ABOUT</a></div>
+    ">ABOUT</a></div>
       </div>
       <div class="top_right_box">
         <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
