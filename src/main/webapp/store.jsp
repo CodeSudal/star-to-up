@@ -79,7 +79,7 @@
 
 .modalImg img {
     
-   max-height: 200px;
+   max-height: 160px;
 }
 
 /*.modalwrap div {
@@ -115,16 +115,16 @@
    <!-- Header Section End -->
 
    <!-- 팝업창 띄울지 여부 파악 -->
-   <c:if test="${bool}">
+   <c:if test="${!bool}">
          <script type="text/javascript">
        $(document).ready(function() {
                var con = document.getElementById("popup");    
-                   con.style.display = 'none';    
+                   con.style.display = 'block';    
        });
       </script>
    </c:if>
    <!-- 팝업창 -->
-    <div class="modalwrap" id="popup">
+    <div class="modalwrap" id="popup" style="display:none;">
       <div class="modalheader">
          <img src="img/new.png" />
       </div>
@@ -135,6 +135,7 @@
       </div> 
       <div class="modalName" style="text-align: center; padding-top: 20px; ">
          <h1 style="color:white; font-weight: bold; font-size:50px;">${last.pEN}</h1>
+        
       </div>
       <div
          style="display: flex; justify-content: space-between; padding-top: 10px; margin-top:5%; ">
@@ -184,7 +185,7 @@
             <div id="${product.pNum}">
                <div class="swiper-top" style="margin-right: 100px;">${product. pEN}</div>
                <div>
-                  <img class="swiper-image" src="img/${product.pImage1}" alt="${product. pEN}이미지">
+                  <a href="detail.do?pNum=${product.pNum}"><img class="swiper-image" src="img/${product.pImage1}" alt="${product. pEN}이미지"></a>
                </div>
                <div class="swiper-bottom">
                   ￦ <fmt:formatNumber value="${product.pPrice}" />
@@ -380,14 +381,24 @@ function popClose() {
     
   //체크박스에 체크를 했다면 "nopopup"쿠키 생성됨.
     if ($('#nopopup').is(":checked")){
+         console.log('들어왔니');
         // 쿠키값을 "Y"로 하여 하루동안 저장시킴
-        $.cookie("nopopup", "Y", {
-            expires : 1
-        });
-
+       // $.cookie("nopopup", "Y", {
+       //     expires : 1
+       // });
+       setCookie( "nopopup", "Y" , 1 ); //쿠키를 생성함
+      
 }
   
-}  
+}
+
+//팝업 생성 JS
+function setCookie( name, value, expiredays ){
+var todayDate = new Date();
+todayDate.setDate( todayDate.getDate() + expiredays );
+document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+}
+
 
 </script>
       
