@@ -1,4 +1,4 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>     
 
@@ -23,20 +23,21 @@
 </head>
 <body>
 
-<div class="header_box" style="background-color: rgb(255,255,255,0.7);">      <div class="top_left_box">
+  <div class="header_box" style="background-color: rgb(255,255,255,0.7);"> 
+      <div class="top_left_box">
          <div class="logo_box"><a href="main.do" style="color: black;
-    font-weight: 700;">LOGO</a></div>
+    "><img src="img/default.png" style="margin-top:5px; width: 30px; height:30px;"/></a></div>
          <div class="menu_item1"><a href="store.do" style="color: black;
-    font-weight: 700;">STORE</a></div>
+    ">STORE</a></div>
          <div class="menu_item1"><a href="info.do" style="color: black;
-    font-weight: 700;">INFO</a></div>
+    ">INFO</a></div>
          <div class="menu_item1"><a href="about.do" style="color: black;
-    font-weight: 700;">ABOUT</a></div>
+    ">ABOUT</a></div>
       </div>
       <div class="top_right_box">
         <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
             <div style="margin-right:10%; margin-top:5%;">
-               <p style="font-weight: bold; color:black; "> <a href="adminFunding.do" style="color: black;" >ADMIN</a></p>
+               <p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
             </div>
          </c:if>
          <div class="icon_box1">
