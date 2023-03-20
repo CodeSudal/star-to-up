@@ -90,7 +90,7 @@
             <div class="item_box">
                <div class="product_item bc">
                   <div class="img_box">
-                     <img src="${i.pImage1}" alt="img" width="100%"
+                     <img src="img/${i.pImage1}" alt="img" width="100%"
                         height="100%">
                   </div>
                   <div class="title_box">${i.pEN}</div>
