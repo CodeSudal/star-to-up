@@ -80,7 +80,84 @@
     }
     
 </style>
-<%@ include file="header.jsp"%>
+<header>
+	   <div class="header_box">
+      <div class="top_left_box">
+         <div class="logo_box"><a href="main.do" style="color: black;
+    "><img src="img/default.png" style="margin-top:5px; width: 30px; height:30px;"/></a></div>
+         <div class="menu_item1"><a href="store.do" style="color: black;
+    ">STORE</a></div>
+         <div class="menu_item1"><a href="info.do" style="color: black;
+    ">INFO</a></div>
+         <div class="menu_item1"><a href="about.do" style="color: black;
+    ">ABOUT</a></div>
+      </div>
+      <div class="top_right_box">
+      <c:choose>
+      	<c:when test="${param.lang eq 'en'}">
+      		<div style="width: 20px; margin-right:15%; align:left;"><a href="about.do?lang=ko"><img alt="ENGLISH" src="img/lang.png"></a></div>
+     	</c:when>
+     	<c:otherwise>
+      		<div style="width: 20px; margin-right:15%; align:left;"><a href="about.do?lang=en"><img alt="한국어" src="img/lang.png"></a></div>
+      	</c:otherwise>
+      </c:choose>
+        <c:if test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
+            <div style="margin-right:10%; margin-top:5%;">
+               <p style="font-weight: bold; color:black;"> <a href="adminFunding.do">ADMIN</a></p>
+            </div>
+         </c:if>
+         <div class="icon_box1">
+            <div class="header__right1">
+               <ul class="header__right__widget">
+                  <li><a href="shopcart.do"><span class="material-symbols-outlined">&#xE87D;</span>
+                        <c:if test="${member.mId != null}">
+                            <div class="tip">${member.mLikecnt}</div> 
+                        </c:if>
+                      </a>
+                  </li>
+
+               </ul>
+            </div>
+            <div class="icon_box1">
+               <nav class="header__menu">
+                  <ul>
+                     <li style="position: relative;"><a href="#"><span
+                           class="material-symbols-outlined">&#xF0D3;</span></a>
+                        <ul class="dropdown"
+                           style="text-align: right; width: 110px; border-radius: 5px; background-color: rgba(0, 0, 0, 0.3); position: absolute; left: -80px; top: 38px">
+                           <c:choose>
+                               <c:when test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
+                                   <li><a href="myFundingList.do">펀딩 내역</a></li>
+                                    <li><a href="shopcart.do">찜 목록</a></li>
+                                    <li><a href="logout.do">로그아웃</a></li>
+                               </c:when>
+                              <c:when test="${member.mId != null && member.mPw == 'KAKAO'}">
+                                 <li><a href="myFundingList.do">펀딩 내역</a></li>
+                                 <li><a href="shopcart.do">찜 목록</a></li>
+                                <li><a href="withdrowal2.do">회원 탈퇴</a></li>
+                                 <li><a href="logout.do">로그아웃</a></li>
+                              </c:when>
+                              <c:when test="${member.mId != null }">
+                                 <li><a href="myFundingList.do">펀딩 내역</a></li>
+                                 <li><a href="shopcart.do">찜 목록</a></li>
+                                <li><a href="withdrowal.do">회원 탈퇴</a></li>
+                                 <li><a href="logout.do">로그아웃</a></li>
+                              </c:when>
+                               <c:otherwise>
+                                  <li><a href="login.do">로그인</a></li>
+                                 <li><a href="agreement.do">회원가입</a></li>
+                     </c:otherwise>
+                    </c:choose>      
+                        </ul></li>
+                  </ul>
+               </nav>
+
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="header_box_space"></div>
+</header>
 
 
 <body>
