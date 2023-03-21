@@ -45,7 +45,7 @@
                <ul class="header__right__widget">
                   <li><a href="shopcart.do"><span class="material-symbols-outlined">&#xE87D;</span>
                         <c:if test="${member.mId != null}">
-                            <div class="tip">${member.mLikecnt}</div> 
+                            <div class="tip">${sessionScope.member.mLikecnt}</div> 
                         </c:if>
                       </a>
                   </li>

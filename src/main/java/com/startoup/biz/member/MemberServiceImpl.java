@@ -104,6 +104,11 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.selectKakaoMember(vo);
 	}
 
+	@Override
+	public MyFundingVO checkDuplication(MyFundingVO vo) {
+		return mdao.checkDuplication(vo);
+	}
+
 	
 	
 

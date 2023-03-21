@@ -41,7 +41,12 @@
 	} else if (msg == 'mailSuccess') {
 		alert('메일 전송을 성공하였습니다.');
 		location.href = '${lo}';
-	} else {
+	} else if (msg == 'checkDuplication') {
+		alert('이미 펀딩한 상품입니다.');
+		location.href = document.referrer;
+	}
+	
+	else {
 		alert('관리자에게 문의해주세요');
 		location.href = document.referrer;
 	}

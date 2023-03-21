@@ -9,5 +9,6 @@ public interface ListService {
 	public List<ListVO> selectAllProduct(ListVO vo);
 	public ListVO selectCount(ListVO vo);
 	public List<ListVO> selectAllList(ListVO vo);
+	public ListVO sellCount(ListVO vo);
 
 }

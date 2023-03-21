@@ -65,8 +65,8 @@
    position: absolute;
    top: 15%;
    left: 60%;
-   width: 400px;
-   height:550px;
+   width: 380px;
+   height:515px;
    /*transform: translate(-50%, -50%);*/
    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
    overflow: hidden;
@@ -79,7 +79,7 @@
 
 .modalImg img {
     
-   max-height: 160px;
+   max-height: 150px;
 }
 
 /*.modalwrap div {
@@ -143,9 +143,10 @@
       <div class="modalName" style="text-align: center; padding-top: 20px; ">
          <h1 style="color:white; font-weight: bold; font-size:50px;">${last.pEN}</h1>
         
+        <h5 style="color:#FFFFFF; opacity: 0.5;">STAR TO UP</h5>
       </div>
       <div
-         style="display: flex; justify-content: space-between; padding-top: 10px; margin-top:5%; ">
+         style="display: flex; justify-content: space-between; padding-top: 20px; margin-top:5%; ">
          <label style="display: flex; padding-left: 20px; color:white;">오늘 하루 이 창 보지 않기
             <input type="checkbox" id="nopopup" style="margin-left: 5px" />
          </label>

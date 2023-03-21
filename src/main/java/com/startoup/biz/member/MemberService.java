@@ -23,5 +23,6 @@ public interface MemberService {
 	public MyLikeVO countLike(MyLikeVO vo);
 	public List<ProductVO> myLikeList(MyLikeVO vo);
 	public List<ProductVO> myFundList(MyFundingVO vo);
+	public MyFundingVO checkDuplication(MyFundingVO vo);
 
 }

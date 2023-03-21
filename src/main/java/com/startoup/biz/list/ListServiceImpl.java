@@ -37,4 +37,9 @@ public class ListServiceImpl implements ListService{
 		return ldao.selectAllList(vo);
 	}
 
+	@Override
+	public ListVO sellCount(ListVO vo) {
+		return ldao.sellCount(vo);
+	}
+
 }
