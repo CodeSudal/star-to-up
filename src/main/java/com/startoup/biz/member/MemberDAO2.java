@@ -212,6 +212,16 @@ public class MemberDAO2 {
 			return null;
 		}
 	}
+
+	// 내 펀딩 목록 보기
+	public MyFundingVO checkDuplication(MyFundingVO vo){
+		try {
+			return mybatis.selectOne("MemberDAO.checkDuplication", vo);
+		} catch(Exception e) {
+			return null;
+		}
+	}
+	
 }
 
 
