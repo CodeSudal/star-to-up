@@ -479,13 +479,19 @@ p[data-value]:after {
                                        <button 
                                        type="button" class="btn btn-primary rounded-pill m-2"
                                        style="padding: 10px 30px;" id="sendQR"
-                                       onclick="location.href='sendAllMail.do=?lPid=${v.pNum}'" disabled> 메일 전송 </button>
+                                       onclick="location.href='sendAllMail.do?lPid=${v.pNum}'" disabled> 메일 전송 </button>
+                                    </c:when>
+                                    <c:when test="${v.pFinish ==1}">
+                                        <button 
+                                       type="button" class="btn btn-primary rounded-pill m-2"
+                                       style="padding: 10px 30px;" id="sendQR"
+                                       onclick="location.href='sendAllMail.do?lPid=${v.pNum}'" > 메일 전송 </button>
                                     </c:when>
                                      <c:otherwise>
                                         <a href="sendAllMail.do?lPid=${v.pNum}&pName=${v.pName}"><button 
                                        type="button" class="btn btn-primary rounded-pill m-2"
                                        style="padding: 10px 30px; " id="sendQR"
-                                       onclick="location.href='sendAllMail.do=?lPid=${v.pNum}'" > 메일 전송 </button></a> 
+                                       onclick="location.href='sendAllMail.do?lPid=${v.pNum}'" disabled> 전송 완료 </button></a> 
                                      </c:otherwise>
                                  </c:choose>
                                  <input
@@ -633,4 +639,3 @@ p[data-value]:after {
       <script src="js/mainAdmin.js"></script>
 </body>
 </html>
-
