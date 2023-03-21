@@ -567,7 +567,7 @@ p[data-value]:after {
 
                      <input type="button" id="addLinkBtn" value="add link"
                         class="btn btn-primary rounded-pill m-2" onclick="addLink()"
-                        style="padding: 10px 30px; display: block; margin-left: 15% !important; margin-bottom: 6% !important; width: 70%; background: #FFFFFF; opacity: 0.5;">
+                        style="padding: 10px 30px; display: block; margin-left: 15% !important; margin-bottom: 6% !important; width: 70%; background: #FFFFFF; opacity: 100; color: #6c7293;">
                         
                   <form id="contact-form" onsubmit="return false;">      
                      <input type="hidden" name="name" id="name">
