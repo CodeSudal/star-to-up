@@ -8,12 +8,11 @@
 <head>
 <meta charset="utf-8" />
 <title>Member Management</title>
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="keywords" />
 <meta content="" name="description" />
-
-<!-- Favicon -->
-<link href="img/favicon.ico" rel="icon" />
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />

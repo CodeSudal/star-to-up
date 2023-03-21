@@ -8,14 +8,14 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>Funding Management</title>
+<title>Send Email</title>
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="" name="keywords">
 <meta content="" name="description">
 
-<!-- 파비콘 삽입 -->
-<link rel="icon" href="img/StarToUp_Logo.png">
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -396,16 +396,20 @@ p[data-value]:after {
                    console.log(this["message"].value);
    
                 
-                   // send emailJS API 호출  
+                // send emailJS API 호출  
                    emailjs.sendForm('service_99jfphy', 'template_01t5bnf', this) // ( emailjs 유저 토큰, 템플릿 ID, form 데이터 객체 ) 담아서 전송
                        .then(function() {
                            console.log('SUCCESS!');
+                           console.log(${param.lpId});
+                           location.href = '${pageContext.request.contextPath}/sendSuccess.do?pNum=${param.lPid}';
                        }, function(error) {
                            console.log('FAILED...', error);
+                           alert('메일 전송 실패했습니다.');
                        });
                    
                    
                 }           
+         
             });
         }
         

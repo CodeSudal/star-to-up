@@ -8,13 +8,12 @@
 <head>
 <meta charset="utf-8" />
 <title>Funding Management</title>
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta content="" name="keywords" />
 <meta content="" name="description" />
-
-<!-- Favicon -->
-<link href="img/favicon.ico" rel="icon" />
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -482,10 +481,10 @@ p[data-value]:after {
                                        onclick="location.href='sendAllMail.do?lPid=${v.pNum}'" disabled> 메일 전송 </button>
                                     </c:when>
                                     <c:when test="${v.pFinish ==1}">
-                                        <button 
+                                        <a href="sendAllMail.do?lPid=${v.pNum}&pName=${v.pName}"><button 
                                        type="button" class="btn btn-primary rounded-pill m-2"
-                                       style="padding: 10px 30px;" id="sendQR"
-                                       onclick="location.href='sendAllMail.do?lPid=${v.pNum}'" > 메일 전송 </button>
+                                       style="padding: 10px 30px; " id="sendQR"
+                                       onclick="location.href='sendAllMail.do?lPid=${v.pNum}'"> 메일 전송 </button></a> 
                                     </c:when>
                                      <c:otherwise>
                                         <a href="sendAllMail.do?lPid=${v.pNum}&pName=${v.pName}"><button 
