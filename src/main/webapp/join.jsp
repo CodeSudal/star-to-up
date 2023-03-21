@@ -269,6 +269,15 @@ select::-ms-expand {
 			alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
 			
 			var sendedPhone = $("#phone").val();
+			$('#phoneChk2').hover(function(){
+
+			    $(this).css('background', 'black');   
+
+			}, function(){
+			   $(this).css('background','#D9D9D9'); 
+
+
+			})
 		
 			$.ajax({
 				type : "GET",	
