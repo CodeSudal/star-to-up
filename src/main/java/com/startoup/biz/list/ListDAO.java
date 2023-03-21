@@ -77,7 +77,7 @@ public class ListDAO {
 	// 카운트
 	public ListVO sellCount(ListVO vo) {
 		try {
-			List<ListVO> cnt = jdbcTemplate.query(SELECT_COUNT, new ListRowMapper2());
+			List<ListVO> cnt = jdbcTemplate.query(SELL_COUNT, new ListRowMapper2());
 			vo=cnt.get(0);
 			return vo;
 		} catch(Exception e) {
