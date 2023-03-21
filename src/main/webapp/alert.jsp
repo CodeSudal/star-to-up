@@ -38,6 +38,9 @@
 	} else if (msg == 'insertImageTrue') {
 		alert('펀딩 상품을 성공적으로 추가했습니다.');
 		location.href = '${lo}';
+	} else if (msg == 'mailSuccess') {
+		alert('메일 전송을 성공하였습니다.');
+		location.href = '${lo}';
 	} else {
 		alert('관리자에게 문의해주세요');
 		location.href = document.referrer;
