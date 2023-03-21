@@ -7,6 +7,7 @@ public interface ProductService {
 	public boolean insertProduct(ProductVO vo);
 	public boolean updateProduct(ProductVO vo);
 	public boolean deleteProduct(ProductVO vo);
+	public boolean updateMail(ProductVO vo);
 	public List<ProductVO> selectAll(ProductVO vo);
 	public ProductVO selectOne(ProductVO vo);
 	public ProductVO selectLastProduct(ProductVO vo);

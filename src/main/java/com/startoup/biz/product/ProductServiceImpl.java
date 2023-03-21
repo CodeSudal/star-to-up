@@ -31,6 +31,11 @@ public class ProductServiceImpl implements ProductService{
 	public boolean deleteProduct(ProductVO vo) {
 		return pdao.deleteProduct(vo);
 	}
+	
+	@Override
+	public boolean updateMail(ProductVO vo) {
+		return pdao.updateMail(vo);
+	}
 
 	@Override
 	public List<ProductVO> selectAll(ProductVO vo) {
