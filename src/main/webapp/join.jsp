@@ -450,7 +450,7 @@ select::-ms-expand {
 				</div>
 				<input type="button" id="phoneChk" class="doubleChk"
 					onclick="phoneCheck1()"
-					style="border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;"
+					style="background: #D9D9D9; border-radius: 3px; font-size: 14px; color: #ffffff; font-weight: 500; border: none; text-transform: uppercase; display: inline-block; padding: 12px 30px; margin-left: 20px; float: left; width: 200px;"
 					value="인증번호 발송" disabled>
 
 				<div class="checkout__form__input" style="width: 50%;">
