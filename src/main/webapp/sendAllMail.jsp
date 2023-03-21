@@ -549,14 +549,14 @@ p[data-value]:after {
             <div class="row g-4">
 
                <div class="col-sm-12 col-xl-6" style="width: 100%">
-                  <% 
+                 <%--  <% 
                      String pId = request.getParameter("pId");
                      String pName = request.getParameter("pName");
-                  %>
+                  %> --%>
                   <div class="bg-secondary rounded h-100 p-4"
                      style="width: 50%; background: #1A1C23; border-radius: 30px !important; margin-left: 25%; margin-top: 8%; height: 90% !important;">
                      <h3 class="mb-4"
-                        style="text-align: center; margin-top: 5% !important; margin-bottom: 10% !important;"><%=pName%></h3>
+                        style="text-align: center; margin-top: 5% !important; margin-bottom: 10% !important;">${param.pName}</h3>
 
 
 
