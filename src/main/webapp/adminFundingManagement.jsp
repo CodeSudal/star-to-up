@@ -461,53 +461,44 @@ p[data-value]:after {
                      <c:forEach var="v" items="${fundingList}">
                         <div class="col-sm-12 col-xl-6 "
                            style="padding-left: 5%; padding-right: 5%; padding-bottom: 5%; float: left !important">
+                           
                            <div class="bg-secondary h-100 p-4"
                               style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.2) !important">
                               <h3 class="mb-4" style="font-weight: bold">&nbsp;&nbsp;${v.pEN}
                               </h3>
                               <span
-                                 style="text-align: right; margin-left: 90%; color: white">${v.pPercent}%</span>
+                                 style="text-align: right; margin-left: 85%; color: white">${v.pPercent}%</span>
                               <div class="progress2 progress-moved" style="width: 100%">
                                  <div class="progress-bar2" style="width: ${v.pPercent}%"></div>
                               </div>
-                              <br> <br>
+                              <br> 
                               <form method="post" action="sendAllMail.do?lPid=${v.pNum}"
-                                 enctype="multipart/form-data">
-                                 <%-- <c:choose>
-                                    <c:when test="${v.pPercent==100}">
-                                       <button type="button" id="my-button"
-                                          class="btn btn-primary rounded-pill m-2"
-                                          style="padding: 10px 30px;" onclick="onClickUpload(); ">QR삽입</button>
-                                    </c:when>
-                                    <c:otherwise>
-                                       <button type="button" id="my-button"
-                                          class="btn btn-primary rounded-pill m-2"
-                                          style="padding: 10px 30px;"
-                                          onclick="onClickUpload(); disabled">QR삽입</button>
-                                    </c:otherwise>
-                                 </c:choose> --%>
+                                 enctype="multipart/form-data" style="margin-left:60%;">
                                  <c:choose>
                                     <c:when test="${v.pFinish ==0}">
                                        <button 
                                        type="button" class="btn btn-primary rounded-pill m-2"
-                                       style="padding: 10px 30px; float: right;" id="sendQR"
+                                       style="padding: 10px 30px;" id="sendQR"
                                        onclick="location.href='sendAllMail.do=?lPid=${v.pNum}'" disabled> 메일 전송 </button>
                                     </c:when>
                                      <c:otherwise>
                                         <a href="sendAllMail.do?lPid=${v.pNum}&pName=${v.pName}"><button 
                                        type="button" class="btn btn-primary rounded-pill m-2"
-                                       style="padding: 10px 30px; float: right;" id="sendQR"
+                                       style="padding: 10px 30px; " id="sendQR"
                                        onclick="location.href='sendAllMail.do=?lPid=${v.pNum}'" > 메일 전송 </button></a> 
                                      </c:otherwise>
                                  </c:choose>
                                  <input
                                     id="my-input" type="file" type="hidden"
                                     onchange="readURL(this);"
-                                    style="height: 1px; display: none;" />
+                                    style="display: none;" />
                               </form>
                            </div>
+                           
                         </div>
                      </c:forEach>
+                     
+                     
 <!-- 
  ▼ 예시로 만들어져 있는 건 무조건 QR삽입 가능할 수 있게 만들어 놨어요 -->
                <!-- 
@@ -541,6 +532,20 @@ p[data-value]:after {
                         </form>
                      </div>
                   </div>
+                <%-- <c:choose>
+                                    <c:when test="${v.pPercent==100}">
+                                       <button type="button" id="my-button"
+                                          class="btn btn-primary rounded-pill m-2"
+                                          style="padding: 10px 30px;" onclick="onClickUpload(); ">QR삽입</button>
+                                    </c:when>
+                                    <c:otherwise>
+                                       <button type="button" id="my-button"
+                                          class="btn btn-primary rounded-pill m-2"
+                                          style="padding: 10px 30px;"
+                                          onclick="onClickUpload(); disabled">QR삽입</button>
+                                    </c:otherwise>
+                                 </c:choose> --%>
+               
                 -->
 
 
