@@ -38,6 +38,9 @@ public class ProductDAO {
 	final String CHECK_FINISH = "SELECT P_PERCENT, P_NUM FROM PRODUCT WHERE P_NUM=?";
 	// 펀딩 완료 시(제품 펀딩 종료하기)
 	final String UPDATE_FINISH = "UPDATE PRODUCT SET P_FINISH=1 WHERE P_NUM=?";
+	
+	// 메일 전송 시
+	final String UPDATE_FINISH_MAIL = "UPDATE PRODUCT SET P_FINISH=2 WHERE P_NUM=?";
 
 	// 제품 INFO 업데이트
 	final String UPDATE_PINFO = "UPDATE PRODUCT P SET P.P_INFO = (SELECT C.C_INFO FROM CRAWLING C WHERE P.P_NAME = C.C_NAME)";
@@ -149,6 +152,17 @@ public class ProductDAO {
 		try {
 			// 제품 정보 수정
 			int res=jdbcTemplate.update(UPDATE_PRODUCT, vo.getpName(), vo.getpPrice(), vo.getpInfo(), vo.getpImage1(), vo.getpImage2(), vo.getpImage3(), vo.getpNum());
+			if(res<1) { return false; }
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
+	}
+	
+	public boolean updateMail(ProductVO vo) {
+		try {
+			// 메일 전송 완료
+			int res=jdbcTemplate.update(UPDATE_FINISH_MAIL, vo.getpNum());
 			if(res<1) { return false; }
 			return true;
 		} catch(Exception e) {
