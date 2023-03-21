@@ -22,6 +22,9 @@ public class ListDAO {
 	final String SELECT_ALL_PRODUCT = "SELECT L_NUM, L_PID, L_MID FROM LISTS WHERE L_MID=?";
 	// 펀딩한 사람 인원 수
 	final String SELECT_COUNT = "SELECT COUNT(L_NUM) AS L_NUM FROM LISTS WHERE L_PID=?";
+
+	// 펀딩한 사람 인원 수
+	final String SELL_COUNT = "SELECT COUNT(L_NUM) AS L_NUM FROM LISTS";
 	
 	// 펀딩 이메일 정보
 	final String SELECT_ALL_LIST = "SELECT DISTINCT l.L_NUM, l.L_PID, l.L_MID, m.M_EMAIL1||'@'||m.M_EMAIL2 AS EMAIL, p.P_NAME \n"
@@ -64,6 +67,17 @@ public class ListDAO {
 		try {
 			Object[] args= { vo.getlPid() };
 			List<ListVO> cnt = jdbcTemplate.query(SELECT_COUNT, args, new ListRowMapper2());
+			vo=cnt.get(0);
+			return vo;
+		} catch(Exception e) {
+			return null;
+		}
+	}
+	
+	// 카운트
+	public ListVO sellCount(ListVO vo) {
+		try {
+			List<ListVO> cnt = jdbcTemplate.query(SELECT_COUNT, new ListRowMapper2());
 			vo=cnt.get(0);
 			return vo;
 		} catch(Exception e) {
