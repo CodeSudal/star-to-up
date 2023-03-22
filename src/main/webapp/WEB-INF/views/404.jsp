@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+	<%@ include file="/header.jsp"%>
 
 	<div class="box">
 	<div class="imageOuter">

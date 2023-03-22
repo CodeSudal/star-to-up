@@ -35,7 +35,6 @@ public class ProductController {
 	@RequestMapping(value = "/store.do")
 	public String storeView(@ModelAttribute("product") ProductVO vo, Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		System.out.println("store.do 들어옴");
 		boolean bool = false;
 
 		Cookie[] cookieArr = request.getCookies();
