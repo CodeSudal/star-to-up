@@ -127,25 +127,25 @@
                            style="text-align: right; width: 110px; border-radius: 5px; background-color: rgba(0, 0, 0, 0.3); position: absolute; left: -80px; top: 38px">
                            <c:choose>
                                <c:when test="${member.mId == 'admin' || member.mId == 'ADMIN' }">
-                                   <li><a href="myFundingList.do">펀딩 내역</a></li>
-                                    <li><a href="shopcart.do">찜 목록</a></li>
-                                    <li><a href="logout.do">로그아웃</a></li>
+                                   <li><a href="myFundingList.do"><spring:message code="message.about.gnb1"/></a></li>
+                                    <li><a href="shopcart.do"><spring:message code="message.about.gnb2"/></a></li>
+                                    <li><a href="logout.do"><spring:message code="message.about.gnb3"/></a></li>
                                </c:when>
                               <c:when test="${member.mId != null && member.mPw == 'KAKAO'}">
-                                 <li><a href="myFundingList.do">펀딩 내역</a></li>
-                                 <li><a href="shopcart.do">찜 목록</a></li>
-                                <li><a href="withdrowal2.do">회원 탈퇴</a></li>
-                                 <li><a href="logout.do">로그아웃</a></li>
+                                 <li><a href="myFundingList.do"><spring:message code="message.about.gnb4"/></a></li>
+                                 <li><a href="shopcart.do"><spring:message code="message.about.gnb5"/></a></li>
+                                <li><a href="withdrowal2.do"><spring:message code="message.about.gnb6"/></a></li>
+                                 <li><a href="logout.do"><spring:message code="message.about.gnb7"/></a></li>
                               </c:when>
                               <c:when test="${member.mId != null }">
-                                 <li><a href="myFundingList.do">펀딩 내역</a></li>
-                                 <li><a href="shopcart.do">찜 목록</a></li>
-                                <li><a href="withdrowal.do">회원 탈퇴</a></li>
-                                 <li><a href="logout.do">로그아웃</a></li>
+                                 <li><a href="myFundingList.do"><spring:message code="message.about.gnb4"/></a></li>
+                                 <li><a href="shopcart.do"><spring:message code="message.about.gnb5"/></a></li>
+                                <li><a href="withdrowal.do"><spring:message code="message.about.gnb6"/></a></li>
+                                 <li><a href="logout.do"><spring:message code="message.about.gnb7"/></a></li>
                               </c:when>
                                <c:otherwise>
-                                  <li><a href="login.do">로그인</a></li>
-                                 <li><a href="agreement.do">회원가입</a></li>
+                                  <li><a href="login.do"><spring:message code="message.about.gnb8"/></a></li>
+                                 <li><a href="agreement.do"><spring:message code="message.about.gnb9"/></a></li>
                      </c:otherwise>
                     </c:choose>      
                         </ul></li>
