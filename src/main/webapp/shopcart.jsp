@@ -8,7 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>shopCart</title>
-
+<!-- 파비콘 삽입 -->
+<link rel="icon" href="img/StarToUp_Logo.png">
 <script type="text/javascript"
    src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet" href="css/font.css" type="text/css">
