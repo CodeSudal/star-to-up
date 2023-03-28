@@ -13,7 +13,7 @@ public class DriverUtil {
 	// 크롬 웹 드라이버
 	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
 	// 웹 드라이버 경로 지정
-	public static final String WEB_DRIVER_PATH = "/Users/ljh0323/Desktop/Program/chromedriver_mac_arm64/chromedriver";
+	public static final String WEB_DRIVER_PATH = "";
 	// 크롤링한 정보를 담아줄 Map 객체 선언
 	public static Map<String, String> craw = new HashMap<>();
 
