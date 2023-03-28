@@ -331,7 +331,7 @@ ol {
 }
 
 .header__logo a {
-    display: inline-block;
+    display: block;
 }
 
 .header__menu {
@@ -2744,7 +2744,7 @@ ol {
 }
 
 /*---------------------
-  Blog Details
+  Blog Details 
 -----------------------*/
 
 .blog-details {
@@ -3149,7 +3149,6 @@ ol {
 }
 
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
-
 @media only screen and (min-width: 1600px) and (max-width: 1900px) {
     .header {
         padding: 0 85px;
@@ -3167,13 +3166,16 @@ ol {
 
 @media only screen and (min-width: 1200px) {
     .container {
-        max-width: 1170px;
+        max-width: 100%;
     }
-}
+} 
 
 /* Medium Device = 1200px */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        max-width: 100%;
+    }
     .header__menu ul li {
         margin-right: 20px;
     }
@@ -3189,11 +3191,15 @@ ol {
     .nav::after {
         width: 240px;
     }
-}
+} 
 
 /* Tablet Device = 768px */
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@ media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+    .container {
+        max-width: 100%;
+    }
     .filter__controls li {
         margin-right: 15px;
     }
@@ -3378,9 +3384,7 @@ ol {
     .offcanvas__auth a:last-child {
         margin-right: 0;
     }
-    .offcanvas__auth a:last-child:after {
-        display: none;
-    }
+   
     .offcanvas__auth a:after {
         position: absolute;
         right: -8px;
@@ -3388,13 +3392,8 @@ ol {
         content: '/';
         font-size: 13px;
     }
-    .header__menu {
-        display: none;
-    }
-    .header__right {
-        display: none;
-    }
-}
+   
+} 
 
 /* Wide Mobile = 480px */
 
@@ -3556,12 +3555,7 @@ ol {
         content: '/';
         font-size: 13px;
     }
-    .header__menu {
-        display: none;
-    }
-    .header__right {
-        display: none;
-    }
+   
     .filter__controls {
         text-align: left;
         margin-bottom: 40px;
@@ -3623,7 +3617,7 @@ ol {
     }
 }
 
-/* Small Device = 320px */
+Small Device = 320px
 
 @media only screen and (max-width: 479px) {
     .categories__item.categories__large__item {
@@ -3683,4 +3677,4 @@ ol {
         width: 100%;
         font-size: 24px;
     }
-}
+} 

@@ -4,33 +4,39 @@
     <servlet-name>DispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   </servlet>
-<!--   <servlet-mapping>
+   <servlet-mapping>
     <servlet-name>DispatcherServlet</servlet-name>
     <url-pattern>*.do</url-pattern>
-  </servlet-mapping> -->
+  </servlet-mapping> 
   
   <filter>
-	<filter-name>encFilter</filter-name>
-	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-	<init-param>
-		<param-name>encoding</param-name>
-		<param-value>UTF-8</param-value>
-	</init-param>
+   <filter-name>encFilter</filter-name>
+   <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+   <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+   </init-param>
   </filter>
   <filter-mapping>
-  	<filter-name>encFilter</filter-name>
-  	<url-pattern>*.do</url-pattern>
+     <filter-name>encFilter</filter-name>
+     <url-pattern>*.do</url-pattern>
   </filter-mapping>
   <filter-mapping>
-  	<filter-name>encFilter</filter-name>
-  	<url-pattern>*.jsp</url-pattern>
+     <filter-name>encFilter</filter-name>
+     <url-pattern>*.jsp</url-pattern>
   </filter-mapping>
   
   <context-param>
-  	<param-name>contextConfigLocation</param-name>
-  	<param-value>classpath:applicationContext.xml</param-value>
+     <param-name>contextConfigLocation</param-name>
+     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
+  
   <listener>
-  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <!-- 에러페이지 -->
+   <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/404.jsp</location>
+ </error-page> 
 </web-app>

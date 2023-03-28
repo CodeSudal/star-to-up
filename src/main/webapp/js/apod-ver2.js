@@ -6,6 +6,7 @@ function nasaRequest() {
             let data = JSON.parse(this.responseText);
 
             // Data from NASA API json
+            // NASA API에서 제공하는 데이터 변수 저장
             let copyright = data['copyright'];
             let date = data['date'];
             let explanation = data['explanation'];
@@ -45,6 +46,7 @@ function nasaRequest() {
         }
     };
     // Acessing a value from the date picker
+    // API Link 및 API KEY, 필요 데이터 값
     var datepicker_date = document.getElementById('wrapper-date').value;
     // NASA API link
     let queryUrl = 'https://api.nasa.gov/planetary/apod?';
@@ -59,6 +61,7 @@ function nasaRequest() {
     xmlhttp.send();
 }
 
+// date 데이터를 저장할 date 선언
 let date = new Date();
 const y = date.getFullYear();
 var m = date.getMonth() + 1;
@@ -66,6 +69,7 @@ var d = date.getDate();
 var a = date.getDate();
 // date.getMonth()는 0부터 시작하기 때문에 + 1 을 해줌
 
+// 필요 date값 저장
 datepicker_date = y + '-' + m + '-' + d;
 
 console.log(datepicker_date);
@@ -73,10 +77,12 @@ console.log(datepicker_date);
 const datePicker = document.getElementById('wrapper-date');
 // Call nasaRequest on date change
 
+// 클릭 이벤트가 일어날 document 요소 	지정
 const dateChanger = document.querySelector('body');
-
+// 클릭 이벤트 지정
 dateChanger.addEventListener('click', click);
 
+// body를 클릭 시 date를 하루 전날로 바꾸고 새로고침하는 함수, 월별 계산 포함(연도는 포함하지 않음)
 function changeDate() {
     $('wrapper-date').load(window.location.href + '#wrapper-date');
 
