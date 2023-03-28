@@ -163,10 +163,10 @@ select::-ms-expand {
 												nameFlag=true;
 											}
 
-											// email input change event handler
+											/* // email input change event handler
 											$('#email').on('input', function() {
 												checkEmailDuplicate();
-											});
+											}); */
 
 											// email_sel change event handler
 											$('#email_sel').on('change',function() { checkEmailDuplicate();});
