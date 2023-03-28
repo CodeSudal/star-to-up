@@ -6,9 +6,9 @@ import java.sql.Statement;
 
 public class JDBCUtil {
 	   static final String driverName="oracle.jdbc.driver.OracleDriver";
-	   static final String url="jdbc:oracle:thin:@localhost:1521:xe";
-	   static final String user="leedb";
-	   static final String passwd="1234";
+	   static final String url="";
+	   static final String user="";
+	   static final String passwd="";
 	   public static Connection connect() {
 	      Connection conn=null;
 	      try {
