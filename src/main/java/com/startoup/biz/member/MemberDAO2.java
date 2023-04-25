@@ -58,6 +58,7 @@ public class MemberDAO2 {
 		}
 	}
 
+	
 	// 회원 전체보기
 	public List<MemberVO> selectAllMember(MemberVO vo){
 		try {
