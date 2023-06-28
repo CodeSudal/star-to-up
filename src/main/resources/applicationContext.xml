@@ -30,7 +30,7 @@
       <property name="driverClassName"
          value="oracle.jdbc.driver.OracleDriver" />
       <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-      <property name="username" value="kim" />
+      <property name="username" value="leedb" />
       <property name="password" value="1234" />
    </bean>
     
